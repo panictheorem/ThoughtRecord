@@ -8,5 +8,5 @@ namespace ThoughtRecordDAL.Models
 {
     public class ThoughtRecord
     {
-    }
+    } 
 }
