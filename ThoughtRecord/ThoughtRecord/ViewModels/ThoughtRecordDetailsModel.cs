@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecord.ViewModels
 {
-    public class SettingsViewModel
+    public class ThoughtRecordDetailsModel
     {
     }
 }

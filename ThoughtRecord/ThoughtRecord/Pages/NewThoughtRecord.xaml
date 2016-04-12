@@ -5,9 +5,90 @@
     xmlns:local="using:ThoughtRecord.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:styles="using:ThoughtRecord.Styles"
     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/ThoughtRecordStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Border BorderBrush="DarkGray" BorderThickness="1" Margin="5">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <!--Field Titles-->
+            <TextBlock Text="Situation" Grid.Column="0" Style="{StaticResource RecordFieldTitle}"/>
+            <TextBlock Text="Emotions" Grid.Column="1" Style="{StaticResource RecordFieldTitle}"/>
+            <TextBlock Text="Automatic Thought(s)" Grid.Column="2" Style="{StaticResource RecordFieldTitle}"/>
+            <TextBlock Text="Evidence Supporting Automatic Thought(s)" Grid.Column="3" Style="{StaticResource RecordFieldTitle}"/>
+            <TextBlock Text="Evidence Not Supporting Automatic Thought(s)" Grid.Column="4" Style="{StaticResource RecordFieldTitle}"/>
+            <TextBlock Text="Rational Assessment" Grid.Column="5" Style="{StaticResource RecordFieldTitle}"/>
+            <TextBlock Text="Reevaluate Your Emotions" Grid.Column="6" Style="{StaticResource RecordFieldTitle}"/>
+            <!-- Field Inputs-->
+            <StackPanel Orientation="Vertical" Grid.Row="1" >
+                <CalendarDatePicker 
+                    x:Name="DateOfIncident"
+                    VerticalAlignment="Top" 
+                    Margin="10"/>
+                <TextBlock Text="{x:Bind DateOfIncident.Date, Mode=OneWay}" />
+                <TextBox Text="Describe the events leading up to the situation..." 
+                       Style="{StaticResource RecordTextInput}"
+                       Grid.Column="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+                <ListBox>
+                    <StackPanel Orientation="Vertical">
+                        <TextBox HorizontalAlignment="Center" />
+                        <Slider Width="100" Minimum="0" Maximum="100" />
+                    </StackPanel>
+                    <StackPanel  Orientation="Vertical">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    </StackPanel>
+                </ListBox>
+                <Button FontFamily="Segoe MDL2 Assets" Content="&#xE710;" FontSize="16" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" >
+                <TextBox Text="Describe the events leading up to the situation..." 
+                       Style="{StaticResource RecordTextInput}"
+                       Grid.Column="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="3" >
+                <TextBox Text="Describe the events leading up to the situation..." 
+                       Style="{StaticResource RecordTextInput}"
+                       Grid.Column="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="4" >
+                <TextBox Text="Describe the events leading up to the situation..." 
+                       Style="{StaticResource RecordTextInput}"
+                       Grid.Column="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="5" >
+                <TextBox Text="Describe the events leading up to the situation..." 
+                       Style="{StaticResource RecordTextInput}"
+                       Grid.Column="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="6">
+                <ListBox>
+                    <StackPanel Orientation="Vertical">
+                        <TextBox HorizontalAlignment="Center" />
+                        <Slider Width="100" Minimum="0" Maximum="100" />
+                    </StackPanel>
+                </ListBox>
+            </StackPanel>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Page>
