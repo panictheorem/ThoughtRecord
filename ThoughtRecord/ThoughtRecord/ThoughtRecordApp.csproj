@@ -7,8 +7,8 @@
     <ProjectGuid>{28ECB6A0-39AB-49BF-8185-ED926BF6B1F9}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ThoughtRecord</RootNamespace>
-    <AssemblyName>ThoughtRecord</AssemblyName>
+    <RootNamespace>ThoughtRecordApp</RootNamespace>
+    <AssemblyName>ThoughtRecordApp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
@@ -98,23 +98,21 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NewThoughtRecord.xaml.cs">
-      <DependentUpon>NewThoughtRecord.xaml</DependentUpon>
+    <Compile Include="Pages\ThoughtRecordDisplay.xaml.cs">
+      <DependentUpon>ThoughtRecordDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ThoughtRecordDetails.xaml.cs">
-      <DependentUpon>ThoughtRecordDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ThoughtRecordList.xaml.cs">
       <DependentUpon>ThoughtRecordList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\NewThoughtRecordModel.cs" />
+    <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
     <Compile Include="ViewModels\SettingsModel.cs" />
-    <Compile Include="ViewModels\ThoughtRecordDetailsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
+    <Compile Include="ViewModels\ValueConverters\EmotionListConverter.cs" />
+    <Compile Include="ViewModels\ValueConverters\EmotionRatingValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -141,7 +139,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\NewThoughtRecord.xaml">
+    <Page Include="Resources\Converters\ConverterDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Pages\ThoughtRecordDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,20 +152,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ThoughtRecordDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\ThoughtRecordList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\MainStyles.xaml">
+    <Page Include="Resources\Styles\MainStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\ThoughtRecordStyle.xaml">
+    <Page Include="Resources\Styles\ThoughtRecordStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

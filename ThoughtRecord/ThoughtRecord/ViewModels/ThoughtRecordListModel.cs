@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThoughtRecord.ViewModels
+namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordListModel
     {

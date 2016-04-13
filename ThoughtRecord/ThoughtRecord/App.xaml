@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="ThoughtRecord.App"
+    x:Class="ThoughtRecordApp.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ThoughtRecord"
+    xmlns:local="using:ThoughtRecordApp"
     RequestedTheme="Light">
 
 </Application>

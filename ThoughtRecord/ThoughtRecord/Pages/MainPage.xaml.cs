@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace ThoughtRecord.Pages
+namespace ThoughtRecordApp.Pages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -25,7 +25,7 @@ namespace ThoughtRecord.Pages
         public MainPage()
         {
             this.InitializeComponent();
-            MainFrame.Navigate(typeof(NewThoughtRecord));
+            MainFrame.Navigate(typeof(ThoughtRecordDisplay));
         }
 
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)

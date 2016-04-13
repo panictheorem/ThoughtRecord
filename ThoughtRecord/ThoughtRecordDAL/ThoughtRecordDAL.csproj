@@ -107,7 +107,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Emotion.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\Situation.cs" />
     <Compile Include="Models\ThoughtRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ThoughtRecordDAL.rd.xml" />
