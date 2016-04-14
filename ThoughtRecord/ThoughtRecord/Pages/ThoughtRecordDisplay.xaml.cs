@@ -23,7 +23,7 @@ namespace ThoughtRecordApp.Pages
         public ThoughtRecordDisplay()
         {
             this.InitializeComponent();
-            DateOfSituation.Date = DateTime.Now;
+            DateOfSituationPicker.Date = DateTime.Now;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -31,6 +31,11 @@ namespace ThoughtRecordApp.Pages
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion() { Name = "Stressed"});
+        }
+
+        private void EmotionNameTextBox_TextChanging(object sender, TextBoxTextChangingEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ViewModel.Emotions.Name"));
         }
     }
 }

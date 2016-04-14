@@ -62,7 +62,7 @@
                     </ListBoxItem>
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                            <TextBlock 
                                        FontSize="25" Text="&#xE909;" Margin="-2,0,10,0"
                                        Foreground="MediumSeaGreen"/>
                             <TextBlock Text="Information" Foreground="DarkGray"/>

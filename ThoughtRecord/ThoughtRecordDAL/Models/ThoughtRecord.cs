@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThoughtRecordDAL.Infrastructure;
 
 namespace ThoughtRecordDAL.Models
 {
@@ -14,12 +15,12 @@ namespace ThoughtRecordDAL.Models
         public string SupportingEvidence { get; set; }
         public string ContradictoryEvidence { get; set; }
         public string RationalAssessment { get; set; }
-        public ObservableCollection<Emotion> Emotions { get; set; }
+        public DeeplyObservableCollection<Emotion> Emotions { get; set; }
 
         public ThoughtRecord()
         {
             Situation = new Situation();
-            Emotions = new ObservableCollection<Emotion>();
+            Emotions = new DeeplyObservableCollection<Emotion>();
             Emotions.Add(new Emotion() { Name = "Happy"});
         }
     } 

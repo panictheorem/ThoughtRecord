@@ -19,7 +19,9 @@
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
-
-    <converters:EmotionRatingValueConverter x:Key="EmotionRatingConverter" />
-    <converters:EmotionListConverter x:Key="EmotionListConverter" />
+    <Style x:Key="EmotionRatingSlider" TargetType="Slider">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="100" />
+    </Style>
 </ResourceDictionary>

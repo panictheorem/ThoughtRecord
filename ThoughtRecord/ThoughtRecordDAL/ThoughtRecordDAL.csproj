@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DeeplyObservableCollection.cs" />
     <Compile Include="Models\Emotion.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Situation.cs" />
