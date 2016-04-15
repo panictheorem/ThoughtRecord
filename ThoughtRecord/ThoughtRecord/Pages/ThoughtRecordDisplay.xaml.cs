@@ -13,29 +13,41 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ThoughtRecordApp.ViewModels;
-using System.ComponentModel;
 
 namespace ThoughtRecordApp.Pages
 {
-    public sealed partial class ThoughtRecordDisplay : Page, INotifyPropertyChanged
+    public sealed partial class ThoughtRecordDisplay : Page
     {
         private ThoughtRecordDisplayModel ViewModel = new ThoughtRecordDisplayModel();
+
         public ThoughtRecordDisplay()
         {
             this.InitializeComponent();
-            DateOfSituationPicker.Date = DateTime.Now;
+            ViewModel.ThoughtRecord.Situation.DateTime = DateTime.Now;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion() { Name = "Stressed"});
+            ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion() { Name = "Stressed" });
         }
 
-        private void EmotionNameTextBox_TextChanging(object sender, TextBoxTextChangingEventArgs e)
+        private void EmotionNameAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ViewModel.Emotions.Name"));
+            AutoSuggestBox emotionSuggestBox = sender as AutoSuggestBox;
+            emotionSuggestBox.ItemsSource = ViewModel.EmotionNameSuggestions.Where(e => emotionSuggestBox.Text.ToLower().Contains(e.ToLower()));
+            emotionSuggestBox.Focus(FocusState.Pointer);
+        }
+
+        private void EmotionNameAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            AutoSuggestBox emotionSuggestBox = sender as AutoSuggestBox;
+            emotionSuggestBox.ItemsSource = ViewModel.EmotionNameSuggestions.Where(e => args.QueryText.ToLower().Contains(e.ToLower()));
+            emotionSuggestBox.Focus(FocusState.Pointer);
+        }
+
+        private void EmotionNameAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            ((AutoSuggestBox)sender).Text = args.SelectedItem as string;
         }
     }
 }

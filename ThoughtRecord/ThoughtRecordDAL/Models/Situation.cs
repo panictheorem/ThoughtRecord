@@ -8,7 +8,7 @@ namespace ThoughtRecordDAL.Models
 {
     public class Situation
     {
-        public DateTime Date { get; set; }
+        public DateTime DateTime { get; set; }
         public string Description { get; set; }
     }
 }

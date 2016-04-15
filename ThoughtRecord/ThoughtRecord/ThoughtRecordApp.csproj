@@ -108,9 +108,11 @@
       <DependentUpon>ThoughtRecordList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmotionService.cs" />
     <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
     <Compile Include="ViewModels\SettingsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
+    <Compile Include="ViewModels\ValueConverters\DateTimeConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionListConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionRatingValueConverter.cs" />
   </ItemGroup>

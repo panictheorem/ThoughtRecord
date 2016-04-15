@@ -49,14 +49,13 @@
                 </Grid.RowDefinitions>
                 <CalendarDatePicker 
                     x:Name="DateOfSituationPicker"
+                    Date="{x:Bind ViewModel.ThoughtRecord.Situation.DateTime, Converter={StaticResource DateTimeConverter}, Mode=TwoWay}"
                     VerticalAlignment="Top" 
+                    DateFormat="{}{day.integer} {month.full} {year.full}"
                     Margin="10"
                     Grid.Row="0"/>
-                <TextBlock x:Name="DateOfSituationTextBlock"
-                           Text="{x:Bind DateOfSituationPicker.Date}" 
-                           Grid.Row="1"/>
-                <TextBox Text="Describe the events leading up to the situation..." 
-                       Style="{StaticResource RecordTextInput}"
+                <TextBox Text="{x:Bind ViewModel.ThoughtRecord.Situation.Description,Mode=TwoWay}" 
+                         Style="{StaticResource RecordTextInput}"
                          Grid.Row="2"/>
             </Grid>
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
@@ -64,10 +63,12 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate x:DataType="models:Emotion">
                             <StackPanel Orientation="Vertical">
-                                <TextBox x:Name="EmotionNameTextBox" 
+                                <AutoSuggestBox x:Name="EmotionNameAutoSuggestBox" 
                                          HorizontalAlignment="Center" 
                                          Text="{x:Bind Name, Mode=TwoWay}"
-                                         TextChanging="EmotionNameTextBox_TextChanging"/>
+                                         TextChanged="EmotionNameAutoSuggestBox_TextChanged"
+                                         QuerySubmitted="EmotionNameAutoSuggestBox_QuerySubmitted"
+                                         SuggestionChosen="EmotionNameAutoSuggestBox_SuggestionChosen"/>
                                 <Slider Style="{StaticResource EmotionRatingSlider}" Value="{x:Bind InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"/>
                             </StackPanel>
                         </DataTemplate>
@@ -79,16 +80,16 @@
                         Content="&#xE710;" 
                         FontSize="16" />
             </StackPanel>
-            <TextBox Text="Describe the automatic throughts you had..." 
+            <TextBox Text="{x:Bind ViewModel.ThoughtRecord.AutomaticThoughts,Mode=TwoWay}" 
                          Grid.Row="1" Grid.Column="2" 
                        Style="{StaticResource RecordTextInput}"/>
-            <TextBox Text="List the evidence that supports the automatic thought..." 
+            <TextBox Text="{x:Bind ViewModel.ThoughtRecord.SupportingEvidence,Mode=TwoWay}" 
                          Grid.Row="1" Grid.Column="3"
                        Style="{StaticResource RecordTextInput}"/>
-            <TextBox Text="List the evidence that supports the automatic thought..." 
+            <TextBox Text="{x:Bind ViewModel.ThoughtRecord.ContradictingEvidence,Mode=TwoWay}" 
                        Grid.Row="1" Grid.Column="4"
                        Style="{StaticResource RecordTextInput}"/>
-            <TextBox Text="Come to a rational conclusion..." 
+            <TextBox Text="{x:Bind ViewModel.ThoughtRecord.RationalAssessment,Mode=TwoWay}" 
                      Grid.Row="1" Grid.Column="5"
                        Style="{StaticResource RecordTextInput}"/>
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="6">

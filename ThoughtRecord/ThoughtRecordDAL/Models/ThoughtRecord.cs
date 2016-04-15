@@ -13,7 +13,7 @@ namespace ThoughtRecordDAL.Models
         public Situation Situation { get; set; }
         public string AutomaticThoughts { get; set; }
         public string SupportingEvidence { get; set; }
-        public string ContradictoryEvidence { get; set; }
+        public string ContradictingEvidence { get; set; }
         public string RationalAssessment { get; set; }
         public DeeplyObservableCollection<Emotion> Emotions { get; set; }
 
