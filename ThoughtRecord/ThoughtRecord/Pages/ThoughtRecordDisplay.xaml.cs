@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ThoughtRecordApp.ViewModels;
+using ThoughtRecordDAL.Models;
 
 namespace ThoughtRecordApp.Pages
 {
@@ -31,23 +32,14 @@ namespace ThoughtRecordApp.Pages
             ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion() { Name = "Stressed" });
         }
 
-        private void EmotionNameTextBox_TextChanged(AutoSuggestBox sender, TextChangedEventArgs args)
+        private void InitialEmotionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AutoSuggestBox emotionSuggestBox = sender as AutoSuggestBox;
-            emotionSuggestBox.ItemsSource = ViewModel.EmotionNameSuggestions.Where(e => emotionSuggestBox.Text.ToLower().Contains(e.ToLower()));
-            emotionSuggestBox.Focus(FocusState.Pointer);
-        }
-
-        private void EmotionNameAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
-            AutoSuggestBox emotionSuggestBox = sender as AutoSuggestBox;
-            emotionSuggestBox.ItemsSource = ViewModel.EmotionNameSuggestions.Where(e => args.QueryText.ToLower().Contains(e.ToLower()));
-            emotionSuggestBox.Focus(FocusState.Pointer);
-        }
-
-        private void EmotionNameAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-        {
-            ((AutoSuggestBox)sender).Text = args.SelectedItem as string;
+            var emotionListView = ((ListView)sender);
+            var index = emotionListView.SelectedIndex;
+            if(index != -1)
+            {
+                ViewModel.ThoughtRecord.Emotions.RemoveAt(index);
+            }
         }
     }
 }

@@ -16,9 +16,8 @@
     <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,20,0,0" />
     </Style>
-    
-    
     <Style x:Key="RecordTextInput" TargetType="TextBox">
         <Setter Property="Foreground" Value="DarkGray" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -36,9 +35,11 @@
         <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style x:Key="EmotionRatingSlider" TargetType="Slider">
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
+        <Setter Property="MaxWidth" Value="400" />
+        <Setter Property="MinWidth" Value="100" />
     </Style>
     <Style x:Key="CellStyle" TargetType="Border">
         <Setter Property="Padding" Value="2" />

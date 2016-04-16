@@ -26,7 +26,6 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="MobileColumn.Width" Value="*" />
-
                         <Setter Target="SituationTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
                         <Setter Target="InitialEmotionRatingsTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
                         <Setter Target="AutomaticThoughtsTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
@@ -174,29 +173,25 @@
             </Border>
             <Border x:Name="InitialEmotionRatingsInputAreaCell" Grid.Column="1" Grid.Row="1">
                 <StackPanel x:Name="InitialEmotionRatingsInputArea"  Orientation="Vertical">
-                    <ItemsControl ItemsSource="{x:Bind ViewModel.ThoughtRecord.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
-                        <ItemsControl.ItemTemplate>
+                    <ListView x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.ThoughtRecord.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}"
+                          SelectionChanged="InitialEmotionList_SelectionChanged">
+                        <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:Emotion">
                                 <StackPanel Orientation="Vertical">
-                                    <TextBox x:Name="EmotionNameAutoSuggestBox" 
+                                    <TextBox x:Name="EmotionNameTextBox" 
                                          HorizontalAlignment="Center" 
-                                         Text="{Binding Name, Mode=TwoWay}"
-                                         />
+                                         Text="{Binding Name, Mode=TwoWay}"/>
                                     <Slider Style="{StaticResource EmotionRatingSlider}" Value="{x:Bind InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     <Button x:Name="AddEmotionButton"
                         Click="AddEmotionButton_Click"
                         FontSize="16"
-                        HorizontalAlignment="Right">
-
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE710;" />
-                            <TextBlock Text="Add Emotion"/>
-                        </StackPanel>
-                        </Button>
+                        FontFamily="Segoe MDL2 Assets" Content="&#xE710;" 
+                        HorizontalAlignment="Right"
+                        Margin="0,0,15,0"/>
                 </StackPanel>
             </Border>
             <Border x:Name="AutomaticThoughtsTextBoxCell" Grid.Column="2" Grid.Row="1">
