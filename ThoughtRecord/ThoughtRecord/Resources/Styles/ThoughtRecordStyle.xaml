@@ -16,6 +16,7 @@
     <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="Margin" Value="0,20,0,0" />
     </Style>
     <Style x:Key="RecordTextInput" TargetType="TextBox">

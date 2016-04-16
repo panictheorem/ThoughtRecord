@@ -19,26 +19,47 @@ namespace ThoughtRecordApp.Pages
 {
     public sealed partial class ThoughtRecordDisplay : Page
     {
-        private ThoughtRecordDisplayModel ViewModel = new ThoughtRecordDisplayModel();
+        private ThoughtRecordDisplayModel ViewModel;
 
         public ThoughtRecordDisplay()
         {
             this.InitializeComponent();
-            ViewModel.ThoughtRecord.Situation.DateTime = DateTime.Now;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs obj)
+        {
+            int thoughtRecordId = Convert.ToInt32(obj.Parameter);
+            if (thoughtRecordId != 0)
+            {
+                ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId);
+            }
+            else
+            {
+                ViewModel = new ThoughtRecordDisplayModel();
+            }
+            base.OnNavigatedTo(obj);
         }
 
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion() { Name = "Stressed" });
         }
-
-        private void InitialEmotionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RemoveEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            var emotionListView = ((ListView)sender);
-            var index = emotionListView.SelectedIndex;
-            if(index != -1)
+            var x = this.Parent;
+            Button clickedButton = (Button)sender;
+            var emotion = (Emotion)clickedButton.DataContext;
+            if (ViewModel.ThoughtRecord.Emotions.Count > 1)
             {
-                ViewModel.ThoughtRecord.Emotions.RemoveAt(index);
+                ViewModel.ThoughtRecord.Emotions.Remove(emotion);
+            }
+        }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                textBox.Text = string.Empty;
             }
         }
     }

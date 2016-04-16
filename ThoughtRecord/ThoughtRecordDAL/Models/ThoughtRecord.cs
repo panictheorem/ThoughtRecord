@@ -21,7 +21,6 @@ namespace ThoughtRecordDAL.Models
         {
             Situation = new Situation();
             Emotions = new DeeplyObservableCollection<Emotion>();
-            Emotions.Add(new Emotion() { Name = "Happy"});
         }
     } 
 }

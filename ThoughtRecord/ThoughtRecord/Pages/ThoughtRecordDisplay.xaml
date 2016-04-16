@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto"  >
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ThoughtRecordDisplayStates">
                 <VisualState x:Name="NarrowWindow">
@@ -167,25 +167,33 @@
                     DateFormat="{}{day.integer} {month.full} {year.full}"
                     Margin="10"
                     Grid.Row="0"/>
-                    <TextBox x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.ThoughtRecord.Situation.Description,Mode=TwoWay}" 
-                         Grid.Row="2"/>
+                    <TextBox x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.ThoughtRecord.Situation.Description,Mode=TwoWay}"
+                             GotFocus="TextBox_GotFocus"
+                             Grid.Row="2"/>
                 </Grid>
             </Border>
             <Border x:Name="InitialEmotionRatingsInputAreaCell" Grid.Column="1" Grid.Row="1">
                 <StackPanel x:Name="InitialEmotionRatingsInputArea"  Orientation="Vertical">
-                    <ListView x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.ThoughtRecord.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}"
-                          SelectionChanged="InitialEmotionList_SelectionChanged">
-                        <ListView.ItemTemplate>
+                    <ItemsControl x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.ThoughtRecord.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
+                        <ItemsControl.ItemTemplate>
                             <DataTemplate x:DataType="models:Emotion">
                                 <StackPanel Orientation="Vertical">
+                                    <Button x:Name="RemoveEmotionButton"
+                                            Click="RemoveEmotionButton_Click"
+                                            FontSize="12"
+                                            FontFamily="Segoe MDL2 Assets" Content="&#xE711;" 
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top"
+                                            Margin="0,0,15,0"/>
                                     <TextBox x:Name="EmotionNameTextBox" 
                                          HorizontalAlignment="Center" 
-                                         Text="{Binding Name, Mode=TwoWay}"/>
+                                         Text="{Binding Name, Mode=TwoWay}"
+                                             Foreground="DarkGray"/>
                                     <Slider Style="{StaticResource EmotionRatingSlider}" Value="{x:Bind InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                     <Button x:Name="AddEmotionButton"
                         Click="AddEmotionButton_Click"
                         FontSize="16"
@@ -196,19 +204,23 @@
             </Border>
             <Border x:Name="AutomaticThoughtsTextBoxCell" Grid.Column="2" Grid.Row="1">
                 <TextBox x:Name="AutomaticThoughtsTextBox"
-                     Text="{x:Bind ViewModel.ThoughtRecord.AutomaticThoughts,Mode=TwoWay}" />
+                         Text="{x:Bind ViewModel.ThoughtRecord.AutomaticThoughts,Mode=TwoWay}"
+                         GotFocus="TextBox_GotFocus"/>
             </Border>
             <Border x:Name="SupportingEvidenceTextBoxCell" Grid.Column="3" Grid.Row="1">
                 <TextBox x:Name="SupportingEvidenceTextBox"
-                     Text="{x:Bind ViewModel.ThoughtRecord.SupportingEvidence,Mode=TwoWay}"/>
+                         Text="{x:Bind ViewModel.ThoughtRecord.SupportingEvidence,Mode=TwoWay}"
+                         GotFocus="TextBox_GotFocus"/>
             </Border>
             <Border x:Name="ContradictingEvidenceTextBoxCell" Grid.Column="4" Grid.Row="1">
                 <TextBox x:Name="ContradictingEvidenceTextBox" 
-                     Text="{x:Bind ViewModel.ThoughtRecord.ContradictingEvidence,Mode=TwoWay}"/>
+                         Text="{x:Bind ViewModel.ThoughtRecord.ContradictingEvidence,Mode=TwoWay}"
+                         GotFocus="TextBox_GotFocus"/>
             </Border>
             <Border x:Name="RationalAssessmentTextBoxCell" Grid.Column="5" Grid.Row="1">
                 <TextBox x:Name="RationalAssessmentTextBox"
-                     Text="{x:Bind ViewModel.ThoughtRecord.RationalAssessment,Mode=TwoWay}"/>
+                         Text="{x:Bind ViewModel.ThoughtRecord.RationalAssessment,Mode=TwoWay}"
+                         GotFocus="TextBox_GotFocus"/>
             </Border>
             <Border x:Name="SubsequentEmotionRatingsInputAreaCell" Grid.Column="6" Grid.Row="1">
                 <StackPanel x:Name="SubsequentEmotionRatingsInputArea"
@@ -217,7 +229,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate x:DataType="models:Emotion">
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock HorizontalAlignment="Center" Text="{x:Bind Name, Mode=TwoWay}" />
+                                    <TextBlock HorizontalAlignment="Center" Text="{x:Bind Name, Mode=TwoWay}" Foreground="DarkGray"/>
                                     <Slider HorizontalAlignment="Stretch" Minimum="0" Maximum="100" Value="{x:Bind SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"/>
                                 </StackPanel>
                             </DataTemplate>

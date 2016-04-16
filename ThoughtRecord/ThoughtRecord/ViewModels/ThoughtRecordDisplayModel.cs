@@ -12,20 +12,26 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordDisplayModel
     {
         public ThoughtRecord ThoughtRecord { get; set; }
-        public List<string> EmotionNameSuggestions { get;}
+        public List<string> EmotionNameSuggestions { get; }
         public Settings Settings { get; set; }
-
         public ThoughtRecordDisplayModel()
         {
             ThoughtRecord = new ThoughtRecord();
             EmotionNameSuggestions = EmotionService.GetEmotionNameSuggestions();
             Settings = new Settings();
-            ThoughtRecord.Situation.DateTime = DateTime.Now;
-            ThoughtRecord.Situation.Description = "Describe the situation...";
-            ThoughtRecord.AutomaticThoughts = "Describe the automatic throught(s) you had...";
-            ThoughtRecord.SupportingEvidence = "List the evidence that supports the automatic thought...";
-            ThoughtRecord.ContradictingEvidence = "List the evidence againts the automatic thought...";
-            ThoughtRecord.RationalAssessment = "Come to a rational conclusion...";
+            ThoughtRecordService.PopulateWithDefaultValues(ThoughtRecord);
+        }
+        public ThoughtRecordDisplayModel(int thoughtRecordId)
+        {
+
+            ThoughtRecord = ThoughtRecordService.GetThoughtRecordById(thoughtRecordId);
+            EmotionNameSuggestions = EmotionService.GetEmotionNameSuggestions();
+            Settings = new Settings();
+            ThoughtRecord.Situation.Description = "Saved Desc";
+            ThoughtRecord.AutomaticThoughts = "SAVED Describe the automatic throught(s) you had...";
+            ThoughtRecord.SupportingEvidence = "SAVED List the evidence that supports the automatic thought...";
+            ThoughtRecord.ContradictingEvidence = "SAVED List the evidence againts the automatic thought...";
+            ThoughtRecord.RationalAssessment = "SAVED Come to a rational conclusion...";
 
         }
     }
