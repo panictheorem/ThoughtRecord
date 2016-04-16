@@ -31,7 +31,7 @@ namespace ThoughtRecordApp.Pages
             ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion() { Name = "Stressed" });
         }
 
-        private void EmotionNameAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void EmotionNameTextBox_TextChanged(AutoSuggestBox sender, TextChangedEventArgs args)
         {
             AutoSuggestBox emotionSuggestBox = sender as AutoSuggestBox;
             emotionSuggestBox.ItemsSource = ViewModel.EmotionNameSuggestions.Where(e => emotionSuggestBox.Text.ToLower().Contains(e.ToLower()));

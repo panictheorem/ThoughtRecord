@@ -6,22 +6,45 @@
     <Style x:Key="RecordFieldTitle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="DarkGray" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
+    <Style x:Key="RecordFieldTitleDesktop" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    
+    
     <Style x:Key="RecordTextInput" TargetType="TextBox">
         <Setter Property="Foreground" Value="DarkGray" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="Grid.Row" Value="1" />
         <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+    <Style x:Key="RecordTextInputDesktop" TargetType="TextBox" BasedOn="{StaticResource RecordTextInput}">
+        <Setter Property="Foreground" Value="DarkGray" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Grid.Row" Value="1"/>
         <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="RecordTextInputMobile" TargetType="TextBox" BasedOn="{StaticResource RecordTextInput}">
+        <Setter Property="Height" Value="250" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style x:Key="EmotionRatingSlider" TargetType="Slider">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
+    </Style>
+    <Style x:Key="CellStyle" TargetType="Border">
+        <Setter Property="Padding" Value="2" />
+    </Style>
+    <Style x:Key="CellStyleDesktop" TargetType="Border" BasedOn="{StaticResource CellStyle}">
+        <Setter Property="BorderBrush" Value="DarkGray" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
 </ResourceDictionary>
