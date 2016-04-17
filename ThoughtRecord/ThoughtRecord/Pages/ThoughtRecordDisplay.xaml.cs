@@ -59,7 +59,10 @@ namespace ThoughtRecordApp.Pages
             var textBox = sender as TextBox;
             if (textBox != null)
             {
-                textBox.Text = string.Empty;
+                if(ViewModel.DefaultInputText.Contains(textBox.Text))
+                {
+                    textBox.Text = string.Empty;
+                }
             }
         }
     }

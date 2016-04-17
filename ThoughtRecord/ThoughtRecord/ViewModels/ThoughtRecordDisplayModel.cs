@@ -12,11 +12,13 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordDisplayModel
     {
         public ThoughtRecord ThoughtRecord { get; set; }
+        public List<string> DefaultInputText { get; }
         public List<string> EmotionNameSuggestions { get; }
-        public Settings Settings { get; set; }
+        public Settings Settings { get; }
         public ThoughtRecordDisplayModel()
         {
             ThoughtRecord = new ThoughtRecord();
+            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             EmotionNameSuggestions = EmotionService.GetEmotionNameSuggestions();
             Settings = new Settings();
             ThoughtRecordService.PopulateWithDefaultValues(ThoughtRecord);

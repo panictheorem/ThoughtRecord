@@ -3,15 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ThoughtRecordApp.Resources.Styles"
     xmlns:converters="using:ThoughtRecordApp.ViewModels.ValueConverters">
-    <Style x:Key="RecordFieldTitle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="14" />
+    <Style x:Key="RecordFieldTitle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
+        <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="DarkGray" />
         <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Margin" Value="0,0,0,10" />
     </Style>
     <Style x:Key="RecordFieldTitleDesktop" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
     </Style>
     <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -36,17 +37,16 @@
         <Setter Property="BorderThickness" Value="1" />
     </Style>
     <Style x:Key="EmotionRatingSlider" TargetType="Slider">
-        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
+    </Style>
+    <Style x:Key="EmotionRatingSliderDesktop" TargetType="Slider" BasedOn="{StaticResource EmotionRatingSlider}">
         <Setter Property="MaxWidth" Value="400" />
-        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style x:Key="CellStyle" TargetType="Border">
-        <Setter Property="Padding" Value="2" />
+    <Style x:Key="EmotionRatingSliderMobile" TargetType="Slider" BasedOn="{StaticResource EmotionRatingSlider}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Width" Value="150" />
     </Style>
-    <Style x:Key="CellStyleDesktop" TargetType="Border" BasedOn="{StaticResource CellStyle}">
-        <Setter Property="BorderBrush" Value="DarkGray" />
-        <Setter Property="BorderThickness" Value="1" />
-    </Style>
+
 </ResourceDictionary>
