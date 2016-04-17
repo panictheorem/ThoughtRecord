@@ -6,7 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/CustomControls/Buttons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,14 +20,10 @@
         </Grid.RowDefinitions>
         <RelativePanel Grid.Row="0">
             <Button x:Name="MenuToggleButton" 
-                    Width="45" Height="45" 
-                    FontFamily="Segoe MDL2 Assets"                  
-                    FontSize="30"
+                    Width="45" Height="45"
                     Content="&#xE700;"
                     RelativePanel.AlignLeftWithPanel="True"
-                    Background="MediumSeaGreen"
-                    Foreground="White"
-                    Click="MenuToggleButton_Click" />
+                    Click="MenuToggleButton_Click" Style="{StaticResource MenuToggleButton}" />
             <TextBlock Style="{ThemeResource TitleTextBlockStyle}" 
                        Text="New Thought Record" 
                        RelativePanel.RightOf="MenuToggleButton"
@@ -40,7 +42,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE70F;" Margin="-2,0,10,0"
-                                       Foreground="MediumSeaGreen"/>
+                                       Foreground="MediumAquamarine"/>
                             <TextBlock Text="New Thought Record" Foreground="DarkGray"/>
                         </StackPanel>
                     </ListBoxItem>
@@ -48,7 +50,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE787;" Margin="-2,0,10,0"
-                                       Foreground="MediumSeaGreen"/>
+                                       Foreground="MediumAquamarine"/>
                             <TextBlock Text="View Thought Records" Foreground="DarkGray"/>
                         </StackPanel>
                     </ListBoxItem>
@@ -56,7 +58,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE713;" Margin="-2,0,10,0"
-                                       Foreground="MediumSeaGreen"/>
+                                       Foreground="MediumAquamarine"/>
                             <TextBlock Text="Settings" Foreground="DarkGray"/>
                         </StackPanel>
                     </ListBoxItem>
@@ -64,7 +66,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
                                        FontSize="25" Text="&#xE909;" Margin="-2,0,10,0"
-                                       Foreground="MediumSeaGreen"/>
+                                       Foreground="MediumAquamarine"/>
                             <TextBlock Text="Information" Foreground="DarkGray"/>
                         </StackPanel>
                     </ListBoxItem>

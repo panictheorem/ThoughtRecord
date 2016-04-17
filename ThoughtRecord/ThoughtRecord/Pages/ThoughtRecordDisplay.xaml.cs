@@ -42,18 +42,9 @@ namespace ThoughtRecordApp.Pages
 
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion() { Name = "Stressed" });
+            ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion());
         }
-        private void RemoveEmotionButton_Click(object sender, RoutedEventArgs e)
-        {
-            var x = this.Parent;
-            Button clickedButton = (Button)sender;
-            var emotion = (Emotion)clickedButton.DataContext;
-            if (ViewModel.ThoughtRecord.Emotions.Count > 1)
-            {
-                ViewModel.ThoughtRecord.Emotions.Remove(emotion);
-            }
-        }
+        
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             var textBox = sender as TextBox;
