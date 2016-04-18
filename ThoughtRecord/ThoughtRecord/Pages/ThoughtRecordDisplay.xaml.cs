@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ThoughtRecordApp.ViewModels;
 using ThoughtRecordDAL.Models;
+using ThoughtRecordApp.Templates;
 
 namespace ThoughtRecordApp.Pages
 {
@@ -54,6 +55,14 @@ namespace ThoughtRecordApp.Pages
                 {
                     textBox.Text = string.Empty;
                 }
+            }
+        }
+
+        private void InitialEmotionRatingTemplate_RemoveButtonClicked(object sender, RemoveEmotionButtonClickedEventArgs args)
+        {
+            if (ViewModel.ThoughtRecord.Emotions.Count > 1)
+            {
+                ViewModel.ThoughtRecord.Emotions.Remove(args.SelectedEmotion);
             }
         }
     }

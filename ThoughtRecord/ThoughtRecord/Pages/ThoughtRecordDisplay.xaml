@@ -13,8 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/ThoughtRecordStyle.xaml" />
                 <ResourceDictionary Source="/Resources/Converters/ConverterDictionary.xaml" />
-                <ResourceDictionary Source="/Resources/CustomControls/Buttons.xaml" />
-                <ResourceDictionary Source="/Resources/CustomControls/Sliders.xaml" />
+                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -182,9 +181,11 @@
                     <ItemsControl x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.ThoughtRecord.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate x:DataType="models:Emotion">
-                                <templates:InitialEmotionRatingTemplate 
+                                <templates:InitialEmotionRatingTemplate
+                                    x:Name="InitialEmotionRatingTemplate"
                                     HorizontalAlignment="Stretch" 
-                                    VerticalAlignment="Stretch"/>
+                                    VerticalAlignment="Stretch"
+                                    RemoveButtonClicked="InitialEmotionRatingTemplate_RemoveButtonClicked"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

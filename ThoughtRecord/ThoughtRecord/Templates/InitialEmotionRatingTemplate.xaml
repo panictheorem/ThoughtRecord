@@ -13,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/ThoughtRecordStyle.xaml" />
                 <ResourceDictionary Source="/Resources/Converters/ConverterDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -30,9 +31,8 @@
                                          HorizontalAlignment="Center" 
                                          Text="{x:Bind Emotion.Name, Mode=TwoWay}"
                                          Foreground="DarkGray"/>
-        <TextBlock x:Name="InitialEmotionRatingDisplay" Text="0"  HorizontalAlignment="Center"/>
-        <Slider x:Name="InitialEmotionRatingSlider"
-                                            Style="{StaticResource EmotionRatingSlider}" 
-                                            Value="{x:Bind Emotion.InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"/>
+        <TextBlock x:Name="InitialEmotionRatingDisplay" Text="{Binding ElementName=InitialEmotionRatingSlider, Path=Value, Mode=OneWay}"  HorizontalAlignment="Center"/>
+        <Slider x:Name="InitialEmotionRatingSlider" IsThumbToolTipEnabled="False"
+                                            Value="{x:Bind Emotion.InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}" Style="{StaticResource EmotionSlider}"/>
     </StackPanel>
 </UserControl>

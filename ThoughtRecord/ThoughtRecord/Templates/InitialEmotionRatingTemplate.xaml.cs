@@ -21,7 +21,8 @@ namespace ThoughtRecordApp.Templates
     public sealed partial class InitialEmotionRatingTemplate : UserControl
     {
         public Emotion Emotion { get { return this.DataContext as Emotion; } }
-
+        public delegate void RemoveEmotionButtonClickedEvent(object sender, RemoveEmotionButtonClickedEventArgs args);
+        public event RemoveEmotionButtonClickedEvent RemoveButtonClicked;
         public InitialEmotionRatingTemplate()
         {
             this.InitializeComponent();
@@ -30,14 +31,20 @@ namespace ThoughtRecordApp.Templates
 
         private void RemoveEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            /*var x = this.Parent;
+            var x = this.Parent;
             Button clickedButton = (Button)sender;
             var emotion = (Emotion)clickedButton.DataContext;
-            if (ViewModel.ThoughtRecord.Emotions.Count > 1)
-            {
-                ViewModel.ThoughtRecord.Emotions.Remove(emotion);
-            }*/
+            RemoveButtonClicked?.Invoke(this, new RemoveEmotionButtonClickedEventArgs(emotion));
         }
 
+    }
+
+    public class RemoveEmotionButtonClickedEventArgs : EventArgs
+    {
+        public Emotion SelectedEmotion { get; }
+        public RemoveEmotionButtonClickedEventArgs(Emotion selectedEmotion)
+        {
+            SelectedEmotion = selectedEmotion;
+        }
     }
 }
