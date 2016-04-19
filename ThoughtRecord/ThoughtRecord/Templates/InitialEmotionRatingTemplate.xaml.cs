@@ -37,6 +37,10 @@ namespace ThoughtRecordApp.Templates
             RemoveButtonClicked?.Invoke(this, new RemoveEmotionButtonClickedEventArgs(emotion));
         }
 
+        private void InitialEmotionRatingDisplay_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class RemoveEmotionButtonClickedEventArgs : EventArgs

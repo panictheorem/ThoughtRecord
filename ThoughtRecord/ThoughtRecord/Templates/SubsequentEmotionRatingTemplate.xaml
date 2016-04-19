@@ -13,13 +13,30 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/ThoughtRecordStyle.xaml" />
                 <ResourceDictionary Source="/Resources/Converters/ConverterDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
-        <TextBlock HorizontalAlignment="Center" Text="{x:Bind Emotion.Name, Mode=OneWay}" Foreground="DarkGray"/>
-        <Slider x:Name="SubsequentEmotionRatingSlider"
-                Style="{StaticResource EmotionRatingSlider}" 
-                Value="{x:Bind Emotion.SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"/>
+    <StackPanel  x:Name="SubsequentEmotionRatingPanel" Orientation="Vertical">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideWindow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1150" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SubsequentEmotionRatingPanel.Style" Value="{StaticResource EmotionRatingPanelDesktop}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <TextBlock HorizontalAlignment="Center" 
+                   Text="{x:Bind Emotion.Name, Mode=OneWay}" 
+                   Foreground="DarkGray"/>
+        <TextBlock x:Name="InitialEmotionRatingDisplay" 
+                   Text="{Binding ElementName=SubsequentEmotionRatingSlider, Path=Value, Mode=OneWay}"  
+                   Style="{StaticResource EmotionRatingDisplay}"/>
+        <Slider x:Name="SubsequentEmotionRatingSlider" IsThumbToolTipEnabled="False"
+                                            Value="{x:Bind Emotion.SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}" Style="{StaticResource EmotionSlider}"/>
     </StackPanel>
 </UserControl>

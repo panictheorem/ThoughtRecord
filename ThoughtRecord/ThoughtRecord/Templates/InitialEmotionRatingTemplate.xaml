@@ -17,21 +17,41 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical" MaxWidth="400" HorizontalAlignment="Stretch">
+    <StackPanel x:Name="InitailEmotionRatingPanel" Orientation="Vertical" MaxWidth="350" HorizontalAlignment="Stretch">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="NarrowWindow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxMobile}" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideWindow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1150" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxDesktop}" />
+                        <Setter Target="InitailEmotionRatingPanel.Style" Value="{StaticResource EmotionRatingPanelDesktop}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Button x:Name="RemoveEmotionButton"
                                             Click="RemoveEmotionButton_Click"
                                             FontSize="12"
                                             FontFamily="Segoe MDL2 Assets" Content="&#xE711;" 
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Top"
-                                            Margin="0,0,15,0"
-                                            Background="White"
-                                            BorderThickness="0"/>
-        <TextBox x:Name="EmotionNameTextBox" 
-                                         HorizontalAlignment="Center" 
-                                         Text="{x:Bind Emotion.Name, Mode=TwoWay}"
-                                         Foreground="DarkGray"/>
-        <TextBlock x:Name="InitialEmotionRatingDisplay" Text="{Binding ElementName=InitialEmotionRatingSlider, Path=Value, Mode=OneWay}"  HorizontalAlignment="Center"/>
+                                            Margin="0,0,0,10"
+                                            BorderThickness="0" Style="{StaticResource DiscreteButton}"/>
+        <TextBox x:Name="EmotionNameTextBox"                       
+                 Text="{x:Bind Emotion.Name, Mode=TwoWay}"/>
+        <TextBlock x:Name="InitialEmotionRatingDisplay" 
+                   Text="{Binding ElementName=InitialEmotionRatingSlider, Path=Value, Mode=OneWay}"
+                   Style="{StaticResource EmotionRatingDisplay}"/>
         <Slider x:Name="InitialEmotionRatingSlider" IsThumbToolTipEnabled="False"
                                             Value="{x:Bind Emotion.InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}" Style="{StaticResource EmotionSlider}"/>
     </StackPanel>

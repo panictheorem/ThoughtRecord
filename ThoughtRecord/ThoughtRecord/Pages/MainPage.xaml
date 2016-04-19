@@ -65,7 +65,7 @@
                     <ListBoxItem>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
-                                       FontSize="25" Text="&#xE909;" Margin="-2,0,10,0"
+                                       FontSize="30" Text="ⓘ" Margin="-2,0,10,0"
                                        Foreground="MediumAquamarine"/>
                             <TextBlock Text="Information" Foreground="DarkGray"/>
                         </StackPanel>

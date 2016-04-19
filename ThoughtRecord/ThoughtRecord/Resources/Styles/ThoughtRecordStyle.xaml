@@ -36,6 +36,17 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="BorderThickness" Value="1" />
     </Style>
+    <Style x:Key="SituationCalendarDatePicker" TargetType="CalendarDatePicker">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="0,10,0,10" />
+    </Style>
+    <Style x:Key="SituationCalendarDatePickerDesktop" TargetType="CalendarDatePicker" BasedOn="{StaticResource SituationCalendarDatePicker}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="SituationCalendarDatePickerMobile" TargetType="CalendarDatePicker" BasedOn="{StaticResource SituationCalendarDatePicker}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
     <Style x:Key="EmotionRatingSlider" TargetType="Slider">
         <Setter Property="Minimum" Value="0" />
         <Setter Property="Maximum" Value="100" />
@@ -48,5 +59,25 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Width" Value="150" />
     </Style>
-
+    <Style x:Key="EmotionRatingDisplay" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="LightBlue" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="EmotionNameTextBox" TargetType="TextBox">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="BorderBrush" Value="DarkGray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="DarkGray" />
+    </Style>
+    <Style x:Key="EmotionNameTextBoxDesktop" TargetType="TextBox" BasedOn="{StaticResource EmotionNameTextBox}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+    <Style x:Key="EmotionNameTextBoxMobile" TargetType="TextBox" BasedOn="{StaticResource EmotionNameTextBox}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="MaxWidth" Value="150" />
+    </Style>
+    <Style x:Key="EmotionRatingPanelDesktop" TargetType="StackPanel">
+        <Setter Property="Height" Value="135" />
+    </Style>
 </ResourceDictionary>
