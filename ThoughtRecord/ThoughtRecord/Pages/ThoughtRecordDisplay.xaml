@@ -39,7 +39,7 @@
                         <Setter Target="SupportingEvidenceTextBox.Style" Value="{StaticResource RecordTextInputMobile}" />
                         <Setter Target="ContradictingEvidenceTextBox.Style" Value="{StaticResource RecordTextInputMobile}" />
                         <Setter Target="RationalAssessmentTextBox.Style" Value="{StaticResource RecordTextInputMobile}" />
-                        
+
                         <Setter Target="InitialEmotionRatingsTextBlockCell.(Grid.Column)" Value="0" />
                         <Setter Target="InitialEmotionRatingsInputAreaCell.(Grid.Column)" Value="0" />
                         <Setter Target="AutomaticThoughtsTextBlockCell.(Grid.Column)" Value="0" />
@@ -104,6 +104,21 @@
                         <Setter Target="ContradictingEvidenceTextBox.Style" Value="{StaticResource RecordTextInputDesktop}" />
                         <Setter Target="RationalAssessmentTextBox.Style" Value="{StaticResource RecordTextInputDesktop}" />
                         <Setter Target="DateOfSituationPicker.Style" Value="{StaticResource SituationCalendarDatePickerDesktop}" />
+
+                        <Setter Target="SituationTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="SituationInputAreaCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="InitialEmotionRatingsTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="InitialEmotionRatingsInputAreaCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="AutomaticThoughtsTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="AutomaticThoughtsTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="SupportingEvidenceTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="SupportingEvidenceTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="ContradictingEvidenceTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="ContradictingEvidenceTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="RationalAssessmentTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="RationalAssessmentTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlockCell.Style" Value="{StaticResource ThoughtRecordEndCellBorder}" />
+                        <Setter Target="SubsequentEmotionRatingsInputAreaCell.Style" Value="{StaticResource ThoughtRecordBottomEndCellBorder}" />
 
                     </VisualState.Setters>
                 </VisualState>

@@ -9,7 +9,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/CustomControls/Buttons.xaml" />
+                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -38,7 +38,7 @@
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
                 <ListBox>
-                    <ListBoxItem>
+                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE70F;" Margin="-2,0,10,0"

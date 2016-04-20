@@ -45,13 +45,13 @@ namespace ThoughtRecordApp.Pages
         {
             ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion());
         }
-        
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             var textBox = sender as TextBox;
             if (textBox != null)
             {
-                if(ViewModel.DefaultInputText.Contains(textBox.Text))
+                if (ViewModel.DefaultInputText.Contains(textBox.Text))
                 {
                     textBox.Text = string.Empty;
                 }
@@ -60,10 +60,7 @@ namespace ThoughtRecordApp.Pages
 
         private void InitialEmotionRatingTemplate_RemoveButtonClicked(object sender, RemoveEmotionButtonClickedEventArgs args)
         {
-            if (ViewModel.ThoughtRecord.Emotions.Count > 1)
-            {
-                ViewModel.ThoughtRecord.Emotions.Remove(args.SelectedEmotion);
-            }
+            ViewModel.ThoughtRecord.Emotions.Remove(args.SelectedEmotion);
         }
     }
 }

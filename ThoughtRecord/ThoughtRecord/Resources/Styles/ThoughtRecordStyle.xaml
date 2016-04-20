@@ -3,6 +3,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ThoughtRecordApp.Resources.Styles"
     xmlns:converters="using:ThoughtRecordApp.ViewModels.ValueConverters">
+    <Style x:Name="ThoughtRecordCellBorder" TargetType="Border" >
+        <Setter Property="BorderBrush" Value="DarkGray" />
+        <Setter Property="BorderThickness" Value="1,1,0,0" />
+    </Style>
+    <Style x:Name="ThoughtRecordBottomCellBorder" TargetType="Border" BasedOn="{StaticResource ThoughtRecordCellBorder}">
+        <Setter Property="BorderThickness" Value="1,1,0,1" />
+    </Style>
+    <Style x:Name="ThoughtRecordEndCellBorder" TargetType="Border" BasedOn="{StaticResource ThoughtRecordCellBorder}">
+        <Setter Property="BorderThickness" Value="1,1,1,0" />
+    </Style>
+    <Style x:Name="ThoughtRecordBottomEndCellBorder" TargetType="Border" BasedOn="{StaticResource ThoughtRecordCellBorder}">
+        <Setter Property="BorderThickness" Value="1,1,1,1" />
+    </Style>
     <Style x:Key="RecordFieldTitle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="Bold" />
@@ -13,6 +26,7 @@
     <Style x:Key="RecordFieldTitleDesktop" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="TextAlignment" Value="Center"/>
     </Style>
     <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -79,5 +93,6 @@
     </Style>
     <Style x:Key="EmotionRatingPanelDesktop" TargetType="StackPanel">
         <Setter Property="Height" Value="135" />
+        <Setter Property="Padding" Value="5" />
     </Style>
 </ResourceDictionary>
