@@ -27,12 +27,13 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5" />
     </Style>
     <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="18" />
-        <Setter Property="Margin" Value="0,20,0,0" />
+        <Setter Property="Margin" Value="0,20,0,10" />
     </Style>
     <Style x:Key="RecordTextInput" TargetType="TextBox">
         <Setter Property="Foreground" Value="DarkGray" />
@@ -53,7 +54,7 @@
     <Style x:Key="SituationCalendarDatePicker" TargetType="CalendarDatePicker">
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Margin" Value="0,10,0,10" />
+        <Setter Property="Margin" Value="0,5,0,10" />
     </Style>
     <Style x:Key="SituationCalendarDatePickerDesktop" TargetType="CalendarDatePicker" BasedOn="{StaticResource SituationCalendarDatePicker}">
         <Setter Property="HorizontalAlignment" Value="Center" />

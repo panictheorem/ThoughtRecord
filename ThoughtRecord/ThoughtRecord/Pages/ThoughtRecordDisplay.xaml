@@ -188,7 +188,7 @@
                     Grid.Row="0"/>
                     <TextBox x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.ThoughtRecord.Situation.Description,Mode=TwoWay}"
                              GotFocus="TextBox_GotFocus"
-                             Grid.Row="2"/>
+                             Grid.Row="2" Template="{StaticResource ThoughtRecordTextBox}"/>
                 </Grid>
             </Border>
             <Border x:Name="InitialEmotionRatingsInputAreaCell" Grid.Column="1" Grid.Row="1">

@@ -119,6 +119,9 @@
     <Compile Include="Templates\SubsequentEmotionRatingTemplate.xaml.cs">
       <DependentUpon>SubsequentEmotionRatingTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Templates\ThoughtRecordListTemplate.xaml.cs">
+      <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
     <Compile Include="ViewModels\SettingsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
@@ -130,7 +133,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <PRIResource Include="Resources\DefaultInputText.resw" />
+    <PRIResource Include="Resources\Strings\DefaultInputText.resw" />
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -203,7 +206,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Resources\Styles\MainStyles.xaml">
+    <Page Include="Resources\Styles\AppThemeStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -221,8 +224,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Templates\ThoughtRecordListTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.12.2">
+      <Name>SQLite for Universal Windows Platform</Name>
+    </SDKReference>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThoughtRecordDAL\ThoughtRecordDAL.csproj">
       <Project>{cc903d22-f2ce-4361-baa2-ac6115504fba}</Project>

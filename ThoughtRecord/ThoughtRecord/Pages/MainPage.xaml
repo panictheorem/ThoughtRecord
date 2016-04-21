@@ -41,33 +41,29 @@
                     <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE70F;" Margin="-2,0,10,0"
-                                       Foreground="MediumAquamarine"/>
-                            <TextBlock Text="New Thought Record" Foreground="DarkGray"/>
+                                       FontSize="25" Text="&#xE70F;" Margin="-2,0,10,0"/>
+                            <TextBlock Text="New Thought Record"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem>
+                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE787;" Margin="-2,0,10,0"
-                                       Foreground="MediumAquamarine"/>
-                            <TextBlock Text="View Thought Records" Foreground="DarkGray"/>
+                                       FontSize="25" Text="&#xE787;" Margin="-2,0,10,0"/>
+                            <TextBlock Text="View Thought Records"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem>
+                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE713;" Margin="-2,0,10,0"
-                                       Foreground="MediumAquamarine"/>
-                            <TextBlock Text="Settings" Foreground="DarkGray"/>
+                                       FontSize="25" Text="&#xE713;" Margin="-2,0,10,0"/>
+                            <TextBlock Text="Settings"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem>
+                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
-                                       FontSize="30" Text="ⓘ" Margin="-2,0,10,0"
-                                       Foreground="MediumAquamarine"/>
-                            <TextBlock Text="Information" Foreground="DarkGray"/>
+                                       FontSize="30" Text="ⓘ" Margin="-2,0,10,0"/>
+                            <TextBlock Text="Information"/>
                         </StackPanel>
                     </ListBoxItem>
                 </ListBox>
