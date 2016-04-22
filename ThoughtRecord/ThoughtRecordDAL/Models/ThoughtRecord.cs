@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,11 +13,15 @@ namespace ThoughtRecordDAL.Models
 {
     public class ThoughtRecord
     {
+        [PrimaryKey, AutoIncrement]
+        public int ThoughtRecordId { get; set; }
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
         public Situation Situation { get; set; }
         public string AutomaticThoughts { get; set; }
         public string SupportingEvidence { get; set; }
         public string ContradictingEvidence { get; set; }
         public string RationalAssessment { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public DeeplyObservableCollection<Emotion> Emotions { get; set; }
 
         public ThoughtRecord()

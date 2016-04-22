@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.Services;
+using ThoughtRecordDAL.Infrastructure;
 using ThoughtRecordDAL.Models;
 
 namespace ThoughtRecordApp.ViewModels
@@ -12,6 +13,8 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordDisplayModel
     {
         public ThoughtRecord ThoughtRecord { get; set; }
+        public Situation Situation { get; set; }
+        public DeeplyObservableCollection<Emotion> Emotions { get; set; }
         public List<string> DefaultInputText { get; }
         public List<string> EmotionNameSuggestions { get; }
         public Settings Settings { get; }

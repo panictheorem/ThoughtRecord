@@ -241,6 +241,8 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
+                    <Button Content="Save" x:Name="AddBtn" Click="AddBtn_Click" />
+                    <Button Content="Load" x:Name="LoadBtn" Click="LoadBtn_Click"/>
                 </StackPanel>
             </Border>
         </Grid>

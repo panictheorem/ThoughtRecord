@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +13,8 @@ namespace ThoughtRecordDAL.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        [PrimaryKey, AutoIncrement]
+        public int EmotionId { get; set; }
         private string name;
         public string Name {
             get
@@ -25,5 +29,7 @@ namespace ThoughtRecordDAL.Models
         }
         public int InitialRating { get; set; }
         public int SubsequentRating { get; set; }
+        [ManyToOne]
+        public ThoughtRecord ThoughtRecord { get; set; }
     }
 }
