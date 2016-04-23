@@ -6,4 +6,5 @@
     <converters:EmotionRatingValueConverter x:Key="EmotionRatingConverter" />
     <converters:EmotionListConverter x:Key="EmotionListConverter" />
     <converters:DateTimeConverter x:Key="DateTimeConverter" />
+    <converters:IntConverter x:Key="IntConverter" />
 </ResourceDictionary>

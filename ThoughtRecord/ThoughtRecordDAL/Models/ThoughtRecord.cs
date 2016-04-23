@@ -15,19 +15,21 @@ namespace ThoughtRecordDAL.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ThoughtRecordId { get; set; }
+        [ForeignKey(typeof(Situation))]
+        public int SituationId { get; set; }
         [OneToOne(CascadeOperations = CascadeOperation.All)]
         public Situation Situation { get; set; }
         public string AutomaticThoughts { get; set; }
         public string SupportingEvidence { get; set; }
         public string ContradictingEvidence { get; set; }
         public string RationalAssessment { get; set; }
+        [ForeignKey(typeof(Emotion))]
+        public int EmotionId { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public DeeplyObservableCollection<Emotion> Emotions { get; set; }
+        public ObservableCollection<Emotion> Emotions { get; set; }
 
         public ThoughtRecord()
         {
-            Situation = new Situation();
-            Emotions = new DeeplyObservableCollection<Emotion>();
         }
     } 
 }

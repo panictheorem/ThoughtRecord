@@ -19,7 +19,7 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return (DeeplyObservableCollection<Emotion>)value;
+            return (ObservableCollection<Emotion>)value;
         }
     }
 }

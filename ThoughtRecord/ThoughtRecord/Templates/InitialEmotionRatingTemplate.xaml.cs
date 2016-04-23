@@ -25,6 +25,7 @@ namespace ThoughtRecordApp.Templates
         public delegate void TextBoxGotFocusEvent(object sender, EmotionTextBoxHasFocusEventArgs args);
         public event RemoveEmotionButtonClickedEvent RemoveButtonClicked;
         public event TextBoxGotFocusEvent TextBoxGotFocus;
+
         public InitialEmotionRatingTemplate()
         {
             this.InitializeComponent();

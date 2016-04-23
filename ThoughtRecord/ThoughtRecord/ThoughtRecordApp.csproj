@@ -129,6 +129,7 @@
     <Compile Include="ViewModels\ValueConverters\DateTimeConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionListConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionRatingValueConverter.cs" />
+    <Compile Include="ViewModels\ValueConverters\IntConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

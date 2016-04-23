@@ -29,6 +29,8 @@ namespace ThoughtRecordDAL.Models
         }
         public int InitialRating { get; set; }
         public int SubsequentRating { get; set; }
+        [ForeignKey(typeof(ThoughtRecord))]
+        public int ThoughtRecordID { get; set; }
         [ManyToOne]
         public ThoughtRecord ThoughtRecord { get; set; }
     }

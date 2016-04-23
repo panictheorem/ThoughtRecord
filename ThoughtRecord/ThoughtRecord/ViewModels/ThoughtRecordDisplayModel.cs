@@ -1,5 +1,6 @@
 ﻿using SQLite.Net;
 using SQLite.Net.Platform.WinRT;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -150,7 +151,7 @@ namespace ThoughtRecordApp.ViewModels
                 }
             }
         }
-        public DeeplyObservableCollection<Emotion> Emotions
+        public ObservableCollection<Emotion> Emotions
         {
             get
             {
@@ -158,7 +159,7 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     return thoughtRecord.Emotions;
                 }
-                return new DeeplyObservableCollection<Emotion>();
+                return new ObservableCollection<Emotion>();
             }
             set
             {
@@ -174,6 +175,8 @@ namespace ThoughtRecordApp.ViewModels
         public ThoughtRecordDisplayModel()
         {
             thoughtRecord = new ThoughtRecord();
+            thoughtRecord.Situation = new Situation();
+            thoughtRecord.Emotions = new DeeplyObservableCollection<Emotion>();
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             Settings = new Settings();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
@@ -181,6 +184,8 @@ namespace ThoughtRecordApp.ViewModels
             path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
             conn = new SQLiteConnection(new SQLitePlatformWinRT(), path);
             conn.CreateTable<ThoughtRecord>();
+            conn.CreateTable<Situation>();
+            conn.CreateTable<Emotion>();
         }
         public ThoughtRecordDisplayModel(int thoughtRecordId)
         {
@@ -197,12 +202,13 @@ namespace ThoughtRecordApp.ViewModels
 
         public void Save()
         {
-            var a = conn.Insert(thoughtRecord);
+            Emotions.FirstOrDefault().InitialRating = 99;
+            conn.InsertWithChildren(thoughtRecord);
         }
         public void Load()
         {
-            var query = conn.Table<ThoughtRecord>();
-            ThoughtRecord = new ThoughtRecord { Situation = new Situation() };
+            var query = conn.GetAllWithChildren<ThoughtRecord>();
+            ThoughtRecord = query.FirstOrDefault();
         }
     }
 }

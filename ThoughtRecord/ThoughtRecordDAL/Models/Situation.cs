@@ -14,6 +14,9 @@ namespace ThoughtRecordDAL.Models
         public int SituationId { get; set; }
         public DateTime DateTime { get; set; }
         public string Description { get; set; }
+
+        [ForeignKey(typeof(ThoughtRecord))]
+        public int ThoughtRecordID { get; set; }
         [OneToOne]
         public ThoughtRecord ThoughtRecord { get; set; }
     }
