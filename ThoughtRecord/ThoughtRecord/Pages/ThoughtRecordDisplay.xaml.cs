@@ -13,25 +13,18 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ThoughtRecordApp.ViewModels;
-using ThoughtRecordDAL.Models;
 using ThoughtRecordApp.Templates;
-using SQLite.Net;
-using SQLite.Net.Platform.WinRT;
+
 
 namespace ThoughtRecordApp.Pages
 {
     public sealed partial class ThoughtRecordDisplay : Page
     {
-        private string path;
-        private SQLiteConnection conn;
         private ThoughtRecordDisplayModel ViewModel;
 
         public ThoughtRecordDisplay()
         {
             this.InitializeComponent();
-            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
-            conn = new SQLiteConnection(new SQLitePlatformWinRT(), path);
-            conn.CreateTable<ThoughtRecord>();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs obj)
@@ -73,14 +66,25 @@ namespace ThoughtRecordApp.Pages
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            //var a = conn.Insert(ViewModel.ThoughtRecord);
+            ViewModel.Save();
          
         }
 
         private void LoadBtn_Click(object sender, RoutedEventArgs e)
         {
-            var query = conn.Table<ThoughtRecord>();
-            //ViewModel.ThoughtRecord = new ThoughtRecord { Situation = new Situation() };
+            ViewModel.Load();
+        }
+
+        private void InitialEmotionRatingTemplate_TextBoxGotFocus(object sender, EmotionTextBoxHasFocusEventArgs args)
+        {
+            var textBox = args.EmotionTextBox;
+            if(textBox != null)
+            {
+                if(ViewModel.DefaultInputText.Contains(textBox.Text))
+                {
+                    textBox.Text = "";
+                }
+            }
         }
     }
 }

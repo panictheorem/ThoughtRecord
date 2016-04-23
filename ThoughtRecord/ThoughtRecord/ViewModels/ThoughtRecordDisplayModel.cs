@@ -1,6 +1,9 @@
-﻿using System;
+﻿using SQLite.Net;
+using SQLite.Net.Platform.WinRT;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +16,22 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordDisplayModel : BindableBase
     {
+        private string path;
+        private SQLiteConnection conn;
+
         private ThoughtRecord thoughtRecord;
+        public ThoughtRecord ThoughtRecord
+        {
+            get
+            {
+                return thoughtRecord;
+            }
+            set
+            {
+                thoughtRecord = value;
+                OnPropertyChanged(null);
+            }
+        }
         public DateTime SituationDateTime
         {
             get
@@ -159,6 +177,10 @@ namespace ThoughtRecordApp.ViewModels
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             Settings = new Settings();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
+
+            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
+            conn = new SQLiteConnection(new SQLitePlatformWinRT(), path);
+            conn.CreateTable<ThoughtRecord>();
         }
         public ThoughtRecordDisplayModel(int thoughtRecordId)
         {
@@ -173,10 +195,14 @@ namespace ThoughtRecordApp.ViewModels
 
         }
 
-        public void NewTR()
+        public void Save()
         {
-            thoughtRecord = new ThoughtRecord();
-            OnPropertyChanged(null);
+            var a = conn.Insert(thoughtRecord);
+        }
+        public void Load()
+        {
+            var query = conn.Table<ThoughtRecord>();
+            ThoughtRecord = new ThoughtRecord { Situation = new Situation() };
         }
     }
 }

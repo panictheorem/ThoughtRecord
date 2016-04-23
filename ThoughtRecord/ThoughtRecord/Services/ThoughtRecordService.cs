@@ -45,6 +45,7 @@ namespace ThoughtRecordApp.Services
             resources.GetString("SituationDescription"),
             resources.GetString("AutomaticThoughts"),
             resources.GetString("SupportingEvidence"),
+            resources.GetString("EmotionExample"),
             resources.GetString("ContradictingEvidence"),
             resources.GetString("RationalAssessment")
         };

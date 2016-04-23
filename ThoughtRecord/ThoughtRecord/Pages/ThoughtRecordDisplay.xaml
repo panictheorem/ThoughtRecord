@@ -200,7 +200,8 @@
                                     x:Name="InitialEmotionRatingTemplate"
                                     HorizontalAlignment="Stretch" 
                                     VerticalAlignment="Stretch"
-                                    RemoveButtonClicked="InitialEmotionRatingTemplate_RemoveButtonClicked"/>
+                                    RemoveButtonClicked="InitialEmotionRatingTemplate_RemoveButtonClicked"
+                                    TextBoxGotFocus="InitialEmotionRatingTemplate_TextBoxGotFocus"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

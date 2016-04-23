@@ -22,7 +22,9 @@ namespace ThoughtRecordApp.Templates
     {
         public Emotion Emotion { get { return this.DataContext as Emotion; } }
         public delegate void RemoveEmotionButtonClickedEvent(object sender, RemoveEmotionButtonClickedEventArgs args);
+        public delegate void TextBoxGotFocusEvent(object sender, EmotionTextBoxHasFocusEventArgs args);
         public event RemoveEmotionButtonClickedEvent RemoveButtonClicked;
+        public event TextBoxGotFocusEvent TextBoxGotFocus;
         public InitialEmotionRatingTemplate()
         {
             this.InitializeComponent();
@@ -41,9 +43,22 @@ namespace ThoughtRecordApp.Templates
         {
 
         }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxGotFocus?.Invoke(this, new EmotionTextBoxHasFocusEventArgs(sender as TextBox));
+        }
     }
 
-    public class RemoveEmotionButtonClickedEventArgs : EventArgs
+    public class EmotionTextBoxHasFocusEventArgs : RoutedEventArgs
+    {
+        public TextBox EmotionTextBox { get; }
+        public EmotionTextBoxHasFocusEventArgs(TextBox textBox)
+        {
+            EmotionTextBox = textBox;
+        }
+    }
+    public class RemoveEmotionButtonClickedEventArgs : RoutedEventArgs
     {
         public Emotion SelectedEmotion { get; }
         public RemoveEmotionButtonClickedEventArgs(Emotion selectedEmotion)
