@@ -18,24 +18,41 @@ namespace ThoughtRecordApp.ViewModels
         {
             get
             {
-                return thoughtRecord.Situation.DateTime;
+                if (thoughtRecord != null)
+                {
+                    return thoughtRecord.Situation.DateTime;
+                }
+                return new DateTime();
             }
             set
             {
-                thoughtRecord.Situation.DateTime = value;
-                OnPropertyChanged("DateTime");
+                if (thoughtRecord != null)
+                {
+                    if(thoughtRecord.Situation.DateTime != value)
+                    {
+                        thoughtRecord.Situation.DateTime = value;
+                        OnPropertyChanged();
+                    }
+                }
             }
         }
         public string SituationDescription
         {
             get
             {
-                return thoughtRecord.Situation.Description;
+                if (thoughtRecord != null)
+                {
+                    return thoughtRecord.Situation.Description;
+                }
+                return string.Empty;
             }
             set
             {
-                thoughtRecord.Situation.Description = value;
-                OnPropertyChanged("Description");
+                if (thoughtRecord != null)
+                {
+                    this.thoughtRecord.Situation.Description = value;
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -43,59 +60,94 @@ namespace ThoughtRecordApp.ViewModels
         {
             get
             {
-                return thoughtRecord.AutomaticThoughts;
+                if (thoughtRecord != null)
+                {
+                    return thoughtRecord.AutomaticThoughts;
+                }
+                return string.Empty;
             }
             set
             {
-                thoughtRecord.AutomaticThoughts = value;
-                OnPropertyChanged("Description");
+                if (thoughtRecord != null)
+                {
+                    thoughtRecord.AutomaticThoughts = value;
+                    OnPropertyChanged();
+                }
             }
         }
         public string SupportingEvidence
         {
             get
             {
-                return thoughtRecord.SupportingEvidence;
+                if (thoughtRecord != null)
+                {
+                    return thoughtRecord.SupportingEvidence;
+                }
+                return string.Empty;
             }
             set
             {
-                thoughtRecord.SupportingEvidence = value;
-                OnPropertyChanged("SupportingEvidence");
+                if (thoughtRecord != null)
+                {
+                    thoughtRecord.SupportingEvidence = value;
+                    OnPropertyChanged();
+                }
             }
         }
         public string ContradictingEvidence
         {
             get
             {
-                return thoughtRecord.ContradictingEvidence;
+                if (thoughtRecord != null)
+                {
+                    return thoughtRecord.ContradictingEvidence;
+                }
+                return string.Empty;
             }
             set
             {
-                thoughtRecord.ContradictingEvidence = value;
-                OnPropertyChanged("ContradictingEvidence");
+                if (thoughtRecord != null)
+                {
+                    thoughtRecord.ContradictingEvidence = value;
+                    OnPropertyChanged();
+                }
             }
         }
         public string RationalAssessment
         {
             get
             {
-                return thoughtRecord.RationalAssessment;
+                if (thoughtRecord != null)
+                {
+                    return thoughtRecord.RationalAssessment;
+                }
+                return string.Empty;
             }
             set
             {
-                thoughtRecord.RationalAssessment = value;
-                OnPropertyChanged("RationalAssessment");
+                if (thoughtRecord != null)
+                {
+                    thoughtRecord.RationalAssessment = value;
+                    OnPropertyChanged();
+                }
             }
         }
         public DeeplyObservableCollection<Emotion> Emotions
         {
             get
             {
-                return thoughtRecord.Emotions;
+                if (thoughtRecord != null)
+                {
+                    return thoughtRecord.Emotions;
+                }
+                return new DeeplyObservableCollection<Emotion>();
             }
             set
             {
-                thoughtRecord.Emotions = value;
+                if (thoughtRecord != null)
+                {
+                    thoughtRecord.Emotions = value;
+                }
             }
         }
         public List<string> DefaultInputText { get; }

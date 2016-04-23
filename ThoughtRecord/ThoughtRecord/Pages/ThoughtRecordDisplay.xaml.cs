@@ -70,17 +70,17 @@ namespace ThoughtRecordApp.Pages
             ViewModel.Emotions.Remove(args.SelectedEmotion);
         }
 
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            var a = conn.Insert(ViewModel.ThoughtRecord);
-            ViewModel.NewTR();
+            //var a = conn.Insert(ViewModel.ThoughtRecord);
+         
         }
 
         private void LoadBtn_Click(object sender, RoutedEventArgs e)
         {
             var query = conn.Table<ThoughtRecord>();
-            ViewModel.ThoughtRecord = new ThoughtRecord { Situation = new Situation() };
+            //ViewModel.ThoughtRecord = new ThoughtRecord { Situation = new Situation() };
         }
     }
 }
