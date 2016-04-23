@@ -50,7 +50,7 @@ namespace ThoughtRecordApp.Pages
 
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.ThoughtRecord.Emotions.Add(new ThoughtRecordDAL.Models.Emotion());
+            ViewModel.Emotions.Add(new ThoughtRecordDAL.Models.Emotion());
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -67,18 +67,20 @@ namespace ThoughtRecordApp.Pages
 
         private void InitialEmotionRatingTemplate_RemoveButtonClicked(object sender, RemoveEmotionButtonClickedEventArgs args)
         {
-            ViewModel.ThoughtRecord.Emotions.Remove(args.SelectedEmotion);
+            ViewModel.Emotions.Remove(args.SelectedEmotion);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var a = conn.Insert(ViewModel.ThoughtRecord.Emotions.FirstOrDefault());
+
+            var a = conn.Insert(ViewModel.ThoughtRecord);
+            ViewModel.NewTR();
         }
 
         private void LoadBtn_Click(object sender, RoutedEventArgs e)
         {
             var query = conn.Table<ThoughtRecord>();
-            ViewModel.ThoughtRecord = query.FirstOrDefault();
+            ViewModel.ThoughtRecord = new ThoughtRecord { Situation = new Situation() };
         }
     }
 }
