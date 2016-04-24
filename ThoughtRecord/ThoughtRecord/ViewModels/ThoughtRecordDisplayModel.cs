@@ -151,21 +151,22 @@ namespace ThoughtRecordApp.ViewModels
                 }
             }
         }
-        public ObservableCollection<Emotion> Emotions
+        private DeeplyObservableCollection<Emotion> observableEmotions;
+        public DeeplyObservableCollection<Emotion> Emotions
         {
             get
             {
                 if (thoughtRecord != null)
                 {
-                    return thoughtRecord.Emotions;
+                    return observableEmotions;
                 }
-                return new ObservableCollection<Emotion>();
+                return new DeeplyObservableCollection<Emotion>();
             }
             set
             {
                 if (thoughtRecord != null)
                 {
-                    thoughtRecord.Emotions = value;
+                    observableEmotions = value;
                 }
             }
         }
@@ -176,11 +177,12 @@ namespace ThoughtRecordApp.ViewModels
         {
             thoughtRecord = new ThoughtRecord();
             thoughtRecord.Situation = new Situation();
-            thoughtRecord.Emotions = new DeeplyObservableCollection<Emotion>();
+            thoughtRecord.Emotions = new List<Emotion>();
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             Settings = new Settings();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
-
+            observableEmotions = new DeeplyObservableCollection<Emotion>();
+            SyncObservableEmotions();
             path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
             conn = new SQLiteConnection(new SQLitePlatformWinRT(), path);
             conn.CreateTable<ThoughtRecord>();
@@ -202,13 +204,25 @@ namespace ThoughtRecordApp.ViewModels
 
         public void Save()
         {
-            Emotions.FirstOrDefault().InitialRating = 99;
+            UpdateThoughtRecordEmotions();
             conn.InsertWithChildren(thoughtRecord);
         }
         public void Load()
         {
             var query = conn.GetAllWithChildren<ThoughtRecord>();
-            ThoughtRecord = query.FirstOrDefault();
+            thoughtRecord = query.FirstOrDefault();
+            SyncObservableEmotions();
+
+        }
+
+        public void SyncObservableEmotions()
+        {
+            observableEmotions.Clear();
+            thoughtRecord.Emotions.ForEach(e => observableEmotions.Add(e));
+        }
+        public void UpdateThoughtRecordEmotions()
+        {
+            thoughtRecord.Emotions = observableEmotions.ToList<Emotion>();
         }
     }
 }

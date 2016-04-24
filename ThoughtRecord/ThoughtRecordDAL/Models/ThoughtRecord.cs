@@ -26,7 +26,7 @@ namespace ThoughtRecordDAL.Models
         [ForeignKey(typeof(Emotion))]
         public int EmotionId { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public ObservableCollection<Emotion> Emotions { get; set; }
+        public List<Emotion> Emotions { get; set; }
 
         public ThoughtRecord()
         {

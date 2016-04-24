@@ -16,7 +16,7 @@ namespace ThoughtRecordDAL.Models
         public string Description { get; set; }
 
         [ForeignKey(typeof(ThoughtRecord))]
-        public int ThoughtRecordID { get; set; }
+        public int ThoughtRecordId { get; set; }
         [OneToOne]
         public ThoughtRecord ThoughtRecord { get; set; }
     }

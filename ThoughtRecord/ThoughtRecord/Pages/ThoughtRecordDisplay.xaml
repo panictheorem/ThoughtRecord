@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+    <Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="ThoughtRecordDisplayStates">
                 <VisualState x:Name="NarrowWindow">
@@ -124,132 +124,137 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid x:Name="ThoughRecordGrid" Margin="20,5,20,20" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition x:Name="DesktopInputRow" Height="*"/>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="MobileColumn" />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <!--Field Titles-->
-            <Border x:Name="SituationTextBlockCell" Grid.Column="0">
-                <TextBlock x:Name="SituationTextBlock" Text="Situation"/>
-            </Border>
-            <Border x:Name="InitialEmotionRatingsTextBlockCell" Grid.Column="1">
-                <TextBlock x:Name="InitialEmotionRatingsTextBlock" Text="Emotions"/>
-            </Border>
-            <Border x:Name="AutomaticThoughtsTextBlockCell" Grid.Column="2">
-                <TextBlock x:Name="AutomaticThoughtsTextBlock" Text="Automatic Thought(s)"/>
-            </Border>
-            <Border x:Name="SupportingEvidenceTextBlockCell" Grid.Column="3">
-                <TextBlock x:Name="SupportingEvidenceTextBlock" Text="Evidence Supporting Automatic Thought(s)"/>
-            </Border>
-            <Border x:Name="ContradictingEvidenceTextBlockCell" Grid.Column="4">
-                <TextBlock x:Name="ContradictingEvidenceTextBlock" Text="Evidence Not Supporting Automatic Thought(s)"/>
-            </Border>
-            <Border x:Name="RationalAssessmentTextBlockCell" Grid.Column="5">
-                <TextBlock x:Name="RationalAssessmentTextBlock" Text="Rational Assessment" />
-            </Border>
-            <Border x:Name="SubsequentEmotionRatingsTextBlockCell" Grid.Column="6">
-                <TextBlock x:Name="SubsequentEmotionRatingsTextBlock" Text="Reevaluate Your Emotions"/>
-            </Border>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+            <Grid x:Name="ThoughRecordGrid" Margin="20,5,20,20" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition x:Name="DesktopInputRow" Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="MobileColumn" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!--Field Titles-->
+                <Border x:Name="SituationTextBlockCell" Grid.Column="0">
+                    <TextBlock x:Name="SituationTextBlock" Text="Situation"/>
+                </Border>
+                <Border x:Name="InitialEmotionRatingsTextBlockCell" Grid.Column="1">
+                    <TextBlock x:Name="InitialEmotionRatingsTextBlock" Text="Emotions"/>
+                </Border>
+                <Border x:Name="AutomaticThoughtsTextBlockCell" Grid.Column="2">
+                    <TextBlock x:Name="AutomaticThoughtsTextBlock" Text="Automatic Thought(s)"/>
+                </Border>
+                <Border x:Name="SupportingEvidenceTextBlockCell" Grid.Column="3">
+                    <TextBlock x:Name="SupportingEvidenceTextBlock" Text="Evidence Supporting Automatic Thought(s)"/>
+                </Border>
+                <Border x:Name="ContradictingEvidenceTextBlockCell" Grid.Column="4">
+                    <TextBlock x:Name="ContradictingEvidenceTextBlock" Text="Evidence Not Supporting Automatic Thought(s)"/>
+                </Border>
+                <Border x:Name="RationalAssessmentTextBlockCell" Grid.Column="5">
+                    <TextBlock x:Name="RationalAssessmentTextBlock" Text="Rational Assessment" />
+                </Border>
+                <Border x:Name="SubsequentEmotionRatingsTextBlockCell" Grid.Column="6">
+                    <TextBlock x:Name="SubsequentEmotionRatingsTextBlock" Text="Reevaluate Your Emotions"/>
+                </Border>
 
-            <!-- Field Inputs-->
-            <Border x:Name="SituationInputAreaCell" Grid.Row="1">
-                <Grid x:Name="SituationInputArea">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <CalendarDatePicker 
+                <!-- Field Inputs-->
+                <Border x:Name="SituationInputAreaCell" Grid.Row="1">
+                    <Grid x:Name="SituationInputArea">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <CalendarDatePicker 
                     x:Name="DateOfSituationPicker"
                     Date="{x:Bind ViewModel.SituationDateTime, Converter={StaticResource DateTimeConverter}, Mode=TwoWay}"
                     DateFormat="{}{day.integer} {month.full} {year.full}"
                     Grid.Row="0"/>
-                    <TextBox x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.SituationDescription,Mode=TwoWay}"
+                        <TextBox x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.SituationDescription,Mode=TwoWay}"
                              GotFocus="TextBox_GotFocus"
                              Grid.Row="2" Template="{StaticResource ThoughtRecordTextBox}"/>
-                </Grid>
-            </Border>
-            <Border x:Name="InitialEmotionRatingsInputAreaCell" Grid.Column="1" Grid.Row="1">
-                <StackPanel x:Name="InitialEmotionRatingsInputArea"  Orientation="Vertical" HorizontalAlignment="Stretch">
-                    <ItemsControl x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate x:DataType="models:Emotion">
-                                <templates:InitialEmotionRatingTemplate
+                    </Grid>
+                </Border>
+                <Border x:Name="InitialEmotionRatingsInputAreaCell" Grid.Column="1" Grid.Row="1">
+                    <StackPanel x:Name="InitialEmotionRatingsInputArea"  Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <ItemsControl x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:Emotion">
+                                    <templates:InitialEmotionRatingTemplate
                                     x:Name="InitialEmotionRatingTemplate"
                                     HorizontalAlignment="Stretch" 
                                     VerticalAlignment="Stretch"
                                     RemoveButtonClicked="InitialEmotionRatingTemplate_RemoveButtonClicked"
                                     TextBoxGotFocus="InitialEmotionRatingTemplate_TextBoxGotFocus"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <Button x:Name="AddEmotionButton"
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Button x:Name="AddEmotionButton"
                         Click="AddEmotionButton_Click"
                         FontSize="16" FontWeight="Bold" Content="&#xE710;" 
                         HorizontalAlignment="Right"
                         Margin="0,10,0,0" Style="{StaticResource DiscreteButton}"/>
-                </StackPanel>
-            </Border>
-            <Border x:Name="AutomaticThoughtsTextBoxCell" Grid.Column="2" Grid.Row="1">
-                <TextBox x:Name="AutomaticThoughtsTextBox"
+                    </StackPanel>
+                </Border>
+                <Border x:Name="AutomaticThoughtsTextBoxCell" Grid.Column="2" Grid.Row="1">
+                    <TextBox x:Name="AutomaticThoughtsTextBox"
                          Text="{x:Bind ViewModel.AutomaticThoughts,Mode=TwoWay}"
                          GotFocus="TextBox_GotFocus"/>
-            </Border>
-            <Border x:Name="SupportingEvidenceTextBoxCell" Grid.Column="3" Grid.Row="1">
-                <TextBox x:Name="SupportingEvidenceTextBox"
+                </Border>
+                <Border x:Name="SupportingEvidenceTextBoxCell" Grid.Column="3" Grid.Row="1">
+                    <TextBox x:Name="SupportingEvidenceTextBox"
                          Text="{x:Bind ViewModel.SupportingEvidence,Mode=TwoWay}"
                          GotFocus="TextBox_GotFocus"/>
-            </Border>
-            <Border x:Name="ContradictingEvidenceTextBoxCell" Grid.Column="4" Grid.Row="1">
-                <TextBox x:Name="ContradictingEvidenceTextBox" 
+                </Border>
+                <Border x:Name="ContradictingEvidenceTextBoxCell" Grid.Column="4" Grid.Row="1">
+                    <TextBox x:Name="ContradictingEvidenceTextBox" 
                          Text="{x:Bind ViewModel.ContradictingEvidence,Mode=TwoWay}"
                          GotFocus="TextBox_GotFocus"/>
-            </Border>
-            <Border x:Name="RationalAssessmentTextBoxCell" Grid.Column="5" Grid.Row="1">
-                <TextBox x:Name="RationalAssessmentTextBox"
+                </Border>
+                <Border x:Name="RationalAssessmentTextBoxCell" Grid.Column="5" Grid.Row="1">
+                    <TextBox x:Name="RationalAssessmentTextBox"
                          Text="{x:Bind ViewModel.RationalAssessment,Mode=TwoWay}"
                          GotFocus="TextBox_GotFocus"/>
-            </Border>
-            <Border x:Name="SubsequentEmotionRatingsInputAreaCell" Grid.Column="6" Grid.Row="1">
-                <StackPanel x:Name="SubsequentEmotionRatingsInputArea"
+                </Border>
+                <Border x:Name="SubsequentEmotionRatingsInputAreaCell" Grid.Column="6" Grid.Row="1">
+                    <StackPanel x:Name="SubsequentEmotionRatingsInputArea"
                 Orientation="Vertical">
-                    <ItemsControl ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate x:DataType="models:Emotion">
-                                <templates:SubsequentEmotionRatingTemplate HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </StackPanel>
-            </Border>
-        </Grid>
-    </ScrollViewer>
-    <Page.BottomAppBar>
-        <CommandBar HorizontalContentAlignment="Right" Height="Auto">
+                        <ItemsControl ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:Emotion">
+                                    <templates:SubsequentEmotionRatingTemplate HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+
+        <CommandBar HorizontalContentAlignment="Right" Height="Auto" Grid.Row="2" Background="White">
             <AppBarButton Icon="Save" Label="Save" Click="SaveBtn_Click"/>
             <AppBarButton Icon="OpenFile" Label="Load" Click="LoadBtn_Click"/>
         </CommandBar>
-    </Page.BottomAppBar>
+    </Grid>
 </Page>
