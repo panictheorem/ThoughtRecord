@@ -107,7 +107,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\DeeplyObservableCollection.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\Repository.cs" />
+    <Compile Include="Concrete\ThoughtRecordAppDbContext.cs" />
     <Compile Include="Models\Emotion.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Situation.cs" />
@@ -115,10 +117,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ThoughtRecordDAL.rd.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-    <Folder Include="Concrete\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <SDKReference Include="SQLite.UWP.2015, Version=3.12.2">
       <Name>SQLite for Universal Windows Platform</Name>

@@ -8,10 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThoughtRecordDAL.Infrastructure
+namespace ThoughtRecordApp.ViewModels.Infrastructure
 {
     public class DeeplyObservableCollection<T> : ObservableCollection<T> where T : INotifyPropertyChanged
     {
+        public DeeplyObservableCollection(){}
+        public DeeplyObservableCollection(IList<T> list) : base(list){}
+
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {
             if(e.Action == NotifyCollectionChangedAction.Add)

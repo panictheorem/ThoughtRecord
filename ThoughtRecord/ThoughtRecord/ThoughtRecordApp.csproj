@@ -123,6 +123,7 @@
       <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Infrastructure\BindableBase.cs" />
+    <Compile Include="ViewModels\Infrastructure\DeeplyObservableCollection.cs" />
     <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
     <Compile Include="ViewModels\SettingsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />

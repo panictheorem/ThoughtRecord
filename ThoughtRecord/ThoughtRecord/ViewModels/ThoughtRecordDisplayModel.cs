@@ -10,8 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels.Infrastructure;
-using ThoughtRecordDAL.Infrastructure;
 using ThoughtRecordDAL.Models;
+using System.Collections.Specialized;
 
 namespace ThoughtRecordApp.ViewModels
 {
@@ -181,14 +181,26 @@ namespace ThoughtRecordApp.ViewModels
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             Settings = new Settings();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
-            observableEmotions = new DeeplyObservableCollection<Emotion>();
-            SyncObservableEmotions();
-            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
-            conn = new SQLiteConnection(new SQLitePlatformWinRT(), path);
-            conn.CreateTable<ThoughtRecord>();
-            conn.CreateTable<Situation>();
-            conn.CreateTable<Emotion>();
+            observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
+            observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
         }
+
+        private void UpdateModelEmotionCollection(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    thoughtRecord.Emotions.AddRange(e.NewItems.OfType<Emotion>());
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    thoughtRecord.Emotions.RemoveAll(emotion => e.OldItems.Contains(emotion));
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    thoughtRecord.Emotions.Clear();
+                    break;
+            }
+        }
+
         public ThoughtRecordDisplayModel(int thoughtRecordId)
         {
 
@@ -204,25 +216,20 @@ namespace ThoughtRecordApp.ViewModels
 
         public void Save()
         {
-            UpdateThoughtRecordEmotions();
             conn.InsertWithChildren(thoughtRecord);
         }
         public void Load()
         {
             var query = conn.GetAllWithChildren<ThoughtRecord>();
             thoughtRecord = query.FirstOrDefault();
-            SyncObservableEmotions();
+            SyncObservableEmotionsCollection();
 
         }
 
-        public void SyncObservableEmotions()
+        public void SyncObservableEmotionsCollection()
         {
             observableEmotions.Clear();
             thoughtRecord.Emotions.ForEach(e => observableEmotions.Add(e));
-        }
-        public void UpdateThoughtRecordEmotions()
-        {
-            thoughtRecord.Emotions = observableEmotions.ToList<Emotion>();
         }
     }
 }

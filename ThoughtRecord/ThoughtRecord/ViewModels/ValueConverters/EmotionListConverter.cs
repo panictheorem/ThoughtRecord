@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThoughtRecordDAL.Infrastructure;
+using ThoughtRecordApp.ViewModels.Infrastructure;
 using ThoughtRecordDAL.Models;
 using Windows.UI.Xaml.Data;
 
@@ -19,7 +19,7 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return (ObservableCollection<Emotion>)value;
+            return (DeeplyObservableCollection<Emotion>)value;
         }
     }
 }
