@@ -1,4 +1,6 @@
-﻿using SQLiteNetExtensions.Extensions;
+﻿using SQLite.Net;
+using SQLite.Net.Platform.WinRT;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,35 +11,68 @@ using ThoughtRecordDAL.Abstract;
 
 namespace ThoughtRecordDAL.Concrete
 {
-    public class Repository<T> : IRepository<T> where T : class
+    internal class Repository<T> : IRepository<T> where T : class
     {
-        private ThoughtRecordAppDbContext databaseContext;
-
-        public Repository(ThoughtRecordAppDbContext context)
+        private static string path = string.Empty;
+        private static string DbPath
         {
-            databaseContext = context;
+            get
+            {
+                if(path == null)
+                {
+                    path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
+                }
+                return path;
+            }
         }
+        private static SQLiteConnection DbConnection
+        {
+            get
+            {
+                return new SQLiteConnection(new SQLitePlatformWinRT(), DbPath);
+            }
+        }
+
         public IEnumerable<T> GetAll()
         {
-            return databaseContext.Conn.GetAllWithChildren<T>();
+            IEnumerable<T> entityList;
+            using (var conn = DbConnection)
+            {
+                entityList = conn.GetAllWithChildren<T>();
+            }
+            return entityList;
         }
         T IRepository<T>.GetById(int id)
         {
-            return databaseContext.Conn.GetWithChildren<T>(id);
+            T entity;
+            using (var conn = DbConnection)
+            {
+                entity = conn.GetWithChildren<T>(id);
+            }
+            return entity;
         }
         public void Delete(int id)
         {
-            databaseContext.Conn.Delete<T>(id);
+            using (var conn = DbConnection)
+            {
+                conn.Delete<T>(id);
+            }
         }
 
         public void Insert(T entity)
         {
-            databaseContext.Conn.Insert(entity);
+            using (var conn = DbConnection)
+            {
+                conn.Insert(entity);
+            }
         }
 
         public void Update(T entity)
         {
-            databaseContext.Conn.UpdateWithChildren(entity);
+            using (var conn = DbConnection)
+            {
+                conn.UpdateWithChildren(entity);
+            }
         }
     }
 }

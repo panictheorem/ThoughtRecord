@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecordDAL.Models
 {
-    public class Settings
+    public class Configuration
     {
     }
 }

@@ -17,9 +17,6 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordDisplayModel : BindableBase
     {
-        private string path;
-        private SQLiteConnection conn;
-
         private ThoughtRecord thoughtRecord;
         public ThoughtRecord ThoughtRecord
         {
@@ -171,7 +168,7 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
         public List<string> DefaultInputText { get; }
-        public Settings Settings { get; }
+        public Configuration Settings { get; }
 
         public ThoughtRecordDisplayModel()
         {
@@ -179,7 +176,7 @@ namespace ThoughtRecordApp.ViewModels
             thoughtRecord.Situation = new Situation();
             thoughtRecord.Emotions = new List<Emotion>();
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
-            Settings = new Settings();
+            Settings = new Configuration();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
             observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
@@ -205,7 +202,7 @@ namespace ThoughtRecordApp.ViewModels
         {
 
             thoughtRecord = ThoughtRecordService.GetThoughtRecordById(thoughtRecordId);
-            Settings = new Settings();
+            Settings = new Configuration();
             thoughtRecord.Situation.Description = "Saved Desc";
             thoughtRecord.AutomaticThoughts = "SAVED Describe the automatic throught(s) you had...";
             thoughtRecord.SupportingEvidence = "SAVED List the evidence that supports the automatic thought...";
@@ -216,12 +213,10 @@ namespace ThoughtRecordApp.ViewModels
 
         public void Save()
         {
-            conn.InsertWithChildren(thoughtRecord);
+
         }
         public void Load()
         {
-            var query = conn.GetAllWithChildren<ThoughtRecord>();
-            thoughtRecord = query.FirstOrDefault();
             SyncObservableEmotionsCollection();
 
         }
