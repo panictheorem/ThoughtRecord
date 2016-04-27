@@ -18,11 +18,11 @@ using ThoughtRecordApp.Templates;
 
 namespace ThoughtRecordApp.Pages
 {
-    public sealed partial class ThoughtRecordDisplay : Page
+    public sealed partial class ThoughtRecordEditPage : Page
     {
-        private ThoughtRecordDisplayModel ViewModel;
+        private ThoughtRecordEditModel ViewModel;
 
-        public ThoughtRecordDisplay()
+        public ThoughtRecordEditPage()
         {
             this.InitializeComponent();
         }
@@ -32,11 +32,11 @@ namespace ThoughtRecordApp.Pages
             int thoughtRecordId = Convert.ToInt32(obj.Parameter);
             if (thoughtRecordId != 0)
             {
-                ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId);
+                ViewModel = new ThoughtRecordEditModel(thoughtRecordId);
             }
             else
             {
-                ViewModel = new ThoughtRecordDisplayModel();
+                ViewModel = new ThoughtRecordEditModel();
             }
             base.OnNavigatedTo(obj);
         }

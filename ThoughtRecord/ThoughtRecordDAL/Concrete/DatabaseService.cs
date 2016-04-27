@@ -17,6 +17,14 @@ namespace ThoughtRecordDAL.Concrete
 
         public DatabaseService()
         {
+            using (var conn = ConnectionManager.GetConnection())
+            {
+                //Create all tables if they don't exist
+                conn.CreateTable<ThoughtRecord>();
+                conn.CreateTable<Situation>();
+                conn.CreateTable<Emotion>();
+                //conn.CreateTable<Configuration>();
+            }
         }
         public IRepository<ThoughtRecord> ThoughtRecords
         {

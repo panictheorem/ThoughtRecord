@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IDatabaseService.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\ConnectionManager.cs" />
     <Compile Include="Concrete\DatabaseService.cs" />
     <Compile Include="Concrete\Repository.cs" />
     <Compile Include="Models\Emotion.cs" />

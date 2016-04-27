@@ -95,20 +95,23 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Information.xaml.cs">
-      <DependentUpon>Information.xaml</DependentUpon>
+    <Compile Include="Pages\InformationPage.xaml.cs">
+      <DependentUpon>InformationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ThoughtRecordDisplay.xaml.cs">
-      <DependentUpon>ThoughtRecordDisplay.xaml</DependentUpon>
+    <Compile Include="Pages\ThoughtRecordDisplayPage.xaml.cs">
+      <DependentUpon>ThoughtRecordDisplayPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="Pages\ThoughtRecordEditPage.xaml.cs">
+      <DependentUpon>ThoughtRecordEditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ThoughtRecordList.xaml.cs">
-      <DependentUpon>ThoughtRecordList.xaml</DependentUpon>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThoughtRecordListPage.xaml.cs">
+      <DependentUpon>ThoughtRecordListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmotionService.cs" />
@@ -122,9 +125,12 @@
     <Compile Include="Templates\ThoughtRecordListTemplate.xaml.cs">
       <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\InformationModel.cs" />
     <Compile Include="ViewModels\Infrastructure\BindableBase.cs" />
     <Compile Include="ViewModels\Infrastructure\DeeplyObservableCollection.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
+    <Compile Include="ViewModels\ThoughtRecordEditModel.cs" />
     <Compile Include="ViewModels\SettingsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
     <Compile Include="ViewModels\ValueConverters\DateTimeConverter.cs" />
@@ -140,6 +146,7 @@
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\PanicCubePurple.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -154,13 +161,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\Information.xaml">
+    <Page Include="Pages\InformationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ThoughtRecordDisplayPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\CustomControls\Borders.xaml">
       <SubType>Designer</SubType>
@@ -177,15 +188,15 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Pages\ThoughtRecordDisplay.xaml">
+    <Page Include="Pages\ThoughtRecordEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Settings.xaml">
+    <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ThoughtRecordList.xaml">
+    <Page Include="Pages\ThoughtRecordListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

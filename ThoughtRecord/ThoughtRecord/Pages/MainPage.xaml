@@ -24,8 +24,8 @@
                     Content="&#xE700;"
                     RelativePanel.AlignLeftWithPanel="True"
                     Click="MenuToggleButton_Click" Style="{StaticResource MenuToggleButton}" />
-            <TextBlock Style="{ThemeResource TitleTextBlockStyle}" 
-                       Text="New Thought Record" 
+            <TextBlock x:Name="PageTitle"
+                       Style="{ThemeResource TitleTextBlockStyle}" 
                        RelativePanel.RightOf="MenuToggleButton"
                        RelativePanel.AlignVerticalCenterWithPanel="True"
                        Margin="10,0,0,0"
@@ -37,29 +37,31 @@
                    CompactPaneLength="45"
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
-                <ListBox>
-                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
+                <ListBox x:Name="MainMenuListBox"
+                         SelectedIndex="{x:Bind ViewModel.SelectedIndex, Mode=OneTime}"
+                         SelectionChanged="MainMenuListBox_SelectionChanged">
+                    <ListBoxItem x:Name="NewThoughtRecordListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE70F;" Margin="-2,0,10,0"/>
                             <TextBlock Text="New Thought Record"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
+                    <ListBoxItem x:Name="ListThoughtRecordsListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE787;" Margin="-2,0,10,0"/>
+                                       FontSize="25" Text="&#xE8F1;" Margin="-2,0,10,0"/>
                             <TextBlock Text="View Thought Records"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
+                    <ListBoxItem x:Name="SettingsListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE713;" Margin="-2,0,10,0"/>
                             <TextBlock Text="Settings"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Style="{StaticResource ThoughtRecordMenuItem}">
+                    <ListBoxItem x:Name="InformationListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
                                        FontSize="30" Text="ⓘ" Margin="-2,0,10,0"/>

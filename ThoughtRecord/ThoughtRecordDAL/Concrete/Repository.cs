@@ -13,30 +13,10 @@ namespace ThoughtRecordDAL.Concrete
 {
     internal class Repository<T> : IRepository<T> where T : class
     {
-        private static string path = string.Empty;
-        private static string DbPath
-        {
-            get
-            {
-                if(path == null)
-                {
-                    path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
-                }
-                return path;
-            }
-        }
-        private static SQLiteConnection DbConnection
-        {
-            get
-            {
-                return new SQLiteConnection(new SQLitePlatformWinRT(), DbPath);
-            }
-        }
-
         public IEnumerable<T> GetAll()
         {
             IEnumerable<T> entityList;
-            using (var conn = DbConnection)
+            using (var conn = ConnectionManager.GetConnection())
             {
                 entityList = conn.GetAllWithChildren<T>();
             }
@@ -45,7 +25,7 @@ namespace ThoughtRecordDAL.Concrete
         T IRepository<T>.GetById(int id)
         {
             T entity;
-            using (var conn = DbConnection)
+            using (var conn = ConnectionManager.GetConnection())
             {
                 entity = conn.GetWithChildren<T>(id);
             }
@@ -53,7 +33,7 @@ namespace ThoughtRecordDAL.Concrete
         }
         public void Delete(int id)
         {
-            using (var conn = DbConnection)
+            using (var conn = ConnectionManager.GetConnection())
             {
                 conn.Delete<T>(id);
             }
@@ -61,15 +41,15 @@ namespace ThoughtRecordDAL.Concrete
 
         public void Insert(T entity)
         {
-            using (var conn = DbConnection)
+            using (var conn = ConnectionManager.GetConnection())
             {
-                conn.Insert(entity);
+                conn.InsertWithChildren(entity);
             }
         }
 
         public void Update(T entity)
         {
-            using (var conn = DbConnection)
+            using (var conn = ConnectionManager.GetConnection())
             {
                 conn.UpdateWithChildren(entity);
             }

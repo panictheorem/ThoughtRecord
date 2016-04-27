@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecordApp.ViewModels
 {
-    class ThoughtRecordDisplayModel
+    class InformationModel
     {
     }
 }
