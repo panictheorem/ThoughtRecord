@@ -7,9 +7,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThoughtRecordDAL.Abstract;
+using ThoughtRecordApp.DAL.Abstract;
 
-namespace ThoughtRecordDAL.Concrete
+namespace ThoughtRecordApp.DAL.Concrete
 {
     internal class Repository<T> : IRepository<T> where T : class
     {

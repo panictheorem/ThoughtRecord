@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ThoughtRecordApp.ViewModels;
 using ThoughtRecordApp.Templates;
-
+using ThoughtRecordApp.DAL.Models;
 
 namespace ThoughtRecordApp.Pages
 {
@@ -43,7 +43,7 @@ namespace ThoughtRecordApp.Pages
 
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.Emotions.Add(new ThoughtRecordDAL.Models.Emotion());
+            ViewModel.Emotions.Add(new Emotion());
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

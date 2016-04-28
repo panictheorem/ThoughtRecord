@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThoughtRecordDAL.Concrete
+namespace ThoughtRecordApp.DAL.Concrete
 {
     public static class ConnectionManager
     {

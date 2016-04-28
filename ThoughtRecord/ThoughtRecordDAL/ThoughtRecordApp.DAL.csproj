@@ -7,8 +7,8 @@
     <ProjectGuid>{CC903D22-F2CE-4361-BAA2-AC6115504FBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ThoughtRecordDAL</RootNamespace>
-    <AssemblyName>ThoughtRecordDAL</AssemblyName>
+    <RootNamespace>ThoughtRecordApp.DAL</RootNamespace>
+    <AssemblyName>ThoughtRecordApp.DAL</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>

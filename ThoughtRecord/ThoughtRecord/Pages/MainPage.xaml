@@ -43,7 +43,7 @@
                     <ListBoxItem x:Name="NewThoughtRecordListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE70F;" Margin="-2,0,10,0"/>
+                                       FontSize="25" Text="&#xE160;" Margin="-2,0,10,0"/>
                             <TextBlock Text="New Thought Record"/>
                         </StackPanel>
                     </ListBoxItem>
@@ -63,8 +63,8 @@
                     </ListBoxItem>
                     <ListBoxItem x:Name="InformationListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock 
-                                       FontSize="30" Text="ⓘ" Margin="-2,0,10,0"/>
+                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       FontSize="25" Text="&#xE946;" Margin="-2,0,10,0"/>
                             <TextBlock Text="Information"/>
                         </StackPanel>
                     </ListBoxItem>

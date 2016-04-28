@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.ViewModels.Infrastructure;
-using ThoughtRecordDAL.Models;
+using ThoughtRecordApp.DAL.Models;
 using Windows.UI.Xaml.Data;
 
 namespace ThoughtRecordApp.ViewModels.ValueConverters

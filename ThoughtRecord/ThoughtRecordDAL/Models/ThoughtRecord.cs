@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThoughtRecordDAL.Models
+namespace ThoughtRecordApp.DAL.Models
 {
     public class ThoughtRecord
     {

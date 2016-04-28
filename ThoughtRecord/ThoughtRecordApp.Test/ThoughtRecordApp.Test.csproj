@@ -124,9 +124,9 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThoughtRecordDAL\ThoughtRecordDAL.csproj">
+    <ProjectReference Include="..\ThoughtRecordDAL\ThoughtRecordApp.DAL.csproj">
       <Project>{cc903d22-f2ce-4361-baa2-ac6115504fba}</Project>
-      <Name>ThoughtRecordDAL</Name>
+      <Name>ThoughtRecordApp.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ThoughtRecord\ThoughtRecordApp.csproj">
       <Project>{28ecb6a0-39ab-49bf-8185-ed926bf6b1f9}</Project>

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThoughtRecordDAL.Abstract;
-using ThoughtRecordDAL.Models;
+using ThoughtRecordApp.DAL.Abstract;
+using ThoughtRecordApp.DAL.Models;
 
-namespace ThoughtRecordDAL.Concrete
+namespace ThoughtRecordApp.DAL.Concrete
 {
     public class DatabaseService : IDatabaseService
     {

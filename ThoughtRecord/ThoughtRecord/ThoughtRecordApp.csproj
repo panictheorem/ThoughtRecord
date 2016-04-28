@@ -244,9 +244,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ThoughtRecordDAL\ThoughtRecordDAL.csproj">
+    <ProjectReference Include="..\ThoughtRecordDAL\ThoughtRecordApp.DAL.csproj">
       <Project>{cc903d22-f2ce-4361-baa2-ac6115504fba}</Project>
-      <Name>ThoughtRecordDAL</Name>
+      <Name>ThoughtRecordApp.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

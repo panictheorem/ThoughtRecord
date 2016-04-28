@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThoughtRecordDAL.Models;
+using ThoughtRecordApp.DAL.Models;
 using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.Services

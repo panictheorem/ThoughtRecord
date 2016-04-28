@@ -5,7 +5,7 @@
     xmlns:local="using:ThoughtRecordApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:ThoughtRecordDAL.Models"
+    xmlns:models="using:ThoughtRecordApp.DAL.Models"
     xmlns:templates="using:ThoughtRecordApp.Templates"
     mc:Ignorable="d">
     <Page.Resources>

@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels.Infrastructure;
-using ThoughtRecordDAL.Models;
+using ThoughtRecordApp.DAL.Models;
 using System.Collections.Specialized;
-using ThoughtRecordDAL.Concrete;
+using ThoughtRecordApp.DAL.Concrete;
 
 namespace ThoughtRecordApp.ViewModels
 {
