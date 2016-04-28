@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ThoughtRecordApp.DAL.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -19,9 +20,12 @@ namespace ThoughtRecordApp.Templates
 {
     public sealed partial class ThoughtRecordListTemplate : UserControl
     {
+        public ThoughtRecord ThoughtRecord { get { return this.DataContext as ThoughtRecord; } }
+
         public ThoughtRecordListTemplate()
         {
             this.InitializeComponent();
+            this.DataContextChanged += (s, e) => Bindings.Update();
         }
     }
 }

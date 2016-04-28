@@ -49,7 +49,7 @@ namespace ThoughtRecordApp.Pages
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             var textBox = sender as TextBox;
-            if (textBox != null)
+            if (textBox != null && ViewModel.DefaultInputText != null)
             {
                 if (ViewModel.DefaultInputText.Contains(textBox.Text))
                 {
@@ -65,22 +65,15 @@ namespace ThoughtRecordApp.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-
             ViewModel.Save();
-         
-        }
-
-        private void LoadBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Load();
         }
 
         private void InitialEmotionRatingTemplate_TextBoxGotFocus(object sender, EmotionTextBoxHasFocusEventArgs args)
         {
             var textBox = args.EmotionTextBox;
-            if(textBox != null)
+            if (textBox != null && ViewModel.DefaultInputText != null)
             {
-                if(ViewModel.DefaultInputText.Contains(textBox.Text))
+                if (ViewModel.DefaultInputText.Contains(textBox.Text))
                 {
                     textBox.Text = "";
                 }

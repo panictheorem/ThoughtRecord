@@ -254,7 +254,6 @@
 
         <CommandBar HorizontalContentAlignment="Right" Height="Auto" Grid.Row="2" Background="White">
             <AppBarButton Icon="Save" Label="Save" Click="SaveBtn_Click"/>
-            <AppBarButton Icon="OpenFile" Label="Load" Click="LoadBtn_Click"/>
         </CommandBar>
     </Grid>
 </Page>

@@ -205,33 +205,15 @@ namespace ThoughtRecordApp.ViewModels
 
         public ThoughtRecordEditModel(int thoughtRecordId)
         {
-
-            thoughtRecord = ThoughtRecordService.GetThoughtRecordById(thoughtRecordId);
-            Settings = new Configuration();
-            thoughtRecord.Situation.Description = "Saved Desc";
-            thoughtRecord.AutomaticThoughts = "SAVED Describe the automatic throught(s) you had...";
-            thoughtRecord.SupportingEvidence = "SAVED List the evidence that supports the automatic thought...";
-            thoughtRecord.ContradictingEvidence = "SAVED List the evidence againts the automatic thought...";
-            thoughtRecord.RationalAssessment = "SAVED Come to a rational conclusion...";
-
+            var db = new DatabaseService();
+            thoughtRecord = db.ThoughtRecords.GetById(thoughtRecordId);
+            observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
         }
 
         public void Save()
         {
             var db = new DatabaseService();
             db.ThoughtRecords.Insert(thoughtRecord);
-        }
-        public void Load()
-        {
-            var db = new DatabaseService();
-            ThoughtRecord = db.ThoughtRecords.GetAll().FirstOrDefault();
-            SyncObservableEmotionsCollection();
-
-        }
-
-        public void SyncObservableEmotionsCollection()
-        {
-            Emotions = new DeeplyObservableCollection<Emotion>(ThoughtRecord.Emotions);
         }
     }
 }

@@ -9,7 +9,9 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid>
-
-    </Grid>
+    <GridViewItem>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{x:Bind ThoughtRecord.Situation.Description}" />
+        </StackPanel>
+    </GridViewItem>
 </UserControl>

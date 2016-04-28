@@ -5,11 +5,23 @@
     xmlns:local="using:ThoughtRecordApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:ThoughtRecordApp.DAL.Models"
+    xmlns:template="using:ThoughtRecordApp.Templates"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <GridView>
-            
+        <GridView x:Name="ThoughtRecordGridView"
+                  SelectionMode="Single"
+                  ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"
+                  IsItemClickEnabled="True"
+                  ItemClick="ThoughtRecordGridView_ItemClick">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:ThoughtRecord">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{x:Bind Situation.Description}" />
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
         </GridView>
     </Grid>
 </Page>
