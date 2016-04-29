@@ -13,6 +13,8 @@ using ThoughtRecordApp.ViewModels.Infrastructure;
 using ThoughtRecordApp.DAL.Models;
 using System.Collections.Specialized;
 using ThoughtRecordApp.DAL.Concrete;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Popups;
 
 namespace ThoughtRecordApp.ViewModels
 {
@@ -210,10 +212,12 @@ namespace ThoughtRecordApp.ViewModels
             observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
         }
 
-        public void Save()
+        public async void Save()
         {
             var db = new DatabaseService();
-            db.ThoughtRecords.Insert(thoughtRecord);
+            await db.ThoughtRecords.InsertOrUpdateAsync(thoughtRecord);
+            var dialog = new MessageDialog("Saved");
+            await dialog.ShowAsync();
         }
     }
 }

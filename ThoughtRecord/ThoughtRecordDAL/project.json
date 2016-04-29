@@ -1,7 +1,8 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "SQLiteNetExtensions": "1.3.0"
+    "SQLiteNetExtensions": "1.3.0",
+    "SQLiteNetExtensions.Async": "1.3.0"
   },
   "frameworks": {
     "uap10.0": {}

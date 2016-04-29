@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Test Text" />
-        <Image Source="Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top"/>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+        <TextBlock Foreground="DarkGray" FontWeight="Bold" Text="Brought to you by PANIC THEOREM SOFTWARE" />
+        <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </StackPanel>
 </Page>

@@ -20,12 +20,21 @@ namespace ThoughtRecordApp.DAL.Concrete
             using (var conn = ConnectionManager.GetConnection())
             {
                 //Create all tables if they don't exist
-                conn.CreateTable<ThoughtRecord>();
-                conn.CreateTable<Situation>();
-                conn.CreateTable<Emotion>();
+                if(!DatabaseExists())
+                {
+                    conn.CreateTable<ThoughtRecord>();
+                    conn.CreateTable<Situation>();
+                    conn.CreateTable<Emotion>();
+                }
                 //conn.CreateTable<Configuration>();
             }
         }
+
+        private bool DatabaseExists()
+        {
+            throw new NotImplementedException();
+        }
+
         public IRepository<ThoughtRecord> ThoughtRecords
         {
             get
