@@ -29,6 +29,14 @@ namespace ThoughtRecordApp.Pages
         public ThoughtRecordListPage()
         {
             this.InitializeComponent();
+            InitializeViewModel();
+        }
+
+        private async void InitializeViewModel()
+        {
+            ((App)(Application.Current)).CurrentMain.ShowProgressRing();
+            await ViewModel.Initialize();
+            ((App)(Application.Current)).CurrentMain.HideProgressRing();
         }
 
         private void ThoughtRecordGridView_ItemClick(object sender, ItemClickEventArgs e)

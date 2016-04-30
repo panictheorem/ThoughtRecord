@@ -214,12 +214,10 @@ namespace ThoughtRecordApp.ViewModels
             Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
         }
-        public async void Save()
+        public async Task Save()
         {
             var db = new DatabaseService();
             await db.ThoughtRecords.InsertOrUpdateAsync(thoughtRecord);
-            var dialog = new MessageDialog("Saved");
-            await dialog.ShowAsync();
         }
     }
 }

@@ -17,10 +17,9 @@ namespace ThoughtRecordApp.ViewModels
         public ThoughtRecordListModel()
         {
             ThoughtRecords = new ObservableCollection<ThoughtRecord>();
-            InitializeList();
         }
 
-        private async void InitializeList()
+        public async Task Initialize()
         {
             DatabaseService service = new DatabaseService();
             var records = await service.ThoughtRecords.GetAllAsync();

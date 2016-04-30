@@ -29,21 +29,19 @@ namespace ThoughtRecordApp.Pages
         public MainPage()
         {
             this.InitializeComponent();
+            ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
             MainFrame.Navigate(typeof(ThoughtRecordEditPage));
             PageTitle.Text = "New Thought Record";
             NewThoughtRecordListBoxItem.IsSelected = true;
-            var editPage = this.MainFrame.Content as ThoughtRecordEditPage;
-            editPage.OnAsyncOperationStart += ShowProgressRing;
-            editPage.OnAsyncOperationEnd += HideProgressRing;
         }
 
-        private void ShowProgressRing(object sender, EventArgs args)
+        public void ShowProgressRing()
         {
             MainProgressRing.IsActive = true;
         }
 
-        private void HideProgressRing(object sender, EventArgs args)
+        public void HideProgressRing()
         {
             MainProgressRing.IsActive = false;
         }
@@ -55,6 +53,7 @@ namespace ThoughtRecordApp.Pages
 
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            MainSplitView.IsPaneOpen = false;
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
                 MainFrame.Navigate(typeof(ThoughtRecordEditPage));
