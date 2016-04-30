@@ -20,6 +20,10 @@ namespace ThoughtRecordApp.Pages
 {
     public sealed partial class ThoughtRecordEditPage : Page
     {
+        public delegate void AsyncOperationEvent(object sender, EventArgs args);
+        public event AsyncOperationEvent OnAsyncOperationStart;
+        public event AsyncOperationEvent OnAsyncOperationEnd;
+
         private ThoughtRecordEditModel ViewModel;
 
         public ThoughtRecordEditPage()
@@ -65,7 +69,9 @@ namespace ThoughtRecordApp.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            OnAsyncOperationStart?.Invoke(this, new EventArgs());
             ViewModel.Save();
+            OnAsyncOperationEnd?.Invoke(this, new EventArgs());
         }
 
         private void InitialEmotionRatingTemplate_TextBoxGotFocus(object sender, EmotionTextBoxHasFocusEventArgs args)

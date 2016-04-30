@@ -8,10 +8,17 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-
-    <GridViewItem>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="{x:Bind ThoughtRecord.Situation.Description}" />
-        </StackPanel>
-    </GridViewItem>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/ThoughtRecordListStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Converters/ConverterDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel x:Name="ThoughtRecordGridViewItem" 
+                  Style="{StaticResource ThoughtRecordGridViewItem}">
+        <TextBlock x:Name="SituationDate" Text="{x:Bind ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}" />
+        <TextBlock x:Name="SituationDescription" Text="{x:Bind ThoughtRecord.Situation.Description}" />
+    </StackPanel>
 </UserControl>

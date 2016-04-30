@@ -21,7 +21,7 @@ namespace ThoughtRecordApp.DAL.Concrete
         }
         public static SQLiteAsyncConnection GetAsyncConnection()
         {
-            var connectionFactory = new Func<SQLiteConnectionWithLock>(() => new SQLiteConnectionWithLock(new SQLitePlatformWinRT(), new SQLiteConnectionString(path, storeDateTimeAsTicks: false)));
+            var connectionFactory = new Func<SQLiteConnectionWithLock>(() => new SQLiteConnectionWithLock(new SQLitePlatformWinRT(), new SQLiteConnectionString(path, storeDateTimeAsTicks: true)));
             return new SQLiteAsyncConnection(connectionFactory);
         }
     }

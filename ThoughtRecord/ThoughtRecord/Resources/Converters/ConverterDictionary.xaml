@@ -5,6 +5,7 @@
     xmlns:converters="using:ThoughtRecordApp.ViewModels.ValueConverters">
     <converters:EmotionRatingValueConverter x:Key="EmotionRatingConverter" />
     <converters:EmotionListConverter x:Key="EmotionListConverter" />
-    <converters:DateTimeConverter x:Key="DateTimeConverter" />
+    <converters:CalendarDateTimeConverter x:Key="CalendarDateTimeConverter" />
+    <converters:StringDateTimeConverter x:Key="StringDateTimeConverter" />
     <converters:IntConverter x:Key="IntConverter" />
 </ResourceDictionary>

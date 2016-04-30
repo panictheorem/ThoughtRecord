@@ -10,6 +10,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/AppThemeStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -70,7 +71,15 @@
                     </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
-            <Frame x:Name="MainFrame" />
+            <Grid>
+                <Frame x:Name="MainFrame" />
+                <ProgressRing x:Name="MainProgressRing"
+                              HorizontalAlignment="Center" 
+                              VerticalAlignment="Center" 
+                              Foreground="{StaticResource LightAccentBrush}"
+                              Width="60"
+                              Height="60"/>
+            </Grid>
         </SplitView>
     </Grid>
 </Page>

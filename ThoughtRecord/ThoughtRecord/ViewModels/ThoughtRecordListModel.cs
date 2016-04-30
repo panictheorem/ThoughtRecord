@@ -17,12 +17,18 @@ namespace ThoughtRecordApp.ViewModels
         public ThoughtRecordListModel()
         {
             ThoughtRecords = new ObservableCollection<ThoughtRecord>();
+            InitializeList();
+        }
+
+        private async void InitializeList()
+        {
             DatabaseService service = new DatabaseService();
-            var tr = service.ThoughtRecords.GetAll();
-            foreach(var t in tr)
+            var records = await service.ThoughtRecords.GetAllAsync();
+            foreach (var r in records)
             {
-                ThoughtRecords.Add(t);
+                ThoughtRecords.Add(r);
             }
+            ThoughtRecords.OrderBy(tr => tr.Situation.DateTime);
         }
     }
 }

@@ -36,5 +36,6 @@ namespace ThoughtRecordApp.Pages
             ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;
             Frame.Navigate(typeof(ThoughtRecordEditPage), selectedThoughtRecord.ThoughtRecordId);
         }
+        
     }
 }

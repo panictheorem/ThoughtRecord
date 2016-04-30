@@ -125,6 +125,8 @@
     <Compile Include="Templates\ThoughtRecordListTemplate.xaml.cs">
       <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\Commands\SaveCommand.cs" />
     <Compile Include="ViewModels\InformationModel.cs" />
     <Compile Include="ViewModels\Infrastructure\BindableBase.cs" />
     <Compile Include="ViewModels\Infrastructure\DeeplyObservableCollection.cs" />
@@ -133,7 +135,8 @@
     <Compile Include="ViewModels\ThoughtRecordEditModel.cs" />
     <Compile Include="ViewModels\SettingsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
-    <Compile Include="ViewModels\ValueConverters\DateTimeConverter.cs" />
+    <Compile Include="ViewModels\ValueConverters\CalendarDateTimeConverter.cs" />
+    <Compile Include="ViewModels\ValueConverters\StringDateTimeConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionListConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionRatingValueConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\IntConverter.cs" />
@@ -146,7 +149,9 @@
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\background.jpg" />
     <Content Include="Assets\PanicCubePurple.png" />
+    <Content Include="Assets\background2.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -221,6 +226,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Resources\Styles\AppThemeStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\Styles\ThoughtRecordListStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

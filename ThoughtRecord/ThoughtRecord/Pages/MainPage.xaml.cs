@@ -33,6 +33,19 @@ namespace ThoughtRecordApp.Pages
             MainFrame.Navigate(typeof(ThoughtRecordEditPage));
             PageTitle.Text = "New Thought Record";
             NewThoughtRecordListBoxItem.IsSelected = true;
+            var editPage = this.MainFrame.Content as ThoughtRecordEditPage;
+            editPage.OnAsyncOperationStart += ShowProgressRing;
+            editPage.OnAsyncOperationEnd += HideProgressRing;
+        }
+
+        private void ShowProgressRing(object sender, EventArgs args)
+        {
+            MainProgressRing.IsActive = true;
+        }
+
+        private void HideProgressRing(object sender, EventArgs args)
+        {
+            MainProgressRing.IsActive = false;
         }
 
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
@@ -42,7 +55,7 @@ namespace ThoughtRecordApp.Pages
 
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(NewThoughtRecordListBoxItem.IsSelected)
+            if (NewThoughtRecordListBoxItem.IsSelected)
             {
                 MainFrame.Navigate(typeof(ThoughtRecordEditPage));
                 PageTitle.Text = "New Thought Record";
@@ -52,7 +65,7 @@ namespace ThoughtRecordApp.Pages
                 MainFrame.Navigate(typeof(ThoughtRecordListPage));
                 PageTitle.Text = "My Thought Records";
             }
-            else if(SettingsListBoxItem.IsSelected)
+            else if (SettingsListBoxItem.IsSelected)
             {
                 MainFrame.Navigate(typeof(SettingsPage));
                 PageTitle.Text = "Settings";
@@ -62,6 +75,7 @@ namespace ThoughtRecordApp.Pages
                 MainFrame.Navigate(typeof(InformationPage));
                 PageTitle.Text = "Information";
             }
+
         }
     }
 }

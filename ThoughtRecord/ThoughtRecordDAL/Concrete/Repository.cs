@@ -23,7 +23,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             }
             return entityList;
         }
-        public T GetById(int id)
+        public T GetById(int? id)
         {
             T entity;
             using (var conn = ConnectionManager.GetConnection())
@@ -32,7 +32,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             }
             return entity;
         }
-        public void Delete(int id)
+        public void Delete(int? id)
         {
             using (var conn = ConnectionManager.GetConnection())
             {
@@ -71,7 +71,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             return entities;
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int? id)
         {
             var conn = ConnectionManager.GetAsyncConnection();
             var entity = await conn.GetWithChildrenAsync<T>(id);
@@ -96,7 +96,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             await conn.UpdateWithChildrenAsync(entity);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int? id)
         {
             var conn = ConnectionManager.GetAsyncConnection();
             await conn.DeleteAsync<T>(id);

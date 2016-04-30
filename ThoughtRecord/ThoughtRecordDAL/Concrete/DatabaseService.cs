@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Models;
+using Windows.Storage;
 
 namespace ThoughtRecordApp.DAL.Concrete
 {
@@ -19,27 +20,27 @@ namespace ThoughtRecordApp.DAL.Concrete
         {
             using (var conn = ConnectionManager.GetConnection())
             {
+
                 //Create all tables if they don't exist
-                if(!DatabaseExists())
-                {
-                    conn.CreateTable<ThoughtRecord>();
-                    conn.CreateTable<Situation>();
-                    conn.CreateTable<Emotion>();
-                }
+                conn.CreateTable<ThoughtRecord>();
+                conn.CreateTable<Situation>();
+                conn.CreateTable<Emotion>();
                 //conn.CreateTable<Configuration>();
             }
         }
 
-        private bool DatabaseExists()
+        private async Task<bool> DatabaseExists()
         {
-            throw new NotImplementedException();
+            var dbFile = await ApplicationData.Current.LocalFolder.GetFileAsync(ConnectionManager.FileName);
+
+            return dbFile != null;
         }
 
         public IRepository<ThoughtRecord> ThoughtRecords
         {
             get
             {
-                if(thoughtRecords == null)
+                if (thoughtRecords == null)
                 {
                     thoughtRecords = new Repository<ThoughtRecord>();
                 }

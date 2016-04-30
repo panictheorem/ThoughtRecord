@@ -181,6 +181,7 @@ namespace ThoughtRecordApp.ViewModels
         {
             thoughtRecord = new ThoughtRecord();
             thoughtRecord.Situation = new Situation();
+            thoughtRecord.Situation.DateTime = DateTime.Now;
             thoughtRecord.Emotions = new List<Emotion>();
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             Settings = new Configuration();
@@ -199,19 +200,20 @@ namespace ThoughtRecordApp.ViewModels
                 case NotifyCollectionChangedAction.Remove:
                     thoughtRecord.Emotions.RemoveAll(emotion => e.OldItems.Contains(emotion));
                     break;
-                case NotifyCollectionChangedAction.Reset:
-                    thoughtRecord.Emotions.Clear();
-                    break;
             }
         }
 
         public ThoughtRecordEditModel(int thoughtRecordId)
         {
-            var db = new DatabaseService();
-            thoughtRecord = db.ThoughtRecords.GetById(thoughtRecordId);
-            observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
+            InitializeThoughtRecord(thoughtRecordId);
         }
-
+        private async void InitializeThoughtRecord(int thoughtRecordId)
+        {
+            var db = new DatabaseService();
+            thoughtRecord = await db.ThoughtRecords.GetByIdAsync(thoughtRecordId);
+            Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
+            observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
+        }
         public async void Save()
         {
             var db = new DatabaseService();

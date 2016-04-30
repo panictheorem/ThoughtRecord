@@ -10,16 +10,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
         <GridView x:Name="ThoughtRecordGridView"
                   SelectionMode="Single"
                   ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"
                   IsItemClickEnabled="True"
-                  ItemClick="ThoughtRecordGridView_ItemClick">
-            <GridView.ItemTemplate>
+                  ItemClick="ThoughtRecordGridView_ItemClick"
+                  Padding="10">
+        <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:ThoughtRecord">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{x:Bind Situation.Description}" />
-                    </StackPanel>
+                    <template:ThoughtRecordListTemplate />
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

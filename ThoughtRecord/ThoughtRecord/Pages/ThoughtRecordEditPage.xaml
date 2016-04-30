@@ -188,7 +188,7 @@
                         </Grid.RowDefinitions>
                         <CalendarDatePicker 
                     x:Name="DateOfSituationPicker"
-                    Date="{x:Bind ViewModel.SituationDateTime, Converter={StaticResource DateTimeConverter}, Mode=TwoWay}"
+                    Date="{x:Bind ViewModel.SituationDateTime, Converter={StaticResource CalendarDateTimeConverter}, Mode=TwoWay}"
                     DateFormat="{}{day.integer} {month.full} {year.full}"
                     Grid.Row="0"/>
                         <TextBox x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.SituationDescription,Mode=TwoWay}"
@@ -243,7 +243,7 @@
                         <ItemsControl ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="models:Emotion">
-                                    <templates:SubsequentEmotionRatingTemplate HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                    <templates:SubsequentEmotionRatingTemplate />
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
