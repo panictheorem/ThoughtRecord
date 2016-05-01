@@ -18,8 +18,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel  x:Name="SubsequentEmotionDisplayPanel" Orientation="Vertical">
-        <TextBlock HorizontalAlignment="Center" 
-                   Text="{x:Bind Emotion.Name}"/>
+        <TextBlock Text="{x:Bind Emotion.Name}"/>
         <TextBlock x:Name="InitialEmotionRatingDisplay" 
                    Text="{x:Bind Emotion.SubsequentRating}"/>
     </StackPanel>

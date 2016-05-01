@@ -33,11 +33,18 @@ namespace ThoughtRecordApp.Pages
             currentMain = ((App)(Application.Current)).CurrentMain;
             InitializeViewModel();
         }
-
         private async void InitializeViewModel()
         {
             currentMain.ShowProgressRing();
             await ViewModel.Initialize();
+            if (ViewModel == null || ViewModel.ThoughtRecords == null || ViewModel.ThoughtRecords.Count == 0)
+            {
+                NoThoughtRecordMessage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NoThoughtRecordMessage.Visibility = Visibility.Collapsed;
+            }
             currentMain.HideProgressRing();
         }
 

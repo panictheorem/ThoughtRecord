@@ -8,6 +8,19 @@
     mc:Ignorable="d">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+        <TextBlock Text="Instructions" />
+        <TextBlock Text="When you experience a dysfunctional thought..." />
+        <TextBlock Text="Situation" />
+        <TextBlock Text="Emotions" />
+        <TextBlock Text="Automatic Thoughts" />
+        <TextBlock Text="Evidence Supporting Automatic Thoughts" />
+        <TextBlock Text="Evidence Against Automatic Thoughts" />
+        <TextBlock Text="Rational Assessment" />
+        <TextBlock Text="Re-evaluate Emotions" />
+        <TextBlock Text="Tips" />
+        <TextBlock Text="1. Try to write your thought record as close to the occurance of the situation as possible. That way, the details are still fresh in your mind." />
+        <TextBlock Text="2. Use thought record often. You should make it a habit to create a thought record whenever you experience dysfunctional thinking. The ultimate goal is to chane your default thinking patterns and this will not happen without practice." />
+        <TextBlock Text="About" />
         <TextBlock Foreground="DarkGray" FontWeight="Bold" Text="Brought to you by PANIC THEOREM SOFTWARE" />
         <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </StackPanel>
