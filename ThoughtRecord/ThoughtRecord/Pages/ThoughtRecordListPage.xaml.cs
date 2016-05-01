@@ -24,25 +24,28 @@ namespace ThoughtRecordApp.Pages
     /// </summary>
     public sealed partial class ThoughtRecordListPage : Page
     {
+        private MainPage currentMain;
         public ThoughtRecordListModel ViewModel = new ThoughtRecordListModel();
 
         public ThoughtRecordListPage()
         {
             this.InitializeComponent();
+            currentMain = ((App)(Application.Current)).CurrentMain;
             InitializeViewModel();
         }
 
         private async void InitializeViewModel()
         {
-            ((App)(Application.Current)).CurrentMain.ShowProgressRing();
+            currentMain.ShowProgressRing();
             await ViewModel.Initialize();
-            ((App)(Application.Current)).CurrentMain.HideProgressRing();
+            currentMain.HideProgressRing();
         }
 
         private void ThoughtRecordGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;
-            Frame.Navigate(typeof(ThoughtRecordEditPage), selectedThoughtRecord.ThoughtRecordId);
+            currentMain.ClearMenuSelection();
+            Frame.Navigate(typeof(ThoughtRecordDisplayPage), selectedThoughtRecord.ThoughtRecordId);
         }
         
     }

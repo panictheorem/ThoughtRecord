@@ -53,7 +53,9 @@
         <TextBlock x:Name="InitialEmotionRatingDisplay" 
                    Text="{Binding ElementName=InitialEmotionRatingSlider, Path=Value, Mode=OneWay}"
                    Style="{StaticResource EmotionRatingDisplay}"/>
-        <Slider x:Name="InitialEmotionRatingSlider" IsThumbToolTipEnabled="False"
-                                            Value="{x:Bind Emotion.InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}" Style="{StaticResource EmotionSlider}"/>
+        <Slider x:Name="InitialEmotionRatingSlider" 
+                IsThumbToolTipEnabled="False"
+                Value="{x:Bind Emotion.InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"
+                 Style="{StaticResource EmotionSlider}"/>
     </StackPanel>
 </UserControl>

@@ -5,9 +5,228 @@
     xmlns:local="using:ThoughtRecordApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:ThoughtRecordApp.DAL.Models"
+    xmlns:templates="using:ThoughtRecordApp.Templates"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/ThoughtRecordStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Converters/ConverterDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ThoughtRecordDisplayStates">
+                <VisualState x:Name="NarrowWindow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MobileColumn.Width" Value="*" />
+                        <Setter Target="SituationTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
+                        <Setter Target="InitialEmotionRatingsTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
+                        <Setter Target="AutomaticThoughtsTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
+                        <Setter Target="SupportingEvidenceTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
+                        <Setter Target="ContradictingEvidenceTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
+                        <Setter Target="RationalAssessmentTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
 
+                        <Setter Target="InitialEmotionRatingsTextBlockCell.(Grid.Column)" Value="0" />
+                        <Setter Target="InitialEmotionRatingsInputAreaCell.(Grid.Column)" Value="0" />
+                        <Setter Target="AutomaticThoughtsTextBlockCell.(Grid.Column)" Value="0" />
+                        <Setter Target="AutomaticThoughtsTextBoxCell.(Grid.Column)" Value="0" />
+                        <Setter Target="SupportingEvidenceTextBlockCell.(Grid.Column)" Value="0" />
+                        <Setter Target="SupportingEvidenceTextBoxCell.(Grid.Column)" Value="0" />
+                        <Setter Target="ContradictingEvidenceTextBlockCell.(Grid.Column)" Value="0" />
+                        <Setter Target="ContradictingEvidenceTextBoxCell.(Grid.Column)" Value="0" />
+                        <Setter Target="RationalAssessmentTextBlockCell.(Grid.Column)" Value="0" />
+                        <Setter Target="RationalAssessmentTextBoxCell.(Grid.Column)" Value="0" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlockCell.(Grid.Column)" Value="0" />
+                        <Setter Target="SubsequentEmotionRatingsInputAreaCell.(Grid.Column)" Value="0" />
+
+                        <Setter Target="SituationTextBlockCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="SituationInputAreaCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="InitialEmotionRatingsTextBlockCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="InitialEmotionRatingsInputAreaCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="AutomaticThoughtsTextBlockCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="AutomaticThoughtsTextBoxCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="SupportingEvidenceTextBlockCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="SupportingEvidenceTextBoxCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="ContradictingEvidenceTextBlockCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="ContradictingEvidenceTextBoxCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="RationalAssessmentTextBlockCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="RationalAssessmentTextBoxCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlockCell.(Grid.ColumnSpan)" Value="7" />
+                        <Setter Target="SubsequentEmotionRatingsInputAreaCell.(Grid.ColumnSpan)" Value="7" />
+
+                        <Setter Target="InitialEmotionRatingsTextBlockCell.(Grid.Row)" Value="2" />
+                        <Setter Target="InitialEmotionRatingsInputAreaCell.(Grid.Row)" Value="3" />
+                        <Setter Target="AutomaticThoughtsTextBlockCell.(Grid.Row)" Value="4" />
+                        <Setter Target="AutomaticThoughtsTextBoxCell.(Grid.Row)" Value="5" />
+                        <Setter Target="SupportingEvidenceTextBlockCell.(Grid.Row)" Value="6" />
+                        <Setter Target="SupportingEvidenceTextBoxCell.(Grid.Row)" Value="7" />
+                        <Setter Target="ContradictingEvidenceTextBlockCell.(Grid.Row)" Value="8" />
+                        <Setter Target="ContradictingEvidenceTextBoxCell.(Grid.Row)" Value="9" />
+                        <Setter Target="RationalAssessmentTextBlockCell.(Grid.Row)" Value="10" />
+                        <Setter Target="RationalAssessmentTextBoxCell.(Grid.Row)" Value="11" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlockCell.(Grid.Row)" Value="12" />
+                        <Setter Target="SubsequentEmotionRatingsInputAreaCell.(Grid.Row)" Value="13" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="WideWindow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1150" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SituationTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+                        <Setter Target="InitialEmotionRatingsTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+                        <Setter Target="AutomaticThoughtsTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+                        <Setter Target="SupportingEvidenceTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+                        <Setter Target="ContradictingEvidenceTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+                        <Setter Target="RationalAssessmentTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
+
+                        <Setter Target="SituationTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="SituationInputAreaCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="InitialEmotionRatingsTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="InitialEmotionRatingsInputAreaCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="AutomaticThoughtsTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="AutomaticThoughtsTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="SupportingEvidenceTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="SupportingEvidenceTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="ContradictingEvidenceTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="ContradictingEvidenceTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="RationalAssessmentTextBlockCell.Style" Value="{StaticResource ThoughtRecordCellBorder}" />
+                        <Setter Target="RationalAssessmentTextBoxCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
+                        <Setter Target="SubsequentEmotionRatingsTextBlockCell.Style" Value="{StaticResource ThoughtRecordEndCellBorder}" />
+                        <Setter Target="SubsequentEmotionRatingsInputAreaCell.Style" Value="{StaticResource ThoughtRecordBottomEndCellBorder}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+            <Grid x:Name="ThoughRecordGrid" Margin="20,5,20,20" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition x:Name="DesktopInputRow" Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="MobileColumn" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!--Field Titles-->
+                <Border x:Name="SituationTextBlockCell" Grid.Column="0">
+                    <TextBlock x:Name="SituationTextBlock" Text="Situation"/>
+                </Border>
+                <Border x:Name="InitialEmotionRatingsTextBlockCell" Grid.Column="1">
+                    <TextBlock x:Name="InitialEmotionRatingsTextBlock" Text="Emotions"/>
+                </Border>
+                <Border x:Name="AutomaticThoughtsTextBlockCell" Grid.Column="2">
+                    <TextBlock x:Name="AutomaticThoughtsTextBlock" Text="Automatic Thought(s)"/>
+                </Border>
+                <Border x:Name="SupportingEvidenceTextBlockCell" Grid.Column="3">
+                    <TextBlock x:Name="SupportingEvidenceTextBlock" Text="Evidence Supporting Automatic Thought(s)"/>
+                </Border>
+                <Border x:Name="ContradictingEvidenceTextBlockCell" Grid.Column="4">
+                    <TextBlock x:Name="ContradictingEvidenceTextBlock" Text="Evidence Not Supporting Automatic Thought(s)"/>
+                </Border>
+                <Border x:Name="RationalAssessmentTextBlockCell" Grid.Column="5">
+                    <TextBlock x:Name="RationalAssessmentTextBlock" Text="Rational Assessment" />
+                </Border>
+                <Border x:Name="SubsequentEmotionRatingsTextBlockCell" Grid.Column="6">
+                    <TextBlock x:Name="SubsequentEmotionRatingsTextBlock" Text="Reevaluate Your Emotions"/>
+                </Border>
+
+                <!-- Field Inputs-->
+                <Border x:Name="SituationInputAreaCell" Grid.Row="1">
+                    <Grid x:Name="SituationInputArea">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock 
+                    x:Name="DateOfSituationTextBox"
+                    Text="{x:Bind ViewModel.SituationDateTime, Converter={StaticResource StringDateTimeConverter}}"
+                    Grid.Row="0"/>
+                        <TextBlock x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.SituationDescription}"
+                             Grid.Row="2"/>
+                    </Grid>
+                </Border>
+                <Border x:Name="InitialEmotionRatingsInputAreaCell" Grid.Column="1" Grid.Row="1">
+                    <StackPanel x:Name="InitialEmotionRatingsInputArea"  Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <ItemsControl x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:Emotion">
+                                    <templates:InitialEmotionDisplayTemplate
+                                    x:Name="InitialEmotionDisplayTemplate"
+                                    HorizontalAlignment="Stretch" 
+                                    VerticalAlignment="Stretch"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="AutomaticThoughtsTextBoxCell" Grid.Column="2" Grid.Row="1">
+                    <TextBlock x:Name="AutomaticThoughtsTextBox"
+                         Text="{x:Bind ViewModel.AutomaticThoughts}"/>
+                </Border>
+                <Border x:Name="SupportingEvidenceTextBoxCell" Grid.Column="3" Grid.Row="1">
+                    <TextBlock x:Name="SupportingEvidenceTextBox"
+                         Text="{x:Bind ViewModel.SupportingEvidence}"/>
+                </Border>
+                <Border x:Name="ContradictingEvidenceTextBoxCell" Grid.Column="4" Grid.Row="1">
+                    <TextBlock x:Name="ContradictingEvidenceTextBox" 
+                         Text="{x:Bind ViewModel.ContradictingEvidence}"/>
+                </Border>
+                <Border x:Name="RationalAssessmentTextBoxCell" Grid.Column="5" Grid.Row="1">
+                    <TextBlock x:Name="RationalAssessmentTextBox"
+                         Text="{x:Bind ViewModel.RationalAssessment}"/>
+                </Border>
+                <Border x:Name="SubsequentEmotionRatingsInputAreaCell" Grid.Column="6" Grid.Row="1">
+                    <StackPanel x:Name="SubsequentEmotionRatingsInputArea"
+                Orientation="Vertical">
+                        <ItemsControl ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:Emotion">
+                                    <templates:SubsequentEmotionDisplayTemplate />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+        <CommandBar HorizontalContentAlignment="Right" Height="Auto" Grid.Row="2" Background="White">
+            <AppBarButton Icon="Delete" Label="Delete" Command="{x:Bind ViewModel.RequestDelete}"/>
+            <AppBarButton Icon="Edit" Label="Edit" Command="{x:Bind ViewModel.Edit}" />
+        </CommandBar>
     </Grid>
 </Page>

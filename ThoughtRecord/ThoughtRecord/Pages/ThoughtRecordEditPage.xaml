@@ -253,7 +253,7 @@
         </ScrollViewer>
 
         <CommandBar HorizontalContentAlignment="Right" Height="Auto" Grid.Row="2" Background="White">
-            <AppBarButton Icon="Save" Label="Save" Click="SaveBtn_Click"/>
+            <AppBarButton Icon="Save" Label="Save" Command="{x:Bind ViewModel.Save}"/>
         </CommandBar>
     </Grid>
 </Page>

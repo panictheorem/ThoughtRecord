@@ -45,7 +45,10 @@ namespace ThoughtRecordApp.Pages
         {
             MainProgressRing.IsActive = false;
         }
-
+        public void ClearMenuSelection()
+        {
+            MainMenuListBox.SelectedItem = null;
+        }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;

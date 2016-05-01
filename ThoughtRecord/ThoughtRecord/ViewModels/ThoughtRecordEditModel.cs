@@ -15,11 +15,42 @@ using System.Collections.Specialized;
 using ThoughtRecordApp.DAL.Concrete;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Popups;
+using System.Windows.Input;
 
 namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordEditModel : BindableBase
     {
+        public delegate void ThoughtRecordSaveEvent(object sender, EventArgs args);
+        public event ThoughtRecordSaveEvent OnThoughtRecordSaving;
+        public event ThoughtRecordSaveEvent OnThoughtRecordSaved;
+
+        public ThoughtRecordEditModel()
+        {
+            thoughtRecord = new ThoughtRecord();
+            thoughtRecord.Situation = new Situation();
+            thoughtRecord.Situation.DateTime = DateTime.Now;
+            thoughtRecord.Emotions = new List<Emotion>();
+            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
+            Settings = new Configuration();
+            ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
+            observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
+            observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
+        }
+
+        public ThoughtRecordEditModel(int thoughtRecordId)
+        {
+            InitializeThoughtRecord(thoughtRecordId);
+        }
+
+        private async void InitializeThoughtRecord(int thoughtRecordId)
+        {
+            var db = new DatabaseService();
+            ThoughtRecord = await db.ThoughtRecords.GetByIdAsync(thoughtRecordId);
+            Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
+            observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
+        }
+
         private ThoughtRecord thoughtRecord;
         public ThoughtRecord ThoughtRecord
         {
@@ -177,19 +208,6 @@ namespace ThoughtRecordApp.ViewModels
         public List<string> DefaultInputText { get; }
         public Configuration Settings { get; }
 
-        public ThoughtRecordEditModel()
-        {
-            thoughtRecord = new ThoughtRecord();
-            thoughtRecord.Situation = new Situation();
-            thoughtRecord.Situation.DateTime = DateTime.Now;
-            thoughtRecord.Emotions = new List<Emotion>();
-            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
-            Settings = new Configuration();
-            ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
-            observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
-            observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
-        }
-
         private void UpdateModelEmotionCollection(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
@@ -203,21 +221,24 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
-        public ThoughtRecordEditModel(int thoughtRecordId)
+        private RelayCommand saveThoughtRecord;
+        public ICommand Save
         {
-            InitializeThoughtRecord(thoughtRecordId);
+            get
+            {
+                if(saveThoughtRecord == null)
+                {
+                    saveThoughtRecord = new RelayCommand(SaveThoughtRecord);
+                }
+                return saveThoughtRecord;
+            }
         }
-        private async void InitializeThoughtRecord(int thoughtRecordId)
+        public async void SaveThoughtRecord()
         {
-            var db = new DatabaseService();
-            thoughtRecord = await db.ThoughtRecords.GetByIdAsync(thoughtRecordId);
-            Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
-            observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
-        }
-        public async Task Save()
-        {
+            OnThoughtRecordSaving?.Invoke(this, new EventArgs());
             var db = new DatabaseService();
             await db.ThoughtRecords.InsertOrUpdateAsync(thoughtRecord);
+            OnThoughtRecordSaved?.Invoke(this, new EventArgs());
         }
     }
 }

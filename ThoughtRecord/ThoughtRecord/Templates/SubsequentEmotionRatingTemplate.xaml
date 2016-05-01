@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel  x:Name="SubsequentEmotionRatingPanel" Orientation="Vertical">
+    <StackPanel  x:Name="SubsequentEmotionRatingPanel" Orientation="Vertical" MaxWidth="350" HorizontalAlignment="Stretch">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="WideWindow">
@@ -33,10 +33,12 @@
         <TextBlock HorizontalAlignment="Center" 
                    Text="{x:Bind Emotion.Name, Mode=OneWay}" 
                    Foreground="DarkGray"/>
-        <TextBlock x:Name="InitialEmotionRatingDisplay" 
-                   Text="{Binding ElementName=SubsequentEmotionRatingSlider, Path=Value, Mode=OneWay}"  
-                   Style="{StaticResource EmotionRatingDisplay}"/>
-        <Slider x:Name="SubsequentEmotionRatingSlider" IsThumbToolTipEnabled="False"
-                                            Value="{x:Bind Emotion.SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}" Style="{StaticResource EmotionSlider}"/>
+        <TextBlock x:Name="InitialEmotionRatingDisplay"  
+                   Text="{Binding ElementName=SubsequentEmotionRatingSlider, Path=Value, Mode=OneWay}"   
+                 Style="{StaticResource EmotionRatingDisplay}"/>
+
+        <Slider x:Name="SubsequentEmotionRatingSlider" IsThumbToolTipEnabled="False" 
+                                          Value="{x:Bind Emotion.SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay }" Style="{StaticResource EmotionSlider}"/>
+
     </StackPanel>
 </UserControl>

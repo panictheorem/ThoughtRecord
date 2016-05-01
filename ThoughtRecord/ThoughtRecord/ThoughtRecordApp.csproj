@@ -116,8 +116,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmotionService.cs" />
     <Compile Include="Services\ThoughtRecordService.cs" />
+    <Compile Include="Templates\InitialEmotionDisplayTemplate.xaml.cs">
+      <DependentUpon>InitialEmotionDisplayTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Templates\InitialEmotionRatingTemplate.xaml.cs">
       <DependentUpon>InitialEmotionRatingTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\SubsequentEmotionDisplayTemplate.xaml.cs">
+      <DependentUpon>SubsequentEmotionDisplayTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Templates\SubsequentEmotionRatingTemplate.xaml.cs">
       <DependentUpon>SubsequentEmotionRatingTemplate.xaml</DependentUpon>
@@ -125,8 +131,7 @@
     <Compile Include="Templates\ThoughtRecordListTemplate.xaml.cs">
       <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Commands\RelayCommand.cs" />
-    <Compile Include="ViewModels\Commands\SaveCommand.cs" />
+    <Compile Include="ViewModels\Infrastructure\RelayCommand.cs" />
     <Compile Include="ViewModels\InformationModel.cs" />
     <Compile Include="ViewModels\Infrastructure\BindableBase.cs" />
     <Compile Include="ViewModels\Infrastructure\DeeplyObservableCollection.cs" />
@@ -240,7 +245,15 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Templates\InitialEmotionDisplayTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Templates\InitialEmotionRatingTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\SubsequentEmotionDisplayTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
