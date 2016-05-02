@@ -53,7 +53,29 @@ namespace ThoughtRecordApp.Pages
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
-
+        public void NavigateWithMenuUpdate(Type type)
+        {
+            if(type == typeof(ThoughtRecordEditPage))
+            {
+                NewThoughtRecordListBoxItem.IsSelected = true;
+            } 
+            else if (type == typeof(ThoughtRecordListPage))
+            {
+                ListThoughtRecordsListBoxItem.IsSelected = true;
+            }
+            else if (type == typeof(SettingsPage))
+            {
+                SettingsListBoxItem.IsSelected = true;
+            }
+            else if (type == typeof(InformationPage))
+            {
+                InformationListBoxItem.IsSelected = true;
+            }
+            else
+            {
+                MainMenuListBox.SelectedItem = null;
+            }
+        }
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MainSplitView.IsPaneOpen = false;

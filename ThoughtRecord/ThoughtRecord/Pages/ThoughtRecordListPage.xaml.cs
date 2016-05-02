@@ -24,18 +24,18 @@ namespace ThoughtRecordApp.Pages
     /// </summary>
     public sealed partial class ThoughtRecordListPage : Page
     {
-        private MainPage currentMain;
+        private MainPage rootPage;
         public ThoughtRecordListModel ViewModel = new ThoughtRecordListModel();
 
         public ThoughtRecordListPage()
         {
             this.InitializeComponent();
-            currentMain = ((App)(Application.Current)).CurrentMain;
+            rootPage = ((App)(Application.Current)).CurrentMain;
             InitializeViewModel();
         }
         private async void InitializeViewModel()
         {
-            currentMain.ShowProgressRing();
+            rootPage.ShowProgressRing();
             await ViewModel.Initialize();
             if (ViewModel == null || ViewModel.ThoughtRecords == null || ViewModel.ThoughtRecords.Count == 0)
             {
@@ -45,15 +45,19 @@ namespace ThoughtRecordApp.Pages
             {
                 NoThoughtRecordMessage.Visibility = Visibility.Collapsed;
             }
-            currentMain.HideProgressRing();
+            rootPage.HideProgressRing();
         }
 
         private void ThoughtRecordGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;
-            currentMain.ClearMenuSelection();
+            rootPage.ClearMenuSelection();
             Frame.Navigate(typeof(ThoughtRecordDisplayPage), selectedThoughtRecord.ThoughtRecordId);
         }
-        
+
+        private void NewThoughtRecordButton_Click(object sender, RoutedEventArgs e)
+        {
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage));
+        }
     }
 }

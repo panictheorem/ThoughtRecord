@@ -22,6 +22,11 @@ namespace ThoughtRecordApp.ViewModels.Infrastructure
 
         public RelayCommand(Action executeMethod) : this(executeMethod, null) { }
 
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         public bool CanExecute(object parameter)
         {
             if (canExecuteMethod == null)

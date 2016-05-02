@@ -44,7 +44,7 @@
                     <ListBoxItem x:Name="NewThoughtRecordListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE160;" Margin="-2,0,10,0"/>
+                                       FontSize="25" Text="&#xE82E;" Margin="-2,0,10,0"/>
                             <TextBlock Text="New Thought Record"/>
                         </StackPanel>
                     </ListBoxItem>

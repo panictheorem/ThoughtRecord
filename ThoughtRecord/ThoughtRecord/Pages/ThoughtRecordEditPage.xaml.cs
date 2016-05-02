@@ -23,22 +23,22 @@ namespace ThoughtRecordApp.Pages
     public sealed partial class ThoughtRecordEditPage : Page
     {
         private ThoughtRecordEditModel ViewModel;
-        private MainPage mainPage;
+        private MainPage rootPage;
 
         public ThoughtRecordEditPage()
         {
             this.InitializeComponent();
-            mainPage = ((App)Application.Current).CurrentMain; 
+            rootPage = ((App)Application.Current).CurrentMain; 
         }
 
         private void ShowProgressRing(object sender, EventArgs args)
         {
-            mainPage.ShowProgressRing();
+            rootPage.ShowProgressRing();
         }
 
         private void HideProgressRing(object sender, EventArgs args)
         {
-            mainPage.HideProgressRing();
+            rootPage.HideProgressRing();
             DisplaySaveConfirmationMessage();
         }
 

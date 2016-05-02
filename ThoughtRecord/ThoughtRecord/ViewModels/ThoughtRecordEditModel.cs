@@ -228,16 +228,25 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if(saveThoughtRecord == null)
                 {
-                    saveThoughtRecord = new RelayCommand(SaveThoughtRecord);
+                    saveThoughtRecord = new RelayCommand(SaveThoughtRecord, CanSaveThoughtRecord);
                 }
                 return saveThoughtRecord;
             }
         }
+        private bool canSaveThoughtRecord = true;
+        public bool CanSaveThoughtRecord()
+        {
+            return canSaveThoughtRecord;
+        }
         public async void SaveThoughtRecord()
         {
             OnThoughtRecordSaving?.Invoke(this, new EventArgs());
+            canSaveThoughtRecord = false;
+            saveThoughtRecord.RaiseCanExecuteChanged();
             var db = new DatabaseService();
             await db.ThoughtRecords.InsertOrUpdateAsync(thoughtRecord);
+            canSaveThoughtRecord = true;
+            saveThoughtRecord.RaiseCanExecuteChanged();
             OnThoughtRecordSaved?.Invoke(this, new EventArgs());
         }
     }
