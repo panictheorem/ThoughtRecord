@@ -31,7 +31,6 @@ namespace ThoughtRecordApp.Pages
             this.InitializeComponent();
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
-            MainFrame.Navigate(typeof(ThoughtRecordEditPage));
             PageTitle.Text = "New Thought Record";
             NewThoughtRecordListBoxItem.IsSelected = true;
         }

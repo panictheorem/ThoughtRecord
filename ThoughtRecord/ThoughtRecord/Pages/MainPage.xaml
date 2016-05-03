@@ -15,6 +15,18 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="NarrowWindow">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MainSplitView.CompactPaneLength" Value="45" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -35,7 +47,7 @@
         <SplitView x:Name="MainSplitView"
                    Grid.Row="1"
                    OpenPaneLength="200"
-                   CompactPaneLength="45"
+                   CompactPaneLength="0"
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
                 <ListBox x:Name="MainMenuListBox"

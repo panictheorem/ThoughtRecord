@@ -12,7 +12,7 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordDisplayModel : BindableBase
     {
-        private DatabaseService database;
+        private DatabaseService database = new DatabaseService();
         public delegate void ThoughtRecordEvent(object sender, EventArgs args);
         public event ThoughtRecordEvent OnThoughtRecordEditRequested;
         public event ThoughtRecordEvent OnThoughtRecordDeleteRequested;
@@ -20,7 +20,6 @@ namespace ThoughtRecordApp.ViewModels
 
         public ThoughtRecordDisplayModel(int thoughtRecordId)
         {
-            database = new DatabaseService();
             ThoughtRecord = database.ThoughtRecords.GetById(thoughtRecordId);
         }
 

@@ -13,6 +13,7 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordListModel : BindableBase
     {
         public ObservableCollection<ThoughtRecord> ThoughtRecords { get; set; }
+        private DatabaseService service = new DatabaseService();
 
         public ThoughtRecordListModel()
         {
@@ -21,7 +22,6 @@ namespace ThoughtRecordApp.ViewModels
 
         public async Task Initialize()
         {
-            DatabaseService service = new DatabaseService();
             var records = await service.ThoughtRecords.GetAllAsync();
             foreach (var r in records)
             {

@@ -24,6 +24,15 @@ namespace ThoughtRecordApp.ViewModels
         public delegate void ThoughtRecordSaveEvent(object sender, EventArgs args);
         public event ThoughtRecordSaveEvent OnThoughtRecordSaving;
         public event ThoughtRecordSaveEvent OnThoughtRecordSaved;
+        private DatabaseService database = new DatabaseService();
+        private bool isCurrentDataSaved = false;
+
+        public bool IsCurrentDataSaved
+        {
+            get { return isCurrentDataSaved; }
+            set { isCurrentDataSaved = value; }
+        }
+
 
         public ThoughtRecordEditModel()
         {
@@ -45,8 +54,7 @@ namespace ThoughtRecordApp.ViewModels
 
         private async void InitializeThoughtRecord(int thoughtRecordId)
         {
-            var db = new DatabaseService();
-            ThoughtRecord = await db.ThoughtRecords.GetByIdAsync(thoughtRecordId);
+            ThoughtRecord = await database.ThoughtRecords.GetByIdAsync(thoughtRecordId);
             Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
         }
@@ -243,10 +251,13 @@ namespace ThoughtRecordApp.ViewModels
             OnThoughtRecordSaving?.Invoke(this, new EventArgs());
             canSaveThoughtRecord = false;
             saveThoughtRecord.RaiseCanExecuteChanged();
-            var db = new DatabaseService();
-            await db.ThoughtRecords.InsertOrUpdateAsync(thoughtRecord);
+            await database.ThoughtRecords.InsertOrUpdateAsync(thoughtRecord);
             canSaveThoughtRecord = true;
             saveThoughtRecord.RaiseCanExecuteChanged();
+            if(!IsCurrentDataSaved)
+            {
+                IsCurrentDataSaved = true;
+            }
             OnThoughtRecordSaved?.Invoke(this, new EventArgs());
         }
     }

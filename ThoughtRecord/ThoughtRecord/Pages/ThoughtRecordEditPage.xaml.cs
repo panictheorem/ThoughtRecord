@@ -17,6 +17,8 @@ using ThoughtRecordApp.Templates;
 using ThoughtRecordApp.DAL.Models;
 using NotificationsExtensions.Toasts;
 using Windows.UI.Notifications;
+using ThoughtRecordApp.ViewModels.Infrastructure;
+using System.Windows.Input;
 
 namespace ThoughtRecordApp.Pages
 {
@@ -24,13 +26,33 @@ namespace ThoughtRecordApp.Pages
     {
         private ThoughtRecordEditModel ViewModel;
         private MainPage rootPage;
-
+        private Type desiredPage;
         public ThoughtRecordEditPage()
         {
             this.InitializeComponent();
-            rootPage = ((App)Application.Current).CurrentMain; 
+            rootPage = ((App)Application.Current).CurrentMain;
         }
-
+        protected async override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            if (!ViewModel.IsCurrentDataSaved)
+            {
+                ContentDialog dialog = new ContentDialog()
+                {
+                    Title = "Your Thought Record Is Not Saved",
+                    Content = "Would you like to save this thought record?",
+                    PrimaryButtonText = "Save",
+                    PrimaryButtonCommand = ViewModel.Save,
+                    SecondaryButtonText = "Cancel",
+                    SecondaryButtonCommand = new RelayCommand(() =>
+                    {
+                        desiredPage = e.SourcePageType;
+                    })
+                    
+                };
+                var result = await dialog.ShowAsync();
+            }
+            base.OnNavigatingFrom(e);
+        }
         private void ShowProgressRing(object sender, EventArgs args)
         {
             rootPage.ShowProgressRing();
