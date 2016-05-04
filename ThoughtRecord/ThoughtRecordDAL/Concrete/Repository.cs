@@ -9,11 +9,18 @@ using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Abstract;
 using SQLiteNetExtensionsAsync.Extensions;
 using SQLite.Net;
+using System.Threading;
+using SQLite.Net.Async;
 
 namespace ThoughtRecordApp.DAL.Concrete
 {
     internal class Repository<T> : IRepository<T> where T : class
     {
+        private SQLiteAsyncConnection asyncConn;
+        public Repository(SQLiteAsyncConnection conn)
+        {
+            asyncConn = conn;
+        }
         public IEnumerable<T> GetAll()
         {
             IEnumerable<T> entityList;
@@ -66,40 +73,34 @@ namespace ThoughtRecordApp.DAL.Concrete
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            var conn = ConnectionManager.GetAsyncConnection();
-            var entities = await conn.GetAllWithChildrenAsync<T>();
+            var entities = await asyncConn.GetAllWithChildrenAsync<T>();
             return entities;
         }
 
         public async Task<T> GetByIdAsync(int? id)
         {
-            var conn = ConnectionManager.GetAsyncConnection();
-            var entity = await conn.GetWithChildrenAsync<T>(id);
+            var entity = await asyncConn.GetWithChildrenAsync<T>(id);
             return entity;
         }
 
         public async Task InsertAsync(T entity)
         {
-            var conn = ConnectionManager.GetAsyncConnection();
-            await conn.InsertWithChildrenAsync(entity);
+            await asyncConn.InsertWithChildrenAsync(entity);
         }
 
         public async Task InsertOrUpdateAsync(T entity)
         {
-            var conn = ConnectionManager.GetAsyncConnection();
-            await conn.InsertOrReplaceWithChildrenAsync(entity);
+            await asyncConn.InsertOrReplaceWithChildrenAsync(entity);
         }
 
         public async Task UpdateAsync(T entity)
         {
-            var conn = ConnectionManager.GetAsyncConnection();
-            await conn.UpdateWithChildrenAsync(entity);
+            await asyncConn.UpdateWithChildrenAsync(entity);
         }
 
         public async Task DeleteAsync(int? id)
         {
-            var conn = ConnectionManager.GetAsyncConnection();
-            await conn.DeleteAsync<T>(id);
+            await asyncConn.DeleteAsync<T>(id);
         }
     }
 }

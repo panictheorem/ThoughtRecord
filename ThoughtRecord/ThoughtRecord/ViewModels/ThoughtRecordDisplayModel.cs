@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.DAL.Models;
 using ThoughtRecordApp.ViewModels.Infrastructure;
@@ -12,14 +13,15 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordDisplayModel : BindableBase
     {
-        private DatabaseService database = new DatabaseService();
+        private IDatabaseService database;
         public delegate void ThoughtRecordEvent(object sender, EventArgs args);
         public event ThoughtRecordEvent OnThoughtRecordEditRequested;
         public event ThoughtRecordEvent OnThoughtRecordDeleteRequested;
         public event ThoughtRecordEvent OnThoughtRecordDeleted;
 
-        public ThoughtRecordDisplayModel(int thoughtRecordId)
+        public ThoughtRecordDisplayModel(int thoughtRecordId, IDatabaseService db)
         {
+            database = db;
             ThoughtRecord = database.ThoughtRecords.GetById(thoughtRecordId);
         }
 

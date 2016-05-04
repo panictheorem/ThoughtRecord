@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.Pages;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -33,6 +34,7 @@ namespace ThoughtRecordApp
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
+        public DatabaseService Database { get; private set; } = new DatabaseService();
         public MainPage CurrentMain { get; set; }
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

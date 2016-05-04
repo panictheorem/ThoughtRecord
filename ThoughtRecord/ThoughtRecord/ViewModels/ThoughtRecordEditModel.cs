@@ -16,6 +16,7 @@ using ThoughtRecordApp.DAL.Concrete;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Popups;
 using System.Windows.Input;
+using ThoughtRecordApp.DAL.Abstract;
 
 namespace ThoughtRecordApp.ViewModels
 {
@@ -24,8 +25,8 @@ namespace ThoughtRecordApp.ViewModels
         public delegate void ThoughtRecordSaveEvent(object sender, EventArgs args);
         public event ThoughtRecordSaveEvent OnThoughtRecordSaving;
         public event ThoughtRecordSaveEvent OnThoughtRecordSaved;
-        private DatabaseService database = new DatabaseService();
-        private bool isCurrentDataSaved = false;
+        private IDatabaseService database;
+        private bool isCurrentDataSaved = true;
 
         public bool IsCurrentDataSaved
         {
@@ -34,21 +35,22 @@ namespace ThoughtRecordApp.ViewModels
         }
 
 
-        public ThoughtRecordEditModel()
+        public ThoughtRecordEditModel(IDatabaseService db)
         {
+            database = db;
             thoughtRecord = new ThoughtRecord();
             thoughtRecord.Situation = new Situation();
             thoughtRecord.Situation.DateTime = DateTime.Now;
             thoughtRecord.Emotions = new List<Emotion>();
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
-            Settings = new Configuration();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
             observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
         }
 
-        public ThoughtRecordEditModel(int thoughtRecordId)
+        public ThoughtRecordEditModel(int thoughtRecordId, IDatabaseService db)
         {
+            database = db;
             InitializeThoughtRecord(thoughtRecordId);
         }
 
@@ -214,7 +216,6 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
         public List<string> DefaultInputText { get; }
-        public Configuration Settings { get; }
 
         private void UpdateModelEmotionCollection(object sender, NotifyCollectionChangedEventArgs e)
         {

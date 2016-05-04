@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SQLite.Net.Async;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Models;
@@ -11,6 +13,7 @@ namespace ThoughtRecordApp.DAL.Concrete
 {
     public class DatabaseService : IDatabaseService
     {
+        private SQLiteAsyncConnection asyncConn;
         private IRepository<ThoughtRecord> thoughtRecords;
         private IRepository<Situation> situations;
         private IRepository<Emotion> emotions;
@@ -18,15 +21,12 @@ namespace ThoughtRecordApp.DAL.Concrete
 
         public DatabaseService()
         {
-            using (var conn = ConnectionManager.GetConnection())
-            {
-
-                //Create all tables if they don't exist
-                conn.CreateTable<ThoughtRecord>();
-                conn.CreateTable<Situation>();
-                conn.CreateTable<Emotion>();
+            asyncConn = ConnectionManager.GetAsyncConnection();
+            //Create all tables if they don't exist
+            asyncConn.CreateTableAsync<ThoughtRecord>();
+            asyncConn.CreateTableAsync<Situation>();
+            asyncConn.CreateTableAsync<Emotion>();
                 //conn.CreateTable<Configuration>();
-            }
         }
 
         private async Task<bool> DatabaseExists()
@@ -42,7 +42,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             {
                 if (thoughtRecords == null)
                 {
-                    thoughtRecords = new Repository<ThoughtRecord>();
+                    thoughtRecords = new Repository<ThoughtRecord>(asyncConn);
                 }
                 return thoughtRecords;
             }
@@ -53,7 +53,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             {
                 if (situations == null)
                 {
-                    situations = new Repository<Situation>();
+                    situations = new Repository<Situation>(asyncConn);
                 }
                 return situations;
             }
@@ -65,7 +65,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             {
                 if (emotions == null)
                 {
-                    emotions = new Repository<Emotion>();
+                    emotions = new Repository<Emotion>(asyncConn);
                 }
                 return emotions;
             }
@@ -77,7 +77,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             {
                 if (settings == null)
                 {
-                    settings = new Repository<Configuration>();
+                    settings = new Repository<Configuration>(asyncConn);
                 }
                 return settings;
             }

@@ -18,7 +18,9 @@ using ThoughtRecordApp.DAL.Models;
 using NotificationsExtensions.Toasts;
 using Windows.UI.Notifications;
 using ThoughtRecordApp.ViewModels.Infrastructure;
-using System.Windows.Input;
+using System.Threading;
+using Windows.UI.Popups;
+using ThoughtRecordApp.Services;
 
 namespace ThoughtRecordApp.Pages
 {
@@ -26,32 +28,28 @@ namespace ThoughtRecordApp.Pages
     {
         private ThoughtRecordEditModel ViewModel;
         private MainPage rootPage;
-        private Type desiredPage;
         public ThoughtRecordEditPage()
         {
             this.InitializeComponent();
-            rootPage = ((App)Application.Current).CurrentMain;
+            rootPage = (Application.Current as App).CurrentMain;
         }
         protected async override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
+            base.OnNavigatingFrom(e);
             if (!ViewModel.IsCurrentDataSaved)
             {
-                ContentDialog dialog = new ContentDialog()
-                {
-                    Title = "Your Thought Record Is Not Saved",
-                    Content = "Would you like to save this thought record?",
-                    PrimaryButtonText = "Save",
-                    PrimaryButtonCommand = ViewModel.Save,
-                    SecondaryButtonText = "Cancel",
-                    SecondaryButtonCommand = new RelayCommand(() =>
-                    {
-                        desiredPage = e.SourcePageType;
-                    })
-                    
-                };
+                e.Cancel = true;
+                MessageDialog dialog = new MessageDialog("Would you like to save this thought record?", "Your Thought Record Is Not Saved");
+                dialog.Commands.Add(new UICommand("Save") { Id = 0 });
+                dialog.Commands.Add(new UICommand("Don't Save") { Id = 2 });
                 var result = await dialog.ShowAsync();
+                if (Convert.ToInt16(result.Id) == 0)
+                {
+                    ViewModel.Save.Execute(null);
+                }
+                ViewModel.IsCurrentDataSaved = true;
+                Frame.Navigate(e.SourcePageType);
             }
-            base.OnNavigatingFrom(e);
         }
         private void ShowProgressRing(object sender, EventArgs args)
         {
@@ -98,11 +96,11 @@ namespace ThoughtRecordApp.Pages
             int thoughtRecordId = Convert.ToInt32(obj.Parameter);
             if (thoughtRecordId != 0)
             {
-                ViewModel = new ThoughtRecordEditModel(thoughtRecordId);
+                ViewModel = new ThoughtRecordEditModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
             }
             else
             {
-                ViewModel = new ThoughtRecordEditModel();
+                ViewModel = new ThoughtRecordEditModel(AppDataService.GetDatabase(Application.Current));
             }
             ViewModel.OnThoughtRecordSaving += ShowProgressRing;
             ViewModel.OnThoughtRecordSaved += HideProgressRing;
@@ -112,6 +110,7 @@ namespace ThoughtRecordApp.Pages
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.Emotions.Add(new Emotion());
+            ViewModel.IsCurrentDataSaved = false;
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -129,6 +128,7 @@ namespace ThoughtRecordApp.Pages
         private void InitialEmotionRatingTemplate_RemoveButtonClicked(object sender, RemoveEmotionButtonClickedEventArgs args)
         {
             ViewModel.Emotions.Remove(args.SelectedEmotion);
+            ViewModel.IsCurrentDataSaved = false;
         }
 
         private void InitialEmotionRatingTemplate_TextBoxGotFocus(object sender, EmotionTextBoxHasFocusEventArgs args)

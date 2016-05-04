@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -34,7 +35,7 @@ namespace ThoughtRecordApp.Pages
         protected override void OnNavigatedTo(NavigationEventArgs obj)
         {
             int thoughtRecordId = Convert.ToInt32(obj.Parameter);
-            ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId);
+            ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
             ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
             ViewModel.OnThoughtRecordDeleted += NavigatetoListPage;
             ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;

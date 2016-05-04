@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using ThoughtRecordApp.DAL.Models;
+using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -25,12 +26,13 @@ namespace ThoughtRecordApp.Pages
     public sealed partial class ThoughtRecordListPage : Page
     {
         private MainPage rootPage;
-        public ThoughtRecordListModel ViewModel = new ThoughtRecordListModel();
+        public ThoughtRecordListModel ViewModel;
 
         public ThoughtRecordListPage()
         {
             this.InitializeComponent();
             rootPage = ((App)(Application.Current)).CurrentMain;
+            ViewModel = new ThoughtRecordListModel(AppDataService.GetDatabase(Application.Current));
             InitializeViewModel();
         }
         private async void InitializeViewModel()
