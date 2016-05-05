@@ -28,7 +28,7 @@
     <Style x:Key="RecordFieldTitleDesktop" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
-        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="5" />
     </Style>

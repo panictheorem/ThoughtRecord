@@ -62,7 +62,7 @@ namespace ThoughtRecordApp.ViewModels.Infrastructure
 
         private void item_PropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            base.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            base.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, sender, sender, IndexOf((T)sender)));
         }
     }
 }

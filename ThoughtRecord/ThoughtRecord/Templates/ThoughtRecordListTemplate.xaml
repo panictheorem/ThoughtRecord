@@ -16,9 +16,32 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel x:Name="ThoughtRecordGridViewItem" 
-                  Style="{StaticResource ThoughtRecordGridViewItem}">
-        <TextBlock x:Name="SituationDate" Text="{x:Bind ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}" />
-        <TextBlock x:Name="SituationDescription" Text="{x:Bind ThoughtRecord.Situation.Description}" />
+    <StackPanel x:Name="ThoughtRecordGridViewItem">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="NarrowWindow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ThoughtRecordGridViewItem.Style" Value="{StaticResource ThoughtRecordGridViewItemMobile}" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideWindow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ThoughtRecordGridViewItem.Style" Value="{StaticResource ThoughtRecordGridViewItemDesktop}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <TextBlock x:Name="SituationDate" 
+                   Style="{StaticResource SituationDateGridViewTextBlock}"
+                   Text="{x:Bind ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}" />
+        <TextBlock x:Name="SituationDescription" 
+                   Style="{StaticResource SituationDescriptionGridViewTextBlock}"
+                   Text="{x:Bind ThoughtRecord.Situation.Description, Converter={StaticResource StringLengthConverter}}" />
     </StackPanel>
 </UserControl>

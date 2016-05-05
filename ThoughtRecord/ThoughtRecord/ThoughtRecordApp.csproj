@@ -142,6 +142,7 @@
     <Compile Include="ViewModels\SettingsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
     <Compile Include="ViewModels\ValueConverters\CalendarDateTimeConverter.cs" />
+    <Compile Include="ViewModels\ValueConverters\StringLengthConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\StringDateTimeConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionListConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionRatingValueConverter.cs" />

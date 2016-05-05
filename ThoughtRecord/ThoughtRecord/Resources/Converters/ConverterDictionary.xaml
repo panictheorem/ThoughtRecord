@@ -8,4 +8,5 @@
     <converters:CalendarDateTimeConverter x:Key="CalendarDateTimeConverter" />
     <converters:StringDateTimeConverter x:Key="StringDateTimeConverter" />
     <converters:IntConverter x:Key="IntConverter" />
+    <converters:StringLengthConverter x:Key="StringLengthConverter" />
 </ResourceDictionary>

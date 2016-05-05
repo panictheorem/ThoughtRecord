@@ -192,8 +192,8 @@ namespace ThoughtRecordApp.ViewModels
                 }
             }
         }
-        private DeeplyObservableCollection<Emotion> observableEmotions;
-        public DeeplyObservableCollection<Emotion> Emotions
+        private ObservableCollection<Emotion> observableEmotions;
+        public ObservableCollection<Emotion> Emotions
         {
             get
             {
@@ -201,7 +201,7 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     return observableEmotions;
                 }
-                return new DeeplyObservableCollection<Emotion>();
+                return new ObservableCollection<Emotion>();
             }
             set
             {

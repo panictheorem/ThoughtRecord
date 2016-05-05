@@ -10,4 +10,22 @@
         <Setter Property="Padding" Value="20" />
         <Setter Property="Orientation" Value="Vertical" />
     </Style>
+    <Style x:Key="ThoughtRecordGridViewItemDesktop" TargetType="StackPanel" BasedOn="{StaticResource ThoughtRecordGridViewItem}">
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Height" Value="200" />
+    </Style>
+    <Style x:Key="ThoughtRecordGridViewItemMobile" TargetType="StackPanel" BasedOn="{StaticResource ThoughtRecordGridViewItem}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Height" Value="100" />
+    </Style>
+
+    <Style x:Key="SituationDateGridViewTextBlock" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Foreground" Value="CornflowerBlue" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style x:Key="SituationDescriptionGridViewTextBlock" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
 </ResourceDictionary>
