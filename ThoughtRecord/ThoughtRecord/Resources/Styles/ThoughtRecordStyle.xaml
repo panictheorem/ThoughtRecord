@@ -20,15 +20,14 @@
         <Setter Property="BorderThickness" Value="1,1,1,1" />
     </Style>
     <Style x:Key="RecordFieldTitle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
-        <Setter Property="FontSize" Value="15" />
-        <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="Margin" Value="0,0,0,10" />
     </Style>
     <Style x:Key="RecordFieldTitleDesktop" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
-        <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="5" />
     </Style>

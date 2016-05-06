@@ -19,35 +19,35 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
-        <GridView x:Name="ThoughtRecordGridView"
+        <Button Content="dsfdsfsdfsdfdfs" />
+        <ListView x:Name="ThoughtRecordGridView"
                   SelectionMode="Single"
                   ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"
                   IsItemClickEnabled="True"
                   ItemClick="ThoughtRecordGridView_ItemClick"
-                  ItemContainerStyle="{StaticResource ThoughtRecordGridViewItem}"
-                  Padding="10">
-        <GridView.ItemTemplate>
+                  Padding="10"
+                  ItemContainerStyle="{StaticResource ThoughtRecordListViewItem}">
+            <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:ThoughtRecord">
                     <template:ThoughtRecordListTemplate />
                 </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+            </ListView.ItemTemplate>
+        </ListView>
         <StackPanel x:Name="NoThoughtRecordMessage" 
-                    Style="{StaticResource NoThoughtRecordBoxDesktop}" 
+                    Style="{StaticResource NoThoughtRecordBoxMobile}" 
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Margin="10"
                     Visibility="Collapsed">
             <TextBlock Text="You have no saved thought records yet."
                        Foreground="{StaticResource PrimaryForegroundBrush}"
-                       Style="{ThemeResource BodyTextBlockStyle}" 
-                       Margin="10"/>
+                       Style="{ThemeResource TitleTextBlockStyle}"/>
             <Button x:Name="NewThoughtRecordButton" 
-                    Click="NewThoughtRecordButton_Click"
-                    HorizontalAlignment="Center">
+                    Style="{StaticResource DiscreteButton}" 
+                    Click="NewThoughtRecordButton_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE710;"  VerticalAlignment="Center"/>
-                    <TextBlock FontFamily="Segoe UI" Text=" New Record" VerticalAlignment="Center"/>
+                    <TextBlock Text="&#xE710;" />
+                    <TextBlock FontFamily="Segoe UI" Text="New Record" />
                 </StackPanel>
             </Button>
         </StackPanel>

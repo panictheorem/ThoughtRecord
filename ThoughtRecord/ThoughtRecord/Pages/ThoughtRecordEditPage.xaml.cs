@@ -109,7 +109,7 @@ namespace ThoughtRecordApp.Pages
 
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.Emotions.Add(new Emotion() { Name = "" });
+            ViewModel.Emotions.Add(new Emotion());
             ViewModel.IsCurrentDataSaved = false;
         }
 

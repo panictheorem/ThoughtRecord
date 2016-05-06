@@ -224,7 +224,7 @@
                 </Border>
             </Grid>
         </ScrollViewer>
-        <CommandBar HorizontalContentAlignment="Right" Height="Auto" Grid.Row="2" Background="White">
+        <CommandBar HorizontalContentAlignment="Right" Height="Auto" Grid.Row="2">
             <AppBarButton Icon="Delete" Label="Delete" Command="{x:Bind ViewModel.RequestDelete}"/>
             <AppBarButton Icon="Edit" Label="Edit" Command="{x:Bind ViewModel.Edit}" />
         </CommandBar>
