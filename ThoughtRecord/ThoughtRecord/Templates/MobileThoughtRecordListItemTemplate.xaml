@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="ThoughtRecordApp.Templates.ThoughtRecordListTemplate"
+    x:Class="ThoughtRecordApp.Templates.MobileThoughtRecordListTemplate"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ThoughtRecordApp.Templates"
@@ -8,6 +8,7 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,19 +19,25 @@
     </UserControl.Resources>
     <Grid x:Name="ThoughtRecordItem" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="SituationDate" 
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="SituationDate" 
                    Grid.Row="0"
                    Style="{StaticResource ThoughtRecordItemSituationDateTextBlock}"
-                   Text="{x:Bind ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}" />
-        <Image Source="/Assets/ThoughtCloud.png" 
+                   Text="{x:Bind ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}"/>
+            <Image Source="/Assets/ThoughtCloud.png" 
                Grid.Row="1" 
-               Stretch="Uniform"/>
-        <TextBlock x:Name="SituationDescription" 
+               Stretch="Uniform"
+               Height="75"
+                   Margin="10,0,10,0"
+               HorizontalAlignment="Left"/>
+            <TextBlock x:Name="SituationDescription" 
                    Grid.Row="1"
                    Style="{StaticResource ThoughtRecordItemSituationDescriptionTextBlock }"
-                   Text="{x:Bind ThoughtRecord.Situation.Description, Converter={StaticResource StringLengthConverter}}" />
+                   Text="{x:Bind ThoughtRecord.Situation.Description, Converter={StaticResource StringLengthConverter}}"/>
     </Grid>
 </UserControl>

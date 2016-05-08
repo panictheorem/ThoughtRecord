@@ -19,11 +19,11 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
-        <GridView x:Name="ThoughtRecordGridView"
+        <GridView x:Name="ThoughtRecordItemsList"
                   SelectionMode="Single"
                   ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"
                   IsItemClickEnabled="True"
-                  ItemClick="ThoughtRecordGridView_ItemClick"
+                  ItemClick="ThoughtRecordItemsList_ItemClick"
                   ItemContainerStyle="{StaticResource ThoughtRecordGridViewItem}"
                   Padding="10">
             <GridView.ItemTemplate>

@@ -126,6 +126,9 @@
     <Compile Include="Templates\SubsequentEmotionRatingTemplate.xaml.cs">
       <DependentUpon>SubsequentEmotionRatingTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Templates\MobileThoughtRecordListItemTemplate.xaml.cs">
+      <DependentUpon>MobileThoughtRecordListItemTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Templates\ThoughtRecordListTemplate.xaml.cs">
       <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
     </Compile>
@@ -154,8 +157,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\background.jpg" />
+    <Content Include="Assets\background10.jpg" />
+    <Content Include="Assets\background11.jpg" />
+    <Content Include="Assets\background3.jpg" />
+    <Content Include="Assets\background4.jpg" />
+    <Content Include="Assets\BACKGROUND5.jpg" />
+    <Content Include="Assets\background6.jpg" />
+    <Content Include="Assets\background8.jpg" />
+    <Content Include="Assets\background9.jpg" />
     <Content Include="Assets\PanicCubePurple.png" />
     <Content Include="Assets\background2.jpg" />
+    <Content Include="Assets\thoughtcloud-mobile %282%29.png" />
+    <Content Include="Assets\thoughtcloud-mobile %283%29.png" />
+    <Content Include="Assets\thoughtcloud-mobile %284%29.png" />
+    <Content Include="Assets\thoughtcloud-mobile.png" />
     <Content Include="Assets\thoughtcloud.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -262,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Templates\SubsequentEmotionRatingTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\MobileThoughtRecordListItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

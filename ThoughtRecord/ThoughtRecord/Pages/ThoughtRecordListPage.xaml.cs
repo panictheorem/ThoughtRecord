@@ -51,7 +51,7 @@ namespace ThoughtRecordApp.Pages
         }
 
         //Navigates to the display page for the selected item.
-        private void ThoughtRecordGridView_ItemClick(object sender, ItemClickEventArgs e)
+        private void ThoughtRecordItemsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;
             rootPage.ClearMenuSelection();

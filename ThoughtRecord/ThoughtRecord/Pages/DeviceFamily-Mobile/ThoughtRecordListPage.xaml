@@ -19,16 +19,16 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
-        <ListView x:Name="ThoughtRecordGridView"
+        <ListView x:Name="ThoughtRecordItemsList"
                   SelectionMode="Single"
                   ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"
                   IsItemClickEnabled="True"
-                  ItemClick="ThoughtRecordGridView_ItemClick"
+                  ItemClick="ThoughtRecordItemsList_ItemClick"
                   Padding="10"
                   ItemContainerStyle="{StaticResource ThoughtRecordListViewItem}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:ThoughtRecord">
-                    <template:ThoughtRecordListTemplate />
+                    <template:MobileThoughtRecordListTemplate />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
