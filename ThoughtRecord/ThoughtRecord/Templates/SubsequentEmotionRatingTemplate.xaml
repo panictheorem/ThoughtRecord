@@ -32,7 +32,7 @@
         </VisualStateManager.VisualStateGroups>
         <TextBlock HorizontalAlignment="Center" 
                    Text="{x:Bind Emotion.Name, Mode=OneWay}" 
-                   Foreground="DarkGray"/>
+                   Foreground="{StaticResource ForegroundLightBrush}"/>
         <TextBlock x:Name="InitialEmotionRatingDisplay"  
                    Text="{Binding ElementName=SubsequentEmotionRatingSlider, Path=Value, Mode=OneWay}"   
                  Style="{StaticResource EmotionRatingDisplay}"/>

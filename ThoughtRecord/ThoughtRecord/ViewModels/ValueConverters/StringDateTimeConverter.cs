@@ -7,6 +7,9 @@ using Windows.UI.Xaml.Data;
 
 namespace ThoughtRecordApp.ViewModels.ValueConverters
 {
+    /// <summary>
+    /// Converts DateTime to be displayed as a string and back to DateTime
+    /// </summary>
     class StringDateTimeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecordApp.DAL.Abstract
 {
+    /// <summary>
+    /// Defines CRUD operations of repository.
+    /// </summary>
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();

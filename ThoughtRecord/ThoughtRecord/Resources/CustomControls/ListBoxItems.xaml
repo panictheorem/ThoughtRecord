@@ -47,7 +47,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundUltraLightBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -57,7 +57,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DarkAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundUltraLightBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -67,7 +67,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundUltraLightBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -77,7 +77,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -87,7 +87,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -97,7 +97,7 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DarkAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundUltraLightBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

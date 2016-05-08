@@ -11,6 +11,9 @@ using Windows.Storage;
 
 namespace ThoughtRecordApp.DAL.Concrete
 {
+    /// <summary>
+    /// Holds instances of Repository class for business models
+    /// </summary>
     public class DatabaseService : IDatabaseService
     {
         private SQLiteAsyncConnection asyncConn;

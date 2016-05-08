@@ -8,6 +8,9 @@ using ThoughtRecordApp.DAL.Models;
 
 namespace ThoughtRecordApp.DAL.Abstract
 {
+    /// <summary>
+    /// Defines operations of a database service
+    /// </summary>
     public interface IDatabaseService
     {
         IRepository<ThoughtRecord> ThoughtRecords { get; }

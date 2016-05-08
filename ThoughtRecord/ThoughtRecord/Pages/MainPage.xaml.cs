@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using ThoughtRecordApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -15,12 +16,12 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace ThoughtRecordApp.Pages
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The root page of the application. This page hosts the frame with which 
+    /// all other pages are displayed. It also contains the header title and 
+    /// main menu navigation UI. 
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -29,10 +30,21 @@ namespace ThoughtRecordApp.Pages
         public MainPage()
         {
             this.InitializeComponent();
+            //Set this page as the current main page which other pages can access through the 
+            //application object.
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
             PageTitle.Text = "New Thought Record";
             NewThoughtRecordListBoxItem.IsSelected = true;
+            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
+            {
+                if(MainFrame.CanGoBack)
+                {
+                    MainFrame.GoBack();
+                    NavigateWithMenuUpdate(MainFrame.CurrentSourcePageType);
+                    e.Handled = true;
+                }
+            };
         }
 
         public void ShowProgressRing()
@@ -52,6 +64,7 @@ namespace ThoughtRecordApp.Pages
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
+        //Updates the main menu selection which will, in turn, trigger the navigation
         public void NavigateWithMenuUpdate(Type type)
         {
             if(type == typeof(ThoughtRecordEditPage))
@@ -62,10 +75,6 @@ namespace ThoughtRecordApp.Pages
             {
                 ListThoughtRecordsListBoxItem.IsSelected = true;
             }
-            else if (type == typeof(SettingsPage))
-            {
-                SettingsListBoxItem.IsSelected = true;
-            }
             else if (type == typeof(InformationPage))
             {
                 InformationListBoxItem.IsSelected = true;
@@ -75,27 +84,33 @@ namespace ThoughtRecordApp.Pages
                 MainMenuListBox.SelectedItem = null;
             }
         }
+
+        //Updates header title and navigates, if necessary, based on selected item
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MainSplitView.IsPaneOpen = false;
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
-                MainFrame.Navigate(typeof(ThoughtRecordEditPage));
+                if(MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
+                {
+                    MainFrame.Navigate(typeof(ThoughtRecordEditPage));
+                }
                 PageTitle.Text = "New Thought Record";
             }
             else if (ListThoughtRecordsListBoxItem.IsSelected)
             {
-                MainFrame.Navigate(typeof(ThoughtRecordListPage));
+                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordListPage))
+                {
+                    MainFrame.Navigate(typeof(ThoughtRecordListPage));
+                }
                 PageTitle.Text = "My Thought Records";
-            }
-            else if (SettingsListBoxItem.IsSelected)
-            {
-                MainFrame.Navigate(typeof(SettingsPage));
-                PageTitle.Text = "Settings";
             }
             else if (InformationListBoxItem.IsSelected)
             {
-                MainFrame.Navigate(typeof(InformationPage));
+                if (MainFrame.CurrentSourcePageType != typeof(InformationPage))
+                {
+                    MainFrame.Navigate(typeof(InformationPage));
+                }
                 PageTitle.Text = "Information";
             }
 

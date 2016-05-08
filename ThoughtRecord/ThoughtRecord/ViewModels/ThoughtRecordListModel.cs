@@ -11,6 +11,9 @@ using ThoughtRecordApp.ViewModels.Infrastructure;
 
 namespace ThoughtRecordApp.ViewModels
 {
+    /// <summary>
+    /// Holds data to be displayed with ThoughtRecordListPage. 
+    /// </summary>
     public class ThoughtRecordListModel : BindableBase
     {
         public ObservableCollection<ThoughtRecord> ThoughtRecords { get; set; }
@@ -24,12 +27,14 @@ namespace ThoughtRecordApp.ViewModels
 
         public async Task Initialize()
         {
-            var records = await database.ThoughtRecords.GetAllAsync();
+            var records = (await database.ThoughtRecords.GetAllAsync())
+                          .OrderByDescending(tr => tr.Situation.DateTime.Date)
+                          .ToList();
+            records.OrderByDescending(tr => tr.Situation.DateTime.Date);
             foreach (var r in records)
             {
                 ThoughtRecords.Add(r);
             }
-            ThoughtRecords.OrderBy(tr => tr.Situation.DateTime);
         }
     }
 }

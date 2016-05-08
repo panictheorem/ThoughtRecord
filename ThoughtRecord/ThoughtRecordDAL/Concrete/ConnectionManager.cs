@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecordApp.DAL.Concrete
 {
+    /// <summary>
+    /// Creates a connection object which can be used by DatabaseService and 
+    /// Repository instances.
+    /// </summary>
     public class ConnectionManager
     {
         public static readonly string FileName = "db.sqlite";

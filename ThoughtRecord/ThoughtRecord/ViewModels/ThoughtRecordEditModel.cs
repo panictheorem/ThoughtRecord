@@ -44,7 +44,7 @@ namespace ThoughtRecordApp.ViewModels
             thoughtRecord.Emotions = new List<Emotion>();
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
-            observableEmotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
+            observableEmotions = new ObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
         }
 
@@ -52,6 +52,7 @@ namespace ThoughtRecordApp.ViewModels
         {
             database = db;
             InitializeThoughtRecord(thoughtRecordId);
+            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
         }
 
         private async void InitializeThoughtRecord(int thoughtRecordId)

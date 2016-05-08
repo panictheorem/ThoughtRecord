@@ -6,9 +6,9 @@
         <ResourceDictionary Source="/Resources/Styles/AppThemeStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="EmotionSlider" TargetType="Slider">
-        <Setter Property="Background" Value="DarkGray"/>
+        <Setter Property="Background" Value="{StaticResource ForegroundLightBrush}"/>
         <Setter Property="BorderThickness" Value="{ThemeResource SliderBorderThemeThickness}"/>
-        <Setter Property="Foreground" Value="MediumAquamarine"/>
+        <Setter Property="Foreground" Value="{StaticResource LightAccentBrush}"/>
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
         <Setter Property="ManipulationMode" Value="None"/>
@@ -93,10 +93,10 @@
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundLightBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="HorizontalThumb">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DarkAccentBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundDarkBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="VerticalThumb">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DarkAccentBrush}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundDarkBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

@@ -19,7 +19,6 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
-        <Button Content="dsfdsfsdfsdfdfs" />
         <ListView x:Name="ThoughtRecordGridView"
                   SelectionMode="Single"
                   ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"
@@ -33,23 +32,29 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel x:Name="NoThoughtRecordMessage" 
+        <Grid x:Name="NoThoughtRecordMessage" 
                     Style="{StaticResource NoThoughtRecordBoxMobile}" 
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Margin="10"
                     Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <TextBlock Text="You have no saved thought records yet."
-                       Foreground="{StaticResource PrimaryForegroundBrush}"
-                       Style="{ThemeResource TitleTextBlockStyle}"/>
+                       Foreground="{StaticResource ForegroundDarkBrush}"
+                       Style="{ThemeResource BodyTextBlockStyle}" 
+                       Margin="10"
+                       Grid.Row="0"/>
             <Button x:Name="NewThoughtRecordButton" 
-                    Style="{StaticResource DiscreteButton}" 
-                    Click="NewThoughtRecordButton_Click">
+                    Click="NewThoughtRecordButton_Click"
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource DiscreteButton}"
+                    Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xE710;" />
-                    <TextBlock FontFamily="Segoe UI" Text="New Record" />
+                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE710;"  VerticalAlignment="Center"/>
+                    <TextBlock FontFamily="Segoe UI" Text=" New Thought Record"/>
                 </StackPanel>
             </Button>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

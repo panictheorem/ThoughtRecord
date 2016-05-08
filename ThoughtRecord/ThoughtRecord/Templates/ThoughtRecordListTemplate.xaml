@@ -16,12 +16,19 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel x:Name="ThoughtRecordItem" HorizontalAlignment="Left" VerticalAlignment="Top">
+    <Grid x:Name="ThoughtRecordItem" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <TextBlock x:Name="SituationDate" 
+                   Grid.Row="0"
                    Style="{StaticResource ThoughtRecordItemSituationDateTextBlock}"
                    Text="{x:Bind ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}" />
+        <Image Source="/Assets/ThoughtCloud.png" Grid.Row="1" Stretch="Uniform"/>
         <TextBlock x:Name="SituationDescription" 
+                   Grid.Row="1"
                    Style="{StaticResource ThoughtRecordItemSituationDescriptionTextBlock }"
                    Text="{x:Bind ThoughtRecord.Situation.Description, Converter={StaticResource StringLengthConverter}}" />
-    </StackPanel>
+    </Grid>
 </UserControl>

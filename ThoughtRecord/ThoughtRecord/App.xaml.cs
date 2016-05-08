@@ -25,6 +25,11 @@ namespace ThoughtRecordApp
     /// </summary>
     sealed partial class App : Application
     {
+        //Database shared by all pages in the application
+        public DatabaseService Database { get; private set; } = new DatabaseService();
+        //Holds the root page of the application
+        public MainPage CurrentMain { get; set; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -34,8 +39,6 @@ namespace ThoughtRecordApp
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
-        public DatabaseService Database { get; private set; } = new DatabaseService();
-        public MainPage CurrentMain { get; set; }
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.

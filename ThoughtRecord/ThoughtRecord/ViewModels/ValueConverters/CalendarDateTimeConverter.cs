@@ -7,6 +7,9 @@ using Windows.UI.Xaml.Data;
 
 namespace ThoughtRecordApp.ViewModels.ValueConverters
 {
+    /// <summary>
+    /// Converts DateTime to format required by calendar picker and back again.
+    /// </summary>
     public class CalendarDateTimeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)

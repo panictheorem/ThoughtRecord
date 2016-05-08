@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecordApp.ViewModels.Infrastructure
 {
+    /// <summary>
+    /// Implementation of INotifyPropertyChanged to be used by View Models
+    /// </summary>
     public class BindableBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

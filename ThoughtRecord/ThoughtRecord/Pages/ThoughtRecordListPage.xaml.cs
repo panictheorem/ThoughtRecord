@@ -21,7 +21,7 @@ using Windows.UI.Xaml.Navigation;
 namespace ThoughtRecordApp.Pages
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Displays a list of saved thought records.
     /// </summary>
     public sealed partial class ThoughtRecordListPage : Page
     {
@@ -50,6 +50,7 @@ namespace ThoughtRecordApp.Pages
             rootPage.HideProgressRing();
         }
 
+        //Navigates to the display page for the selected item.
         private void ThoughtRecordGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;

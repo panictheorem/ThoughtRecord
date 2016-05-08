@@ -26,30 +26,29 @@
                   ItemClick="ThoughtRecordGridView_ItemClick"
                   ItemContainerStyle="{StaticResource ThoughtRecordGridViewItem}"
                   Padding="10">
-        <GridView.ItemTemplate>
+            <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:ThoughtRecord">
-                    <template:ThoughtRecordListTemplate />
+                    <template:ThoughtRecordListTemplate  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <StackPanel x:Name="NoThoughtRecordMessage" 
+        <Grid x:Name="NoThoughtRecordMessage" 
                     Style="{StaticResource NoThoughtRecordBoxDesktop}" 
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Margin="10"
                     Visibility="Collapsed">
             <TextBlock Text="You have no saved thought records yet."
-                       Foreground="{StaticResource PrimaryForegroundBrush}"
+                       Foreground="{StaticResource ForegroundDarkBrush}"
                        Style="{ThemeResource BodyTextBlockStyle}" 
                        Margin="10"/>
             <Button x:Name="NewThoughtRecordButton" 
                     Click="NewThoughtRecordButton_Click"
-                    HorizontalAlignment="Center">
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource DiscreteButton}">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE710;"  VerticalAlignment="Center"/>
-                    <TextBlock FontFamily="Segoe UI" Text=" New Record" VerticalAlignment="Center"/>
+                    <TextBlock FontFamily="Segoe UI" Text=" New Record"/>
                 </StackPanel>
             </Button>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

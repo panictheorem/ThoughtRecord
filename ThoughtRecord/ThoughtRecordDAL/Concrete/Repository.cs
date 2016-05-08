@@ -14,6 +14,9 @@ using SQLite.Net.Async;
 
 namespace ThoughtRecordApp.DAL.Concrete
 {
+    /// <summary>
+    /// Generic class for performing CRUD operations on an object
+    /// </summary>
     internal class Repository<T> : IRepository<T> where T : class
     {
         private SQLiteAsyncConnection asyncConn;

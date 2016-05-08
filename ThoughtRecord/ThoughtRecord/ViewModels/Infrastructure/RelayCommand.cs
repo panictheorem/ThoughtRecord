@@ -7,6 +7,10 @@ using System.Windows.Input;
 
 namespace ThoughtRecordApp.ViewModels.Infrastructure
 {
+    /// <summary>
+    /// Implementation of ICommand to be used by View Models to define commands
+    /// which can be bound to UI elements.
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private Action executeMethod;

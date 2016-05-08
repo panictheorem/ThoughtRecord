@@ -107,9 +107,6 @@
     <Compile Include="Pages\ThoughtRecordEditPage.xaml.cs">
       <DependentUpon>ThoughtRecordEditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ThoughtRecordListPage.xaml.cs">
       <DependentUpon>ThoughtRecordListPage.xaml</DependentUpon>
     </Compile>
@@ -159,6 +156,7 @@
     <Content Include="Assets\background.jpg" />
     <Content Include="Assets\PanicCubePurple.png" />
     <Content Include="Assets\background2.jpg" />
+    <Content Include="Assets\thoughtcloud.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -209,10 +207,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Pages\ThoughtRecordEditPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

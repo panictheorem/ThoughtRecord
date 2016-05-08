@@ -4,8 +4,8 @@
     xmlns:local="using:ThoughtRecordApp.Styles">
     <SolidColorBrush x:Key="LightAccentBrush" Color="MediumAquamarine" />
     <SolidColorBrush x:Key="DarkAccentBrush" Color="#F45AC1AA" />
-    <SolidColorBrush x:Key="PrimaryForegroundBrush" Color="CornflowerBlue" />
+    <SolidColorBrush x:Key="HighlightBrush" Color="CornflowerBlue" />
     <SolidColorBrush x:Key="ForegroundLightBrush" Color="DarkGray" />
-    <SolidColorBrush x:Key="ForegroundDarkBrush" Color="DarkSlateGray" />
-    <SolidColorBrush x:Key="ForegroundUltraLightBrush" Color="White" />
+    <SolidColorBrush x:Key="ForegroundDarkBrush" Color="#8A8A8A" />
+    <SolidColorBrush x:Key="UltraLightBrush" Color="White" />
 </ResourceDictionary>
