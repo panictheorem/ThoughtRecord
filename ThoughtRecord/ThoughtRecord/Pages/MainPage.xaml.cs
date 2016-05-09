@@ -38,7 +38,7 @@ namespace ThoughtRecordApp.Pages
             NewThoughtRecordListBoxItem.IsSelected = true;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
-                if(MainFrame.CanGoBack)
+                if (MainFrame.CanGoBack)
                 {
                     MainFrame.GoBack();
                     NavigateWithMenuUpdate(MainFrame.CurrentSourcePageType);
@@ -67,10 +67,10 @@ namespace ThoughtRecordApp.Pages
         //Updates the main menu selection which will, in turn, trigger the navigation
         public void NavigateWithMenuUpdate(Type type)
         {
-            if(type == typeof(ThoughtRecordEditPage))
+            if (type == typeof(ThoughtRecordEditPage))
             {
                 NewThoughtRecordListBoxItem.IsSelected = true;
-            } 
+            }
             else if (type == typeof(ThoughtRecordListPage))
             {
                 ListThoughtRecordsListBoxItem.IsSelected = true;
@@ -91,7 +91,7 @@ namespace ThoughtRecordApp.Pages
             MainSplitView.IsPaneOpen = false;
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
-                if(MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
+                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordEditPage));
                 }
@@ -113,7 +113,6 @@ namespace ThoughtRecordApp.Pages
                 }
                 PageTitle.Text = "Information";
             }
-
         }
     }
 }

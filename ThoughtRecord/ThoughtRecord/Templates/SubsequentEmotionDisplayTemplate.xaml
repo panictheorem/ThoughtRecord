@@ -18,8 +18,10 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel  x:Name="SubsequentEmotionDisplayPanel" Orientation="Vertical">
-        <TextBlock Text="{x:Bind Emotion.Name}"/>
+        <TextBlock Text="{x:Bind Emotion.Name}"
+                   Style="{StaticResource ThoughtRecordContentTextBox}"/>
         <TextBlock x:Name="InitialEmotionRatingDisplay" 
-                   Text="{x:Bind Emotion.SubsequentRating}"/>
+                   Text="{x:Bind Emotion.SubsequentRating}"
+                   Style="{StaticResource ThoughtRecordContentTextBox}"/>
     </StackPanel>
 </UserControl>

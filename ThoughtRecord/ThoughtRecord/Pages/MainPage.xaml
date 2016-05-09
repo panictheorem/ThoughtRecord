@@ -42,7 +42,8 @@
                        RelativePanel.RightOf="MenuToggleButton"
                        RelativePanel.AlignVerticalCenterWithPanel="True"
                        Margin="10,0,0,0"
-                       Foreground="{StaticResource ForegroundLightBrush}"/>
+                       Foreground="{StaticResource ForegroundLightBrush}"
+                       FontWeight="Light"/>
         </RelativePanel>
         <SplitView x:Name="MainSplitView"
                    Grid.Row="1"
