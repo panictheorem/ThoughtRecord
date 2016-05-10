@@ -91,10 +91,10 @@ namespace ThoughtRecordApp.Pages
             MainSplitView.IsPaneOpen = false;
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
-                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
-                {
-                    MainFrame.Navigate(typeof(ThoughtRecordEditPage));
-                }
+                //We don't check if already on the page here because the user may be on the edit page
+                //for a record, but then press the new thought record button. Since they use the same page,
+                //we want to be able to navigate from editing a thought record to a new record.
+                MainFrame.Navigate(typeof(ThoughtRecordEditPage));
                 PageTitle.Text = "New Thought Record";
             }
             else if (ListThoughtRecordsListBoxItem.IsSelected)

@@ -14,6 +14,9 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordDisplayModel : BindableBase
     {
         private IDatabaseService database;
+        private List<ThoughtRecord> thoughtRecords;
+        private int currentIndex;
+        private bool commandsEnabled;
         public delegate void ThoughtRecordEvent(object sender, EventArgs args);
         public event ThoughtRecordEvent OnThoughtRecordEditRequested;
         public event ThoughtRecordEvent OnThoughtRecordDeleteRequested;
@@ -22,9 +25,16 @@ namespace ThoughtRecordApp.ViewModels
         public ThoughtRecordDisplayModel(int thoughtRecordId, IDatabaseService db)
         {
             database = db;
-            ThoughtRecord = database.ThoughtRecords.GetById(thoughtRecordId);
+            InitializeModel(thoughtRecordId);
         }
-
+        private async void InitializeModel(int thoughtRecordId)
+        {
+            thoughtRecords = (await database.ThoughtRecords.GetAllAsync()).OrderByDescending(tr => tr.Situation.DateTime).ToList();
+            ThoughtRecord = thoughtRecords.Where(t => t.ThoughtRecordId == thoughtRecordId).FirstOrDefault();
+            currentIndex = thoughtRecords.IndexOf(ThoughtRecord);
+            commandsEnabled = true;
+            RaiseCanExecuteChangedForAll();
+        }
         private ThoughtRecord thoughtRecord;
         public ThoughtRecord ThoughtRecord
         {
@@ -35,147 +45,7 @@ namespace ThoughtRecordApp.ViewModels
             set
             {
                 thoughtRecord = value;
-                OnPropertyChanged(null);
-            }
-        }
-        public DateTime SituationDateTime
-        {
-            get
-            {
-                if (thoughtRecord != null)
-                {
-                    return thoughtRecord.Situation.DateTime;
-                }
-                return new DateTime();
-            }
-            set
-            {
-                if (thoughtRecord != null)
-                {
-                    if (thoughtRecord.Situation.DateTime != value)
-                    {
-                        thoughtRecord.Situation.DateTime = value;
-                        OnPropertyChanged();
-                    }
-                }
-            }
-        }
-        public string SituationDescription
-        {
-            get
-            {
-                if (thoughtRecord != null)
-                {
-                    return thoughtRecord.Situation.Description;
-                }
-                return string.Empty;
-            }
-            set
-            {
-                if (thoughtRecord != null)
-                {
-                    this.thoughtRecord.Situation.Description = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string AutomaticThoughts
-        {
-            get
-            {
-                if (thoughtRecord != null)
-                {
-                    return thoughtRecord.AutomaticThoughts;
-                }
-                return string.Empty;
-            }
-            set
-            {
-                if (thoughtRecord != null)
-                {
-                    thoughtRecord.AutomaticThoughts = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public string SupportingEvidence
-        {
-            get
-            {
-                if (thoughtRecord != null)
-                {
-                    return thoughtRecord.SupportingEvidence;
-                }
-                return string.Empty;
-            }
-            set
-            {
-                if (thoughtRecord != null)
-                {
-                    thoughtRecord.SupportingEvidence = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public string ContradictingEvidence
-        {
-            get
-            {
-                if (thoughtRecord != null)
-                {
-                    return thoughtRecord.ContradictingEvidence;
-                }
-                return string.Empty;
-            }
-            set
-            {
-                if (thoughtRecord != null)
-                {
-                    thoughtRecord.ContradictingEvidence = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public string RationalAssessment
-        {
-            get
-            {
-                if (thoughtRecord != null)
-                {
-                    return thoughtRecord.RationalAssessment;
-                }
-                return string.Empty;
-            }
-            set
-            {
-                if (thoughtRecord != null)
-                {
-                    thoughtRecord.RationalAssessment = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public List<Emotion> Emotions
-        {
-            get
-            {
-                if (thoughtRecord != null)
-                {
-                    return thoughtRecord.Emotions;
-                }
-                return new List<Emotion>();
-            }
-            set
-            {
-                if (thoughtRecord != null)
-                {
-                    if (thoughtRecord.Emotions != value)
-                    {
-                        thoughtRecord.Emotions = value;
-                        OnPropertyChanged();
-                    }
-                }
+                OnPropertyChanged();
             }
         }
 
@@ -184,7 +54,7 @@ namespace ThoughtRecordApp.ViewModels
         {
             get
             {
-                if(requestDeleteThoughtRecord == null)
+                if (requestDeleteThoughtRecord == null)
                 {
                     requestDeleteThoughtRecord = new RelayCommand(InitiateDeleteThoughtRecord);
                 }
@@ -198,7 +68,7 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (deleteThoughtRecord == null)
                 {
-                    deleteThoughtRecord = new RelayCommand(DeleteThoughtRecord);
+                    deleteThoughtRecord = new RelayCommand(DeleteThoughtRecord, CommandsAreEnabled);
                 }
                 return deleteThoughtRecord;
             }
@@ -210,9 +80,33 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (editThoughtRecord == null)
                 {
-                    editThoughtRecord = new RelayCommand(NotifyEditRequested);
+                    editThoughtRecord = new RelayCommand(NotifyEditRequested, CommandsAreEnabled);
                 }
                 return editThoughtRecord;
+            }
+        }
+        private RelayCommand selectNextNewerThoughtRecord;
+        public ICommand GetNewer
+        {
+            get
+            {
+                if (selectNextNewerThoughtRecord == null)
+                {
+                    selectNextNewerThoughtRecord = new RelayCommand(SelectNextNewerThoughtRecord, CanSelectNewerThoughtRecord);
+                }
+                return selectNextNewerThoughtRecord;
+            }
+        }
+        private RelayCommand selectNextOlderThoughtRecord;
+        public ICommand GetOlder
+        {
+            get
+            {
+                if (selectNextOlderThoughtRecord == null)
+                {
+                    selectNextOlderThoughtRecord = new RelayCommand(SelectNextOlderThoughtRecord, CanSelectOlderThoughtRecord);
+                }
+                return selectNextOlderThoughtRecord;
             }
         }
         private void NotifyEditRequested()
@@ -224,11 +118,47 @@ namespace ThoughtRecordApp.ViewModels
         {
             OnThoughtRecordDeleteRequested?.Invoke(this, new EventArgs());
         }
-        private void DeleteThoughtRecord()
+        private async void DeleteThoughtRecord()
         {
-            database.ThoughtRecords.Delete(ThoughtRecord.ThoughtRecordId);
+            commandsEnabled = false;
+            await database.ThoughtRecords.DeleteAsync(ThoughtRecord.ThoughtRecordId);
             OnThoughtRecordDeleted?.Invoke(this, new EventArgs());
+            commandsEnabled = false;
         }
 
+        private void SelectNextNewerThoughtRecord()
+        {
+            ThoughtRecord = thoughtRecords[--currentIndex];
+            selectNextNewerThoughtRecord.RaiseCanExecuteChanged();
+            selectNextOlderThoughtRecord.RaiseCanExecuteChanged();
+        }
+
+        private void SelectNextOlderThoughtRecord()
+        {
+            ThoughtRecord = thoughtRecords[++currentIndex];
+            selectNextNewerThoughtRecord.RaiseCanExecuteChanged();
+            selectNextOlderThoughtRecord.RaiseCanExecuteChanged();
+        }
+        private bool CanSelectNewerThoughtRecord()
+        {
+            return commandsEnabled && thoughtRecords != null && currentIndex > 0;
+        }
+        private bool CanSelectOlderThoughtRecord()
+        {
+            return commandsEnabled && thoughtRecords != null && currentIndex < thoughtRecords.Count - 1;
+        }
+
+        private bool CommandsAreEnabled()
+        {
+            return commandsEnabled;
+        }
+
+        private void RaiseCanExecuteChangedForAll()
+        {
+            (GetOlder as RelayCommand).RaiseCanExecuteChanged();
+            (GetNewer as RelayCommand).RaiseCanExecuteChanged();
+            (Delete as RelayCommand).RaiseCanExecuteChanged();
+            (Edit as RelayCommand).RaiseCanExecuteChanged();
+        }
     }
 }

@@ -22,22 +22,31 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordEditModel : BindableBase
     {
-        public delegate void ThoughtRecordSaveEvent(object sender, EventArgs args);
-        public event ThoughtRecordSaveEvent OnThoughtRecordSaving;
-        public event ThoughtRecordSaveEvent OnThoughtRecordSaved;
+        public delegate void ThoughtRecordEditEvent(object sender, EventArgs args);
+        public event ThoughtRecordEditEvent OnThoughtRecordSaving;
+        public event ThoughtRecordEditEvent OnThoughtRecordSaved;
+        public event ThoughtRecordEditEvent OnNewThoughtRecordOverwriteRisk;
         private IDatabaseService database;
         private bool isCurrentDataSaved = true;
-
-        public bool IsCurrentDataSaved
-        {
-            get { return isCurrentDataSaved; }
-            set { isCurrentDataSaved = value; }
-        }
-
+        private bool commandsEnabled;
 
         public ThoughtRecordEditModel(IDatabaseService db)
         {
             database = db;
+            CreateNewThoughtRecord();
+            commandsEnabled = true;
+        }
+
+        public ThoughtRecordEditModel(int thoughtRecordId, IDatabaseService db)
+        {
+            database = db;
+            InitializeThoughtRecord(thoughtRecordId);
+            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
+            commandsEnabled = true;
+        }
+
+        public void CreateNewThoughtRecord()
+        {
             thoughtRecord = new ThoughtRecord();
             thoughtRecord.Situation = new Situation();
             thoughtRecord.Situation.DateTime = DateTime.Now;
@@ -46,20 +55,22 @@ namespace ThoughtRecordApp.ViewModels
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
             observableEmotions = new ObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
+            OnPropertyChanged(string.Empty);
         }
-
-        public ThoughtRecordEditModel(int thoughtRecordId, IDatabaseService db)
-        {
-            database = db;
-            InitializeThoughtRecord(thoughtRecordId);
-            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
-        }
-
         private async void InitializeThoughtRecord(int thoughtRecordId)
         {
             ThoughtRecord = await database.ThoughtRecords.GetByIdAsync(thoughtRecordId);
             Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
+
+        }
+
+        public List<string> DefaultInputText { get; private set; }
+
+        public bool IsCurrentDataSaved
+        {
+            get { return isCurrentDataSaved; }
+            set { isCurrentDataSaved = value; }
         }
 
         private ThoughtRecord thoughtRecord;
@@ -72,7 +83,7 @@ namespace ThoughtRecordApp.ViewModels
             set
             {
                 thoughtRecord = value;
-                OnPropertyChanged(null);
+                OnPropertyChanged(string.Empty);
             }
         }
         public DateTime SituationDateTime
@@ -216,7 +227,6 @@ namespace ThoughtRecordApp.ViewModels
                 }
             }
         }
-        public List<string> DefaultInputText { get; }
 
         private void UpdateModelEmotionCollection(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -261,6 +271,35 @@ namespace ThoughtRecordApp.ViewModels
                 IsCurrentDataSaved = true;
             }
             OnThoughtRecordSaved?.Invoke(this, new EventArgs());
+        }
+
+        private RelayCommand newThoughtRecord;
+        public ICommand RequestNew
+        {
+            get
+            {
+                if (newThoughtRecord == null)
+                {
+                    newThoughtRecord = new RelayCommand(InitiateNewThoughtRecord, CommandsEnabled);
+                }
+                return newThoughtRecord;
+            }
+        }
+
+        public bool CommandsEnabled()
+        {
+            return commandsEnabled;
+        }
+        public void InitiateNewThoughtRecord()
+        {
+            if(isCurrentDataSaved)
+            {
+                CreateNewThoughtRecord();
+            }
+            else
+            {
+                OnNewThoughtRecordOverwriteRisk?.Invoke(this, new EventArgs());
+            }
         }
     }
 }

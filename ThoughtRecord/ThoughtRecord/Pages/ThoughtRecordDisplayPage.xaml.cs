@@ -24,6 +24,7 @@ namespace ThoughtRecordApp.Pages
     public sealed partial class ThoughtRecordDisplayPage : Page
     {
         private ThoughtRecordDisplayModel ViewModel;
+        private MainPage rootPage;
 
         public ThoughtRecordDisplayPage()
         {
@@ -32,6 +33,7 @@ namespace ThoughtRecordApp.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs obj)
         {
+            rootPage = ((App)Application.Current).CurrentMain;
             int thoughtRecordId = Convert.ToInt32(obj.Parameter);
             ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
             ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
@@ -61,14 +63,7 @@ namespace ThoughtRecordApp.Pages
 
         private void NavigatetoListPage(object sender, EventArgs args)
         {
-            if(Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
-            else
-            {
-                Frame.Navigate(typeof(ThoughtRecordListPage));
-            }
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordListPage));
         }
     }
 }
