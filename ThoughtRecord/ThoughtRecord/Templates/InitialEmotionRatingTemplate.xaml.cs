@@ -26,6 +26,7 @@ namespace ThoughtRecordApp.Templates
         public event RemoveEmotionButtonClickedEvent RemoveButtonClicked;
         public event TextBoxGotFocusEvent TextBoxGotFocus;
 
+
         public InitialEmotionRatingTemplate()
         {
             this.InitializeComponent();

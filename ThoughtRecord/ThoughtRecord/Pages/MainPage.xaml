@@ -38,6 +38,7 @@
                     RelativePanel.AlignLeftWithPanel="True"
                     Click="MenuToggleButton_Click" Style="{StaticResource MenuToggleButton}" />
             <TextBlock x:Name="PageTitle"
+                       Text="{x:Bind ViewModel.Title, Mode=OneWay}"
                        Style="{ThemeResource TitleTextBlockStyle}" 
                        RelativePanel.RightOf="MenuToggleButton"
                        RelativePanel.AlignVerticalCenterWithPanel="True"

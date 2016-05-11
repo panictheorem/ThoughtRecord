@@ -84,6 +84,7 @@ namespace ThoughtRecordApp.ViewModels
             {
                 thoughtRecord = value;
                 OnPropertyChanged(string.Empty);
+                IsCurrentDataSaved = false;
             }
         }
         public DateTime SituationDateTime
@@ -104,6 +105,7 @@ namespace ThoughtRecordApp.ViewModels
                     {
                         thoughtRecord.Situation.DateTime = value;
                         OnPropertyChanged();
+                        IsCurrentDataSaved = false;
                     }
                 }
             }
@@ -124,6 +126,7 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     this.thoughtRecord.Situation.Description = value;
                     OnPropertyChanged();
+                    IsCurrentDataSaved = false;
                 }
             }
         }
@@ -144,6 +147,7 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     thoughtRecord.AutomaticThoughts = value;
                     OnPropertyChanged();
+                    IsCurrentDataSaved = false;
                 }
             }
         }
@@ -163,6 +167,7 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     thoughtRecord.SupportingEvidence = value;
                     OnPropertyChanged();
+                    IsCurrentDataSaved = false;
                 }
             }
         }
@@ -182,6 +187,7 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     thoughtRecord.ContradictingEvidence = value;
                     OnPropertyChanged();
+                    IsCurrentDataSaved = false;
                 }
             }
         }
@@ -201,6 +207,7 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     thoughtRecord.RationalAssessment = value;
                     OnPropertyChanged();
+                    IsCurrentDataSaved = false;
                 }
             }
         }
@@ -223,6 +230,7 @@ namespace ThoughtRecordApp.ViewModels
                     {
                         observableEmotions = value;
                         OnPropertyChanged();
+                        IsCurrentDataSaved = false;
                     }
                 }
             }
@@ -230,6 +238,7 @@ namespace ThoughtRecordApp.ViewModels
 
         private void UpdateModelEmotionCollection(object sender, NotifyCollectionChangedEventArgs e)
         {
+            IsCurrentDataSaved = false;
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
@@ -273,16 +282,16 @@ namespace ThoughtRecordApp.ViewModels
             OnThoughtRecordSaved?.Invoke(this, new EventArgs());
         }
 
-        private RelayCommand newThoughtRecord;
+        private RelayCommand requestNewThoughtRecord;
         public ICommand RequestNew
         {
             get
             {
-                if (newThoughtRecord == null)
+                if (requestNewThoughtRecord == null)
                 {
-                    newThoughtRecord = new RelayCommand(InitiateNewThoughtRecord, CommandsEnabled);
+                    requestNewThoughtRecord = new RelayCommand(InitiateNewThoughtRecord, CommandsEnabled);
                 }
-                return newThoughtRecord;
+                return requestNewThoughtRecord;
             }
         }
 
@@ -300,6 +309,38 @@ namespace ThoughtRecordApp.ViewModels
             {
                 OnNewThoughtRecordOverwriteRisk?.Invoke(this, new EventArgs());
             }
+        }
+
+        private RelayCommand createNewThoughtRecord;
+        public ICommand CreateNew
+        {
+            get
+            {
+                if (createNewThoughtRecord == null)
+                {
+                    createNewThoughtRecord = new RelayCommand(CreateNewThoughtRecord);
+                }
+                return createNewThoughtRecord;
+            }
+        }
+
+        private RelayCommand saveAndCreateNewThoughtRecord;
+        public ICommand SaveAndCreateNew
+        {
+            get
+            {
+                if (saveAndCreateNewThoughtRecord == null)
+                {
+                    saveAndCreateNewThoughtRecord = new RelayCommand(SaveAndCreateNewThoughtRecord);
+                }
+                return saveAndCreateNewThoughtRecord;
+            }
+        }
+
+        private void SaveAndCreateNewThoughtRecord()
+        {
+            SaveThoughtRecord();
+            CreateNewThoughtRecord();
         }
     }
 }

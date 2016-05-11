@@ -16,9 +16,9 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             string str = value as string;
-            if(str.Length > 70)
+            if(str.Length > 100)
             {
-                str = str.Substring(0, 69);
+                str = str.Substring(0, 99);
                 str += "...";
             }
             return str;

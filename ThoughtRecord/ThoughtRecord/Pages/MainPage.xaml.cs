@@ -34,7 +34,7 @@ namespace ThoughtRecordApp.Pages
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
-            PageTitle.Text = "New Thought Record";
+            ViewModel.Title = "New Thought Record";
             NewThoughtRecordListBoxItem.IsSelected = true;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
@@ -84,7 +84,10 @@ namespace ThoughtRecordApp.Pages
                 MainMenuListBox.SelectedItem = null;
             }
         }
-
+        public void UpdateTitle(string title)
+        {
+            ViewModel.Title = title;
+        }
         //Updates header title and navigates, if necessary, based on selected item
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -95,7 +98,7 @@ namespace ThoughtRecordApp.Pages
                 //for a record, but then press the new thought record button. Since they use the same page,
                 //we want to be able to navigate from editing a thought record to a new record.
                 MainFrame.Navigate(typeof(ThoughtRecordEditPage));
-                PageTitle.Text = "New Thought Record";
+                ViewModel.Title = "New Thought Record";
             }
             else if (ListThoughtRecordsListBoxItem.IsSelected)
             {
@@ -103,7 +106,7 @@ namespace ThoughtRecordApp.Pages
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordListPage));
                 }
-                PageTitle.Text = "My Thought Records";
+                ViewModel.Title = "My Thought Records";
             }
             else if (InformationListBoxItem.IsSelected)
             {
@@ -111,7 +114,7 @@ namespace ThoughtRecordApp.Pages
                 {
                     MainFrame.Navigate(typeof(InformationPage));
                 }
-                PageTitle.Text = "Information";
+                ViewModel.Title = "Information";
             }
         }
     }

@@ -33,20 +33,52 @@ namespace ThoughtRecordApp.Pages
             this.InitializeComponent();
             rootPage = (Application.Current as App).CurrentMain;
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs obj)
+        {
+            int thoughtRecordId = Convert.ToInt32(obj.Parameter);
+            if (thoughtRecordId != 0)
+            {
+                ViewModel = new ThoughtRecordEditModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
+            }
+            else
+            {
+                ViewModel = new ThoughtRecordEditModel(AppDataService.GetDatabase(Application.Current));
+            }
+            ViewModel.OnThoughtRecordSaving += ShowProgressRing;
+            ViewModel.OnThoughtRecordSaved += HideProgressRing;
+            ViewModel.OnNewThoughtRecordOverwriteRisk += PromptToSave;
+            base.OnNavigatedTo(obj);
+        }
+
+        private async void PromptToSave(object sender, EventArgs args)
+        {
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Your current thought record is not saved",
+                Content = "Would you like to save this thought record?",
+                PrimaryButtonText = "Save",
+                PrimaryButtonCommand = ViewModel.SaveAndCreateNew,
+                SecondaryButtonText = "Don't Save",
+                SecondaryButtonCommand = ViewModel.CreateNew
+            };
+            await dialog.ShowAsync();
+        }
         protected async override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
             if (!ViewModel.IsCurrentDataSaved)
             {
                 e.Cancel = true;
-                MessageDialog dialog = new MessageDialog("Would you like to save this thought record?", "Your Thought Record Is Not Saved");
-                dialog.Commands.Add(new UICommand("Save") { Id = 0 });
-                dialog.Commands.Add(new UICommand("Don't Save") { Id = 2 });
-                var result = await dialog.ShowAsync();
-                if (Convert.ToInt16(result.Id) == 0)
+                ContentDialog dialog = new ContentDialog()
                 {
-                    ViewModel.Save.Execute(null);
-                }
+                    Title = "Your Thought Record Is Not Saved",
+                    Content = "Would you like to save this thought record?",
+                    PrimaryButtonText = "Save",
+                    PrimaryButtonCommand = ViewModel.Save,
+                    SecondaryButtonText = "Don't Save"
+                };
+                await dialog.ShowAsync();
                 ViewModel.IsCurrentDataSaved = true;
                 Frame.Navigate(e.SourcePageType);
             }
@@ -91,26 +123,9 @@ namespace ThoughtRecordApp.Pages
 
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs obj)
-        {
-            int thoughtRecordId = Convert.ToInt32(obj.Parameter);
-            if (thoughtRecordId != 0)
-            {
-                ViewModel = new ThoughtRecordEditModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
-            }
-            else
-            {
-                ViewModel = new ThoughtRecordEditModel(AppDataService.GetDatabase(Application.Current));
-            }
-            ViewModel.OnThoughtRecordSaving += ShowProgressRing;
-            ViewModel.OnThoughtRecordSaved += HideProgressRing;
-            base.OnNavigatedTo(obj);
-        }
-
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.Emotions.Add(new Emotion());
-            ViewModel.IsCurrentDataSaved = false;
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -128,9 +143,11 @@ namespace ThoughtRecordApp.Pages
         private void InitialEmotionRatingTemplate_RemoveButtonClicked(object sender, RemoveEmotionButtonClickedEventArgs args)
         {
             ViewModel.Emotions.Remove(args.SelectedEmotion);
-            ViewModel.IsCurrentDataSaved = false;
         }
 
+        /// <summary>
+        /// Clear a textbox if it contains the default text.
+        /// </summary>
         private void InitialEmotionRatingTemplate_TextBoxGotFocus(object sender, EmotionTextBoxHasFocusEventArgs args)
         {
             var textBox = args.EmotionTextBox;

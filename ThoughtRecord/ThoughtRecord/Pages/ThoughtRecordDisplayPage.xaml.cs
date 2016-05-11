@@ -59,6 +59,7 @@ namespace ThoughtRecordApp.Pages
         private void NavigateToEditPage(object sender, EventArgs args)
         {
             Frame.Navigate(typeof(ThoughtRecordEditPage), ViewModel.ThoughtRecord.ThoughtRecordId);
+            rootPage.UpdateTitle("Edit Thought Record");
         }
 
         private void NavigatetoListPage(object sender, EventArgs args)
