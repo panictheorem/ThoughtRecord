@@ -18,7 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel x:Name="InitailEmotionDisplayPanel" Orientation="Vertical">
+    <StackPanel x:Name="InitialEmotionDisplayPanel" Orientation="Vertical">
         <TextBlock x:Name="EmotionNameTextBox"                       
                    Text="{x:Bind Emotion.Name}"
                    Style="{StaticResource ThoughtRecordContentTextBox}"/>

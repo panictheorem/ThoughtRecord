@@ -21,7 +21,7 @@
         <Setter Property="BorderThickness" Value="1,1,1,1" />
     </Style>
     <Style x:Key="RecordFieldTitle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="Margin" Value="0,0,0,10" />
@@ -81,17 +81,17 @@
         <Setter Property="Foreground" Value="LightBlue" />
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
-    <Style x:Key="EmotionNameTextBox" TargetType="TextBox">
+    <Style x:Key="EmotionNameAutoSuggestBox" TargetType="AutoSuggestBox">
         <Setter Property="Margin" Value="5" />
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
     </Style>
-    <Style x:Key="EmotionNameTextBoxDesktop" TargetType="TextBox" BasedOn="{StaticResource EmotionNameTextBox}">
+    <Style x:Key="EmotionNameAutoSuggestBoxDesktop" TargetType="AutoSuggestBox" BasedOn="{StaticResource EmotionNameAutoSuggestBox}">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="5" />
     </Style>
-    <Style x:Key="EmotionNameTextBoxMobile" TargetType="TextBox" BasedOn="{StaticResource EmotionNameTextBox}">
+    <Style x:Key="EmotionNameAutoSuggestBoxMobile" TargetType="AutoSuggestBox" BasedOn="{StaticResource EmotionNameAutoSuggestBox}">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="MaxWidth" Value="150" />
     </Style>

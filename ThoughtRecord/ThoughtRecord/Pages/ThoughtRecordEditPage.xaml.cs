@@ -26,7 +26,7 @@ namespace ThoughtRecordApp.Pages
 {
     public sealed partial class ThoughtRecordEditPage : Page
     {
-        private ThoughtRecordEditModel ViewModel;
+        public ThoughtRecordEditModel ViewModel { get; private set; }
         private MainPage rootPage;
         public ThoughtRecordEditPage()
         {
@@ -149,9 +149,9 @@ namespace ThoughtRecordApp.Pages
         /// <summary>
         /// Clear a textbox if it contains the default text.
         /// </summary>
-        private void InitialEmotionRatingTemplate_TextBoxGotFocus(object sender, EmotionTextBoxHasFocusEventArgs args)
+        private void InitialEmotionRatingTemplate_TextBoxGotFocus(object sender, EmotionAutoSuggestBoxHasFocusEventArgs args)
         {
-            var textBox = args.EmotionTextBox;
+            var textBox = args.EmotionAutoSuggestBox;
             if (textBox != null && ViewModel.DefaultInputText != null)
             {
                 if (ViewModel.DefaultInputText.Contains(textBox.Text))

@@ -17,7 +17,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel x:Name="InitailEmotionRatingPanel" Orientation="Vertical" MaxWidth="350" HorizontalAlignment="Stretch">
+    <StackPanel x:Name="InitialEmotionRatingPanel" 
+                Orientation="Vertical" 
+                MaxWidth="350" 
+                HorizontalAlignment="Stretch">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="NarrowWindow">
@@ -25,7 +28,8 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--<Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxMobile}" />-->
+                        <Setter Target="EmotionNameAutoSuggestBox.Style" 
+                                Value="{StaticResource EmotionNameAutoSuggestBoxMobile}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="WideWindow">
@@ -33,20 +37,22 @@
                         <AdaptiveTrigger MinWindowWidth="1150" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!--<Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxDesktop}" />-->
-                        <Setter Target="InitailEmotionRatingPanel.Style" Value="{StaticResource EmotionRatingPanelDesktop}" />
+                        <Setter Target="EmotionNameAutoSuggestBox.Style" 
+                                Value="{StaticResource EmotionNameAutoSuggestBoxDesktop}" />
+                        <Setter Target="InitailEmotionRatingPanel.Style" 
+                                Value="{StaticResource EmotionRatingPanelDesktop}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <Button x:Name="RemoveEmotionButton"
-                                            Click="RemoveEmotionButton_Click"
-                                            FontSize="12"
-                                            FontFamily="Segoe MDL2 Assets" Content="&#xE711;" 
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Top"
-                                            Margin="0,0,0,10"
-                                            BorderThickness="0" Style="{StaticResource DiscreteButton}"/>
+                Click="RemoveEmotionButton_Click"
+                FontSize="12"
+                FontFamily="Segoe MDL2 Assets" Content="&#xE711;" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,0,0,10"
+                BorderThickness="0" Style="{StaticResource DiscreteButton}"/>
         <AutoSuggestBox x:Name="EmotionNameAutoSuggestBox"                       
                  Text="{x:Bind Emotion.Name, Mode=TwoWay}"
                  GotFocus="TextBox_GotFocus"
