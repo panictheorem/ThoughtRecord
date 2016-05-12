@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ThoughtRecordApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,12 @@ namespace ThoughtRecordApp.Pages
     /// </summary>
     public sealed partial class InformationPage : Page
     {
+        private MainPage rootPage;
         public InformationPage()
         {
             this.InitializeComponent();
+            rootPage = (Application.Current as App).CurrentMain;
+            rootPage.UpdateTitle(InformationModel.Title);
         }
     }
 }

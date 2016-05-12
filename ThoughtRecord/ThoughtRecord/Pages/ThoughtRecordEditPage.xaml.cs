@@ -45,6 +45,7 @@ namespace ThoughtRecordApp.Pages
             {
                 ViewModel = new ThoughtRecordEditModel(AppDataService.GetDatabase(Application.Current));
             }
+            rootPage.UpdateTitle(ViewModel.Title);
             ViewModel.OnThoughtRecordSaving += ShowProgressRing;
             ViewModel.OnThoughtRecordSaved += HideProgressRing;
             ViewModel.OnNewThoughtRecordOverwriteRisk += PromptToSave;
@@ -157,6 +158,14 @@ namespace ThoughtRecordApp.Pages
                 {
                     textBox.Text = "";
                 }
+            }
+        }
+
+        private void TextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            if(ViewModel.IsCurrentDataSaved)
+            {
+                ViewModel.IsCurrentDataSaved = false;
             }
         }
     }

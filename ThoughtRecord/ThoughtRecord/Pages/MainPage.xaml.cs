@@ -34,8 +34,8 @@ namespace ThoughtRecordApp.Pages
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
-            ViewModel.Title = "New Thought Record";
             NewThoughtRecordListBoxItem.IsSelected = true;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
                 if (MainFrame.CanGoBack)
@@ -98,7 +98,6 @@ namespace ThoughtRecordApp.Pages
                 //for a record, but then press the new thought record button. Since they use the same page,
                 //we want to be able to navigate from editing a thought record to a new record.
                 MainFrame.Navigate(typeof(ThoughtRecordEditPage));
-                ViewModel.Title = "New Thought Record";
             }
             else if (ListThoughtRecordsListBoxItem.IsSelected)
             {
@@ -106,7 +105,6 @@ namespace ThoughtRecordApp.Pages
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordListPage));
                 }
-                ViewModel.Title = "My Thought Records";
             }
             else if (InformationListBoxItem.IsSelected)
             {
@@ -114,7 +112,6 @@ namespace ThoughtRecordApp.Pages
                 {
                     MainFrame.Navigate(typeof(InformationPage));
                 }
-                ViewModel.Title = "Information";
             }
         }
     }

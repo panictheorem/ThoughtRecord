@@ -13,6 +13,7 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordDisplayModel : BindableBase
     {
+        public const string Title = "My Thought Records";
         private IDatabaseService database;
         private List<ThoughtRecord> thoughtRecords;
         private int currentIndex;

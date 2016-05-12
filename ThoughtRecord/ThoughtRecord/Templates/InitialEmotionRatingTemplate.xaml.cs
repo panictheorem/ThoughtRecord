@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using ThoughtRecordApp.DAL.Models;
+using ThoughtRecordApp.Services;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -20,6 +21,7 @@ namespace ThoughtRecordApp.Templates
 {
     public sealed partial class InitialEmotionRatingTemplate : UserControl
     {
+        private List<string> emotionNameSuggestions;
         public Emotion Emotion { get { return this.DataContext as Emotion; } }
         public delegate void RemoveEmotionButtonClickedEvent(object sender, RemoveEmotionButtonClickedEventArgs args);
         public delegate void TextBoxGotFocusEvent(object sender, EmotionTextBoxHasFocusEventArgs args);
@@ -30,6 +32,7 @@ namespace ThoughtRecordApp.Templates
         public InitialEmotionRatingTemplate()
         {
             this.InitializeComponent();
+            emotionNameSuggestions = EmotionService.GetEmotionNameSuggestions();
             this.DataContextChanged += (s, e) => Bindings.Update();
         }
 
@@ -43,6 +46,24 @@ namespace ThoughtRecordApp.Templates
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBoxGotFocus?.Invoke(this, new EmotionTextBoxHasFocusEventArgs(sender as TextBox));
+        }
+
+        private void EmotionNameAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
+
+        private void EmotionNameAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if(args.CheckCurrent())
+            {
+                var query = EmotionNameAutoSuggestBox.Text.ToLower();
+            }
+        }
+
+        private void EmotionNameAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            EmotionNameAutoSuggestBox.Text = args.SelectedItem as string;
         }
     }
 

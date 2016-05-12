@@ -16,6 +16,7 @@ namespace ThoughtRecordApp.ViewModels
     /// </summary>
     public class ThoughtRecordListModel : BindableBase
     {
+        public const string Title = "My Thought Records";
         public ObservableCollection<ThoughtRecord> ThoughtRecords { get; set; }
         private IDatabaseService database;
 

@@ -25,7 +25,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxMobile}" />
+                        <!--<Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxMobile}" />-->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="WideWindow">
@@ -33,7 +33,7 @@
                         <AdaptiveTrigger MinWindowWidth="1150" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxDesktop}" />
+                        <!--<Setter Target="EmotionNameTextBox.Style" Value="{StaticResource EmotionNameTextBoxDesktop}" />-->
                         <Setter Target="InitailEmotionRatingPanel.Style" Value="{StaticResource EmotionRatingPanelDesktop}" />
                     </VisualState.Setters>
                 </VisualState>
@@ -47,9 +47,12 @@
                                             VerticalAlignment="Top"
                                             Margin="0,0,0,10"
                                             BorderThickness="0" Style="{StaticResource DiscreteButton}"/>
-        <TextBox x:Name="EmotionNameTextBox"                       
+        <AutoSuggestBox x:Name="EmotionNameAutoSuggestBox"                       
                  Text="{x:Bind Emotion.Name, Mode=TwoWay}"
-                 GotFocus="TextBox_GotFocus"/>
+                 GotFocus="TextBox_GotFocus"
+                 QuerySubmitted="EmotionNameAutoSuggestBox_QuerySubmitted"
+                 TextChanged="EmotionNameAutoSuggestBox_TextChanged"
+                 SuggestionChosen="EmotionNameAutoSuggestBox_SuggestionChosen"/>
         <TextBlock x:Name="InitialEmotionRatingDisplay" 
                    Text="{Binding ElementName=InitialEmotionRatingSlider, Path=Value, Mode=OneWay}"
                    Style="{StaticResource EmotionRatingDisplay}"/>

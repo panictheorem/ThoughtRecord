@@ -22,6 +22,9 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordEditModel : BindableBase
     {
+        private const string newThoughtRecordTitle = "New Thought Record";
+        private const string editThoughtRecordTitle = "Edit Thought Record";
+        public string Title { get; private set; }
         public delegate void ThoughtRecordEditEvent(object sender, EventArgs args);
         public event ThoughtRecordEditEvent OnThoughtRecordSaving;
         public event ThoughtRecordEditEvent OnThoughtRecordSaved;
@@ -32,13 +35,16 @@ namespace ThoughtRecordApp.ViewModels
 
         public ThoughtRecordEditModel(IDatabaseService db)
         {
+            Title = newThoughtRecordTitle;
             database = db;
             CreateNewThoughtRecord();
             commandsEnabled = true;
+            IsCurrentDataSaved = true;
         }
 
         public ThoughtRecordEditModel(int thoughtRecordId, IDatabaseService db)
         {
+            Title = editThoughtRecordTitle;
             database = db;
             InitializeThoughtRecord(thoughtRecordId);
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
@@ -62,6 +68,7 @@ namespace ThoughtRecordApp.ViewModels
             ThoughtRecord = await database.ThoughtRecords.GetByIdAsync(thoughtRecordId);
             Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
+            IsCurrentDataSaved = true;
 
         }
 
@@ -257,25 +264,24 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if(saveThoughtRecord == null)
                 {
-                    saveThoughtRecord = new RelayCommand(SaveThoughtRecord, CanSaveThoughtRecord);
+                    saveThoughtRecord = new RelayCommand(SaveThoughtRecord, CommandsEnabled);
                 }
                 return saveThoughtRecord;
             }
         }
-        private bool canSaveThoughtRecord = true;
-        public bool CanSaveThoughtRecord()
+        public bool CommandsEnabled()
         {
-            return canSaveThoughtRecord;
+            return commandsEnabled;
         }
         public async void SaveThoughtRecord()
         {
             OnThoughtRecordSaving?.Invoke(this, new EventArgs());
-            canSaveThoughtRecord = false;
-            saveThoughtRecord.RaiseCanExecuteChanged();
+            commandsEnabled = false;
+            RaiseCanExecuteChangedAll();
             await database.ThoughtRecords.InsertOrUpdateAsync(thoughtRecord);
-            canSaveThoughtRecord = true;
-            saveThoughtRecord.RaiseCanExecuteChanged();
-            if(!IsCurrentDataSaved)
+            commandsEnabled = true;
+            RaiseCanExecuteChangedAll();
+            if (!IsCurrentDataSaved)
             {
                 IsCurrentDataSaved = true;
             }
@@ -295,10 +301,6 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
-        public bool CommandsEnabled()
-        {
-            return commandsEnabled;
-        }
         public void InitiateNewThoughtRecord()
         {
             if(isCurrentDataSaved)
@@ -318,7 +320,7 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (createNewThoughtRecord == null)
                 {
-                    createNewThoughtRecord = new RelayCommand(CreateNewThoughtRecord);
+                    createNewThoughtRecord = new RelayCommand(CreateNewThoughtRecord, CommandsEnabled);
                 }
                 return createNewThoughtRecord;
             }
@@ -331,7 +333,7 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (saveAndCreateNewThoughtRecord == null)
                 {
-                    saveAndCreateNewThoughtRecord = new RelayCommand(SaveAndCreateNewThoughtRecord);
+                    saveAndCreateNewThoughtRecord = new RelayCommand(SaveAndCreateNewThoughtRecord, CommandsEnabled);
                 }
                 return saveAndCreateNewThoughtRecord;
             }
@@ -341,6 +343,14 @@ namespace ThoughtRecordApp.ViewModels
         {
             SaveThoughtRecord();
             CreateNewThoughtRecord();
+        }
+
+        private void  RaiseCanExecuteChangedAll()
+        {
+            ((RelayCommand)Save).RaiseCanExecuteChanged();
+            ((RelayCommand)RequestNew).RaiseCanExecuteChanged();
+            ((RelayCommand)SaveAndCreateNew).RaiseCanExecuteChanged();
+            ((RelayCommand)CreateNew).RaiseCanExecuteChanged();
         }
     }
 }

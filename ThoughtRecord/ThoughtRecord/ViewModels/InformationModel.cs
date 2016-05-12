@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecordApp.ViewModels
 {
-    class InformationModel
+    public class InformationModel
     {
+        public const string Title = "Information";
     }
 }

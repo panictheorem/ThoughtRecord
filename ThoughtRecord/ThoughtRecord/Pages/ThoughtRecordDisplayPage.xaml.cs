@@ -36,6 +36,7 @@ namespace ThoughtRecordApp.Pages
             rootPage = ((App)Application.Current).CurrentMain;
             int thoughtRecordId = Convert.ToInt32(obj.Parameter);
             ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
+            rootPage.UpdateTitle(ThoughtRecordListModel.Title);
             ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
             ViewModel.OnThoughtRecordDeleted += NavigatetoListPage;
             ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;

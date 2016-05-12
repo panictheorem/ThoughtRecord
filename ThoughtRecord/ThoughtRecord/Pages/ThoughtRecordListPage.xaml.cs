@@ -33,6 +33,7 @@ namespace ThoughtRecordApp.Pages
             this.InitializeComponent();
             rootPage = ((App)(Application.Current)).CurrentMain;
             ViewModel = new ThoughtRecordListModel(AppDataService.GetDatabase(Application.Current));
+            rootPage.UpdateTitle(ThoughtRecordListModel.Title);
             InitializeViewModel();
         }
         private async void InitializeViewModel()

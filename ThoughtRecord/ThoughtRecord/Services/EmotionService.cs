@@ -19,7 +19,11 @@ namespace ThoughtRecordApp.Services
                 "Angry",
                 "Anxious",
                 "Depressed",
-                "Stressed"
+                "Stressed",
+                "Irritable",
+                "Detatched",
+                "Discouraged",
+                "Agressive"
             };
         }
     }

@@ -139,7 +139,6 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordEditModel.cs" />
-    <Compile Include="ViewModels\SettingsModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
     <Compile Include="ViewModels\ValueConverters\CalendarDateTimeConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\StringLengthConverter.cs" />
