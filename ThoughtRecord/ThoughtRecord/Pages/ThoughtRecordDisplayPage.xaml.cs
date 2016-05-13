@@ -34,13 +34,25 @@ namespace ThoughtRecordApp.Pages
         protected override void OnNavigatedTo(NavigationEventArgs obj)
         {
             rootPage = ((App)Application.Current).CurrentMain;
-            int thoughtRecordId = Convert.ToInt32(obj.Parameter);
-            ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
-            rootPage.UpdateTitle(ThoughtRecordListModel.Title);
-            ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
-            ViewModel.OnThoughtRecordDeleted += NavigatetoListPage;
-            ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
-            base.OnNavigatedTo(obj);
+            if (obj.Parameter != null)
+            {
+                int thoughtRecordId = Convert.ToInt32(obj.Parameter);
+                ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
+                rootPage.UpdateTitle(ThoughtRecordListModel.Title);
+                ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
+                ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
+                ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
+                rootPage.NavigateWithMenuUpdate(this.GetType());
+                base.OnNavigatedTo(obj);
+            }
+            else
+            {
+                rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordListPage));
+                if(Frame.BackStack.Count > 0)
+                {
+                    Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+                }
+            }
         }
 
         private async void ConfirmDeleteRequest(object sender, EventArgs args)
@@ -63,9 +75,13 @@ namespace ThoughtRecordApp.Pages
             rootPage.UpdateTitle("Edit Thought Record");
         }
 
-        private void NavigatetoListPage(object sender, EventArgs args)
+        private void NavigatetoListPageAfterDelete(object sender, EventArgs args)
         {
             rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordListPage));
+            if(Frame.BackStack.Count > 0)
+            {
+                Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+            }
         }
     }
 }

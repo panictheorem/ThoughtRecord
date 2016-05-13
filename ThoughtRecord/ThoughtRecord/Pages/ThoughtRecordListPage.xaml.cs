@@ -34,6 +34,7 @@ namespace ThoughtRecordApp.Pages
             rootPage = ((App)(Application.Current)).CurrentMain;
             ViewModel = new ThoughtRecordListModel(AppDataService.GetDatabase(Application.Current));
             rootPage.UpdateTitle(ThoughtRecordListModel.Title);
+            rootPage.NavigateWithMenuUpdate(this.GetType());
             InitializeViewModel();
         }
         private async void InitializeViewModel()

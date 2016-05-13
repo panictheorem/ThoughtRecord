@@ -40,16 +40,25 @@ namespace ThoughtRecordApp.Pages
             if (thoughtRecordId != 0)
             {
                 ViewModel = new ThoughtRecordEditModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
+                rootPage.NavigateWithMenuUpdate(null);
             }
             else
             {
                 ViewModel = new ThoughtRecordEditModel(AppDataService.GetDatabase(Application.Current));
+                rootPage.NavigateWithMenuUpdate(this.GetType());
             }
             rootPage.UpdateTitle(ViewModel.Title);
             ViewModel.OnThoughtRecordSaving += ShowProgressRing;
             ViewModel.OnThoughtRecordSaved += HideProgressRing;
             ViewModel.OnNewThoughtRecordOverwriteRisk += PromptToSave;
+            ViewModel.OnNewThoughtRecordCreated += UpdateMainMenu;
             base.OnNavigatedTo(obj);
+        }
+
+        private void UpdateMainMenu(object sender, EventArgs args)
+        {
+            rootPage.UpdateTitle(ViewModel.Title);
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage));
         }
 
         private async void PromptToSave(object sender, EventArgs args)
@@ -59,12 +68,18 @@ namespace ThoughtRecordApp.Pages
                 Title = "Your current thought record is not saved",
                 Content = "Would you like to save this thought record?",
                 PrimaryButtonText = "Save",
-                PrimaryButtonCommand = ViewModel.SaveAndCreateNew,
+                PrimaryButtonCommand = new RelayCommand(() => {
+                    ViewModel.Save.Execute(null);
+                    ViewModel.CreateNewThoughtRecord();
+                }),
                 SecondaryButtonText = "Don't Save",
-                SecondaryButtonCommand = ViewModel.CreateNew
+                SecondaryButtonCommand = new RelayCommand(() => {
+                    ViewModel.CreateNewThoughtRecord();
+                }),
             };
             await dialog.ShowAsync();
         }
+
         protected async override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);

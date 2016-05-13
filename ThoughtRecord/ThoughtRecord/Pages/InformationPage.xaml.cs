@@ -29,6 +29,7 @@ namespace ThoughtRecordApp.Pages
             this.InitializeComponent();
             rootPage = (Application.Current as App).CurrentMain;
             rootPage.UpdateTitle(InformationModel.Title);
+            rootPage.NavigateWithMenuUpdate(this.GetType());
         }
     }
 }

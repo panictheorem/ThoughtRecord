@@ -29,13 +29,13 @@ namespace ThoughtRecordApp.ViewModels
         public event ThoughtRecordEditEvent OnThoughtRecordSaving;
         public event ThoughtRecordEditEvent OnThoughtRecordSaved;
         public event ThoughtRecordEditEvent OnNewThoughtRecordOverwriteRisk;
+        public event ThoughtRecordEditEvent OnNewThoughtRecordCreated;
         private IDatabaseService database;
         private bool isCurrentDataSaved = true;
         private bool commandsEnabled;
 
         public ThoughtRecordEditModel(IDatabaseService db)
         {
-            Title = newThoughtRecordTitle;
             database = db;
             CreateNewThoughtRecord();
             commandsEnabled = true;
@@ -53,6 +53,7 @@ namespace ThoughtRecordApp.ViewModels
 
         public void CreateNewThoughtRecord()
         {
+            Title = newThoughtRecordTitle;
             thoughtRecord = new ThoughtRecord();
             thoughtRecord.Situation = new Situation();
             thoughtRecord.Situation.DateTime = DateTime.Now;
@@ -62,6 +63,8 @@ namespace ThoughtRecordApp.ViewModels
             observableEmotions = new ObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
             OnPropertyChanged(string.Empty);
+            IsCurrentDataSaved = true;
+            OnNewThoughtRecordCreated?.Invoke(this, new EventArgs());
         }
         private async void InitializeThoughtRecord(int thoughtRecordId)
         {
@@ -313,44 +316,14 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
-        private RelayCommand createNewThoughtRecord;
-        public ICommand CreateNew
-        {
-            get
-            {
-                if (createNewThoughtRecord == null)
-                {
-                    createNewThoughtRecord = new RelayCommand(CreateNewThoughtRecord, CommandsEnabled);
-                }
-                return createNewThoughtRecord;
-            }
-        }
 
-        private RelayCommand saveAndCreateNewThoughtRecord;
-        public ICommand SaveAndCreateNew
-        {
-            get
-            {
-                if (saveAndCreateNewThoughtRecord == null)
-                {
-                    saveAndCreateNewThoughtRecord = new RelayCommand(SaveAndCreateNewThoughtRecord, CommandsEnabled);
-                }
-                return saveAndCreateNewThoughtRecord;
-            }
-        }
+        
 
-        private void SaveAndCreateNewThoughtRecord()
-        {
-            SaveThoughtRecord();
-            CreateNewThoughtRecord();
-        }
-
+       
         private void  RaiseCanExecuteChangedAll()
         {
             ((RelayCommand)Save).RaiseCanExecuteChanged();
             ((RelayCommand)RequestNew).RaiseCanExecuteChanged();
-            ((RelayCommand)SaveAndCreateNew).RaiseCanExecuteChanged();
-            ((RelayCommand)CreateNew).RaiseCanExecuteChanged();
         }
     }
 }
