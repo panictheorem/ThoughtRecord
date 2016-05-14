@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="en-us" Name="AdventureWorksCommandSet_en-us">
+    <AppName> Thought Record </AppName>
+    <Example> Open Thought Record </Example>
+
+    <Command Name="openThoughtRecordApp">
+      <Example> Show trip to London </Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">open</ListenFor>
+      <Feedback> Opening Thought Record </Feedback>
+      <Navigate />
+    </Command>
+  </CommandSet>
+</VoiceCommands>
+
