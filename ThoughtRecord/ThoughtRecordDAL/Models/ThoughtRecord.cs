@@ -13,9 +13,9 @@ namespace ThoughtRecordApp.DAL.Models
     public class ThoughtRecord
     {
         [PrimaryKey, AutoIncrement]
-        public int? ThoughtRecordId { get; set; }
+        public int ThoughtRecordId { get; set; }
         [ForeignKey(typeof(Situation))]
-        public int? SituationId { get; set; }
+        public int SituationId { get; set; }
         [OneToOne(CascadeOperations = CascadeOperation.All)]
         public Situation Situation { get; set; }
         public string AutomaticThoughts { get; set; }

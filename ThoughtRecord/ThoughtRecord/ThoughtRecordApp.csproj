@@ -135,7 +135,6 @@
     <Compile Include="ViewModels\Infrastructure\RelayCommand.cs" />
     <Compile Include="ViewModels\InformationModel.cs" />
     <Compile Include="ViewModels\Infrastructure\BindableBase.cs" />
-    <Compile Include="ViewModels\Infrastructure\DeeplyObservableCollection.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordEditModel.cs" />

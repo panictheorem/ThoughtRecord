@@ -20,7 +20,6 @@ namespace ThoughtRecordApp.DAL.Concrete
         private IRepository<ThoughtRecord> thoughtRecords;
         private IRepository<Situation> situations;
         private IRepository<Emotion> emotions;
-        private IRepository<Configuration> settings;
 
         public DatabaseService()
         {
@@ -71,18 +70,6 @@ namespace ThoughtRecordApp.DAL.Concrete
                     emotions = new Repository<Emotion>(asyncConn);
                 }
                 return emotions;
-            }
-        }
-
-        public IRepository<Configuration> Settings
-        {
-            get
-            {
-                if (settings == null)
-                {
-                    settings = new Repository<Configuration>(asyncConn);
-                }
-                return settings;
             }
         }
     }

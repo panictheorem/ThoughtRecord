@@ -43,6 +43,7 @@ namespace ThoughtRecordApp.Pages
                 ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
                 ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
                 rootPage.NavigateWithMenuUpdate(this.GetType());
+                rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
                 base.OnNavigatedTo(obj);
             }
             else
@@ -81,6 +82,22 @@ namespace ThoughtRecordApp.Pages
             if(Frame.BackStack.Count > 0)
             {
                 Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+            }
+            RemoveThoughtRecordFromHistory();
+        }
+
+        /// <summary>
+        /// Removes all pages from the Frame's BackStack where the deleted item is specified
+        /// </summary>
+        private void RemoveThoughtRecordFromHistory()
+        {
+            //Currently, we delete all ThoughtRecordEditPage items in the Frame backstack
+            //This is because we get an InvalidOperationException when the page is reached
+            //by way of a backbutton press, but the item it holds has been deleted.
+            IEnumerable<PageStackEntry> pageHistoryToDelete = Frame.BackStack.Where(b => b.SourcePageType == typeof(ThoughtRecordEditPage) || (b.Parameter != null && (int)b.Parameter == ViewModel.ThoughtRecordId));
+            foreach (PageStackEntry page in pageHistoryToDelete)
+            {
+                Frame.BackStack.Remove(page);
             }
         }
     }

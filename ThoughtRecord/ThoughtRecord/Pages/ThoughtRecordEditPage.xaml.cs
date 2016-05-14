@@ -119,7 +119,7 @@ namespace ThoughtRecordApp.Pages
             {
                 TitleText = new ToastText()
                 {
-                    Text = title
+                    Text = title,
                 },
 
                 BodyTextLine1 = new ToastText()

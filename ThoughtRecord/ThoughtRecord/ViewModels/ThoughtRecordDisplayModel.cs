@@ -14,6 +14,7 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordDisplayModel : BindableBase
     {
         public const string Title = "My Thought Records";
+        private int thoughtRecordId;
         private IDatabaseService database;
         private List<ThoughtRecord> thoughtRecords;
         private int currentIndex;
@@ -34,6 +35,7 @@ namespace ThoughtRecordApp.ViewModels
             ThoughtRecord = thoughtRecords.Where(t => t.ThoughtRecordId == thoughtRecordId).FirstOrDefault();
             currentIndex = thoughtRecords.IndexOf(ThoughtRecord);
             commandsEnabled = true;
+            this.thoughtRecordId = ThoughtRecord.ThoughtRecordId;
             RaiseCanExecuteChangedForAll();
         }
         private ThoughtRecord thoughtRecord;
@@ -50,6 +52,17 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
+        public int ThoughtRecordId
+        {
+            get
+            {
+                return thoughtRecordId;
+            }
+            private set
+            {
+                thoughtRecordId = value;
+            }
+        }
         private RelayCommand requestDeleteThoughtRecord;
         public ICommand RequestDelete
         {

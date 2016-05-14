@@ -25,13 +25,16 @@ namespace ThoughtRecordApp.ViewModels
             database = db;
             ThoughtRecords = new ObservableCollection<ThoughtRecord>();
         }
-
+        /// <summary>
+        /// Initialize method must be called after instantiating to populate the ThoughtRecord list
+        /// </summary>
         public async Task Initialize()
         {
+            //Records retrieved and ordered by datetime from newest to oldest.
             var records = (await database.ThoughtRecords.GetAllAsync())
-                          .OrderByDescending(tr => tr.Situation.DateTime.Date)
+                          .OrderByDescending(tr => tr.Situation.DateTime)
                           .ToList();
-            records.OrderByDescending(tr => tr.Situation.DateTime.Date);
+            //Add the records to the observable collection.
             foreach (var r in records)
             {
                 ThoughtRecords.Add(r);

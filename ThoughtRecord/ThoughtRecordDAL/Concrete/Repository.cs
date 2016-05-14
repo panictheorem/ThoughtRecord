@@ -33,7 +33,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             }
             return entityList;
         }
-        public T GetById(int? id)
+        public T GetById(int id)
         {
             T entity;
             using (var conn = ConnectionManager.GetConnection())
@@ -42,7 +42,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             }
             return entity;
         }
-        public void Delete(int? id)
+        public void Delete(int id)
         {
             using (var conn = ConnectionManager.GetConnection())
             {
@@ -80,8 +80,10 @@ namespace ThoughtRecordApp.DAL.Concrete
             return entities;
         }
 
-        public async Task<T> GetByIdAsync(int? id)
+        public async Task<T> GetByIdAsync(int id)
         {
+            //this method throws an InvalidOperationException for some reason
+            //if the id is for an item that was previously deleted
             var entity = await asyncConn.GetWithChildrenAsync<T>(id);
             return entity;
         }
@@ -101,7 +103,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             await asyncConn.UpdateWithChildrenAsync(entity);
         }
 
-        public async Task DeleteAsync(int? id)
+        public async Task DeleteAsync(int id)
         {
             await asyncConn.DeleteAsync<T>(id);
         }

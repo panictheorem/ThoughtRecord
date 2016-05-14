@@ -113,7 +113,6 @@
     <Compile Include="Concrete\DatabaseService.cs" />
     <Compile Include="Concrete\Repository.cs" />
     <Compile Include="Models\Emotion.cs" />
-    <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\Situation.cs" />
     <Compile Include="Models\ThoughtRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

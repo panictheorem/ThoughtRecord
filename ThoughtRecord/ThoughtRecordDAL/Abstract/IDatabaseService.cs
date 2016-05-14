@@ -9,13 +9,12 @@ using ThoughtRecordApp.DAL.Models;
 namespace ThoughtRecordApp.DAL.Abstract
 {
     /// <summary>
-    /// Defines operations of a database service
+    /// Defines operations of a database service which should contain repositories
     /// </summary>
     public interface IDatabaseService
     {
         IRepository<ThoughtRecord> ThoughtRecords { get; }
         IRepository<Situation> Situations { get; }
         IRepository<Emotion> Emotions { get; }
-        IRepository<Configuration> Settings { get; }
     }
 }

@@ -22,9 +22,13 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordEditModel : BindableBase
     {
+        //Title for when creating a new record.
         private const string newThoughtRecordTitle = "New Thought Record";
+        //Title for when editing a record.
         private const string editThoughtRecordTitle = "Edit Thought Record";
         public string Title { get; private set; }
+        //The text displayed in textboxes when a new thought record is created
+        public List<string> DefaultInputText { get; private set; }
         public delegate void ThoughtRecordEditEvent(object sender, EventArgs args);
         public event ThoughtRecordEditEvent OnThoughtRecordSaving;
         public event ThoughtRecordEditEvent OnThoughtRecordSaved;
@@ -69,13 +73,10 @@ namespace ThoughtRecordApp.ViewModels
         private async void InitializeThoughtRecord(int thoughtRecordId)
         {
             ThoughtRecord = await database.ThoughtRecords.GetByIdAsync(thoughtRecordId);
-            Emotions = new DeeplyObservableCollection<Emotion>(thoughtRecord.Emotions);
+            Emotions = new ObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
             IsCurrentDataSaved = true;
-
         }
-
-        public List<string> DefaultInputText { get; private set; }
 
         public bool IsCurrentDataSaved
         {
@@ -97,6 +98,7 @@ namespace ThoughtRecordApp.ViewModels
                 IsCurrentDataSaved = false;
             }
         }
+
         public DateTime SituationDateTime
         {
             get
@@ -246,6 +248,10 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
+        /// <summary>
+        /// Method to update the model's emotion list when the observable collection changes.
+        /// This keeps the two lists syncronized.
+        /// </summary>
         private void UpdateModelEmotionCollection(object sender, NotifyCollectionChangedEventArgs e)
         {
             IsCurrentDataSaved = false;
@@ -312,6 +318,7 @@ namespace ThoughtRecordApp.ViewModels
             }
             else
             {
+                //Alert listeners if proceeding would cause them to lose their current progress.
                 OnNewThoughtRecordOverwriteRisk?.Invoke(this, new EventArgs());
             }
         }

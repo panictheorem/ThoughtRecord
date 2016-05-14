@@ -14,7 +14,7 @@ namespace ThoughtRecordApp.DAL.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         [PrimaryKey, AutoIncrement]
-        public int? EmotionId { get; set; }
+        public int EmotionId { get; set; }
         private string name;
         public string Name {
             get
