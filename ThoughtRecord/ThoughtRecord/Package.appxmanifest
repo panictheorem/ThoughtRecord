@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="c5fe2fd0-b5d9-48f5-99ed-ce6589fb2ce9" Publisher="CN=Andrew" Version="1.0.0.0" />
+  <Identity Name="56470PanicTheorem.ThoughtRecord" Publisher="CN=B99A6451-9183-4CFA-B715-02B1DD18A68C" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="c5fe2fd0-b5d9-48f5-99ed-ce6589fb2ce9" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ThoughtRecord</DisplayName>
-    <PublisherDisplayName>Andrew Pineau</PublisherDisplayName>
+    <DisplayName>Thought Record</DisplayName>
+    <PublisherDisplayName>Panic Theorem</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,8 +15,12 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ThoughtRecord.App">
-      <uap:VisualElements DisplayName="Thought Record" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ThoughtRecord" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+      <uap:VisualElements DisplayName="Thought Record" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ThoughtRecord" BackgroundColor="mediumSeaGreen">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Thought Record">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="mediumSeaGreen" />
         <uap:InitialRotationPreference>

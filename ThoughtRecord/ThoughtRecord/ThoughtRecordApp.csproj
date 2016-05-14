@@ -16,7 +16,11 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>ThoughtRecord_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>ThoughtRecordApp_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>8786F38C9DDD8D749CD15C4BB28CAEC10D3D029F</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -151,25 +155,15 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <PRIResource Include="Resources\Strings\DefaultInputText.resw" />
+    <None Include="ThoughtRecordApp_StoreKey.pfx" />
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\background.jpg" />
-    <Content Include="Assets\background10.jpg" />
-    <Content Include="Assets\background11.jpg" />
-    <Content Include="Assets\background3.jpg" />
-    <Content Include="Assets\background4.jpg" />
-    <Content Include="Assets\BACKGROUND5.jpg" />
-    <Content Include="Assets\background6.jpg" />
-    <Content Include="Assets\background8.jpg" />
-    <Content Include="Assets\background9.jpg" />
     <Content Include="Assets\PanicCubePurple.png" />
     <Content Include="Assets\background2.jpg" />
-    <Content Include="Assets\thoughtcloud-mobile %282%29.png" />
-    <Content Include="Assets\thoughtcloud-mobile %283%29.png" />
-    <Content Include="Assets\thoughtcloud-mobile %284%29.png" />
-    <Content Include="Assets\thoughtcloud-mobile.png" />
     <Content Include="Assets\thoughtcloud.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
