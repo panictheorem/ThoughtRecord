@@ -38,7 +38,8 @@
                  Style="{StaticResource EmotionRatingDisplay}"/>
 
         <Slider x:Name="SubsequentEmotionRatingSlider" IsThumbToolTipEnabled="False" 
-                                          Value="{x:Bind Emotion.SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay }" Style="{StaticResource EmotionSlider}"/>
+                Value="{x:Bind Emotion.SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay }" 
+                Style="{StaticResource EmotionSlider}"/>
 
     </StackPanel>
 </UserControl>

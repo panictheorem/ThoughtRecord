@@ -7,6 +7,7 @@ using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.Pages;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -30,6 +31,8 @@ namespace ThoughtRecordApp
         public DatabaseService Database { get; private set; } = new DatabaseService();
         //Holds the root page of the application
         public MainPage CurrentMain { get; set; }
+
+        public LicenseInformation LicenseInformation { get; private set; } 
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -80,6 +83,7 @@ namespace ThoughtRecordApp
                 Window.Current.Activate();
             }
 
+            //Cortana VCD 
             try
             {
                 // Install the main VCD. 
@@ -94,6 +98,11 @@ namespace ThoughtRecordApp
             {
                 System.Diagnostics.Debug.WriteLine("Installing Voice Commands Failed: " + ex.ToString());
             }
+
+            // licenseInformation = CurrentApp.LicenseInformation;
+
+            // The next line is commented out for production/release.       
+            LicenseInformation = CurrentAppSimulator.LicenseInformation;
         }
 
         /// <summary>

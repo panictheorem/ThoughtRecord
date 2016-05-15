@@ -21,6 +21,7 @@ namespace ThoughtRecordApp.Templates
     public sealed partial class SubsequentEmotionRatingTemplate : UserControl
     {
         public Emotion Emotion { get { return this.DataContext as Emotion; } }
+
         public SubsequentEmotionRatingTemplate()
         {
             this.InitializeComponent();

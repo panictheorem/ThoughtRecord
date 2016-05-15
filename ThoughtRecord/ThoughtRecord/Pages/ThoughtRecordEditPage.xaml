@@ -248,7 +248,7 @@
                         <ItemsControl ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="models:Emotion">
-                                    <templates:SubsequentEmotionRatingTemplate />
+                                    <templates:SubsequentEmotionRatingTemplate/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

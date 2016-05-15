@@ -87,14 +87,11 @@ namespace ThoughtRecordApp.Pages
         }
 
         /// <summary>
-        /// Removes all pages from the Frame's BackStack where the deleted item is specified
+        /// Removes all pages from the Frame's BackStack where the deleted item's id is the parameter
         /// </summary>
         private void RemoveThoughtRecordFromHistory()
         {
-            //Currently, we delete all ThoughtRecordEditPage items in the Frame backstack
-            //This is because we get an InvalidOperationException when the page is reached
-            //by way of a backbutton press, but the item it holds has been deleted.
-            IEnumerable<PageStackEntry> pageHistoryToDelete = Frame.BackStack.Where(b => b.SourcePageType == typeof(ThoughtRecordEditPage) || (b.Parameter != null && (int)b.Parameter == ViewModel.ThoughtRecordId));
+            List<PageStackEntry> pageHistoryToDelete = Frame.BackStack.Where(b => (b.Parameter != null && (int)b.Parameter == ViewModel.ThoughtRecordId)).ToList();
             foreach (PageStackEntry page in pageHistoryToDelete)
             {
                 Frame.BackStack.Remove(page);

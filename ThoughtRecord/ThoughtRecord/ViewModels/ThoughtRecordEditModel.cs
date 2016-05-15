@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Popups;
 using System.Windows.Input;
 using ThoughtRecordApp.DAL.Abstract;
+using System.ComponentModel;
 
 namespace ThoughtRecordApp.ViewModels
 {
@@ -65,11 +66,37 @@ namespace ThoughtRecordApp.ViewModels
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();
             ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
             observableEmotions = new ObservableCollection<Emotion>(thoughtRecord.Emotions);
+            RegisterForEmotionChangeEvents(observableEmotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
             OnPropertyChanged(string.Empty);
             IsCurrentDataSaved = true;
             OnNewThoughtRecordCreated?.Invoke(this, new EventArgs());
         }
+
+        private void RegisterForEmotionChangeEvents(ObservableCollection<Emotion> emotions)
+        {
+            foreach (var emotion in emotions)
+            {
+                emotion.PropertyChanged += Emotion_PropertyChanged;
+            }
+        }
+
+        private void DeregisterForEmotionChangeEvents(ObservableCollection<Emotion> emotions)
+        {
+            foreach (var emotion in emotions)
+            {
+                if (emotion != null)
+                {
+                    emotion.PropertyChanged -= Emotion_PropertyChanged;
+                }
+            }
+        }
+
+        private void Emotion_PropertyChanged1(object sender, PropertyChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private async void InitializeThoughtRecord(int thoughtRecordId)
         {
             ThoughtRecord = await database.ThoughtRecords.GetByIdAsync(thoughtRecordId);
@@ -113,7 +140,7 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (thoughtRecord != null)
                 {
-                    if(thoughtRecord.Situation.DateTime != value)
+                    if (thoughtRecord.Situation.DateTime != value)
                     {
                         thoughtRecord.Situation.DateTime = value;
                         OnPropertyChanged();
@@ -238,7 +265,7 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (thoughtRecord != null)
                 {
-                    if(Emotions != value)
+                    if (Emotions != value)
                     {
                         observableEmotions = value;
                         OnPropertyChanged();
@@ -259,11 +286,27 @@ namespace ThoughtRecordApp.ViewModels
             {
                 case NotifyCollectionChangedAction.Add:
                     thoughtRecord.Emotions.AddRange(e.NewItems.OfType<Emotion>());
+                    foreach (Emotion emotion in e.NewItems.OfType<Emotion>())
+                    {
+                        emotion.PropertyChanged += Emotion_PropertyChanged;
+                    }
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     thoughtRecord.Emotions.RemoveAll(emotion => e.OldItems.Contains(emotion));
+                    foreach (Emotion emotion in e.OldItems.OfType<Emotion>())
+                    {
+                        if (emotion != null)
+                        {
+                            emotion.PropertyChanged -= Emotion_PropertyChanged;
+                        }
+                    }
                     break;
             }
+        }
+
+        private void Emotion_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            IsCurrentDataSaved = false;
         }
 
         private RelayCommand saveThoughtRecord;
@@ -271,7 +314,7 @@ namespace ThoughtRecordApp.ViewModels
         {
             get
             {
-                if(saveThoughtRecord == null)
+                if (saveThoughtRecord == null)
                 {
                     saveThoughtRecord = new RelayCommand(SaveThoughtRecord, CommandsEnabled);
                 }
@@ -312,7 +355,7 @@ namespace ThoughtRecordApp.ViewModels
 
         public void InitiateNewThoughtRecord()
         {
-            if(isCurrentDataSaved)
+            if (isCurrentDataSaved)
             {
                 CreateNewThoughtRecord();
             }
@@ -324,10 +367,10 @@ namespace ThoughtRecordApp.ViewModels
         }
 
 
-        
 
-       
-        private void  RaiseCanExecuteChangedAll()
+
+
+        private void RaiseCanExecuteChangedAll()
         {
             ((RelayCommand)Save).RaiseCanExecuteChanged();
             ((RelayCommand)RequestNew).RaiseCanExecuteChanged();

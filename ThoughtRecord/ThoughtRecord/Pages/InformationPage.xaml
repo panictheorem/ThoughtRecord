@@ -23,5 +23,6 @@
         <TextBlock Text="About" />
         <TextBlock Foreground="DarkGray" FontWeight="Bold" Text="Brought to you by PANIC THEOREM SOFTWARE" />
         <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button x:Name="DonationButton" Content="Donate 1.99 USD"  Click="DonationButton_Click"/>
     </StackPanel>
 </Page>

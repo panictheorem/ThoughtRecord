@@ -87,15 +87,22 @@ namespace ThoughtRecordApp.Pages
         {
             ViewModel.Title = title;
         }
-        //Updates header title and navigates, if necessary, based on selected item
+        //Updates navigates to the page based on the selection.
+        //You can't navigate to a page you are already on, with the exception of the Edit Page
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MainSplitView.IsPaneOpen = false;
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
-                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
+                ThoughtRecordEditPage currentEditPage = MainFrame.Content as ThoughtRecordEditPage;
+               
+                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage) ||
+                    //We want to allow the user to be able to navigate to the New Thought Record page
+                    //if they are currently on the edit page. Since they use the same page, we also allow 
+                    //navigation if the current thought record's id is not 0
+                    (currentEditPage != null && currentEditPage.ViewModel.ThoughtRecord.ThoughtRecordId != 0))
                 {
-                    MainFrame.Navigate(typeof(ThoughtRecordEditPage));
+                    MainFrame.Navigate(typeof(ThoughtRecordEditPage), 0);
                 }
             }
             else if (ListThoughtRecordsListBoxItem.IsSelected)
@@ -107,6 +114,7 @@ namespace ThoughtRecordApp.Pages
             }
             else if (InformationListBoxItem.IsSelected)
             {
+
                 if (MainFrame.CurrentSourcePageType != typeof(InformationPage))
                 {
                     MainFrame.Navigate(typeof(InformationPage));

@@ -65,6 +65,6 @@
         <Slider x:Name="InitialEmotionRatingSlider" 
                 IsThumbToolTipEnabled="False"
                 Value="{x:Bind Emotion.InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"
-                 Style="{StaticResource EmotionSlider}"/>
+                Style="{StaticResource EmotionSlider}"/>
     </StackPanel>
 </UserControl>

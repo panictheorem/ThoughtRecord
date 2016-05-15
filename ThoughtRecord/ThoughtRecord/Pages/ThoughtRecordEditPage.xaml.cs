@@ -96,7 +96,8 @@ namespace ThoughtRecordApp.Pages
                 };
                 await dialog.ShowAsync();
                 ViewModel.IsCurrentDataSaved = true;
-                Frame.Navigate(e.SourcePageType);
+                Frame.Navigate(e.SourcePageType, e.Parameter);
+                
             }
         }
         private void ShowProgressRing(object sender, EventArgs args)
@@ -130,9 +131,10 @@ namespace ThoughtRecordApp.Pages
 
             ToastContent toastContent = new ToastContent()
             {
-                Visual = visual
+                Visual = visual,
+                Audio = new ToastAudio()
             };
-
+            toastContent.Audio.Silent = true;
             var toast = new ToastNotification(toastContent.GetXml());
 
             ToastNotificationManager.CreateToastNotifier().Show(toast);

@@ -27,8 +27,32 @@ namespace ThoughtRecordApp.DAL.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
             }
         }
-        public int InitialRating { get; set; }
-        public int SubsequentRating { get; set; }
+
+        private int initialRating;
+        public int InitialRating {
+            get
+            {
+                return initialRating;
+            }
+            set
+            {
+                initialRating = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InitialRating"));
+            }
+        }
+
+        private int subsequentRating;
+        public int SubsequentRating {
+            get
+            {
+                return subsequentRating;
+            }
+            set
+            {
+                subsequentRating = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubsequentRating"));
+            }
+        }
         [ForeignKey(typeof(ThoughtRecord))]
         public int ThoughtRecordId { get; set; }
         [ManyToOne]
