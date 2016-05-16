@@ -52,6 +52,7 @@ namespace ThoughtRecordApp.Pages
             ViewModel.OnThoughtRecordSaved += HideProgressRing;
             ViewModel.OnNewThoughtRecordOverwriteRisk += PromptToSave;
             ViewModel.OnNewThoughtRecordCreated += UpdateMainMenu;
+            Unloaded += ThoughtRecordEditPage_Unloaded;
             base.OnNavigatedTo(obj);
         }
 
@@ -65,7 +66,7 @@ namespace ThoughtRecordApp.Pages
         {
             ContentDialog dialog = new ContentDialog()
             {
-                Title = "Your current thought record is not saved",
+                Title = "Your thought record is not saved",
                 Content = "Would you like to save this thought record?",
                 PrimaryButtonText = "Save",
                 PrimaryButtonCommand = new RelayCommand(() => {
@@ -184,6 +185,11 @@ namespace ThoughtRecordApp.Pages
             {
                 ViewModel.IsCurrentDataSaved = false;
             }
+        }
+
+        private void ThoughtRecordEditPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Dispose();
         }
     }
 }

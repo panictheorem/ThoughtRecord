@@ -40,21 +40,34 @@ namespace ThoughtRecordApp.Pages
             {
                 try
                 {
+                    rootPage.ShowProgressRing();
                     //await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", false);
-                    await CurrentAppSimulator.RequestProductPurchaseAsync("ThoughtRecordDonation", false);
+                    var result = await CurrentAppSimulator.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
                     //Check the license state to determine if the in-app purchase was successful.
+                    
                 }
                 catch (Exception)
                 {
                     // The in-app purchase was not completed because 
                     // an error occurred.
                 }
+                rootPage.HideProgressRing();
             }
             else
             {
                 // The customer already owns this feature.
             }
 
+        }
+
+        private void ShowProgressRing(object sender, EventArgs args)
+        {
+            rootPage.ShowProgressRing();
+        }
+
+        private void HideProgressRing(object sender, EventArgs args)
+        {
+            rootPage.HideProgressRing();
         }
     }
 }

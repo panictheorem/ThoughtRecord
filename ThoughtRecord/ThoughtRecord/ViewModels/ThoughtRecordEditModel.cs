@@ -21,7 +21,7 @@ using System.ComponentModel;
 
 namespace ThoughtRecordApp.ViewModels
 {
-    public class ThoughtRecordEditModel : BindableBase
+    public class ThoughtRecordEditModel : BindableBase, IDisposable
     {
         //Title for when creating a new record.
         private const string newThoughtRecordTitle = "New Thought Record";
@@ -366,14 +366,23 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
-
-
-
-
         private void RaiseCanExecuteChangedAll()
         {
             ((RelayCommand)Save).RaiseCanExecuteChanged();
             ((RelayCommand)RequestNew).RaiseCanExecuteChanged();
+        }
+
+        public void Dispose()
+        {
+            //Deregister event handlers
+            observableEmotions.CollectionChanged -= UpdateModelEmotionCollection;
+            foreach (Emotion emotion in Emotions)
+            {
+                if (emotion != null)
+                {
+                    emotion.PropertyChanged -= Emotion_PropertyChanged;
+                }
+            }
         }
     }
 }

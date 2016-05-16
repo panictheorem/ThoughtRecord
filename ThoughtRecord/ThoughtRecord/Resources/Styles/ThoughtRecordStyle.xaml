@@ -20,23 +20,15 @@
     <Style x:Name="ThoughtRecordBottomEndCellBorder" TargetType="Border" BasedOn="{StaticResource ThoughtRecordCellBorder}">
         <Setter Property="BorderThickness" Value="1,1,1,1" />
     </Style>
-    <Style x:Key="RecordFieldTitle" TargetType="TextBlock">
+    <Style x:Key="RecordFieldTitleDesktop" TargetType="TextBlock" BasedOn="{StaticResource SectionTitle}">
         <Setter Property="FontSize" Value="16" />
-        <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
-        <Setter Property="TextWrapping" Value="Wrap" />
-        <Setter Property="Margin" Value="0,0,0,10" />
-    </Style>
-    <Style x:Key="RecordFieldTitleDesktop" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,0,10" />
     </Style>
-    <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource RecordFieldTitle}">
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="20" />
-        <Setter Property="FontWeight" Value="Light" />
-        <Setter Property="Margin" Value="0,20,0,0" />
+    <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource SectionTitle}">
+
     </Style>
     <Style x:Key="RecordTextInput" TargetType="TextBox">
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
@@ -99,11 +91,6 @@
         <Setter Property="Height" Value="135" />
         <Setter Property="Padding" Value="5" />
     </Style>
-    <Style x:Key="ThoughtRecordContentTextBox" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="TextWrapping" Value="Wrap" />
-        <Setter Property="FontFamily" Value="Segoe UI" />
-        <Setter Property="Style" Value="{ThemeResource BodyTextBlockStyle}" />
+    <Style x:Key="ThoughtRecordContentTextBox" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBox}">
     </Style>
 </ResourceDictionary>

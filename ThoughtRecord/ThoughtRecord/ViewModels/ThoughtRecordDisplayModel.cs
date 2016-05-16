@@ -145,6 +145,7 @@ namespace ThoughtRecordApp.ViewModels
             ThoughtRecord = thoughtRecords[--currentIndex];
             selectNextNewerThoughtRecord.RaiseCanExecuteChanged();
             selectNextOlderThoughtRecord.RaiseCanExecuteChanged();
+            thoughtRecordId = ThoughtRecord.ThoughtRecordId;
         }
 
         private void SelectNextOlderThoughtRecord()
@@ -152,7 +153,9 @@ namespace ThoughtRecordApp.ViewModels
             ThoughtRecord = thoughtRecords[++currentIndex];
             selectNextNewerThoughtRecord.RaiseCanExecuteChanged();
             selectNextOlderThoughtRecord.RaiseCanExecuteChanged();
+            thoughtRecordId = ThoughtRecord.ThoughtRecordId;
         }
+
         private bool CanSelectNewerThoughtRecord()
         {
             return commandsEnabled && thoughtRecords != null && currentIndex > 0;
