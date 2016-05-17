@@ -14,23 +14,25 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
-        <TextBlock Text="Instructions" 
+    <ScrollViewer>
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+            <TextBlock Text="Instructions" 
                    Style="{StaticResource SectionTitle}"/>
-        <TextBlock Text="When you experience a dysfunctional thought..." 
+            <TextBlock Text="When you experience a dysfunctional thought..." 
                    Style="{StaticResource BodyTextBox}"/>
 
-        <TextBlock Text="Tips" 
+            <TextBlock Text="Tips" 
                    Style="{StaticResource SectionTitle}"/>
-        <TextBlock Text="1. Try to write your thought record as close to the occurance of the situation as possible. That way, the details are still fresh in your mind." 
+            <TextBlock Text="1. Try to write your thought record as close to the occurance of the situation as possible. That way, the details are still fresh in your mind." 
                    Style="{StaticResource BodyTextBox}"/>
-        <TextBlock Text="2. Use thought record often. You should make it a habit to create a thought record whenever you experience dysfunctional thinking. The ultimate goal is to chane your default thinking patterns and this will not happen without practice."
+            <TextBlock Text="2. Use thought record often. You should make it a habit to create a thought record whenever you experience dysfunctional thinking. The ultimate goal is to chane your default thinking patterns and this will not happen without practice."
                    Style="{StaticResource BodyTextBox}"/>
 
-        <TextBlock Text="About" Style="{StaticResource SectionTitle}"/>
-        <TextBlock Foreground="DarkGray" FontSize="13" Text="Brought to you by PANIC THEOREM SOFTWARE" Style="{StaticResource BodyTextBox}"/>
-        <HyperlinkButton Content="Contact Me Here" />
-        <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Button x:Name="DonationButton" Content="Donate 1.99 USD"  Click="DonationButton_Click"/>
-    </StackPanel>
+            <TextBlock Text="About" Style="{StaticResource SectionTitle}"/>
+            <TextBlock Foreground="DarkGray" FontSize="13" Text="Brought to you by PANIC THEOREM SOFTWARE" Style="{StaticResource BodyTextBox}"/>
+            <HyperlinkButton Content="Contact Me Here" />
+            <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button x:Name="DonationButton" Content="Donate 1.99 USD"  Click="DonationButton_Click"/>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

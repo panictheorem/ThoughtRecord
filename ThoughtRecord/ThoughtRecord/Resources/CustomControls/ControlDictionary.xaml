@@ -8,5 +8,6 @@
         <ResourceDictionary Source="/Resources/CustomControls/TextBoxes.xaml" />
         <ResourceDictionary Source="/Resources/CustomControls/Borders.xaml" />
         <ResourceDictionary Source="/Resources/CustomControls/ListBoxItems.xaml" />
+        <ResourceDictionary Source="/Resources/CustomControls/Pivot.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -9,5 +9,10 @@ namespace ThoughtRecordApp.ViewModels
     public class InformationModel
     {
         public const string Title = "Information";
+
+        public InformationModel()
+        {
+
+        }
     }
 }
