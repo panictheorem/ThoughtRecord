@@ -27,7 +27,7 @@
             <ScrollViewer>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="When you experience a dysfunctional thought..." 
-                   Style="{StaticResource BodyTextBox}"/>
+                   Style="{StaticResource BodyTextBlock}"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
@@ -35,7 +35,7 @@
             <ScrollViewer>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="When you experience a dysfunctional thought..." 
-                   Style="{StaticResource BodyTextBox}"/>
+                   Style="{StaticResource BodyTextBlock}"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>

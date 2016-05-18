@@ -12,7 +12,7 @@
         <Setter Property="FontWeight" Value="{ThemeResource PivotHeaderItemThemeFontWeight}" />
         <Setter Property="CharacterSpacing" Value="{ThemeResource PivotHeaderItemCharacterSpacing}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="#212121" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}" />
         <Setter Property="Padding" Value="{ThemeResource PivotHeaderItemMargin}" />
         <Setter Property="Height" Value="48" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -68,7 +68,7 @@
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                Storyboard.TargetProperty="Foreground" >
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundLightBrush}" />
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource LightAccentBrush}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid"
                                                Storyboard.TargetProperty="Background" >

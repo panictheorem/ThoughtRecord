@@ -15,15 +15,15 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ThoughtRecordApp.Pages
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Page containing general information about the app.
     /// </summary>
     public sealed partial class InformationPage : Page
     {
+        public InformationModel ViewModel { get; private set; }
         private MainPage rootPage;
         public InformationPage()
         {
@@ -31,6 +31,7 @@ namespace ThoughtRecordApp.Pages
             rootPage = (Application.Current as App).CurrentMain;
             rootPage.UpdateTitle(InformationModel.Title);
             rootPage.NavigateWithMenuUpdate(this.GetType());
+            ViewModel = new InformationModel();
         }
 
         private async void DonationButton_Click(object sender, RoutedEventArgs e)

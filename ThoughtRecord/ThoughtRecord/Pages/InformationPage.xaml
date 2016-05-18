@@ -15,22 +15,32 @@
         </ResourceDictionary>
     </Page.Resources>
     <ScrollViewer>
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
-            <TextBlock Text="Instructions" 
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Margin="20" MaxWidth="600" HorizontalAlignment="Left">
+            <TextBlock Text="{x:Bind ViewModel.InstructionsTitle}" 
                    Style="{StaticResource SectionTitle}"/>
-            <TextBlock Text="When you experience a dysfunctional thought..." 
-                   Style="{StaticResource BodyTextBox}"/>
+            <TextBlock  FontWeight="SemiBold" Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionTitle}" 
+                   Style="{StaticResource BodyTextBlock}"/>
+            <TextBlock Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionContent}" Style="{StaticResource BodyTextBlock}" />
+            <TextBlock FontWeight="SemiBold" Text="{x:Bind ViewModel.StepsSectionTitle}" Style="{StaticResource BodyTextBlock}" />
+            <TextBlock  Text="{x:Bind ViewModel.StepsSectionContent}" 
+                   Style="{StaticResource BodyTextBlock}" />
+            <TextBlock Text="{x:Bind ViewModel.Step1}" Style="{StaticResource BodyTextBlock}" />
+            <TextBlock Text="{x:Bind ViewModel.Step2}" Style="{StaticResource BodyTextBlock}" />
+            <TextBlock Text="{x:Bind ViewModel.Step3}" Style="{StaticResource BodyTextBlock}"/>
+            <TextBlock Text="{x:Bind ViewModel.Step4}" Style="{StaticResource BodyTextBlock}"/>
+            <TextBlock Text="{x:Bind ViewModel.Step5}" Style="{StaticResource BodyTextBlock}"/>
+            <TextBlock Text="{x:Bind ViewModel.Step6}" Style="{StaticResource BodyTextBlock}"/>
 
-            <TextBlock Text="Tips" 
+            <TextBlock Text="{x:Bind ViewModel.TipsTitle}" 
                    Style="{StaticResource SectionTitle}"/>
-            <TextBlock Text="1. Try to write your thought record as close to the occurance of the situation as possible. That way, the details are still fresh in your mind." 
-                   Style="{StaticResource BodyTextBox}"/>
-            <TextBlock Text="2. Use thought record often. You should make it a habit to create a thought record whenever you experience dysfunctional thinking. The ultimate goal is to chane your default thinking patterns and this will not happen without practice."
-                   Style="{StaticResource BodyTextBox}"/>
+            <TextBlock Text="{x:Bind ViewModel.Tip1}" Style="{StaticResource BodyTextBlock}" />
+            <TextBlock Text="{x:Bind ViewModel.Tip2}" Style="{StaticResource BodyTextBlock}" />
+            <TextBlock Text="{x:Bind ViewModel.Tip3}" Style="{StaticResource BodyTextBlock}" />
 
-            <TextBlock Text="About" Style="{StaticResource SectionTitle}"/>
-            <TextBlock Foreground="DarkGray" FontSize="13" Text="Brought to you by PANIC THEOREM SOFTWARE" Style="{StaticResource BodyTextBox}"/>
-            <HyperlinkButton Content="Contact Me Here" />
+            <TextBlock Text="{x:Bind ViewModel.AboutTitle}" Style="{StaticResource SectionTitle}"/>
+            <TextBlock Foreground="DarkGray" FontSize="13" Text="Brought to you by PANIC THEOREM SOFTWARE" Style="{StaticResource BodyTextBlock}"/>
+            <HyperlinkButton Content="{x:Bind ViewModel.ContactMeLinkText}" />
             <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Button x:Name="DonationButton" Content="Donate 1.99 USD"  Click="DonationButton_Click"/>
         </StackPanel>
