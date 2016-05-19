@@ -127,10 +127,13 @@
     <value>PanicTheorem Software</value>
   </data>
   <data name="ContactMeContent" xml:space="preserve">
-    <value>If you have any suggestion or ideas on how this app could be improved, be sure to get in touch.</value>
+    <value>Do you want to be able to save your thought records in a printable format? Would you like to be able to track your progress over time with charts and graphs? If you have any suggestion or ideas on how this app could be improved, contact me.</value>
   </data>
   <data name="ContactMeLinkText" xml:space="preserve">
-    <value>Contact Me</value>
+    <value>CONTACT ME</value>
+  </data>
+  <data name="DonateContent" xml:space="preserve">
+    <value>If you found this app helpful, the best thing you can do is spread the word about it. If you would like, you can also make a small donation.</value>
   </data>
   <data name="InstructionsTitle" xml:space="preserve">
     <value>Instructions</value>
@@ -173,10 +176,9 @@ Is the thought unrealistic? Highly improbable? Worth worrying about? Usually, it
     <value>Tips</value>
   </data>
   <data name="WhatIsThoughtRecordSectionContent" xml:space="preserve">
-    <value>Thought records are a tool used in cognative behavioral therapy to manage dysfunctional thinking related to conditions such as depression, obsessive-compulsive disorder, and anxiety. Dysfunctional thinking includes things such as negative self-talk or catastrophic thinking. Thought records make you more aware of your automatic dysfucntional thoughts, making you more able to properly analyze and evaluate them. The ultimate goal of using thought records is to change your thinking patterns so as to minimize the impact of 
-such dysfunctional thoughts</value>
+    <value>Thought records are a tool used in cognative behavioral therapy to manage dysfunctional thinking related to conditions such as depression, obsessive-compulsive disorder, and anxiety. Dysfunctional thinking includes things such as negative self-talk or catastrophic thinking. Thought records make you more aware of your automatic dysfucntional thoughts, making you more able to properly analyze and evaluate them. The ultimate goal of using thought records is to change your thinking patterns so as to minimize the impact of such dysfunctional thoughts</value>
   </data>
   <data name="WhatIsThoughtRecordSectionTitle" xml:space="preserve">
-    <value>What is a Thought Record</value>
+    <value>What is a Thought Record?</value>
   </data>
 </root>

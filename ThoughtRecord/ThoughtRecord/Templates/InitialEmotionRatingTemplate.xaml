@@ -39,7 +39,7 @@
                     <VisualState.Setters>
                         <Setter Target="EmotionNameAutoSuggestBox.Style" 
                                 Value="{StaticResource EmotionNameAutoSuggestBoxDesktop}" />
-                        <Setter Target="InitailEmotionRatingPanel.Style" 
+                        <Setter Target="InitialEmotionRatingPanel.Style" 
                                 Value="{StaticResource EmotionRatingPanelDesktop}" />
                     </VisualState.Setters>
                 </VisualState>

@@ -107,7 +107,7 @@ namespace ThoughtRecordApp
             // licenseInformation = CurrentApp.LicenseInformation;
 
             // The next line is commented out for production/release.       
-            LicenseInformation = CurrentAppSimulator.LicenseInformation;
+           // LicenseInformation = CurrentAppSimulator.LicenseInformation;
         }
 
         /// <summary>

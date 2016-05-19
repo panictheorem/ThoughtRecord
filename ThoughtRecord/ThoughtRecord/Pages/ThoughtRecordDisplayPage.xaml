@@ -175,11 +175,11 @@
                         <TextBlock  x:Name="DateOfSituationTextBox"
                                     Text="{x:Bind ViewModel.ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}, Mode=OneWay}"
                                     Grid.Row="0"
-                                    Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                                    Style="{StaticResource BodyTextBlock}"/>
                         <TextBlock x:Name="SituationDescriptionTextBox" 
                                    Text="{x:Bind ViewModel.ThoughtRecord.Situation.Description, Mode=OneWay}"
                                    Grid.Row="2"
-                                   Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                                   Style="{StaticResource BodyTextBlock}"/>
                     </Grid>
                 </Border>
                 <Border x:Name="InitialEmotionRatingsContentCell" Grid.Column="1" Grid.Row="1">
@@ -199,22 +199,22 @@
                 <Border x:Name="AutomaticThoughtsContentCell" Grid.Column="2" Grid.Row="1">
                     <TextBlock x:Name="AutomaticThoughtsTextBox"
                                Text="{x:Bind ViewModel.ThoughtRecord.AutomaticThoughts, Mode=OneWay}"
-                               Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                               Style="{StaticResource BodyTextBlock}"/>
                 </Border>
                 <Border x:Name="SupportingEvidenceContentCell" Grid.Column="3" Grid.Row="1">
                     <TextBlock x:Name="SupportingEvidenceTextBox"
                                Text="{x:Bind ViewModel.ThoughtRecord.SupportingEvidence, Mode=OneWay}"
-                               Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                               Style="{StaticResource BodyTextBlock}"/>
                 </Border>
                 <Border x:Name="ContradictingEvidenceContentCell" Grid.Column="4" Grid.Row="1">
                     <TextBlock x:Name="ContradictingEvidenceTextBox" 
                                Text="{x:Bind ViewModel.ThoughtRecord.ContradictingEvidence, Mode=OneWay}"
-                               Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                               Style="{StaticResource BodyTextBlock}"/>
                 </Border>
                 <Border x:Name="RationalAssessmentContentCell" Grid.Column="5" Grid.Row="1">
                     <TextBlock x:Name="RationalAssessmentTextBox"
                                Text="{x:Bind ViewModel.ThoughtRecord.RationalAssessment, Mode=OneWay}"
-                               Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                               Style="{StaticResource BodyTextBlock}"/>
                 </Border>
                 <Border x:Name="SubsequentEmotionRatingsContentCell" Grid.Column="6" Grid.Row="1">
                     <StackPanel x:Name="SubsequentEmotionRatingsInputArea"

@@ -21,9 +21,9 @@
     <StackPanel x:Name="InitialEmotionDisplayPanel" Orientation="Vertical">
         <TextBlock x:Name="EmotionNameTextBox"                       
                    Text="{x:Bind Emotion.Name}"
-                   Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                   Style="{StaticResource BodyTextBlock}"/>
         <TextBlock x:Name="InitialEmotionRatingDisplay" 
                    Text="{x:Bind Emotion.InitialRating, Mode=OneWay}"
-                   Style="{StaticResource ThoughtRecordContentTextBox}"/>
+                   Style="{StaticResource BodyTextBlock}"/>
     </StackPanel>
 </UserControl>
