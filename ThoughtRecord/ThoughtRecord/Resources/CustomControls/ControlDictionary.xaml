@@ -9,5 +9,6 @@
         <ResourceDictionary Source="/Resources/CustomControls/Borders.xaml" />
         <ResourceDictionary Source="/Resources/CustomControls/ListBoxItems.xaml" />
         <ResourceDictionary Source="/Resources/CustomControls/Pivot.xaml" />
+        <ResourceDictionary Source="/Resources/CustomControls/Hyperlink.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

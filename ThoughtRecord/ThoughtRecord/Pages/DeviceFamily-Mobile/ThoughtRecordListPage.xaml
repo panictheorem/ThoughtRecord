@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
+        <Image Source="/Assets/ListBackground.jpg" Stretch="UniformToFill"/>
         <ListView x:Name="ThoughtRecordItemsList"
                   SelectionMode="Single"
                   ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"

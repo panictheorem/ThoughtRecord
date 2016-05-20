@@ -130,13 +130,19 @@
     <value>Do you want to be able to save your thought records in a printable format? Would you like to be able to track your progress over time with charts and graphs? If you have any suggestion or ideas on how this app could be improved, contact me.</value>
   </data>
   <data name="ContactMeLinkText" xml:space="preserve">
-    <value>CONTACT ME</value>
+    <value>Contact Me</value>
   </data>
   <data name="DonateButtonText" xml:space="preserve">
     <value>Donate $1.99 USD</value>
   </data>
   <data name="DonateContent" xml:space="preserve">
     <value>If you found this app helpful, the best thing you can do is spread the word about it. If you would like, you can also make a small donation.</value>
+  </data>
+  <data name="ImageSourceLinkText" xml:space="preserve">
+    <value>View Image Source</value>
+  </data>
+  <data name="ImageSourceText" xml:space="preserve">
+    <value>The background image on the thought record list page was obtained from Pixabay user Unsplash.</value>
   </data>
   <data name="InstructionsTitle" xml:space="preserve">
     <value>Instructions</value>

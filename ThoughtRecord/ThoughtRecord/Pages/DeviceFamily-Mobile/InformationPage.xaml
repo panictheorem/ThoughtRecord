@@ -60,10 +60,14 @@
                     <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBlock Text="{x:Bind ViewModel.ContactMeContent}" Style="{StaticResource ParagraphStyle}"/>
                     <HyperlinkButton Content="{x:Bind ViewModel.ContactMeLinkText}" 
-                             Foreground="{StaticResource DarkAccentBrush}"
-                             FontWeight="SemiBold"
-                             NavigateUri="http://www.PanicTheorem.Net/Contact"
-                             HorizontalAlignment="Center"/>
+                                 Style="{StaticResource HyperlinkButtonStyle}"
+                                 NavigateUri="http://www.PanicTheorem.Net/Contact"
+                                 HorizontalAlignment="Center"/>
+                    <TextBlock Text="{x:Bind ViewModel.ImageSourceText}" Style="{StaticResource ParagraphStyle}"/>
+                    <HyperlinkButton Content="{x:Bind ViewModel.ImageSourceLinkText}" 
+                                 HorizontalAlignment="Center"
+                                 NavigateUri="https://pixabay.com/en/mountains-sky-landscape-nature-731149/"
+                                 Style="{StaticResource HyperlinkButtonStyle}"/>
                     <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ParagraphStyle}"/>
                     <Button x:Name="DonationButton" 
                         Content="{x:Bind ViewModel.DonateButtonText}" 

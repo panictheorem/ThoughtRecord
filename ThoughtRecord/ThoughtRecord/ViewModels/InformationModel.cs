@@ -33,6 +33,9 @@ namespace ThoughtRecordApp.ViewModels
         public string ContactMeContent { get; private set; }
         public string DonateContent { get; private set; }
         public string DonateButtonText { get; set; }
+        public string ImageSourceText { get; set; }
+        public string ImageSourceLinkText { get; set; }
+
         public InformationModel()
         {
             InitializeContent();
@@ -64,6 +67,8 @@ namespace ThoughtRecordApp.ViewModels
             ContactMeContent = resources.GetString("ContactMeContent");
             DonateContent = resources.GetString("DonateContent");
             DonateButtonText = resources.GetString("DonateButtonText");
+            ImageSourceText = resources.GetString("ImageSourceText");
+            ImageSourceLinkText = resources.GetString("ImageSourceLinkText");
         }
     }
 }
