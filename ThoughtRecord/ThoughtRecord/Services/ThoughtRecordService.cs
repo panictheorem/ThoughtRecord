@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Models;
+using ThoughtRecordApp.ViewModels;
 using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.Services
@@ -49,6 +50,21 @@ namespace ThoughtRecordApp.Services
             resources.GetString("ContradictingEvidence"),
             resources.GetString("RationalAssessment")
         };
+        }
+
+        public static ThoughtRecordSectionTitleModel GetTitleModel()
+        {
+            ResourceLoader resources = ResourceLoader.GetForCurrentView("ThoughtRecordTitles");
+            return new ThoughtRecordSectionTitleModel
+            {
+                SituationTitle = resources.GetString("SituationTitle"),
+                InitialEmotionsTitle = resources.GetString("InitialEmotionsTitle"),
+                AutomaticThoughtsTitle = resources.GetString("AutomaticThoughtsTitle"),
+                EvidenceAgainstThoughtsTitle = resources.GetString("EvidenceAgainstThoughtsTitle"),
+                EvidenceForThoughtsTitle = resources.GetString("EvidenceForThoughtsTitle"),
+                RationalAssessment = resources.GetString("RationalAssessment"),
+                SubsequentEmotionsTitle = resources.GetString("SubsequentEmotionsTitle")
+            };
         }
     }
 }

@@ -18,12 +18,17 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel x:Name="InitialEmotionDisplayPanel" Orientation="Vertical">
-        <TextBlock x:Name="EmotionNameTextBox"                       
-                   Text="{x:Bind Emotion.Name}"
-                   Style="{StaticResource BodyTextBlock}"/>
+    <Grid  x:Name="InitialEmotionGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{x:Bind Emotion.Name, Converter={StaticResource EmotionNameDisplayConverter}}"
+                   Style="{StaticResource BodyTextBlock}"
+                   Margin="0,0,10,0"/>
         <TextBlock x:Name="InitialEmotionRatingDisplay" 
-                   Text="{x:Bind Emotion.InitialRating, Mode=OneWay}"
-                   Style="{StaticResource BodyTextBlock}"/>
-    </StackPanel>
+                   Text="{x:Bind Emotion.InitialRating}"
+                   Grid.Column="1"
+                   Style="{StaticResource EmotionRatingDisplay}"/>
+    </Grid>
 </UserControl>

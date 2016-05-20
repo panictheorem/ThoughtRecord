@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.DAL.Models;
+using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels.Infrastructure;
 
 namespace ThoughtRecordApp.ViewModels
@@ -19,6 +20,7 @@ namespace ThoughtRecordApp.ViewModels
         private List<ThoughtRecord> thoughtRecords;
         private int currentIndex;
         private bool commandsEnabled;
+        public ThoughtRecordSectionTitleModel SectionTitles { get; private set; }
         public delegate void ThoughtRecordEvent(object sender, EventArgs args);
         public event ThoughtRecordEvent OnThoughtRecordEditRequested;
         public event ThoughtRecordEvent OnThoughtRecordDeleteRequested;
@@ -28,6 +30,7 @@ namespace ThoughtRecordApp.ViewModels
         {
             database = db;
             InitializeModel(thoughtRecordId);
+            SectionTitles = ThoughtRecordService.GetTitleModel();
         }
         private async void InitializeModel(int thoughtRecordId)
         {

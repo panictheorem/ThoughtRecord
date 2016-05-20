@@ -9,4 +9,5 @@
     <converters:StringDateTimeConverter x:Key="StringDateTimeConverter" />
     <converters:IntConverter x:Key="IntConverter" />
     <converters:StringLengthConverter x:Key="StringLengthConverter" />
+    <converters:EmotionNameDisplayConverter x:Key="EmotionNameDisplayConverter" />
 </ResourceDictionary>

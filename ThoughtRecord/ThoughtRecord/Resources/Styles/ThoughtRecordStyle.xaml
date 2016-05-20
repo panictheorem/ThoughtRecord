@@ -34,6 +34,7 @@
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
     </Style>
     <Style x:Key="RecordTextInputDesktop" TargetType="TextBox" BasedOn="{StaticResource RecordTextInput}">
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
@@ -42,7 +43,7 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style x:Key="RecordTextInputMobile" TargetType="TextBox" BasedOn="{StaticResource RecordTextInput}">
-        <Setter Property="Height" Value="250" />
+        <Setter Property="Height" Value="150" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="BorderThickness" Value="1" />
     </Style>
@@ -70,8 +71,9 @@
         <Setter Property="Width" Value="150" />
     </Style>
     <Style x:Key="EmotionRatingDisplay" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="LightBlue" />
+        <Setter Property="Foreground" Value="{StaticResource DarkAccentBrush}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
     <Style x:Key="EmotionNameAutoSuggestBox" TargetType="AutoSuggestBox">
         <Setter Property="Margin" Value="5" />

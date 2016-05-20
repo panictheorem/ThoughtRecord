@@ -28,7 +28,7 @@ namespace ThoughtRecordApp.ViewModels
         public string Tip2 { get; private set; }
         public string Tip3 { get; private set; }
         public string AboutContent { get; private set; }
-        public string CompanyName { get; private set; }
+        public string BroughtToYouByText { get; private set; }
         public string ContactMeLinkText { get; private set; }
         public string ContactMeContent { get; private set; }
         public string DonateContent { get; private set; }
@@ -59,7 +59,7 @@ namespace ThoughtRecordApp.ViewModels
             Tip2= resources.GetString("Tip2");
             Tip3 = resources.GetString("Tip3");
             AboutContent = resources.GetString("AboutContent");
-            CompanyName = resources.GetString("CompanyName");
+            BroughtToYouByText = resources.GetString("BroughtToYouByText");
             ContactMeLinkText = resources.GetString("ContactMeLinkText");
             ContactMeContent = resources.GetString("ContactMeContent");
             DonateContent = resources.GetString("DonateContent");

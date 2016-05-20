@@ -80,7 +80,7 @@
 
                 <VisualState x:Name="WideWindow">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1150" />
+                        <AdaptiveTrigger MinWindowWidth="1000" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SituationTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
@@ -143,25 +143,25 @@
                 </Grid.ColumnDefinitions>
                 <!--Field Titles-->
                 <Border x:Name="SituationTitleCell" Grid.Column="0">
-                    <TextBlock x:Name="SituationTitleTextBlock" Text="Situation"/>
+                    <TextBlock x:Name="SituationTitleTextBlock" Text="{x:Bind ViewModel.SectionTitles.SituationTitle}"/>
                 </Border>
                 <Border x:Name="InitialEmotionRatingsTitleCell" Grid.Column="1">
-                    <TextBlock x:Name="InitialEmotionRatingsTitleTextBlock" Text="Emotions"/>
+                    <TextBlock x:Name="InitialEmotionRatingsTitleTextBlock" Text="{x:Bind ViewModel.SectionTitles.InitialEmotionsTitle}"/>
                 </Border>
                 <Border x:Name="AutomaticThoughtsTitleCell" Grid.Column="2">
-                    <TextBlock x:Name="AutomaticThoughtsTitleTextBlock" Text="Automatic Thought(s)"/>
+                    <TextBlock x:Name="AutomaticThoughtsTitleTextBlock" Text="{x:Bind ViewModel.SectionTitles.AutomaticThoughtsTitle}"/>
                 </Border>
                 <Border x:Name="SupportingEvidenceTitleCell" Grid.Column="3">
-                    <TextBlock x:Name="SupportingEvidenceTitleTextBlock" Text="Evidence Supporting Automatic Thought(s)"/>
+                    <TextBlock x:Name="SupportingEvidenceTitleTextBlock" Text="{x:Bind ViewModel.SectionTitles.EvidenceAgainstThoughtsTitle}"/>
                 </Border>
                 <Border x:Name="ContradictingEvidenceTitleCell" Grid.Column="4">
-                    <TextBlock x:Name="ContradictingEvidenceTitleTextBlock" Text="Evidence Not Supporting Automatic Thought(s)"/>
+                    <TextBlock x:Name="ContradictingEvidenceTitleTextBlock" Text="{x:Bind ViewModel.SectionTitles.EvidenceForThoughtsTitle}"/>
                 </Border>
                 <Border x:Name="RationalAssessmentTitleCell" Grid.Column="5">
-                    <TextBlock x:Name="RationalAssessmentTitleTextBlock" Text="Rational Assessment" />
+                    <TextBlock x:Name="RationalAssessmentTitleTextBlock" Text="{x:Bind ViewModel.SectionTitles.RationalAssessment}" />
                 </Border>
                 <Border x:Name="SubsequentEmotionRatingsTitleCell" Grid.Column="6">
-                    <TextBlock x:Name="SubsequentEmotionRatingsTitleTextBlock" Text="Reevaluate Your Emotions"/>
+                    <TextBlock x:Name="SubsequentEmotionRatingsTitleTextBlock" Text="{x:Bind ViewModel.SectionTitles.SubsequentEmotionsTitle}"/>
                 </Border>
 
                 <!-- Field Inputs-->

@@ -30,6 +30,7 @@ namespace ThoughtRecordApp.ViewModels
         public string Title { get; private set; }
         //The text displayed in textboxes when a new thought record is created
         public List<string> DefaultInputText { get; private set; }
+        public ThoughtRecordSectionTitleModel SectionTitles { get; private set; }
         public delegate void ThoughtRecordEditEvent(object sender, EventArgs args);
         public event ThoughtRecordEditEvent OnThoughtRecordSaving;
         public event ThoughtRecordEditEvent OnThoughtRecordSaved;
@@ -43,6 +44,7 @@ namespace ThoughtRecordApp.ViewModels
         {
             database = db;
             CreateNewThoughtRecord();
+            SectionTitles = ThoughtRecordService.GetTitleModel();
             commandsEnabled = true;
             IsCurrentDataSaved = true;
         }
@@ -108,7 +110,9 @@ namespace ThoughtRecordApp.ViewModels
         public bool IsCurrentDataSaved
         {
             get { return isCurrentDataSaved; }
-            set { isCurrentDataSaved = value; }
+            set { isCurrentDataSaved = value;
+                ((RelayCommand)Save).RaiseCanExecuteChanged();
+            }
         }
 
         private ThoughtRecord thoughtRecord;
@@ -316,14 +320,18 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (saveThoughtRecord == null)
                 {
-                    saveThoughtRecord = new RelayCommand(SaveThoughtRecord, CommandsEnabled);
+                    saveThoughtRecord = new RelayCommand(SaveThoughtRecord, SaveEnabled);
                 }
                 return saveThoughtRecord;
             }
         }
-        public bool CommandsEnabled()
+        private bool CommandsEnabled()
         {
             return commandsEnabled;
+        }
+        private bool SaveEnabled()
+        {
+            return CommandsEnabled() && !isCurrentDataSaved;
         }
         public async void SaveThoughtRecord()
         {

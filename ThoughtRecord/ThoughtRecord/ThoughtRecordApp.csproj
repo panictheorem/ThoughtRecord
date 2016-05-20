@@ -144,7 +144,9 @@
     <Compile Include="ViewModels\ThoughtRecordDisplayModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordEditModel.cs" />
     <Compile Include="ViewModels\ThoughtRecordListModel.cs" />
+    <Compile Include="ViewModels\ThoughtRecordSectionTitleModel.cs" />
     <Compile Include="ViewModels\ValueConverters\CalendarDateTimeConverter.cs" />
+    <Compile Include="ViewModels\ValueConverters\EmotionNameDisplayConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\StringLengthConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\StringDateTimeConverter.cs" />
     <Compile Include="ViewModels\ValueConverters\EmotionListConverter.cs" />
@@ -157,6 +159,7 @@
     </AppxManifest>
     <PRIResource Include="Resources\Strings\DefaultInputText.resw" />
     <PRIResource Include="Resources\Strings\InformationText.resw" />
+    <PRIResource Include="Resources\Strings\ThoughtRecordTitles.resw" />
     <None Include="ThoughtRecordApp_StoreKey.pfx" />
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>

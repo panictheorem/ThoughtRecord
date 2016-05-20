@@ -42,17 +42,19 @@
 
             <TextBlock Text="{x:Bind ViewModel.AboutTitle}" Style="{StaticResource SectionTitle}"/>
             <StackPanel Orientation="Horizontal" >
-                <TextBlock Text="Brought to you by " 
+                <TextBlock Text="{x:Bind ViewModel.BroughtToYouByText}" 
                        Style="{StaticResource ListItem}"
                        HorizontalAlignment="Center"/>
-                <TextBlock Text="PANIC THEOREM SOFTWARE" 
+                <TextBlock Text=" PANIC THEOREM SOFTWARE" 
                        Style="{StaticResource ListItem}"
                        HorizontalAlignment="Center"/>
             </StackPanel>
             <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <TextBlock Text="{x:Bind ViewModel.ContactMeContent}" Style="{StaticResource ListItem}"/>
             <HyperlinkButton Content="{x:Bind ViewModel.ContactMeLinkText}" 
-                                 NavigateUri="http://www.PanicTheorem.Net/Contact"/>
+                             Foreground="{StaticResource DarkAccentBrush}"
+                             NavigateUri="http://www.PanicTheorem.Net/Contact"
+                             HorizontalAlignment="Center"/>
             <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ListItem}"/>
             <Button x:Name="DonationButton" Content="Donate 1.99 USD"  Click="DonationButton_Click"/>
         </StackPanel>
