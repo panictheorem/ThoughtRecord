@@ -16,46 +16,61 @@
         </ResourceDictionary>
     </Page.Resources>
     <Pivot>
-        <PivotItem Header="{x:Bind ViewModel.InstructionsTitle}">
-            <ScrollViewer>
-                <StackPanel Orientation="Vertical">
+        <PivotItem Header="{x:Bind ViewModel.InstructionsTitle}"
+                   Style="{StaticResource PivotItemStyle}">
+            <ScrollViewer HorizontalAlignment="Stretch">
+                <StackPanel Style="{StaticResource PivotSectionStyle}">
                     <TextBlock Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionTitle}" 
                    Style="{StaticResource InformationSubheader}"/>
                     <TextBlock Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionContent}" Style="{StaticResource BodyTextBlock}" />
                     <TextBlock Text="{x:Bind ViewModel.StepsSectionTitle}" Style="{StaticResource InformationSubheader}" />
                     <TextBlock  Text="{x:Bind ViewModel.StepsSectionContent}" 
                    Style="{StaticResource BodyTextBlock}" />
-                    <TextBlock Text="{x:Bind ViewModel.Step1}" Style="{StaticResource ListItem}" />
-                    <TextBlock Text="{x:Bind ViewModel.Step2}" Style="{StaticResource ListItem}" />
-                    <TextBlock Text="{x:Bind ViewModel.Step3}" Style="{StaticResource ListItem}"/>
-                    <TextBlock Text="{x:Bind ViewModel.Step4}" Style="{StaticResource ListItem}"/>
-                    <TextBlock Text="{x:Bind ViewModel.Step5}" Style="{StaticResource ListItem}"/>
-                    <TextBlock Text="{x:Bind ViewModel.Step6}" Style="{StaticResource ListItem}"/>
+                    <TextBlock Text="{x:Bind ViewModel.Step1}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.Step2}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.Step3}" Style="{StaticResource ParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.Step4}" Style="{StaticResource ParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.Step5}" Style="{StaticResource ParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.Step6}" Style="{StaticResource ParagraphStyle}"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem Header="{x:Bind ViewModel.TipsTitle}">
-            <ScrollViewer>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{x:Bind ViewModel.Tip1}" Style="{StaticResource ListItem}" />
-                    <TextBlock Text="{x:Bind ViewModel.Tip2}" Style="{StaticResource ListItem}" />
-                    <TextBlock Text="{x:Bind ViewModel.Tip3}" Style="{StaticResource ListItem}" />
+        <PivotItem Header="{x:Bind ViewModel.TipsTitle}"
+                   Style="{StaticResource PivotItemStyle}">
+            <ScrollViewer  HorizontalAlignment="Stretch">
+                <StackPanel Style="{StaticResource PivotSectionStyle}">
+                    <TextBlock Text="{x:Bind ViewModel.Tip1}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.Tip2}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.Tip3}" Style="{StaticResource ParagraphStyle}" />
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem Header="{x:Bind ViewModel.AboutTitle}">
-            <ScrollViewer>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Brought to you by PANIC THEOREM SOFTWARE" 
-                       Style="{StaticResource ListItem}"
+        <PivotItem Header="{x:Bind ViewModel.AboutTitle}"
+                   Style="{StaticResource PivotItemStyle}">
+            <ScrollViewer  HorizontalAlignment="Stretch">
+                <StackPanel Style="{StaticResource PivotSectionStyle}">
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock Text="{x:Bind ViewModel.BroughtToYouByText}" 
+                       Style="{StaticResource ParagraphStyle}"
                        HorizontalAlignment="Center"/>
-                    <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="{x:Bind ViewModel.ContactMeContent}" Style="{StaticResource ListItem}"/>
-                        <HyperlinkButton Content="{x:Bind ViewModel.ContactMeLinkText}" NavigateUri="http://www.PanicTheorem.Net/Contact" />
+                        <TextBlock Text=" PANIC THEOREM SOFTWARE" 
+                       Style="{StaticResource ParagraphStyle}"
+                       HorizontalAlignment="Center"/>
                     </StackPanel>
-                    <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ListItem}"/>
-                    <Button x:Name="DonationButton" Content="Donate 1.99 USD"  Click="DonationButton_Click"/>
+                    <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{x:Bind ViewModel.ContactMeContent}" Style="{StaticResource ParagraphStyle}"/>
+                    <HyperlinkButton Content="{x:Bind ViewModel.ContactMeLinkText}" 
+                             Foreground="{StaticResource DarkAccentBrush}"
+                             FontWeight="SemiBold"
+                             NavigateUri="http://www.PanicTheorem.Net/Contact"
+                             HorizontalAlignment="Center"/>
+                    <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ParagraphStyle}"/>
+                    <Button x:Name="DonationButton" 
+                        Content="{x:Bind ViewModel.DonateButtonText}" 
+                        Click="DonationButton_Click" 
+                        Style="{StaticResource DefaultButtonStyle}"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Center"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>

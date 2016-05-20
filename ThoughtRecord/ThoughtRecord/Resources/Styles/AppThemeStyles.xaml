@@ -12,13 +12,12 @@
     
     <!-- Text -->
     <Style x:Key="SectionTitle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontWeight" Value="Light" />
-        <Setter Property="Margin" Value="0,10,0,2" />
     </Style>
     <Style x:Key="BodyTextBlock" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}" />

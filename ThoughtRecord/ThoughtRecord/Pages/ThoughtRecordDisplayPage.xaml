@@ -106,6 +106,7 @@
                         <Setter Target="RationalAssessmentContentCell.Style" Value="{StaticResource ThoughtRecordBottomCellBorder}" />
                         <Setter Target="SubsequentEmotionRatingsTitleCell.Style" Value="{StaticResource ThoughtRecordEndCellBorder}" />
                         <Setter Target="SubsequentEmotionRatingsContentCell.Style" Value="{StaticResource ThoughtRecordBottomEndCellBorder}" />
+                        <Setter Target="DateOfSituationTextBox.Style" Value="{StaticResource DateDisplayDesktop}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -175,7 +176,7 @@
                         <TextBlock  x:Name="DateOfSituationTextBox"
                                     Text="{x:Bind ViewModel.ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}, Mode=OneWay}"
                                     Grid.Row="0"
-                                    Style="{StaticResource BodyTextBlock}"/>
+                                    Style="{StaticResource DateDisplay}"/>
                         <TextBlock x:Name="SituationDescriptionTextBox" 
                                    Text="{x:Bind ViewModel.ThoughtRecord.Situation.Description, Mode=OneWay}"
                                    Grid.Row="2"

@@ -28,7 +28,7 @@
         <Setter Property="Margin" Value="0,0,0,10" />
     </Style>
     <Style x:Key="RecordFieldTitleMobile" TargetType="TextBlock" BasedOn="{StaticResource SectionTitle}">
-        
+        <Setter Property="Margin" Value="0,10,0,2" />
     </Style>
     <Style x:Key="RecordTextInput" TargetType="TextBox">
         <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}" />
@@ -92,6 +92,14 @@
     <Style x:Key="EmotionRatingPanelDesktop" TargetType="StackPanel">
         <Setter Property="Height" Value="135" />
         <Setter Property="Padding" Value="5" />
+    </Style>
+    <Style x:Key="DateDisplay" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Foreground" Value="{StaticResource DarkAccentBrush}" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+    <Style x:Key="DateDisplayDesktop" TargetType="TextBlock" BasedOn="{StaticResource DateDisplay}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
     <Style x:Key="ThoughtRecordContentTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlock}">
     </Style>

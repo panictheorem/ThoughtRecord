@@ -32,7 +32,7 @@ namespace ThoughtRecordApp.ViewModels
         public string ContactMeLinkText { get; private set; }
         public string ContactMeContent { get; private set; }
         public string DonateContent { get; private set; }
-
+        public string DonateButtonText { get; set; }
         public InformationModel()
         {
             InitializeContent();
@@ -63,6 +63,7 @@ namespace ThoughtRecordApp.ViewModels
             ContactMeLinkText = resources.GetString("ContactMeLinkText");
             ContactMeContent = resources.GetString("ContactMeContent");
             DonateContent = resources.GetString("DonateContent");
+            DonateButtonText = resources.GetString("DonateButtonText");
         }
     }
 }
