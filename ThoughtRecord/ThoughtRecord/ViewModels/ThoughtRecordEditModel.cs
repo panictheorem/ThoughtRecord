@@ -42,9 +42,9 @@ namespace ThoughtRecordApp.ViewModels
 
         public ThoughtRecordEditModel(IDatabaseService db)
         {
+            SectionTitles = ThoughtRecordService.GetTitleModel();
             database = db;
             CreateNewThoughtRecord();
-            SectionTitles = ThoughtRecordService.GetTitleModel();
             commandsEnabled = true;
             IsCurrentDataSaved = true;
         }
@@ -52,6 +52,7 @@ namespace ThoughtRecordApp.ViewModels
         public ThoughtRecordEditModel(int thoughtRecordId, IDatabaseService db)
         {
             Title = editThoughtRecordTitle;
+            SectionTitles = ThoughtRecordService.GetTitleModel();
             database = db;
             InitializeThoughtRecord(thoughtRecordId);
             DefaultInputText = ThoughtRecordService.GetDefaultInputText();

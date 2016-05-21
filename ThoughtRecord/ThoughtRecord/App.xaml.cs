@@ -88,7 +88,7 @@ namespace ThoughtRecordApp
                 await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
             }
 
-            //Cortana VCD 
+            //Cortana VCD & IAP Data
             try
             {
                 // Install the main VCD. 
@@ -98,17 +98,18 @@ namespace ThoughtRecordApp
 
                 await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.
                  InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Installing Voice Commands Failed: " + ex.ToString());
-            }
 
+                //LicenseInfo for In-App Purchase
 #if DEBUG
-            LicenseInformation = CurrentAppSimulator.LicenseInformation;
+                LicenseInformation = CurrentAppSimulator.LicenseInformation;
 #else
             LicenseInformation = CurrentApp.LicenseInformation;
 #endif
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         /// <summary>
