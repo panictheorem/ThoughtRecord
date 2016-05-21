@@ -70,6 +70,9 @@
                         Style="{StaticResource DefaultButtonStyle}"
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"/>
+                <TextBlock x:Name="DonationSuccessMessage" 
+                           Style="{StaticResource ParagraphStyle}"
+                           Foreground="{StaticResource DarkAccentBrush}"/>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

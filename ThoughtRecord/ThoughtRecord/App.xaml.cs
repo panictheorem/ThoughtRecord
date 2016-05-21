@@ -104,10 +104,11 @@ namespace ThoughtRecordApp
                 System.Diagnostics.Debug.WriteLine("Installing Voice Commands Failed: " + ex.ToString());
             }
 
-            // licenseInformation = CurrentApp.LicenseInformation;
-
-            // The next line is commented out for production/release.       
-           // LicenseInformation = CurrentAppSimulator.LicenseInformation;
+#if DEBUG
+            LicenseInformation = CurrentAppSimulator.LicenseInformation;
+#else
+            LicenseInformation = CurrentApp.LicenseInformation;
+#endif
         }
 
         /// <summary>

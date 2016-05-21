@@ -36,39 +36,43 @@ namespace ThoughtRecordApp.Pages
 
         private async void DonationButton_Click(object sender, RoutedEventArgs e)
         {
-
-            if (!(Application.Current as App).LicenseInformation.ProductLicenses["ThoughtRecordDonation"].IsActive)
+            DonationButton.Visibility = Visibility.Collapsed;
+            try
             {
-                try
+                rootPage.ShowProgressRing();
+#if DEBUG
+                var result = await CurrentAppSimulator.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
+#else
+                   var result = await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", false);
+#endif
+                //Check the license state to determine if the in-app purchase was successful.
+
+                if ((Application.Current as App).LicenseInformation.ProductLicenses["ThoughtRecordDonation"].IsActive)
                 {
-                    rootPage.ShowProgressRing();
-                    //await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", false);
-                    var result = await CurrentAppSimulator.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
-                    //Check the license state to determine if the in-app purchase was successful.
-                    
+                    DonationSuccessMessage.Text = "Thanks! :)";
                 }
-                catch (Exception)
+                else
                 {
-                    // The in-app purchase was not completed because 
-                    // an error occurred.
+                    DonationSuccessMessage.Text = "The Donation could not be processed. Try again later.";
                 }
-                rootPage.HideProgressRing();
             }
-            else
+            catch (Exception)
             {
-                // The customer already owns this feature.
+                // The in-app purchase was not completed because an error occurred.
+                DonationSuccessMessage.Text = "An error occurred and the donation could not be processed. Try again later.";
+
             }
-
-        }
-
-        private void ShowProgressRing(object sender, EventArgs args)
-        {
-            rootPage.ShowProgressRing();
-        }
-
-        private void HideProgressRing(object sender, EventArgs args)
-        {
             rootPage.HideProgressRing();
-        }
     }
+
+    private void ShowProgressRing(object sender, EventArgs args)
+    {
+        rootPage.ShowProgressRing();
+    }
+
+    private void HideProgressRing(object sender, EventArgs args)
+    {
+        rootPage.HideProgressRing();
+    }
+}
 }
