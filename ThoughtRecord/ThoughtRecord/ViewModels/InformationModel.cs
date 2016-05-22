@@ -9,7 +9,7 @@ namespace ThoughtRecordApp.ViewModels
 {
     public class InformationModel
     {
-        public const string Title = "Information";
+        public static string Title { get; private set; }
 
         public string InstructionsTitle { get; private set; }
         public string TipsTitle { get; private set; }
@@ -43,8 +43,9 @@ namespace ThoughtRecordApp.ViewModels
 
         private void InitializeContent()
         {
-            ResourceLoader resources = ResourceLoader.GetForCurrentView("InformationText");
+            Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("InformationPageTitle");
 
+            ResourceLoader resources = ResourceLoader.GetForCurrentView("InformationText");
             InstructionsTitle = resources.GetString("InstructionsTitle");
             TipsTitle = resources.GetString("TipsTitle");
             AboutTitle = resources.GetString("AboutTitle");

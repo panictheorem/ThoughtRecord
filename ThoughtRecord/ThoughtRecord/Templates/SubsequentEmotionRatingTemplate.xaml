@@ -35,11 +35,9 @@
                    Foreground="{StaticResource ForegroundLightBrush}"/>
         <TextBlock x:Name="InitialEmotionRatingDisplay"  
                    Text="{Binding ElementName=SubsequentEmotionRatingSlider, Path=Value, Mode=OneWay}"   
-                 Style="{StaticResource EmotionRatingDisplay}"/>
-
+                   Style="{StaticResource EmotionRatingDisplay}"/>
         <Slider x:Name="SubsequentEmotionRatingSlider" IsThumbToolTipEnabled="False" 
                 Value="{x:Bind Emotion.SubsequentRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay }" 
                 Style="{StaticResource EmotionSlider}"/>
-
     </StackPanel>
 </UserControl>

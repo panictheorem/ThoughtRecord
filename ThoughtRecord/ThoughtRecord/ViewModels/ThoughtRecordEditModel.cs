@@ -18,15 +18,16 @@ using Windows.UI.Popups;
 using System.Windows.Input;
 using ThoughtRecordApp.DAL.Abstract;
 using System.ComponentModel;
+using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordEditModel : BindableBase, IDisposable
     {
         //Title for when creating a new record.
-        private const string newThoughtRecordTitle = "New Thought Record";
+        private readonly string newThoughtRecordTitle = "New Thought Record";
         //Title for when editing a record.
-        private const string editThoughtRecordTitle = "Edit Thought Record";
+        private readonly string editThoughtRecordTitle = "Edit Thought Record";
         public string Title { get; private set; }
         //The text displayed in textboxes when a new thought record is created
         public List<string> DefaultInputText { get; private set; }
@@ -42,6 +43,9 @@ namespace ThoughtRecordApp.ViewModels
 
         public ThoughtRecordEditModel(IDatabaseService db)
         {
+            var loader = ResourceLoader.GetForCurrentView("PageTitles");
+            newThoughtRecordTitle = loader.GetString("NewThoughtRecordPageTitle");
+            editThoughtRecordTitle = loader.GetString("EditThoughtRecordPageTitle");
             SectionTitles = ThoughtRecordService.GetTitleModel();
             database = db;
             CreateNewThoughtRecord();
@@ -51,6 +55,9 @@ namespace ThoughtRecordApp.ViewModels
 
         public ThoughtRecordEditModel(int thoughtRecordId, IDatabaseService db)
         {
+            var loader = ResourceLoader.GetForCurrentView("PageTitles");
+            newThoughtRecordTitle = loader.GetString("NewThoughtRecordPageTitle");
+            editThoughtRecordTitle = loader.GetString("EditThoughtRecordPageTitle");
             Title = editThoughtRecordTitle;
             SectionTitles = ThoughtRecordService.GetTitleModel();
             database = db;
@@ -95,16 +102,12 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
-        private void Emotion_PropertyChanged1(object sender, PropertyChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private async void InitializeThoughtRecord(int thoughtRecordId)
         {
             ThoughtRecord = await database.ThoughtRecords.GetByIdAsync(thoughtRecordId);
             Emotions = new ObservableCollection<Emotion>(thoughtRecord.Emotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;
+            RegisterForEmotionChangeEvents(observableEmotions);
             IsCurrentDataSaved = true;
         }
 

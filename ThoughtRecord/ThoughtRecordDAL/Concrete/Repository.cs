@@ -20,10 +20,12 @@ namespace ThoughtRecordApp.DAL.Concrete
     internal class Repository<T> : IRepository<T> where T : class
     {
         private SQLiteAsyncConnection asyncConn;
+
         public Repository(SQLiteAsyncConnection conn)
         {
             asyncConn = conn;
         }
+
         public IEnumerable<T> GetAll()
         {
             IEnumerable<T> entityList;
@@ -33,6 +35,7 @@ namespace ThoughtRecordApp.DAL.Concrete
             }
             return entityList;
         }
+
         public T GetById(int id)
         {
             T entity;

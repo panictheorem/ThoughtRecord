@@ -31,11 +31,11 @@ namespace ThoughtRecordApp.Pages
         public ThoughtRecordEditPage()
         {
             this.InitializeComponent();
-            rootPage = (Application.Current as App).CurrentMain;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs obj)
         {
+            rootPage = (Application.Current as App).CurrentMain;
             int thoughtRecordId = Convert.ToInt32(obj.Parameter);
             if (thoughtRecordId != 0)
             {
@@ -52,7 +52,7 @@ namespace ThoughtRecordApp.Pages
             ViewModel.OnThoughtRecordSaved += HideProgressRing;
             ViewModel.OnNewThoughtRecordOverwriteRisk += PromptToSave;
             ViewModel.OnNewThoughtRecordCreated += UpdateMainMenu;
-            Unloaded += ThoughtRecordEditPage_Unloaded;
+            this.Unloaded += ThoughtRecordEditPage_Unloaded;
             base.OnNavigatedTo(obj);
         }
 

@@ -18,6 +18,7 @@ namespace ThoughtRecordApp.DAL.Concrete
     public class ConnectionManager
     {
         public static readonly string FileName = "db.sqlite";
+
         private static string path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
 
         public static SQLiteConnection GetConnection()

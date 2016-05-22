@@ -9,12 +9,13 @@ using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.DAL.Models;
 using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels.Infrastructure;
+using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.ViewModels
 {
     public class ThoughtRecordDisplayModel : BindableBase
     {
-        public const string Title = "My Thought Records";
+        public static string Title { get; private set; }
         private int thoughtRecordId;
         private IDatabaseService database;
         private List<ThoughtRecord> thoughtRecords;
@@ -30,6 +31,7 @@ namespace ThoughtRecordApp.ViewModels
         {
             database = db;
             InitializeModel(thoughtRecordId);
+            Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("MyThoughtRecordsTitle");
             SectionTitles = ThoughtRecordService.GetTitleModel();
         }
         private async void InitializeModel(int thoughtRecordId)

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ThoughtRecordApp.ViewModels
 {
+    /// <summary>
+    /// A model of all the section titles for a thought record
+    /// </summary>
     public class ThoughtRecordSectionTitleModel
     {
         public string SituationTitle { get; set; }

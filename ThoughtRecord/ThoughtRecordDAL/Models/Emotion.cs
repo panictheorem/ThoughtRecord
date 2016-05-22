@@ -15,6 +15,7 @@ namespace ThoughtRecordApp.DAL.Models
 
         [PrimaryKey, AutoIncrement]
         public int EmotionId { get; set; }
+
         private string name;
         public string Name {
             get
@@ -53,8 +54,10 @@ namespace ThoughtRecordApp.DAL.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubsequentRating"));
             }
         }
+
         [ForeignKey(typeof(ThoughtRecord))]
         public int ThoughtRecordId { get; set; }
+
         [ManyToOne]
         public ThoughtRecord ThoughtRecord { get; set; }
     }

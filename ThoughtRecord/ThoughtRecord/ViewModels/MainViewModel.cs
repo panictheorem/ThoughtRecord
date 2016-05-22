@@ -11,7 +11,6 @@ namespace ThoughtRecordApp.ViewModels
     public class MainViewModel : BindableBase
     {
         private int selectedIndex;
-
         public int SelectedIndex {
             get
             {

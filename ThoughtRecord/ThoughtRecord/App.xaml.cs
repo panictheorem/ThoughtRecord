@@ -103,7 +103,7 @@ namespace ThoughtRecordApp
 #if DEBUG
                 LicenseInformation = CurrentAppSimulator.LicenseInformation;
 #else
-            LicenseInformation = CurrentApp.LicenseInformation;
+                LicenseInformation = CurrentApp.LicenseInformation;
 #endif
             }
             catch (Exception ex)

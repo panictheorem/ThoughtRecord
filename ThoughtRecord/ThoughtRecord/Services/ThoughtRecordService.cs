@@ -9,22 +9,11 @@ using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.Services
 {
+    /// <summary>
+    /// Retrives string data related to the thought record UI
+    /// </summary>
     public static class ThoughtRecordService
     {
-        public static ThoughtRecord GetThoughtRecordById(int id)
-        {
-            return new ThoughtRecord();
-        }
-
-        public static void SaveThoughtRecord(ThoughtRecord thoughtRecord)
-        {
-
-        }
-
-        public static List<ThoughtRecord> GetThoughtRecords()
-        {
-            throw new NotImplementedException();
-        }
 
         public static void PopulateWithDefaultValues(ThoughtRecord thoughtRecord)
         {

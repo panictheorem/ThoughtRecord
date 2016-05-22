@@ -82,10 +82,12 @@ namespace ThoughtRecordApp.Pages
                 MainMenuListBox.SelectedItem = null;
             }
         }
+
         public void UpdateTitle(string title)
         {
             ViewModel.Title = title;
         }
+
         //Updates navigates to the page based on the selection.
         //You can't navigate to a page you are already on, with the exception of the Edit Page
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

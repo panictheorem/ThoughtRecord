@@ -8,6 +8,7 @@ using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.DAL.Models;
 using ThoughtRecordApp.ViewModels.Infrastructure;
+using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.ViewModels
 {
@@ -16,12 +17,13 @@ namespace ThoughtRecordApp.ViewModels
     /// </summary>
     public class ThoughtRecordListModel : BindableBase
     {
-        public const string Title = "My Thought Records";
+        public static string Title { get; private set; }
         public ObservableCollection<ThoughtRecord> ThoughtRecords { get; set; }
         private IDatabaseService database;
 
         public ThoughtRecordListModel(IDatabaseService db)
         {
+            Title = Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("MyThoughtRecordsTitle");
             database = db;
             ThoughtRecords = new ObservableCollection<ThoughtRecord>();
         }

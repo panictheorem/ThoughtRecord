@@ -9,7 +9,8 @@ using ThoughtRecordApp.DAL.Models;
 namespace ThoughtRecordApp.DAL.Abstract
 {
     /// <summary>
-    /// Defines operations of a database service which should contain repositories
+    /// Defines operations of a database service which should allow access
+    /// to repositories of data
     /// </summary>
     public interface IDatabaseService
     {

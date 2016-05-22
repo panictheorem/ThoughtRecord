@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
   <CommandSet xml:lang="en-us" Name="ThoughtRecordAppCommandSet_en-us">
-    <AppName> Thought Record </AppName>
-    <Example> Show me my thought record </Example>
-    <Command Name="openThoughtRecordApp">
-      <Example> my thought records </Example>
-      <ListenFor RequireAppName="BeforePhrase">Show me</ListenFor>
-      <Feedback> Opening your thought records </Feedback>
+    <CommandPrefix>Show me</CommandPrefix>
+    <Example> my thought records </Example>
+    <Command Name="openThoughtRecordListPage">
+      <Example> my thought records  </Example>
+      <ListenFor> my thought records  </ListenFor>
+      <Feedback> Retrieving your thought records </Feedback>
       <Navigate />
     </Command>
   </CommandSet>

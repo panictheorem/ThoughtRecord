@@ -10,6 +10,9 @@ namespace ThoughtRecordApp.Services
 {
     public static class AppDataService
     {
+        /// <summary>
+        /// Gets database from current app class
+        /// </summary>
         public static IDatabaseService GetDatabase(Application app)
         {
             return (Application.Current as App).Database;

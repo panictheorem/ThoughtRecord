@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Models;
 using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels;
@@ -31,13 +32,18 @@ namespace ThoughtRecordApp.Pages
         public ThoughtRecordListPage()
         {
             this.InitializeComponent();
+        }
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
             rootPage = ((App)(Application.Current)).CurrentMain;
             ViewModel = new ThoughtRecordListModel(AppDataService.GetDatabase(Application.Current));
             rootPage.UpdateTitle(ThoughtRecordListModel.Title);
             rootPage.NavigateWithMenuUpdate(this.GetType());
-            InitializeViewModel();
+            await InitializeViewModel();
+            base.OnNavigatedTo(e);
         }
-        private async void InitializeViewModel()
+        private async Task InitializeViewModel()
         {
             rootPage.ShowProgressRing();
             await ViewModel.Initialize();

@@ -16,7 +16,11 @@ namespace ThoughtRecordApp.DAL.Concrete
     /// </summary>
     public class DatabaseService : IDatabaseService
     {
+        //The async database connection is to be shared by all repositories. This prevents
+        //locking the database when multiple processes access the database simultaneously
         private SQLiteAsyncConnection asyncConn;
+
+        
         private IRepository<ThoughtRecord> thoughtRecords;
         private IRepository<Situation> situations;
         private IRepository<Emotion> emotions;
@@ -24,17 +28,16 @@ namespace ThoughtRecordApp.DAL.Concrete
         public DatabaseService()
         {
             asyncConn = ConnectionManager.GetAsyncConnection();
+
             //Create all tables if they don't exist
             asyncConn.CreateTableAsync<ThoughtRecord>();
             asyncConn.CreateTableAsync<Situation>();
             asyncConn.CreateTableAsync<Emotion>();
-                //conn.CreateTable<Configuration>();
         }
 
         private async Task<bool> DatabaseExists()
         {
             var dbFile = await ApplicationData.Current.LocalFolder.GetFileAsync(ConnectionManager.FileName);
-
             return dbFile != null;
         }
 
