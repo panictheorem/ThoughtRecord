@@ -60,6 +60,7 @@ namespace ThoughtRecordApp.Pages
         {
             rootPage.UpdateTitle(ViewModel.Title);
             rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage));
+            ThoughtRecordScrollViewer.ChangeView(null, 0, null, false);
         }
 
         private async void PromptToSave(object sender, EventArgs args)

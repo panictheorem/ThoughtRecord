@@ -38,13 +38,12 @@ namespace ThoughtRecordApp.ViewModels
 
         public InformationModel()
         {
+            Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("InformationPageTitle");
             InitializeContent();
         }
 
         private void InitializeContent()
         {
-            Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("InformationPageTitle");
-
             ResourceLoader resources = ResourceLoader.GetForCurrentView("InformationText");
             InstructionsTitle = resources.GetString("InstructionsTitle");
             TipsTitle = resources.GetString("TipsTitle");

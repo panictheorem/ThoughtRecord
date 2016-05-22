@@ -165,7 +165,9 @@
     <PRIResource Include="Resources\Strings\ThoughtRecordTitles.resw">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </PRIResource>
-    <PRIResource Include="Resources\Strings\PageTitles.resw" />
+    <PRIResource Include="Resources\Strings\PageTitles.resw">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </PRIResource>
     <None Include="ThoughtRecordApp_StoreKey.pfx" />
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>
