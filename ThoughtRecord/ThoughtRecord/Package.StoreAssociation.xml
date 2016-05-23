@@ -368,6 +368,8 @@
       <ReservedName>My CBT Record</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
-  <AccountPackageIdentityNames />
+  <AccountPackageIdentityNames>
+    <MainPackageIdentityName>56470PanicTheorem.ThoughtRecordbeta</MainPackageIdentityName>
+  </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9NBLGGH4NLZX" />
 </StoreAssociation>

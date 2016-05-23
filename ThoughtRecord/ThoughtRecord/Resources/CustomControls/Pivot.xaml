@@ -17,6 +17,7 @@
         <Setter Property="Height" Value="48" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Margin" Value="10,0,10,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PivotHeaderItem">

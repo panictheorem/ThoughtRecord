@@ -88,17 +88,9 @@ namespace ThoughtRecordApp
                 await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
             }
 
-            //Cortana VCD & IAP Data
+            //IAP Data
             try
             {
-                // Install the main VCD. 
-                StorageFile vcdStorageFile =
-                 await Package.Current.InstalledLocation.GetFileAsync(
-                   @"ThoughtRecordCommands.xml");
-
-                await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.
-                 InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile);
-
                 //LicenseInfo for In-App Purchase
 #if DEBUG
                 LicenseInformation = CurrentAppSimulator.LicenseInformation;
