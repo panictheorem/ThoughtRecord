@@ -115,7 +115,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+        <ScrollViewer x:Name="ThoughtRecordScrollViewer" VerticalScrollBarVisibility="Auto"  >
             <Grid x:Name="ThoughRecordGrid" Margin="20,5,20,20" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

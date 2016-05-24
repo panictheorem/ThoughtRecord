@@ -42,6 +42,7 @@ namespace ThoughtRecordApp.Pages
                 ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
                 ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
                 ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
+                ViewModel.OnThoughtRecordChanged += ScrollToTop;
                 rootPage.NavigateWithMenuUpdate(this.GetType());
                 rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
                 base.OnNavigatedTo(obj);
@@ -54,6 +55,11 @@ namespace ThoughtRecordApp.Pages
                     Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
                 }
             }
+        }
+
+        private void ScrollToTop(object sender, EventArgs args)
+        {
+            ThoughtRecordScrollViewer.ChangeView(null, 0, null, false);
         }
 
         private async void ConfirmDeleteRequest(object sender, EventArgs args)

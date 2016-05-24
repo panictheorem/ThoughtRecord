@@ -26,6 +26,7 @@ namespace ThoughtRecordApp.ViewModels
         public event ThoughtRecordEvent OnThoughtRecordEditRequested;
         public event ThoughtRecordEvent OnThoughtRecordDeleteRequested;
         public event ThoughtRecordEvent OnThoughtRecordDeleted;
+        public event ThoughtRecordEvent OnThoughtRecordChanged;
 
         public ThoughtRecordDisplayModel(int thoughtRecordId, IDatabaseService db)
         {
@@ -151,6 +152,7 @@ namespace ThoughtRecordApp.ViewModels
             selectNextNewerThoughtRecord.RaiseCanExecuteChanged();
             selectNextOlderThoughtRecord.RaiseCanExecuteChanged();
             thoughtRecordId = ThoughtRecord.ThoughtRecordId;
+            OnThoughtRecordChanged?.Invoke(this, new EventArgs());
         }
 
         private void SelectNextOlderThoughtRecord()
@@ -159,6 +161,7 @@ namespace ThoughtRecordApp.ViewModels
             selectNextNewerThoughtRecord.RaiseCanExecuteChanged();
             selectNextOlderThoughtRecord.RaiseCanExecuteChanged();
             thoughtRecordId = ThoughtRecord.ThoughtRecordId;
+            OnThoughtRecordChanged?.Invoke(this, new EventArgs());
         }
 
         private bool CanSelectNewerThoughtRecord()

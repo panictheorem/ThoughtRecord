@@ -81,6 +81,8 @@
                         <Setter Target="SubsequentEmotionRatingsTitleCell.(Grid.Row)" Value="12" />
                         <Setter Target="SubsequentEmotionRatingsContentCell.(Grid.Row)" Value="13" />
                         <Setter Target="DateOfSituationPicker.Style" Value="{StaticResource SituationCalendarDatePickerMobile}" />
+
+                        <Setter Target="ThoughRecordGrid.Opacity" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -120,6 +122,7 @@
                         <Setter Target="SubsequentEmotionRatingsTitleCell.Style" Value="{StaticResource ThoughtRecordEndCellBorder}" />
                         <Setter Target="SubsequentEmotionRatingsContentCell.Style" Value="{StaticResource ThoughtRecordBottomEndCellBorder}" />
 
+                        <Setter Target="ThoughRecordGrid.Opacity" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -129,7 +132,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ScrollViewer x:Name="ThoughtRecordScrollViewer" VerticalScrollBarVisibility="Auto"  >
-            <Grid x:Name="ThoughRecordGrid" Margin="20,5,20,20" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid x:Name="ThoughRecordGrid" 
+                  Margin="20,5,20,20" 
+                  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                  Opacity="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition x:Name="DesktopInputRow" Height="*"/>
