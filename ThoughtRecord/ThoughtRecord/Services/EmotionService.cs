@@ -46,7 +46,7 @@ namespace ThoughtRecordApp.Services
                 "Obsessed",
                 "Emotionless",
                 "Overwhelmed",
-                "Paniced",
+                "Panicked",
                 "Alone",
             };
         }

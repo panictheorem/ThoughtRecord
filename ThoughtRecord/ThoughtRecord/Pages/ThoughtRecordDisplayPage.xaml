@@ -27,6 +27,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="MobileColumn.Width" Value="*" />
+
                         <Setter Target="SituationTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
                         <Setter Target="InitialEmotionRatingsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
                         <Setter Target="AutomaticThoughtsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
@@ -35,6 +36,7 @@
                         <Setter Target="RationalAssessmentTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
                         <Setter Target="SubsequentEmotionRatingsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
 
+                        
                         <Setter Target="InitialEmotionRatingsTitleCell.(Grid.Column)" Value="0" />
                         <Setter Target="InitialEmotionRatingsContentCell.(Grid.Column)" Value="0" />
                         <Setter Target="AutomaticThoughtsTitleCell.(Grid.Column)" Value="0" />
@@ -75,6 +77,8 @@
                         <Setter Target="RationalAssessmentContentCell.(Grid.Row)" Value="11" />
                         <Setter Target="SubsequentEmotionRatingsTitleCell.(Grid.Row)" Value="12" />
                         <Setter Target="SubsequentEmotionRatingsContentCell.(Grid.Row)" Value="13" />
+
+                        <Setter Target="DesktopInputRow.Height" Value="Auto" />
                     </VisualState.Setters>
                 </VisualState>
 
@@ -166,22 +170,17 @@
                 </Border>
 
                 <!-- Field Inputs-->
-                <Border x:Name="SituationContentCell" Grid.Row="1">
-                    <Grid x:Name="SituationInputArea">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                <Border x:Name="SituationContentCell" Grid.Row="1" Height="Auto">
+                    <StackPanel x:Name="SituationInputArea" Orientation="Vertical">
                         <TextBlock  x:Name="DateOfSituationTextBox"
                                     Text="{x:Bind ViewModel.ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}, Mode=OneWay}"
                                     Grid.Row="0"
                                     Style="{StaticResource DateDisplay}"/>
                         <TextBlock x:Name="SituationDescriptionTextBox" 
                                    Text="{x:Bind ViewModel.ThoughtRecord.Situation.Description, Mode=OneWay}"
-                                   Grid.Row="2"
+                                   Grid.Row="1"
                                    Style="{StaticResource BodyTextBlock}"/>
-                    </Grid>
+                    </StackPanel>
                 </Border>
                 <Border x:Name="InitialEmotionRatingsContentCell" Grid.Column="1" Grid.Row="1">
                     <StackPanel x:Name="InitialEmotionRatingsInputArea"  Orientation="Vertical" HorizontalAlignment="Stretch">

@@ -82,6 +82,8 @@
                         <Setter Target="SubsequentEmotionRatingsContentCell.(Grid.Row)" Value="13" />
                         <Setter Target="DateOfSituationPicker.Style" Value="{StaticResource SituationCalendarDatePickerMobile}" />
 
+                        <Setter Target="DesktopInputRow.Height" Value="Auto" />
+                        
                         <Setter Target="ThoughRecordGrid.Opacity" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
