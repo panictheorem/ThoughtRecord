@@ -96,7 +96,7 @@ namespace ThoughtRecordApp.Pages
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
                 ThoughtRecordEditPage currentEditPage = MainFrame.Content as ThoughtRecordEditPage;
-               
+
                 if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage) ||
                     //We want to allow the user to be able to navigate to the New Thought Record page
                     //if they are currently on the edit page. Since they use the same page, we also allow 
