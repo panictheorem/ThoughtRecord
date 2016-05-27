@@ -145,7 +145,7 @@ namespace ThoughtRecordApp.Pages
 
         private void AddEmotionButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.Emotions.Add(new Emotion());
+            ViewModel.Emotions.Add(new Emotion() { InitialRating = 50, SubsequentRating = 50 });
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

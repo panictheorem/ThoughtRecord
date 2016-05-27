@@ -93,7 +93,6 @@
         <Setter Property="MaxWidth" Value="150" />
     </Style>
     <Style x:Key="EmotionRatingPanelDesktop" TargetType="StackPanel">
-        <Setter Property="Height" Value="135" />
         <Setter Property="Padding" Value="5" />
     </Style>
     <Style x:Key="DateDisplay" TargetType="TextBlock">
@@ -105,5 +104,11 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
     <Style x:Key="ThoughtRecordContentTextBlock" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlock}">
+    </Style>
+    <Style x:Key="EmotionRatingPanelStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="MaxWidth" Value="350" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
 </ResourceDictionary>

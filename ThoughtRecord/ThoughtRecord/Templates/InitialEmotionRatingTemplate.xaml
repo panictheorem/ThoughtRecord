@@ -18,9 +18,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel x:Name="InitialEmotionRatingPanel" 
-                Orientation="Vertical" 
-                MaxWidth="350" 
-                HorizontalAlignment="Stretch">
+               Style="{StaticResource EmotionRatingPanelStyle}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="NarrowWindow">
@@ -55,12 +53,14 @@
                 BorderThickness="0" Style="{StaticResource DiscreteButton}"/>
         <AutoSuggestBox x:Name="EmotionNameAutoSuggestBox"                       
                  Text="{x:Bind Emotion.Name, Mode=TwoWay}"
+                 HorizontalAlignment="Stretch"
+                 MaxWidth="170"
                  BorderThickness="1"   
                  GotFocus="TextBox_GotFocus"
                  QuerySubmitted="EmotionNameAutoSuggestBox_QuerySubmitted"
                  TextChanged="EmotionNameAutoSuggestBox_TextChanged"
                  SuggestionChosen="EmotionNameAutoSuggestBox_SuggestionChosen"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
             <RepeatButton x:Name="DecrementEmotionRatingButton" 
                     FontFamily="Segoe MDL2 Assets"
                     Content="&#xE738;"

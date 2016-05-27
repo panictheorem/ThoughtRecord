@@ -26,6 +26,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="MobileColumn.Width" Value="*" />
+                        <Setter Target="AddEmotionButton.FontSize" Value="16" />
                         <Setter Target="SituationTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
                         <Setter Target="InitialEmotionRatingsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
                         <Setter Target="AutomaticThoughtsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleMobile}" />
@@ -93,6 +94,8 @@
                         <AdaptiveTrigger MinWindowWidth="1000" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="AddEmotionButton.FontSize" Value="14" />
+                        
                         <Setter Target="SituationTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
                         <Setter Target="InitialEmotionRatingsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
                         <Setter Target="AutomaticThoughtsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
@@ -207,13 +210,12 @@
                 </Border>
                 <Border x:Name="InitialEmotionRatingsContentCell" Grid.Column="1" Grid.Row="1">
                     <StackPanel x:Name="InitialEmotionRatingsInputArea"  Orientation="Vertical" HorizontalAlignment="Stretch">
-                        <ItemsControl x:Name="InitialEmotionList" ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
+                        <ItemsControl x:Name="InitialEmotionList" VerticalAlignment="Top" ItemsSource="{x:Bind ViewModel.Emotions, Converter={StaticResource EmotionListConverter}, Mode=TwoWay}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate x:DataType="models:Emotion">
                                     <templates:InitialEmotionRatingTemplate
                                     x:Name="InitialEmotionRatingTemplate"
                                     HorizontalAlignment="Stretch" 
-                                    VerticalAlignment="Stretch"
                                     RemoveButtonClicked="InitialEmotionRatingTemplate_RemoveButtonClicked"
                                     TextBoxGotFocus="InitialEmotionRatingTemplate_TextBoxGotFocus"/>
                                 </DataTemplate>
@@ -221,7 +223,8 @@
                         </ItemsControl>
                         <Button x:Name="AddEmotionButton"
                         Click="AddEmotionButton_Click"
-                        FontSize="16" FontWeight="Bold" Content="&#xE710;" 
+                        Margin="0,20,0,0"
+                        FontSize="14" FontFamily="Segoe UI" Content="Add Emotion" 
                         HorizontalAlignment="Right"
                         Style="{StaticResource DiscreteButton}"/>
                     </StackPanel>

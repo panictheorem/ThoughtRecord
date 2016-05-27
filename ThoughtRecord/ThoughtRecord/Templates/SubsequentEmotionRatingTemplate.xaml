@@ -17,7 +17,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel  x:Name="SubsequentEmotionRatingPanel" Orientation="Vertical" MaxWidth="350" HorizontalAlignment="Stretch">
+    <StackPanel  x:Name="SubsequentEmotionRatingPanel" 
+                 Style="{StaticResource EmotionRatingPanelStyle}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="WideWindow">
@@ -33,7 +34,7 @@
         <TextBlock HorizontalAlignment="Center" 
                    Text="{x:Bind Emotion.Name, Mode=OneWay}" 
                    Foreground="{StaticResource ForegroundLightBrush}"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
             <RepeatButton x:Name="DecrementEmotionRatingButton" 
                     FontFamily="Segoe MDL2 Assets"
                     Content="&#xE738;"
@@ -42,7 +43,8 @@
                     Style="{StaticResource RepeatButtonStyle}"/>
             <TextBlock x:Name="SubsequentEmotionRatingDisplay" 
                    Text="{x:Bind Emotion.SubsequentRating, Mode=OneWay}"
-                   Style="{StaticResource EmotionRatingDisplay}"/>
+                   Style="{StaticResource EmotionRatingDisplay}"
+                   Margin="0,0,0,10"/>
             <RepeatButton x:Name="IncrementEmotionRatingButton" 
                     FontFamily="Segoe MDL2 Assets"
                     Content="&#xE710;"
