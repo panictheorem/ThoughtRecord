@@ -9,6 +9,7 @@ using ThoughtRecordApp.Pages;
 using ThoughtRecordApp.Services;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -122,6 +123,47 @@ namespace ThoughtRecordApp.Templates
 
             var parentT = parent as T;
             return parentT ?? FindParent<T>(parent);
+        }
+
+        private void DecrementEmotionRating()
+        {
+            if (Emotion.InitialRating > 0)
+            {
+                Emotion.InitialRating--;
+            }
+        }
+        private void IncrementEmotionRating()
+        {
+            if (Emotion.InitialRating < 100)
+            {
+                Emotion.InitialRating++;
+            }
+        }
+
+        private void DecrementEmotionRatingButton_Click(object sender, RoutedEventArgs e)
+        {
+            DecrementEmotionRating();
+            if (Emotion.InitialRating == 0)
+            {
+                DecrementEmotionRatingButton.IsEnabled = false;
+            }
+            if (Emotion.InitialRating == 99)
+            {
+                IncrementEmotionRatingButton.IsEnabled = true;
+            }
+        }
+
+        private void IncrementEmotionRatingButton_Click(object sender, RoutedEventArgs e)
+        {
+            IncrementEmotionRating();
+            if(Emotion.InitialRating == 100)
+            {
+                IncrementEmotionRatingButton.IsEnabled = false;
+            }
+            if (Emotion.InitialRating == 1)
+            {
+                DecrementEmotionRatingButton.IsEnabled = true;
+            }
         }
     }
     public class EmotionAutoSuggestBoxHasFocusEventArgs : RoutedEventArgs

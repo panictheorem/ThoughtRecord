@@ -60,12 +60,22 @@
                  QuerySubmitted="EmotionNameAutoSuggestBox_QuerySubmitted"
                  TextChanged="EmotionNameAutoSuggestBox_TextChanged"
                  SuggestionChosen="EmotionNameAutoSuggestBox_SuggestionChosen"/>
-        <TextBlock x:Name="InitialEmotionRatingDisplay" 
-                   Text="{Binding ElementName=InitialEmotionRatingSlider, Path=Value, Mode=OneWay}"
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <RepeatButton x:Name="DecrementEmotionRatingButton" 
+                    FontFamily="Segoe MDL2 Assets"
+                    Content="&#xE738;"
+                    Margin="0,0,10,0"
+                    Click="DecrementEmotionRatingButton_Click"
+                    Style="{StaticResource RepeatButtonStyle}"/>
+            <TextBlock x:Name="InitialEmotionRatingDisplay" 
+                   Text="{x:Bind Emotion.InitialRating, Mode=OneWay}"
                    Style="{StaticResource EmotionRatingDisplay}"/>
-        <Slider x:Name="InitialEmotionRatingSlider" 
-                IsThumbToolTipEnabled="False"
-                Value="{x:Bind Emotion.InitialRating, Converter={StaticResource EmotionRatingConverter}, Mode=TwoWay}"
-                Style="{StaticResource EmotionSlider}"/>
+            <RepeatButton x:Name="IncrementEmotionRatingButton" 
+                    FontFamily="Segoe MDL2 Assets"
+                    Content="&#xE710;"
+                    Margin="10,0,0,0"
+                    Click="IncrementEmotionRatingButton_Click"
+                    Style="{StaticResource RepeatButtonStyle}"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

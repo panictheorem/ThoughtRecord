@@ -27,5 +27,46 @@ namespace ThoughtRecordApp.Templates
             this.InitializeComponent();
             this.DataContextChanged += (s, e) => Bindings.Update();
         }
+
+        private void DecrementEmotionRating()
+        {
+            if (Emotion.SubsequentRating > 0)
+            {
+                Emotion.SubsequentRating--;
+            }
+        }
+        private void IncrementEmotionRating()
+        {
+            if (Emotion.SubsequentRating < 100)
+            {
+                Emotion.SubsequentRating++;
+            }
+        }
+
+        private void DecrementEmotionRatingButton_Click(object sender, RoutedEventArgs e)
+        {
+            DecrementEmotionRating();
+            if (Emotion.SubsequentRating == 0)
+            {
+                DecrementEmotionRatingButton.IsEnabled = false;
+            }
+            if (Emotion.SubsequentRating == 99)
+            {
+                IncrementEmotionRatingButton.IsEnabled = true;
+            }
+        }
+
+        private void IncrementEmotionRatingButton_Click(object sender, RoutedEventArgs e)
+        {
+            IncrementEmotionRating();
+            if (Emotion.SubsequentRating == 100)
+            {
+                IncrementEmotionRatingButton.IsEnabled = false;
+            }
+            if (Emotion.SubsequentRating == 1)
+            {
+                DecrementEmotionRatingButton.IsEnabled = true;
+            }
+        }
     }
 }

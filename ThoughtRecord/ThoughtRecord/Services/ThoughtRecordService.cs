@@ -19,7 +19,7 @@ namespace ThoughtRecordApp.Services
         {
             ResourceLoader resources = ResourceLoader.GetForCurrentView("DefaultInputText");
             thoughtRecord.Situation.DateTime = DateTime.Now;
-            thoughtRecord.Emotions.Add(new Emotion { Name = resources.GetString("EmotionExample") });
+            thoughtRecord.Emotions.Add(new Emotion { Name = resources.GetString("EmotionExample"), InitialRating = 50,  SubsequentRating = 50});
             thoughtRecord.Situation.Description = resources.GetString("SituationDescription");
             thoughtRecord.AutomaticThoughts = resources.GetString("AutomaticThoughts");
             thoughtRecord.SupportingEvidence = resources.GetString("SupportingEvidence");
