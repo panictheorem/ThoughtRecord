@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.Pages;
 using Windows.ApplicationModel;
@@ -28,7 +29,7 @@ namespace ThoughtRecordApp
     sealed partial class App : Application
     {
         //Database shared by all pages in the application
-        public DatabaseService Database { get; private set; } = new DatabaseService();
+        public IDatabaseService Database { get; private set; } = new DatabaseService();
         //Holds the root page of the application
         public MainPage CurrentMain { get; set; }
 
