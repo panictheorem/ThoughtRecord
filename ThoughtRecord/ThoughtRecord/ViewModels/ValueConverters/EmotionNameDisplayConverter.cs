@@ -15,12 +15,12 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
                 string emotionName = value as string;
-                if(emotionName != null)
+                if(!string.IsNullOrWhiteSpace(emotionName))
                 {
-                    return emotionName + ":";
+                    return emotionName + " :";
                 }
 
-                return value;
+                return "unspecified :";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

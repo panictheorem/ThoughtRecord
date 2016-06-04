@@ -151,7 +151,7 @@
     <value>1. Briefly describe the situation that brought on the dysfunctional thinking. What were you doing? What did you say? You want to give some context to the automatic thoughts.</value>
   </data>
   <data name="Step2" xml:space="preserve">
-    <value>2. Identify the emotions you felt during and/or after the situation and rate them in terms of intensity. Emotions are rated on a scale of 0 (not intense) to 100 (the most intense).</value>
+    <value>2. Identify the emotions and feelings you felt during and/or soon after the situation and rate them in terms of intensity. Emotions and feelings are rated on a scale of 0 (no intensity) to 100 (the most intense).</value>
   </data>
   <data name="Step3" xml:space="preserve">
     <value>3. Identify automatic thoughts that came to mind during and/or after the situation, specifically ones that may have contributed to your emotions identified in the previous step. These automatic thoughts often take the form dysfunctional thinking such as negative self-talk (e.g. "I'm not good enough.") or catastrophic thinking (e.g. "I've ruined the whole presentation.").</value>
@@ -163,7 +163,7 @@
     <value>5. Re-evaluate your automatic thoughts based on this evidence for and against them and come to a rational assessment. Is the thought unrealistic? Highly improbable? Worth worrying about? Usually, it will become clear that the automatic dysfunctional thoughts have little or no basis in fact.</value>
   </data>
   <data name="Step6" xml:space="preserve">
-    <value>6. Re-evaluate the emotions you identfied in light of the rational assessment of your automatic thoughts. If you are still feeling them, has their intensity changed at all? If the situation happened again, how intense do you think these emotions would be?</value>
+    <value>6. Re-evaluate the emotions and feelings you identfied in light of the rational assessment of your automatic thoughts. If you are still feeling them, has their intensity changed at all? If the situation happened again, how intense do you think these emotions would be?</value>
   </data>
   <data name="StepsSectionContent" xml:space="preserve">
     <value>When a situation occurs that involves dysfunctional thinking, you should fill out a thought record. This is done by following these steps:</value>

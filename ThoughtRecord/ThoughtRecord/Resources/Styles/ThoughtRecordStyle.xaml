@@ -111,4 +111,8 @@
         <Setter Property="Margin" Value="0,0,0,10" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
+    <Style x:Key="AutoSuggestBoxStyle" TargetType="AutoSuggestBox">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="MaxWidth" Value="170"/>
+    </Style>
 </ResourceDictionary>

@@ -43,8 +43,7 @@
                     Style="{StaticResource RepeatButtonStyle}"/>
             <TextBlock x:Name="SubsequentEmotionRatingDisplay" 
                    Text="{x:Bind Emotion.SubsequentRating, Mode=OneWay}"
-                   Style="{StaticResource EmotionRatingDisplay}"
-                   Margin="0,0,0,10"/>
+                   Style="{StaticResource EmotionRatingDisplay}"/>
             <RepeatButton x:Name="IncrementEmotionRatingButton" 
                     FontFamily="Segoe MDL2 Assets"
                     Content="&#xE710;"

@@ -127,7 +127,7 @@
     <value>Evidence Against Your Thoughts</value>
   </data>
   <data name="InitialEmotionsTitle" xml:space="preserve">
-    <value>Evaluate Your Emotions</value>
+    <value>Evaluate Your Emotions/Feelings</value>
   </data>
   <data name="RationalAssessment" xml:space="preserve">
     <value>Rational Assessment</value>
@@ -136,6 +136,6 @@
     <value>Situation</value>
   </data>
   <data name="SubsequentEmotionsTitle" xml:space="preserve">
-    <value>Re-evaluate Your Emotions</value>
+    <value>Re-evaluate Your Emotions/Feelings</value>
   </data>
 </root>

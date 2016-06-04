@@ -53,9 +53,7 @@
                 BorderThickness="0" Style="{StaticResource DiscreteButton}"/>
         <AutoSuggestBox x:Name="EmotionNameAutoSuggestBox"                       
                  Text="{x:Bind Emotion.Name, Mode=TwoWay}"
-                 HorizontalAlignment="Stretch"
-                 MaxWidth="170"
-                 BorderThickness="1"   
+                 Style="{StaticResource AutoSuggestBoxStyle}"  
                  GotFocus="TextBox_GotFocus"
                  QuerySubmitted="EmotionNameAutoSuggestBox_QuerySubmitted"
                  TextChanged="EmotionNameAutoSuggestBox_TextChanged"
