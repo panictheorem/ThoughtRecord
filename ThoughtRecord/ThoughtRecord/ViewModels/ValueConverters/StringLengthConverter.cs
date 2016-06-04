@@ -12,23 +12,32 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
     /// <summary>
     /// Truncates and removes carriage returns from string and appends "..." if it is over 150 characters.
     /// </summary>
-    class StringLengthConverter : IValueConverter
+    public class StringLengthConverter : IValueConverter
     {
+
+        public const int MaxStringLength = 100;
+
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             string str = value as string;
+
             //remove new lines
-            if(str.Contains("\r\n"))
+            if(!string.IsNullOrEmpty(str))
             {
-                str = Regex.Replace(str, "\r\n", m => " ");
+                if (str.Contains("\r\n"))
+                {
+                    str = Regex.Replace(str, "\r\n", m => " ");
+                }
+                //truncate if longer than 100 characters
+                if (str.Length > MaxStringLength)
+                {
+                    str = str.Substring(0, MaxStringLength);
+                    str += "...";
+                }
+                return str;
             }
-            //truncate if longer than 100 characters
-            if (str.Length > 100)
-            {
-                str = str.Substring(0, 99);
-                str += "...";
-            }
-            return str;
+
+            return string.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
