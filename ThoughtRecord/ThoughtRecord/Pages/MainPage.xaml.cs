@@ -44,7 +44,6 @@ namespace ThoughtRecordApp.Pages
                     e.Handled = true;
                 }
             };
-            SetUpPageTransition();
         }
 
         public void ShowProgressRing()
