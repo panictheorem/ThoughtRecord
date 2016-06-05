@@ -38,7 +38,15 @@ namespace ThoughtRecordApp.ViewModels
         private async void InitializeModel(int thoughtRecordId)
         {
             thoughtRecords = (await database.ThoughtRecords.GetAllAsync()).OrderByDescending(tr => tr.Situation.DateTime).ToList();
-            ThoughtRecord = thoughtRecords.Where(t => t.ThoughtRecordId == thoughtRecordId).FirstOrDefault();
+            //if id is 0, such as when invoked by Cortana command, get latest record
+            if (ThoughtRecordId == 0)
+            {
+                ThoughtRecord = thoughtRecords.FirstOrDefault();
+            }
+            else
+            {
+                ThoughtRecord = thoughtRecords.Where(t => t.ThoughtRecordId == thoughtRecordId).FirstOrDefault();
+            }
             currentIndex = thoughtRecords.IndexOf(ThoughtRecord);
             commandsEnabled = true;
             this.thoughtRecordId = ThoughtRecord.ThoughtRecordId;

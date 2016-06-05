@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="en-us" Name="LaunchCommandSet_en-us">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open my latest entry  </ListenFor>
+      <ListenFor> Open latest </ListenFor>
+      <ListenFor> Open my latest </ListenFor>
+      <ListenFor> Open latest thought record </ListenFor>
+      <ListenFor> Open my latest thought record </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate Target="/Pages/ThoughtRecordDisplayPage.xaml"/>
+    </Command>
+
+  </CommandSet>
+
+  <CommandSet xml:lang="en-ca" Name="LaunchCommandSet_en-ca">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open my latest entry  </ListenFor>
+      <ListenFor> Open latest </ListenFor>
+      <ListenFor> Open my latest </ListenFor>
+      <ListenFor> Open latest thought record </ListenFor>
+      <ListenFor> Open my latest thought record </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate Target="/Pages/ThoughtRecordDisplayPage.xaml"/>
+    </Command>
+
+  </CommandSet>
+
+  <CommandSet xml:lang="en-gb" Name="LaunchCommandSet_en-gb">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open my latest entry  </ListenFor>
+      <ListenFor> Open latest </ListenFor>
+      <ListenFor> Open my latest </ListenFor>
+      <ListenFor> Open latest thought record </ListenFor>
+      <ListenFor> Open my latest thought record </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate Target="/Pages/ThoughtRecordDisplayPage.xaml"/>
+    </Command>
+
+  </CommandSet>
+
+  <CommandSet xml:lang="en-in" Name="LaunchCommandSet_en-in">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open my latest entry  </ListenFor>
+      <ListenFor> Open latest </ListenFor>
+      <ListenFor> Open my latest </ListenFor>
+      <ListenFor> Open latest thought record </ListenFor>
+      <ListenFor> Open my latest thought record </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate Target="/Pages/ThoughtRecordDisplayPage.xaml"/>
+    </Command>
+
+  </CommandSet>
+  
+  
+</VoiceCommands>

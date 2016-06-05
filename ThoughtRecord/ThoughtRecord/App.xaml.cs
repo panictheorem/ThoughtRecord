@@ -9,8 +9,10 @@ using ThoughtRecordApp.Pages;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Store;
+using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.SpeechRecognition;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -33,7 +35,7 @@ namespace ThoughtRecordApp
         //Holds the root page of the application
         public MainPage CurrentMain { get; set; }
 
-        public LicenseInformation LicenseInformation { get; private set; } 
+        public LicenseInformation LicenseInformation { get; private set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -70,7 +72,6 @@ namespace ThoughtRecordApp
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
-
             if (e.PrelaunchActivated == false)
             {
                 if (rootFrame.Content == null)
@@ -84,14 +85,17 @@ namespace ThoughtRecordApp
                 Window.Current.Activate();
             }
 
-            if(Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
             }
 
-            //IAP Data
+            //Cortana Command & IAP Data Setup
             try
             {
+                StorageFile voiceCommandsFile = await Package.Current.InstalledLocation.GetFileAsync(@"CortanaVoiceCommands.xml");
+                await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(voiceCommandsFile);
+
                 //LicenseInfo for In-App Purchase
 #if DEBUG
                 LicenseInformation = CurrentAppSimulator.LicenseInformation;
@@ -103,6 +107,53 @@ namespace ThoughtRecordApp
             {
 
             }
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+            Type navigationToPageType = null;
+            object navigationParameter = null;
+            if (args.Kind == ActivationKind.VoiceCommand)
+            {
+                VoiceCommandActivatedEventArgs voiceCommandArgs = args as VoiceCommandActivatedEventArgs;
+                string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
+
+                switch (voiceCommandName)
+                {
+                    case "OpenLatestRecord":
+                        navigationToPageType = typeof(ThoughtRecordDisplayPage);
+                        navigationParameter = 0;
+                        break;
+                    default:
+                        navigationToPageType = typeof(ThoughtRecordEditPage);
+                        break;
+                }
+            }
+
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+                rootFrame.NavigationFailed += OnNavigationFailed;
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+
+            if(navigationParameter != null)
+            {
+                rootFrame.Navigate(navigationToPageType, navigationParameter);
+            }
+            else
+            {
+                rootFrame.Navigate(navigationToPageType);
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
         }
 
         /// <summary>

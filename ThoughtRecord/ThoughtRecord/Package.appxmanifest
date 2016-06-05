@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="56470PanicTheorem.ThoughtRecord" Publisher="CN=B99A6451-9183-4CFA-B715-02B1DD18A68C" Version="1.0.4.0" />
+  <Identity Name="56470PanicTheorem.ThoughtRecord" Publisher="CN=B99A6451-9183-4CFA-B715-02B1DD18A68C" Version="1.0.6.0" />
   <mp:PhoneIdentity PhoneProductId="c5fe2fd0-b5d9-48f5-99ed-ce6589fb2ce9" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Thought Record</DisplayName>
@@ -34,5 +34,6 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone" />
   </Capabilities>
 </Package>
