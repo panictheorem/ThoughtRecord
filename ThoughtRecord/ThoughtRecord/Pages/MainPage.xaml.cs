@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using ThoughtRecordApp.ViewModels;
+using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
@@ -34,8 +35,7 @@ namespace ThoughtRecordApp.Pages
             //Set this page as the current main page which other pages can access through the 
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
-            ViewModel = new MainViewModel();
-            NewThoughtRecordListBoxItem.IsSelected = true;
+             ViewModel = new MainViewModel();
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
                 if (MainFrame.CanGoBack)
@@ -44,6 +44,50 @@ namespace ThoughtRecordApp.Pages
                     e.Handled = true;
                 }
             };
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+
+            if(e.Parameter is VoiceCommandActivatedEventArgs)
+            {
+                Type navigationPageType = null;
+                object navigationParameter = null;
+                VoiceCommandActivatedEventArgs voiceCommandArgs = e.Parameter as VoiceCommandActivatedEventArgs;
+                string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
+
+                switch (voiceCommandName)
+                {
+                    case "OpenLatestRecord":
+                        navigationPageType = typeof(ThoughtRecordDisplayPage);
+                        navigationParameter = 0;
+                        break;
+                    case "OpenRecordList":
+                        navigationPageType = typeof(ThoughtRecordListPage);
+                        break;
+                    case "OpenNewRecord":
+                        navigationPageType = typeof(ThoughtRecordEditPage);
+                        break;
+                    default:
+                        navigationPageType = typeof(ThoughtRecordEditPage);
+                        break;
+                }
+
+                if(navigationParameter != null)
+                {
+                    NavigateWithMenuUpdate(navigationPageType);
+                }
+                else
+                {
+                    Frame.Navigate(navigationPageType, navigationParameter);
+                    NavigateWithMenuUpdate(navigationPageType);
+                }
+            }
+            else
+            {
+                NewThoughtRecordListBoxItem.IsSelected = true;
+            }
+            base.OnNavigatedTo(e);
         }
 
         public void ShowProgressRing()

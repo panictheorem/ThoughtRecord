@@ -43,7 +43,7 @@ namespace ThoughtRecordApp.Pages
 #if DEBUG
                 var result = await CurrentAppSimulator.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
 #else
-                   var result = await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", false);
+                var result = await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
 #endif
                 //Check the license state to determine if the in-app purchase was successful.
 

@@ -147,6 +147,15 @@
   <data name="InstructionsTitle" xml:space="preserve">
     <value>Instructions</value>
   </data>
+  <data name="OpenCommand1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OpenSectionIntro" xml:space="preserve">
+    <value>With these commands you can open the app to specific pages:</value>
+  </data>
+  <data name="OpenSectionTitle" xml:space="preserve">
+    <value>Opening The App</value>
+  </data>
   <data name="Step1" xml:space="preserve">
     <value>1. Briefly describe the situation that brought on the dysfunctional thinking. What were you doing? What did you say? You want to give some context to the automatic thoughts.</value>
   </data>
@@ -182,6 +191,12 @@
   </data>
   <data name="TipsTitle" xml:space="preserve">
     <value>Tips</value>
+  </data>
+  <data name="VoiceCommandsIntro" xml:space="preserve">
+    <value>This app supports voice commands to do numerous things including opening the app or saving your content.</value>
+  </data>
+  <data name="VoiceCommandsTitle" xml:space="preserve">
+    <value>Voice Commands</value>
   </data>
   <data name="WhatIsThoughtRecordSectionContent" xml:space="preserve">
     <value>Thought records are a tool used in cognative behavioral therapy to manage dysfunctional thinking related to conditions such as depression, obsessive-compulsive disorder, and anxiety. Dysfunctional thinking includes things such as negative self-talk and catastrophic thinking. The ultimate goal of using thought records is to change your thinking patterns so as to minimize the impact of such dysfunctional thoughts.</value>
