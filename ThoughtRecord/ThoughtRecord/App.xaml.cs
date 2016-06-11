@@ -6,6 +6,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.Pages;
+using ThoughtRecordApp.Pages.Infrastructure.Implementations;
+using ThoughtRecordApp.Pages.Infrastructure.Interfaces;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Store;
@@ -33,7 +35,7 @@ namespace ThoughtRecordApp
         //Database shared by all pages in the application
         public IDatabaseService Database { get; private set; } = new DatabaseService();
         //Holds the root page of the application
-        public MainPage CurrentMain { get; set; }
+        public MainPage CurrentMain { get; }
 
         public LicenseInformation LicenseInformation { get; private set; }
 
@@ -53,6 +55,26 @@ namespace ThoughtRecordApp
         /// <param name="e">Details about the launch request and process.</param>
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //Cortana Command & IAP Data Setup
+            try
+            {
+                StorageFile voiceCommandsFile = await Package.Current.InstalledLocation.GetFileAsync(@"CortanaVoiceCommands.xml");
+                await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(voiceCommandsFile);
+
+                //LicenseInfo for In-App Purchase
+#if DEBUG
+                LicenseInformation = CurrentAppSimulator.LicenseInformation;
+#else
+                LicenseInformation = CurrentApp.LicenseInformation;
+#endif
+            }
+            catch (Exception ex)
+            {
+
+            }
+            //Set up navigation parameter model
+            //INavigationParameterModel navigationParameterModel = new NavigationParameterModel(new DatabaseService(), LicenseInformation);
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -89,46 +111,17 @@ namespace ThoughtRecordApp
             {
                 await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
             }
-
-            //Cortana Command & IAP Data Setup
-            try
-            {
-                StorageFile voiceCommandsFile = await Package.Current.InstalledLocation.GetFileAsync(@"CortanaVoiceCommands.xml");
-                await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(voiceCommandsFile);
-
-                //LicenseInfo for In-App Purchase
-#if DEBUG
-                LicenseInformation = CurrentAppSimulator.LicenseInformation;
-#else
-                LicenseInformation = CurrentApp.LicenseInformation;
-#endif
-            }
-            catch (Exception ex)
-            {
-
-            }
         }
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
             base.OnActivated(args);
-            Type navigationToPageType = null;
             object navigationParameter = null;
             if (args.Kind == ActivationKind.VoiceCommand)
             {
                 VoiceCommandActivatedEventArgs voiceCommandArgs = args as VoiceCommandActivatedEventArgs;
                 string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
-
-                switch (voiceCommandName)
-                {
-                    case "OpenLatestRecord":
-                        navigationToPageType = typeof(ThoughtRecordDisplayPage);
-                        navigationParameter = 0;
-                        break;
-                    default:
-                        navigationToPageType = typeof(ThoughtRecordEditPage);
-                        break;
-                }
+                navigationParameter = args;
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
@@ -146,11 +139,11 @@ namespace ThoughtRecordApp
 
             if(navigationParameter != null)
             {
-                rootFrame.Navigate(navigationToPageType, navigationParameter);
+                rootFrame.Navigate(typeof(MainPage), navigationParameter);
             }
             else
             {
-                rootFrame.Navigate(navigationToPageType);
+                rootFrame.Navigate(typeof(MainPage));
             }
             // Ensure the current window is active
             Window.Current.Activate();
