@@ -35,7 +35,7 @@ namespace ThoughtRecordApp
         //Database shared by all pages in the application
         public IDatabaseService Database { get; private set; } = new DatabaseService();
         //Holds the root page of the application
-        public MainPage CurrentMain { get; }
+        public MainPage CurrentMain { get; set; }
 
         public LicenseInformation LicenseInformation { get; private set; }
 

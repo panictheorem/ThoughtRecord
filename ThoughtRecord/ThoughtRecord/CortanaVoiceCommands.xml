@@ -29,10 +29,18 @@
   <Command Name="OpenRecordList">
       <Example> Show me all </Example>
       <ListenFor> Show me all </ListenFor>
-      <ListenFor> Show me all thought records </ListenFor>
-      <ListenFor> Show me all records </ListenFor>
+      <ListenFor> Show me all [thought] records </ListenFor>
       <ListenFor> Show me my thought records </ListenFor>
-      <Feedback> Opening a new thought record... </Feedback>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
+    </Command>
+    
+    <Command Name="OpenInformation">
+      <Example> Open information </Example>
+      <ListenFor> Open [the] information [page] </ListenFor>
+      <ListenFor> How do I use you </ListenFor>
+      <ListenFor> What is a thought record </ListenFor>
+      <Feedback> Opening Thought Record information... </Feedback>
       <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
     </Command>
 

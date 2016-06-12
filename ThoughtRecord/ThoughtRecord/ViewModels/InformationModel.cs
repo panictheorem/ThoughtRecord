@@ -12,8 +12,6 @@ namespace ThoughtRecordApp.ViewModels
         public static string Title { get; private set; }
 
         public string InstructionsTitle { get; private set; }
-        public string TipsTitle { get; private set; }
-        public string AboutTitle { get; private set; }
         public string WhatIsThoughtRecordSectionTitle { get; private set; }
         public string WhatIsThoughtRecordSectionContent { get; private set; }
         public string StepsSectionTitle { get; private set; }
@@ -24,9 +22,23 @@ namespace ThoughtRecordApp.ViewModels
         public string Step4 { get; private set; }
         public string Step5 { get; private set; }
         public string Step6 { get; private set; }
+
+        public string TipsTitle { get; private set; }
         public string Tip1 { get; private set; }
         public string Tip2 { get; private set; }
         public string Tip3 { get; private set; }
+
+        public string VoiceCommandsTitle { get; private set; }
+        public string VoiceCommandsIntro { get; private set; }
+        public string OpenCommandsSectionTitle { get; private set; }
+        public string OpenCommandsSectionIntro { get; private set; }
+        public string OpenCommand1 { get; private set; }
+        public string OpenCommand2 { get; private set; }
+        public string OpenCommand3 { get; private set; }
+        public string OpenCommand4 { get; private set; }
+
+
+        public string AboutTitle { get; private set; }
         public string AboutContent { get; private set; }
         public string BroughtToYouByText { get; private set; }
         public string ContactMeLinkText { get; private set; }
@@ -46,8 +58,6 @@ namespace ThoughtRecordApp.ViewModels
         {
             ResourceLoader resources = ResourceLoader.GetForCurrentView("InformationText");
             InstructionsTitle = resources.GetString("InstructionsTitle");
-            TipsTitle = resources.GetString("TipsTitle");
-            AboutTitle = resources.GetString("AboutTitle");
             WhatIsThoughtRecordSectionTitle = resources.GetString("WhatIsThoughtRecordSectionTitle");
             WhatIsThoughtRecordSectionContent = resources.GetString("WhatIsThoughtRecordSectionContent");
             StepsSectionTitle = resources.GetString("StepsSectionTitle");
@@ -58,9 +68,22 @@ namespace ThoughtRecordApp.ViewModels
             Step4 = resources.GetString("Step4");
             Step5 = resources.GetString("Step5");
             Step6 = resources.GetString("Step6");
+
+            TipsTitle = resources.GetString("TipsTitle");
             Tip1 = resources.GetString("Tip1");
             Tip2= resources.GetString("Tip2");
             Tip3 = resources.GetString("Tip3");
+
+            VoiceCommandsTitle = resources.GetString("VoiceCommandsTitle");
+            VoiceCommandsIntro = resources.GetString("VoiceCommandsIntro");
+            OpenCommandsSectionTitle = resources.GetString("OpenCommandsSectionTitle");
+            OpenCommandsSectionIntro = resources.GetString("OpenCommandsSectionIntro");
+            OpenCommand1 = resources.GetString("OpenCommand1");
+            OpenCommand2 = resources.GetString("OpenCommand2");
+            OpenCommand3 = resources.GetString("OpenCommand3");
+            OpenCommand4 = resources.GetString("OpenCommand4");
+
+            AboutTitle = resources.GetString("AboutTitle");
             AboutContent = resources.GetString("AboutContent");
             BroughtToYouByText = resources.GetString("BroughtToYouByText");
             ContactMeLinkText = resources.GetString("ContactMeLinkText");

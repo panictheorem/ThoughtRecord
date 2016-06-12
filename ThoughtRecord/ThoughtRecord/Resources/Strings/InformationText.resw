@@ -148,13 +148,22 @@
     <value>Instructions</value>
   </data>
   <data name="OpenCommand1" xml:space="preserve">
-    <value />
+    <value>• Open latest thought record with "Thought Record, open latest".</value>
   </data>
-  <data name="OpenSectionIntro" xml:space="preserve">
-    <value>With these commands you can open the app to specific pages:</value>
+  <data name="OpenCommand2" xml:space="preserve">
+    <value>• Open blank thought record with "Thought Record, open new".</value>
   </data>
-  <data name="OpenSectionTitle" xml:space="preserve">
-    <value>Opening The App</value>
+  <data name="OpenCommand3" xml:space="preserve">
+    <value>• Open thought record list page with "Thought Record, show me all".</value>
+  </data>
+  <data name="OpenCommand4" xml:space="preserve">
+    <value>• Open information page with "Thought Record, open information".</value>
+  </data>
+  <data name="OpenCommandsSectionIntro" xml:space="preserve">
+    <value>With these commands you can open the app to specific pages with Cortana:</value>
+  </data>
+  <data name="OpenCommandsSectionTitle" xml:space="preserve">
+    <value>LaunchingThe App</value>
   </data>
   <data name="Step1" xml:space="preserve">
     <value>1. Briefly describe the situation that brought on the dysfunctional thinking. What were you doing? What did you say? You want to give some context to the automatic thoughts.</value>
@@ -193,7 +202,7 @@
     <value>Tips</value>
   </data>
   <data name="VoiceCommandsIntro" xml:space="preserve">
-    <value>This app supports voice commands to do numerous things including opening the app or saving your content.</value>
+    <value>This app supports Cortana voice commands and will be adding more over time.</value>
   </data>
   <data name="VoiceCommandsTitle" xml:space="preserve">
     <value>Voice Commands</value>

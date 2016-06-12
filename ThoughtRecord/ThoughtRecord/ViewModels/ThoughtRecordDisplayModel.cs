@@ -28,14 +28,13 @@ namespace ThoughtRecordApp.ViewModels
         public event ThoughtRecordEvent OnThoughtRecordDeleted;
         public event ThoughtRecordEvent OnThoughtRecordChanged;
 
-        public ThoughtRecordDisplayModel(int thoughtRecordId, IDatabaseService db)
+        public ThoughtRecordDisplayModel(IDatabaseService db)
         {
             database = db;
-            InitializeModel(thoughtRecordId);
             Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("MyThoughtRecordsTitle");
             SectionTitles = ThoughtRecordService.GetTitleModel();
         }
-        private async void InitializeModel(int thoughtRecordId)
+        public async Task InitializeModel(int thoughtRecordId)
         {
             thoughtRecords = (await database.ThoughtRecords.GetAllAsync()).OrderByDescending(tr => tr.Situation.DateTime).ToList();
             //if id is 0, such as when invoked by Cortana command, get latest record

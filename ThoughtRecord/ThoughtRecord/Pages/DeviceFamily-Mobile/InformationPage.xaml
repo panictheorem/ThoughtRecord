@@ -45,6 +45,22 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
+
+        <PivotItem Header="{x:Bind ViewModel.VoiceCommandsTitle}"
+                   Style="{StaticResource PivotItemStyle}">
+            <ScrollViewer  HorizontalAlignment="Stretch">
+                <StackPanel Style="{StaticResource PivotSectionStyle}">
+                    <TextBlock Text="{x:Bind ViewModel.VoiceCommandsIntro}" Style="{StaticResource BodyTextBlock}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionTitle}" 
+                   Style="{StaticResource InformationSubheader}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionIntro}" Style="{StaticResource BodyTextBlock}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand1}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand2}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand3}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand4}" Style="{StaticResource ParagraphStyle}" />
+                </StackPanel>
+            </ScrollViewer>
+        </PivotItem>
         <PivotItem Header="{x:Bind ViewModel.AboutTitle}"
                    Style="{StaticResource PivotItemStyle}">
             <ScrollViewer  HorizontalAlignment="Stretch">

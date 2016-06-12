@@ -31,32 +31,45 @@ namespace ThoughtRecordApp.Pages
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs obj)
+        protected override async void OnNavigatedTo(NavigationEventArgs obj)
         {
-            rootPage = ((App)Application.Current).CurrentMain;
+            base.OnNavigatedTo(obj);
+
             if (obj.Parameter != null)
             {
+                rootPage = ((App)Application.Current).CurrentMain;
                 rootPage.UpdateTitle(ThoughtRecordListModel.Title);
                 int thoughtRecordId = Convert.ToInt32(obj.Parameter);
-                ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
-                ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
-                ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
-                ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
-                ViewModel.OnThoughtRecordChanged += ScrollToTop;
-                rootPage.NavigateWithMenuUpdate(this.GetType());
-                rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
-                base.OnNavigatedTo(obj);
+                ViewModel = new ThoughtRecordDisplayModel(AppDataService.GetDatabase(Application.Current));
+                await ViewModel.InitializeModel(thoughtRecordId);
+                if(ViewModel.ThoughtRecord == null)
+                {
+                    NavigateWithBackStackRemoval(typeof(ThoughtRecordListPage));
+                }
+                else
+                {
+                    ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
+                    ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
+                    ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
+                    ViewModel.OnThoughtRecordChanged += ScrollToTop;
+                    rootPage.NavigateWithMenuUpdate(this.GetType());
+                    rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
+                }
             }
             else
             {
-                rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordListPage));
-                if(Frame.BackStack.Count > 0)
-                {
-                    Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
-                }
+                NavigateWithBackStackRemoval(typeof(ThoughtRecordListPage));
             }
         }
 
+        private void NavigateWithBackStackRemoval(Type pageType)
+        {
+            rootPage.NavigateWithMenuUpdate(pageType);
+            if (Frame.BackStack.Count > 0)
+            {
+                Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+            }
+        }
         private void ScrollToTop(object sender, EventArgs args)
         {
             ThoughtRecordScrollViewer.ChangeView(null, 0, null, false);

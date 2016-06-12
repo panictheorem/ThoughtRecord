@@ -65,6 +65,9 @@ namespace ThoughtRecordApp.Pages
                     case "OpenRecordList":
                         navigationPageType = typeof(ThoughtRecordListPage);
                         break;
+                    case "OpenInformation":
+                        navigationPageType = typeof(InformationPage);
+                        break;
                     case "OpenNewRecord":
                         navigationPageType = typeof(ThoughtRecordEditPage);
                         break;
@@ -73,7 +76,7 @@ namespace ThoughtRecordApp.Pages
                         break;
                 }
 
-                if(navigationParameter != null)
+                if(navigationParameter == null)
                 {
                     NavigateWithMenuUpdate(navigationPageType);
                 }
