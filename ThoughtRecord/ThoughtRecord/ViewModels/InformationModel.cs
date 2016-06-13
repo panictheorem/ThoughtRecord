@@ -32,6 +32,12 @@ namespace ThoughtRecordApp.ViewModels
         public string VoiceCommandsIntro { get; private set; }
         public string OpenCommandsSectionTitle { get; private set; }
         public string OpenCommandsSectionIntro { get; private set; }
+
+        public string OpenCommandDescription1 { get; private set; }
+        public string OpenCommandDescription2 { get; private set; }
+        public string OpenCommandDescription3 { get; private set; }
+        public string OpenCommandDescription4 { get; private set; }
+
         public string OpenCommand1 { get; private set; }
         public string OpenCommand2 { get; private set; }
         public string OpenCommand3 { get; private set; }
@@ -78,6 +84,12 @@ namespace ThoughtRecordApp.ViewModels
             VoiceCommandsIntro = resources.GetString("VoiceCommandsIntro");
             OpenCommandsSectionTitle = resources.GetString("OpenCommandsSectionTitle");
             OpenCommandsSectionIntro = resources.GetString("OpenCommandsSectionIntro");
+
+            OpenCommandDescription1 = resources.GetString("OpenCommandDescription1");
+            OpenCommandDescription2 = resources.GetString("OpenCommandDescription2");
+            OpenCommandDescription3 = resources.GetString("OpenCommandDescription3");
+            OpenCommandDescription4 = resources.GetString("OpenCommandDescription4");
+
             OpenCommand1 = resources.GetString("OpenCommand1");
             OpenCommand2 = resources.GetString("OpenCommand2");
             OpenCommand3 = resources.GetString("OpenCommand3");

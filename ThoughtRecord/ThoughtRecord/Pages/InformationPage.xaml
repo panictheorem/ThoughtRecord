@@ -48,11 +48,14 @@
                 <TextBlock Text="{x:Bind ViewModel.VoiceCommandsIntro}" Style="{StaticResource BodyTextBlock}" />
                 <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionTitle}" 
                    Style="{StaticResource InformationSubheader}"/>
-                <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionIntro}" Style="{StaticResource BodyTextBlock}" />
-                <TextBlock Text="{x:Bind ViewModel.OpenCommand1}" Style="{StaticResource ParagraphStyle}" />
-                <TextBlock Text="{x:Bind ViewModel.OpenCommand2}" Style="{StaticResource ParagraphStyle}" />
-                <TextBlock Text="{x:Bind ViewModel.OpenCommand3}" Style="{StaticResource ParagraphStyle}" />
-                <TextBlock Text="{x:Bind ViewModel.OpenCommand4}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription1}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand1}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription2}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand2}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription3}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand3}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription4}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand4}" Style="{StaticResource CenteredParagraphStyle}"/>
             </StackPanel>
             <StackPanel Style="{StaticResource SectionStyle}">
                 <TextBlock Text="{x:Bind ViewModel.AboutTitle}" Style="{StaticResource SectionTitle}"/>
