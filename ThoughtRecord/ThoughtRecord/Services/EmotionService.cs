@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.Services
 {
@@ -10,45 +11,8 @@ namespace ThoughtRecordApp.Services
     {
         public static List<string> GetEmotionNameSuggestions()
         {
-            return new List<string>
-            {
-                "Happy",
-                "Sad",
-                "Scared",
-                "Frustrated",
-                "Angry",
-                "Anxious",
-                "Depressed",
-                "Stressed",
-                "Irritable",
-                "Detatched",
-                "Discouraged",
-                "Excited",
-                "Distressed",
-                "Hyper",
-                "Cynical",
-                "Pessimistic",
-                "Insecure",
-                "Worthless",
-                "Hateful",
-                "Embarassed",
-                "Intimidated",
-                "Jealous",
-                "Shame",
-                "Regretful",
-                "Ashamed",
-                "Nervous",
-                "Dejected",
-                "Humiliated",
-                "Annoyed",
-                "Hopeless",
-                "Paranoid",
-                "Obsessed",
-                "Emotionless",
-                "Overwhelmed",
-                "Panicked",
-                "Alone",
-            };
+            ResourceLoader resources = ResourceLoader.GetForCurrentView("DefaultInputText");
+            return resources.GetString("EmotionSuggestions").Split(',').ToList();
         }
     }
 }

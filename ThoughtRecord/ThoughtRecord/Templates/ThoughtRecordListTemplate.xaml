@@ -24,13 +24,13 @@
         <TextBlock x:Name="SituationDate" 
                    Grid.Row="0"
                    Style="{StaticResource ThoughtRecordItemSituationDateTextBlock}"
-                   Text="{x:Bind ThoughtRecord.Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}" />
+                   Text="{x:Bind Situation.DateTime, Converter={StaticResource StringDateTimeConverter}}" />
         <Image Source="/Assets/ThoughtCloud.png" 
                Grid.Row="1" 
                Stretch="Uniform"/>
         <TextBlock x:Name="SituationDescription" 
                    Grid.Row="1"
                    Style="{StaticResource ThoughtRecordItemSituationDescriptionTextBlock }"
-                   Text="{x:Bind ThoughtRecord.Situation.Description, Converter={StaticResource StringLengthConverter}}" />
+                   Text="{x:Bind Situation.Description, Converter={StaticResource StringLengthConverter}}" />
     </Grid>
 </UserControl>
