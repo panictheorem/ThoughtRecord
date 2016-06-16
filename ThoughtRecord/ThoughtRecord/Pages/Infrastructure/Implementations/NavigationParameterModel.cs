@@ -12,22 +12,34 @@ namespace ThoughtRecordApp.Pages.Infrastructure.Implementations
 {
     public class NavigationParameterModel : INavigationParameterModel
     {
-        public object navigationParameter { get; set; }
+        public object NavigationParameter { get; set; } //The main item of data passed to a page
         public IDatabaseService DatabaseService { get; }
+        public IStringResourceService StringResourceService { get; }
         public MainPage CurrentMain { get; }
         public VoiceCommandActivatedEventArgs VoiceCommandActivatedEventArgs { get; }
         public LicenseInformation LicenseInformation { get; }
 
-        public NavigationParameterModel(IDatabaseService databaseService, LicenseInformation licenseInformation)
+        /// <summary>
+        /// These constructors are called by the App class to initialize
+        /// </summary>
+
+        public NavigationParameterModel(IDatabaseService databaseService, 
+                                        LicenseInformation licenseInformation,
+                                        IStringResourceService stringResourceService)
         {
             DatabaseService = databaseService; 
             LicenseInformation = licenseInformation;
+            StringResourceService = stringResourceService;
         }
 
-        public NavigationParameterModel(IDatabaseService databaseService, LicenseInformation licenseInformation, VoiceCommandActivatedEventArgs voiceCommandArgs)
+        public NavigationParameterModel(IDatabaseService databaseService, 
+                                        LicenseInformation licenseInformation,
+                                        IStringResourceService stringResourceService,
+                                        VoiceCommandActivatedEventArgs voiceCommandArgs)
         {
             DatabaseService = databaseService;
             LicenseInformation = licenseInformation;
+            StringResourceService = stringResourceService;
             VoiceCommandActivatedEventArgs = voiceCommandArgs;
         }
     }

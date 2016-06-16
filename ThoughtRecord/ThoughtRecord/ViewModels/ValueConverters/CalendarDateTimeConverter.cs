@@ -14,7 +14,14 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return new Nullable<DateTimeOffset>((DateTime)value);
+            try
+            {
+                return new Nullable<DateTimeOffset>((DateTime)value);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

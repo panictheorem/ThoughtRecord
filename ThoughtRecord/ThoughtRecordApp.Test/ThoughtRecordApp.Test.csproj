@@ -95,6 +95,7 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConverterTests\CalenderDateTimeConverterTests.cs" />
     <Compile Include="ConverterTests\EmotionNameDisplayConverterTests.cs" />
     <Compile Include="ConverterTests\StringLengthConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
