@@ -16,7 +16,8 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
         {
             try
             {
-                return new Nullable<DateTimeOffset>((DateTime)value);
+                DateTime dateTime = (DateTime)value;
+                return new Nullable<DateTimeOffset>(dateTime);
             }
             catch
             {

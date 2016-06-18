@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Abstract;
+using ThoughtRecordApp.Pages;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Store;
 
-namespace ThoughtRecordApp.Pages.Infrastructure.Interfaces
+namespace ThoughtRecordApp.Infrastructure.Interfaces
 {
     /// <summary>
     /// A class holding data/objects that are accessed by all pages which is to be passed as the navigation parameter

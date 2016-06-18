@@ -214,10 +214,10 @@
     <value>Tips</value>
   </data>
   <data name="VoiceCommandsIntro" xml:space="preserve">
-    <value>This app supports Cortana voice commands and will be adding more over time.</value>
+    <value>This app supports Cortana voice commands and will be adding more over time. After getting Cortana's attention, you can make use of the following commands.  For the best experience, you should have "Hey Cortana" enabled.</value>
   </data>
   <data name="VoiceCommandsTitle" xml:space="preserve">
-    <value>Voice Commands</value>
+    <value>Cortana Voice Commands</value>
   </data>
   <data name="WhatIsThoughtRecordSectionContent" xml:space="preserve">
     <value>Thought records are a tool used in cognative behavioral therapy to manage dysfunctional thinking related to conditions such as depression, obsessive-compulsive disorder, and anxiety. Dysfunctional thinking includes things such as negative self-talk and catastrophic thinking. The ultimate goal of using thought records is to change your thinking patterns so as to minimize the impact of such dysfunctional thoughts.</value>

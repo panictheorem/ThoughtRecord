@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThoughtRecordApp.Infrastructure.Interfaces;
 using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.Services
@@ -11,8 +12,8 @@ namespace ThoughtRecordApp.Services
     {
         public static List<string> GetEmotionNameSuggestions()
         {
-            ResourceLoader resources = ResourceLoader.GetForCurrentView("DefaultInputText");
-            return resources.GetString("EmotionSuggestions").Split(',').ToList();
+            IStringResourceService stringLoader = new StringResourceService("DefaultInputText");
+            return stringLoader.GetString("EmotionSuggestions").Split(',').ToList();
         }
     }
 }

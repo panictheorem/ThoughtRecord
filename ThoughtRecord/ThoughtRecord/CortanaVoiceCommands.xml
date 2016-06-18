@@ -2,44 +2,39 @@
 
 <VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
 
-  <CommandSet xml:lang="en-ca" Name="LaunchCommandSet_en-ca">
+  <CommandSet xml:lang="en-us" Name="LaunchCommandSet_en-us">
     <AppName>Thought Record</AppName>
     <Example> Open my latest entry </Example>
 
     <Command Name="OpenLatestRecord">
       <Example> Open my latest entry </Example>
-      <ListenFor> Open my latest entry  </ListenFor>
-      <ListenFor> Open latest </ListenFor>
-      <ListenFor> Open my latest </ListenFor>
-      <ListenFor> Open latest thought record </ListenFor>
-      <ListenFor> Open my latest thought record </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate Target="/Pages/ThoughtRecordDisplayPage.xaml"/>
     </Command>
     
   <Command Name="OpenNewRecord">
       <Example> Open new </Example>
-      <ListenFor> Open new </ListenFor>
-      <ListenFor> Open new thought record </ListenFor>
-      <ListenFor> Open blank thought record </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
       <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
     </Command>
     
   <Command Name="OpenRecordList">
       <Example> Show me all </Example>
-      <ListenFor> Show me all </ListenFor>
-      <ListenFor> Show me all [thought] records </ListenFor>
-      <ListenFor> Show me my thought records </ListenFor>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
       <Feedback> Opening your thought records... </Feedback>
       <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
     </Command>
     
     <Command Name="OpenInformation">
       <Example> Open information </Example>
-      <ListenFor> Open [the] information [page] </ListenFor>
-      <ListenFor> How do I use you </ListenFor>
-      <ListenFor> What is a thought record </ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} information [page] </ListenFor>
+      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
+      <ListenFor> What is a {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record information... </Feedback>
       <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
     </Command>

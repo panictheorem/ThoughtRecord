@@ -20,7 +20,7 @@ namespace ThoughtRecordApp.Templates
 {
     public sealed partial class MobileThoughtRecordListTemplate : UserControl
     {
-        public Situation Situation { get { return this.DataContext as Situation; } }
+        public ThoughtRecord ThoughtRecord { get { return this.DataContext as ThoughtRecord; } }
 
         public MobileThoughtRecordListTemplate()
         {

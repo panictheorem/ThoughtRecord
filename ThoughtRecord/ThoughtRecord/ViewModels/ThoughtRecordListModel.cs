@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.DAL.Models;
+using ThoughtRecordApp.Infrastructure.Interfaces;
+using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels.Infrastructure;
 using Windows.ApplicationModel.Resources;
 
@@ -18,14 +20,16 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordListModel : BindableBase
     {
         public static string Title { get; private set; }
-        public ObservableCollection<Situation> ThoughtRecords { get; set; }
+        public ObservableCollection<ThoughtRecord> ThoughtRecords { get; set; }
         private IDatabaseService database;
+        private IStringResourceService stringLoader;
 
         public ThoughtRecordListModel(IDatabaseService db)
         {
+            stringLoader = new StringResourceService("PageTitles");
             Title = Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("MyThoughtRecordsTitle");
             database = db;
-            ThoughtRecords = new ObservableCollection<Situation>();
+            ThoughtRecords = new ObservableCollection<ThoughtRecord>();
         }
         /// <summary>
         /// Initialize method must be called after instantiating to populate the ThoughtRecord list
@@ -33,11 +37,11 @@ namespace ThoughtRecordApp.ViewModels
         public async Task Initialize()
         {
             //Records retrieved and ordered by datetime from newest to oldest.
-            var situations = (await database.Situations.GetAllAsync())
-                          .OrderByDescending(tr => tr.DateTime)
+            var thoughtRecords = (await database.ThoughtRecords.GetAllAsync())
+                          .OrderByDescending(tr => tr.Situation.DateTime)
                           .ToList();
             //Add the records to the observable collection.
-            foreach (var s in situations)
+            foreach (var s in thoughtRecords)
             {
                 ThoughtRecords.Add(s);
             }

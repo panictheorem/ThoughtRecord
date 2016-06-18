@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-
+using ThoughtRecordApp.Infrastructure.Interfaces;
+using ThoughtRecordApp.Services;
 namespace ThoughtRecordApp.ViewModels
 {
     public class InformationModel
     {
+        private IStringResourceService stringLoader;
+
         public static string Title { get; private set; }
 
         public string InstructionsTitle { get; private set; }
@@ -56,54 +59,55 @@ namespace ThoughtRecordApp.ViewModels
 
         public InformationModel()
         {
-            Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("InformationPageTitle");
+            stringLoader = new StringResourceService("PageTitles");
+            Title = stringLoader.GetString("InformationPageTitle");
             InitializeContent();
         }
 
         private void InitializeContent()
         {
-            ResourceLoader resources = ResourceLoader.GetForCurrentView("InformationText");
-            InstructionsTitle = resources.GetString("InstructionsTitle");
-            WhatIsThoughtRecordSectionTitle = resources.GetString("WhatIsThoughtRecordSectionTitle");
-            WhatIsThoughtRecordSectionContent = resources.GetString("WhatIsThoughtRecordSectionContent");
-            StepsSectionTitle = resources.GetString("StepsSectionTitle");
-            StepsSectionContent = resources.GetString("StepsSectionContent");
-            Step1 = resources.GetString("Step1");
-            Step2 = resources.GetString("Step2");
-            Step3 = resources.GetString("Step3");
-            Step4 = resources.GetString("Step4");
-            Step5 = resources.GetString("Step5");
-            Step6 = resources.GetString("Step6");
+            stringLoader.SetFile("InformationText");
+            InstructionsTitle = stringLoader.GetString("InstructionsTitle");
+            WhatIsThoughtRecordSectionTitle = stringLoader.GetString("WhatIsThoughtRecordSectionTitle");
+            WhatIsThoughtRecordSectionContent = stringLoader.GetString("WhatIsThoughtRecordSectionContent");
+            StepsSectionTitle = stringLoader.GetString("StepsSectionTitle");
+            StepsSectionContent = stringLoader.GetString("StepsSectionContent");
+            Step1 = stringLoader.GetString("Step1");
+            Step2 = stringLoader.GetString("Step2");
+            Step3 = stringLoader.GetString("Step3");
+            Step4 = stringLoader.GetString("Step4");
+            Step5 = stringLoader.GetString("Step5");
+            Step6 = stringLoader.GetString("Step6");
 
-            TipsTitle = resources.GetString("TipsTitle");
-            Tip1 = resources.GetString("Tip1");
-            Tip2= resources.GetString("Tip2");
-            Tip3 = resources.GetString("Tip3");
+            TipsTitle = stringLoader.GetString("TipsTitle");
+            Tip1 = stringLoader.GetString("Tip1");
+            Tip2= stringLoader.GetString("Tip2");
+            Tip3 = stringLoader.GetString("Tip3");
 
-            VoiceCommandsTitle = resources.GetString("VoiceCommandsTitle");
-            VoiceCommandsIntro = resources.GetString("VoiceCommandsIntro");
-            OpenCommandsSectionTitle = resources.GetString("OpenCommandsSectionTitle");
-            OpenCommandsSectionIntro = resources.GetString("OpenCommandsSectionIntro");
+            VoiceCommandsTitle = stringLoader.GetString("VoiceCommandsTitle");
+            VoiceCommandsIntro = stringLoader.GetString("VoiceCommandsIntro");
+            OpenCommandsSectionTitle = stringLoader.GetString("OpenCommandsSectionTitle");
+            OpenCommandsSectionIntro = stringLoader.GetString("OpenCommandsSectionIntro");
 
-            OpenCommandDescription1 = resources.GetString("OpenCommandDescription1");
-            OpenCommandDescription2 = resources.GetString("OpenCommandDescription2");
-            OpenCommandDescription3 = resources.GetString("OpenCommandDescription3");
-            OpenCommandDescription4 = resources.GetString("OpenCommandDescription4");
+            OpenCommandDescription1 = stringLoader.GetString("OpenCommandDescription1");
+            OpenCommandDescription2 = stringLoader.GetString("OpenCommandDescription2");
+            OpenCommandDescription3 = stringLoader.GetString("OpenCommandDescription3");
+            OpenCommandDescription4 = stringLoader.GetString("OpenCommandDescription4");
 
-            OpenCommand1 = resources.GetString("OpenCommand1");
-            OpenCommand2 = resources.GetString("OpenCommand2");
-            OpenCommand3 = resources.GetString("OpenCommand3");
-            OpenCommand4 = resources.GetString("OpenCommand4");
+            OpenCommand1 = stringLoader.GetString("OpenCommand1");
+            OpenCommand2 = stringLoader.GetString("OpenCommand2");
+            OpenCommand3 = stringLoader.GetString("OpenCommand3");
+            OpenCommand4 = stringLoader.GetString("OpenCommand4");
 
-            AboutTitle = resources.GetString("AboutTitle");
-            AboutContent = resources.GetString("AboutContent");
-            BroughtToYouByText = resources.GetString("BroughtToYouByText");
-            ContactMeLinkText = resources.GetString("ContactMeLinkText");
-            ContactMeContent = resources.GetString("ContactMeContent");
-            DonateContent = resources.GetString("DonateContent");
-            DonateButtonText = resources.GetString("DonateButtonText");
-            ImageSourceText = resources.GetString("ImageSourceText");
-            ImageSourceLinkText = resources.GetString("ImageSourceLinkText");
+            AboutTitle = stringLoader.GetString("AboutTitle");
+            AboutContent = stringLoader.GetString("AboutContent");
+            BroughtToYouByText = stringLoader.GetString("BroughtToYouByText");
+            ContactMeLinkText = stringLoader.GetString("ContactMeLinkText");
+            ContactMeContent = stringLoader.GetString("ContactMeContent");
+            DonateContent = stringLoader.GetString("DonateContent");
+            DonateButtonText = stringLoader.GetString("DonateButtonText");
+            ImageSourceText = stringLoader.GetString("ImageSourceText");
+            ImageSourceLinkText = stringLoader.GetString("ImageSourceLinkText");
         }
     }
 }

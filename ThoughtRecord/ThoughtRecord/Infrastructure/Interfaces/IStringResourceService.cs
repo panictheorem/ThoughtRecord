@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ThoughtRecordApp.Pages.Infrastructure.Interfaces
+namespace ThoughtRecordApp.Infrastructure.Interfaces
 {
     public interface IStringResourceService
     {

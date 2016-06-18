@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThoughtRecordApp.DAL.Abstract;
-using ThoughtRecordApp.Pages.Infrastructure.Interfaces;
+using ThoughtRecordApp.Infrastructure.Interfaces;
+using ThoughtRecordApp.Pages;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Store;
 
-namespace ThoughtRecordApp.Pages.Infrastructure.Implementations
+namespace ThoughtRecordApp.Infrastructure.Implementations
 {
     public class NavigationParameterModel : INavigationParameterModel
     {

@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.DAL.Models;
+using ThoughtRecordApp.Infrastructure.Interfaces;
 using ThoughtRecordApp.Services;
 using ThoughtRecordApp.ViewModels.Infrastructure;
 using Windows.ApplicationModel.Resources;
@@ -18,6 +19,8 @@ namespace ThoughtRecordApp.ViewModels
         public static string Title { get; private set; }
         private int thoughtRecordId;
         private IDatabaseService database;
+        private ThoughtRecordService thoughtRecordService;
+        private IStringResourceService stringLoader;
         private List<ThoughtRecord> thoughtRecords;
         private int currentIndex;
         private bool commandsEnabled;
@@ -31,14 +34,16 @@ namespace ThoughtRecordApp.ViewModels
         public ThoughtRecordDisplayModel(IDatabaseService db)
         {
             database = db;
-            Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("MyThoughtRecordsTitle");
-            SectionTitles = ThoughtRecordService.GetTitleModel();
+            thoughtRecordService = new ThoughtRecordService();
+            stringLoader = new StringResourceService("PageTitles");
+            Title = stringLoader.GetString("MyThoughtRecordsTitle");
+            SectionTitles = thoughtRecordService.GetTitleModel();
         }
         public async Task InitializeModel(int thoughtRecordId)
         {
             thoughtRecords = (await database.ThoughtRecords.GetAllAsync()).OrderByDescending(tr => tr.Situation.DateTime).ToList();
             //if id is 0, such as when invoked by Cortana command, get latest record
-            if (ThoughtRecordId == 0)
+            if (thoughtRecordId == 0)
             {
                 ThoughtRecord = thoughtRecords.FirstOrDefault();
             }

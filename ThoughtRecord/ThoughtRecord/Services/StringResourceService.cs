@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThoughtRecordApp.Pages.Infrastructure.Interfaces;
+using ThoughtRecordApp.Infrastructure.Interfaces;
 using Windows.ApplicationModel.Resources;
 
 namespace ThoughtRecordApp.Services
@@ -16,9 +16,14 @@ namespace ThoughtRecordApp.Services
     {
         private ResourceLoader resourceLoader;
 
+        public StringResourceService(string fileName)
+        {
+            resourceLoader  = ResourceLoader.GetForCurrentView(fileName);
+        }
+
         public void SetFile(string fileName)
         {
-            ResourceLoader.GetForCurrentView(fileName);
+            resourceLoader = ResourceLoader.GetForCurrentView(fileName);
         }
 
         public string GetString(string key)

@@ -6,8 +6,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using ThoughtRecordApp.DAL.Abstract;
 using ThoughtRecordApp.DAL.Concrete;
 using ThoughtRecordApp.Pages;
-using ThoughtRecordApp.Pages.Infrastructure.Implementations;
-using ThoughtRecordApp.Pages.Infrastructure.Interfaces;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Store;

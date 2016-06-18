@@ -48,51 +48,54 @@ namespace ThoughtRecordApp.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
-            if(e.Parameter is VoiceCommandActivatedEventArgs)
+            base.OnNavigatedTo(e);
+            if (e.Parameter is VoiceCommandActivatedEventArgs)
             {
-                Type navigationPageType = null;
-                object navigationParameter = null;
                 VoiceCommandActivatedEventArgs voiceCommandArgs = e.Parameter as VoiceCommandActivatedEventArgs;
                 string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
 
-                switch (voiceCommandName)
-                {
-                    case "OpenLatestRecord":
-                        navigationPageType = typeof(ThoughtRecordDisplayPage);
-                        navigationParameter = 0;
-                        break;
-                    case "OpenRecordList":
-                        navigationPageType = typeof(ThoughtRecordListPage);
-                        break;
-                    case "OpenInformation":
-                        navigationPageType = typeof(InformationPage);
-                        break;
-                    case "OpenNewRecord":
-                        navigationPageType = typeof(ThoughtRecordEditPage);
-                        break;
-                    default:
-                        navigationPageType = typeof(ThoughtRecordEditPage);
-                        break;
-                }
-
-                if(navigationParameter == null)
-                {
-                    NavigateWithMenuUpdate(navigationPageType);
-                }
-                else
-                {
-                    Frame.Navigate(navigationPageType, navigationParameter);
-                    NavigateWithMenuUpdate(navigationPageType);
-                }
+                ParseCommand(voiceCommandName);
             }
             else
             {
                 NewThoughtRecordListBoxItem.IsSelected = true;
             }
-            base.OnNavigatedTo(e);
         }
 
+        private void ParseCommand(string voiceCommandName)
+        {
+            Type navigationPageType = null;
+            object navigationParameter = null;
+
+            switch (voiceCommandName)
+            {
+                case "OpenLatestRecord":
+                    navigationPageType = typeof(ThoughtRecordDisplayPage);
+                    navigationParameter = 0;
+                    break;
+                case "OpenRecordList":
+                    navigationPageType = typeof(ThoughtRecordListPage);
+                    break;
+                case "OpenInformation":
+                    navigationPageType = typeof(InformationPage);
+                    break;
+                case "OpenNewRecord":
+                    navigationPageType = typeof(ThoughtRecordEditPage);
+                    break;
+                default:
+                    navigationPageType = typeof(ThoughtRecordEditPage);
+                    break;
+            }
+
+            if (navigationParameter == null)
+            {
+                NavigateWithMenuUpdate(navigationPageType);
+            }
+            else
+            {
+                NavigateWithMenuUpdate(navigationPageType, navigationParameter);
+            }
+        }
         public void ShowProgressRing()
         {
             MainProgressRing.IsActive = true;
@@ -111,23 +114,27 @@ namespace ThoughtRecordApp.Pages
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
         //Updates the main menu selection which will, in turn, trigger the navigation
-        public void NavigateWithMenuUpdate(Type type)
+        public void NavigateWithMenuUpdate(Type pageType, object navigationParameter = null)
         {
-            if (type == typeof(ThoughtRecordEditPage))
+            if (pageType == typeof(ThoughtRecordEditPage))
             {
                 NewThoughtRecordListBoxItem.IsSelected = true;
             }
-            else if (type == typeof(ThoughtRecordListPage))
+            else if (pageType == typeof(ThoughtRecordListPage))
             {
                 ListThoughtRecordsListBoxItem.IsSelected = true;
             }
-            else if (type == typeof(InformationPage))
+            else if (pageType == typeof(InformationPage))
             {
                 InformationListBoxItem.IsSelected = true;
             }
             else
             {
                 MainMenuListBox.SelectedItem = null;
+                if(pageType == typeof(ThoughtRecordDisplayPage) && MainFrame.CurrentSourcePageType != pageType)
+                {
+                    MainFrame.Navigate(pageType, navigationParameter);
+                }
             }
         }
 

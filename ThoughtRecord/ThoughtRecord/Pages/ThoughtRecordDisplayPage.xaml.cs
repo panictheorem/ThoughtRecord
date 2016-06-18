@@ -34,10 +34,10 @@ namespace ThoughtRecordApp.Pages
         protected override async void OnNavigatedTo(NavigationEventArgs obj)
         {
             base.OnNavigatedTo(obj);
-
+            rootPage = ((App)Application.Current).CurrentMain;
             if (obj.Parameter != null)
             {
-                rootPage = ((App)Application.Current).CurrentMain;
+       
                 rootPage.UpdateTitle(ThoughtRecordListModel.Title);
                 int thoughtRecordId = Convert.ToInt32(obj.Parameter);
                 ViewModel = new ThoughtRecordDisplayModel(AppDataService.GetDatabase(Application.Current));

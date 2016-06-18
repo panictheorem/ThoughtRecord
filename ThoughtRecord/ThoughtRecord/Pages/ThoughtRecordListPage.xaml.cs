@@ -61,9 +61,9 @@ namespace ThoughtRecordApp.Pages
         //Navigates to the display page for the selected item.
         private void ThoughtRecordItemsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Situation selectedSituationRecord = e.ClickedItem as Situation;
+            ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;
             rootPage.ClearMenuSelection();
-            Frame.Navigate(typeof(ThoughtRecordDisplayPage), selectedSituationRecord.ThoughtRecordId);
+            Frame.Navigate(typeof(ThoughtRecordDisplayPage), selectedThoughtRecord.ThoughtRecordId);
         }
 
         private void NewThoughtRecordButton_Click(object sender, RoutedEventArgs e)
