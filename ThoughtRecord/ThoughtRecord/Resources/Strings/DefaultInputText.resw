@@ -133,7 +133,7 @@
     <value>Based on the evidence you gathered, do you think the thoughts are still true or valid? Or were your thoughts unrealistic, highly improbable or not even worth worrying about? Why or why not?</value>
   </data>
   <data name="SituationDescription" xml:space="preserve">
-    <value>Describe the situation that brought on the unpleasant thoughts or feelings. Where where you? Were you doing anything in particular?</value>
+    <value>Describe the situation that brought on the unpleasant thoughts or feelings. Where were you? Were you doing anything in particular?</value>
   </data>
   <data name="SupportingEvidence" xml:space="preserve">
     <value>List the evidence, if any, that supports your automatic thoughts.</value>
