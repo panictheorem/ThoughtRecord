@@ -148,16 +148,16 @@
     <value>Instructions</value>
   </data>
   <data name="OpenCommand1" xml:space="preserve">
-    <value>"Thought Record, open latest"</value>
+    <value>"Open latest though record."</value>
   </data>
   <data name="OpenCommand2" xml:space="preserve">
-    <value>"Thought Record, open new"</value>
+    <value>"Open new thought record."</value>
   </data>
   <data name="OpenCommand3" xml:space="preserve">
-    <value>"Thought Record, show me all"</value>
+    <value>"Show me my thought records."</value>
   </data>
   <data name="OpenCommand4" xml:space="preserve">
-    <value>"Thought Record, open information"</value>
+    <value>"How do I use a though record?"</value>
   </data>
   <data name="OpenCommandDescription1" xml:space="preserve">
     <value>Open your latest thought record:</value>
