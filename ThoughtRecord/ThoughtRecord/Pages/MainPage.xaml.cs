@@ -113,6 +113,7 @@ namespace ThoughtRecordApp.Pages
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
+
         //Updates the main menu selection which will, in turn, trigger the navigation
         public void NavigateWithMenuUpdate(Type pageType, object navigationParameter = null)
         {

@@ -21,6 +21,7 @@ using ThoughtRecordApp.ViewModels.Infrastructure;
 using System.Threading;
 using Windows.UI.Popups;
 using ThoughtRecordApp.Services;
+using NotificationsExtensions;
 
 namespace ThoughtRecordApp.Pages
 {
@@ -28,6 +29,7 @@ namespace ThoughtRecordApp.Pages
     {
         public ThoughtRecordEditModel ViewModel { get; private set; }
         private MainPage rootPage;
+
         public ThoughtRecordEditPage()
         {
             this.InitializeComponent();
@@ -70,12 +72,14 @@ namespace ThoughtRecordApp.Pages
                 Title = "Your thought record is not saved",
                 Content = "Would you like to save this thought record?",
                 PrimaryButtonText = "Save",
-                PrimaryButtonCommand = new RelayCommand(() => {
+                PrimaryButtonCommand = new RelayCommand(() =>
+                {
                     ViewModel.Save.Execute(null);
                     ViewModel.CreateNewThoughtRecord();
                 }),
                 SecondaryButtonText = "Don't Save",
-                SecondaryButtonCommand = new RelayCommand(() => {
+                SecondaryButtonCommand = new RelayCommand(() =>
+                {
                     ViewModel.CreateNewThoughtRecord();
                 }),
             };
@@ -99,9 +103,10 @@ namespace ThoughtRecordApp.Pages
                 await dialog.ShowAsync();
                 ViewModel.IsCurrentDataSaved = true;
                 Frame.Navigate(e.SourcePageType, e.Parameter);
-                
+
             }
         }
+
         private void ShowProgressRing(object sender, EventArgs args)
         {
             rootPage.ShowProgressRing();
@@ -120,14 +125,19 @@ namespace ThoughtRecordApp.Pages
 
             ToastVisual visual = new ToastVisual()
             {
-                TitleText = new ToastText()
+                BindingGeneric = new ToastBindingGeneric()
                 {
-                    Text = title,
-                },
-
-                BodyTextLine1 = new ToastText()
-                {
-                    Text = content
+                    Children =
+                    {
+                        new AdaptiveText
+                        {
+                                Text = title
+                        },
+                        new AdaptiveText
+                        {
+                                Text = content
+                        }
+                    }
                 }
             };
 
