@@ -28,7 +28,7 @@ namespace ThoughtRecordApp.Pages
     public sealed partial class MainPage : Page
     {
         public MainViewModel ViewModel { get; }
-
+        public Page CurrentPage { get; private set; }
         public MainPage()
         {
             this.InitializeComponent();
@@ -49,12 +49,10 @@ namespace ThoughtRecordApp.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (e.Parameter is VoiceCommandActivatedEventArgs)
+            string command = e.Parameter as string;
+            if (!string.IsNullOrEmpty(command))
             {
-                VoiceCommandActivatedEventArgs voiceCommandArgs = e.Parameter as VoiceCommandActivatedEventArgs;
-                string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
-
-                ParseCommand(voiceCommandName);
+                ParseCommand(e.Parameter as string);
             }
             else
             {
@@ -135,6 +133,7 @@ namespace ThoughtRecordApp.Pages
                 if(pageType == typeof(ThoughtRecordDisplayPage) && MainFrame.CurrentSourcePageType != pageType)
                 {
                     MainFrame.Navigate(pageType, navigationParameter);
+                    CurrentPage = MainFrame.Content as Page;
                 }
             }
         }
@@ -160,6 +159,7 @@ namespace ThoughtRecordApp.Pages
                     (currentEditPage != null && currentEditPage.ViewModel.ThoughtRecord.ThoughtRecordId != 0))
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordEditPage), 0);
+                    CurrentPage = MainFrame.Content as Page;
                 }
             }
             else if (ListThoughtRecordsListBoxItem.IsSelected)
@@ -167,6 +167,7 @@ namespace ThoughtRecordApp.Pages
                 if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordListPage))
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordListPage));
+                    CurrentPage = MainFrame.Content as Page;
                 }
             }
             else if (InformationListBoxItem.IsSelected)
@@ -175,6 +176,7 @@ namespace ThoughtRecordApp.Pages
                 if (MainFrame.CurrentSourcePageType != typeof(InformationPage))
                 {
                     MainFrame.Navigate(typeof(InformationPage));
+                    CurrentPage = MainFrame.Content as Page;
                 }
             }
         }

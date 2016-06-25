@@ -11,7 +11,7 @@
       <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
       <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
-      <Navigate Target="/Pages/ThoughtRecordDisplayPage.xaml"/>
+      <Navigate/>
     </Command>
     
   <Command Name="OpenNewRecord">
@@ -19,7 +19,7 @@
       <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
       <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
-      <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
+      <Navigate />
     </Command>
     
   <Command Name="OpenRecordList">
@@ -27,7 +27,7 @@
       <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
       <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
       <Feedback> Opening your thought records... </Feedback>
-      <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
+      <Navigate />
     </Command>
     
     <Command Name="OpenInformation">
@@ -36,7 +36,14 @@
       <ListenFor> How do I use a {builtin:AppName}</ListenFor>
       <ListenFor> What is a {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record information... </Feedback>
-      <Navigate Target="/Pages/ThoughtRecordEditPage.xaml"/>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
     </Command>
 
   </CommandSet>

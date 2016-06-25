@@ -119,7 +119,7 @@ namespace ThoughtRecordApp
             {
                 VoiceCommandActivatedEventArgs voiceCommandArgs = args as VoiceCommandActivatedEventArgs;
                 string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
-                navigationParameter = args;
+                navigationParameter = voiceCommandName;
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
@@ -135,13 +135,24 @@ namespace ThoughtRecordApp
                 Window.Current.Content = rootFrame;
             }
 
-            if(navigationParameter != null)
+            if((string)navigationParameter == "SaveThoughtRecord")
             {
-                rootFrame.Navigate(typeof(MainPage), navigationParameter);
+                if(CurrentMain != null)
+                {
+                    var editPage = CurrentMain.CurrentPage as ThoughtRecordEditPage;
+                    editPage?.ViewModel.SaveThoughtRecord();
+                }
             }
             else
             {
-                rootFrame.Navigate(typeof(MainPage));
+                if (navigationParameter != null)
+                {
+                    rootFrame.Navigate(typeof(MainPage), navigationParameter);
+                }
+                else
+                {
+                    rootFrame.Navigate(typeof(MainPage));
+                }
             }
             // Ensure the current window is active
             Window.Current.Activate();

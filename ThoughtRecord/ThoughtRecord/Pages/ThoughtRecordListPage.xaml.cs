@@ -63,7 +63,7 @@ namespace ThoughtRecordApp.Pages
         {
             ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;
             rootPage.ClearMenuSelection();
-            Frame.Navigate(typeof(ThoughtRecordDisplayPage), selectedThoughtRecord.ThoughtRecordId);
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordDisplayPage), selectedThoughtRecord.ThoughtRecordId);
         }
 
         private void NewThoughtRecordButton_Click(object sender, RoutedEventArgs e)
