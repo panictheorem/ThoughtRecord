@@ -147,6 +147,30 @@
   <data name="InstructionsTitle" xml:space="preserve">
     <value>Instructions</value>
   </data>
+  <data name="ManageCommand1" xml:space="preserve">
+    <value>"Save this thought record."</value>
+  </data>
+  <data name="ManageCommand2" xml:space="preserve">
+    <value>"Edit this thought record."</value>
+  </data>
+  <data name="ManageCommand3" xml:space="preserve">
+    <value>"Delete this thought record."</value>
+  </data>
+  <data name="ManageCommandDescription1" xml:space="preserve">
+    <value>Save the thought record you are currently editing:</value>
+  </data>
+  <data name="ManageCommandDescription2" xml:space="preserve">
+    <value>Open a displayed throught record for editing:</value>
+  </data>
+  <data name="ManageCommandDescription3" xml:space="preserve">
+    <value>Delete a thought record being displayed:</value>
+  </data>
+  <data name="ManageCommandsSectionIntro" xml:space="preserve">
+    <value>The following commands allow you to manage your thought records. Note: You must be on the appropriate page for these commands to work (e.g. You must be on the edit page in order to use the "save thought record" command).</value>
+  </data>
+  <data name="ManageCommandsSectionTitle" xml:space="preserve">
+    <value>Managing Your Thought Records</value>
+  </data>
   <data name="OpenCommand1" xml:space="preserve">
     <value>"Open latest though record."</value>
   </data>
@@ -157,7 +181,7 @@
     <value>"Show me my thought records."</value>
   </data>
   <data name="OpenCommand4" xml:space="preserve">
-    <value>"How do I use a though record?"</value>
+    <value>"How do I use a thought record?"</value>
   </data>
   <data name="OpenCommandDescription1" xml:space="preserve">
     <value>Open your latest thought record:</value>
@@ -172,7 +196,7 @@
     <value>Open the information page:</value>
   </data>
   <data name="OpenCommandsSectionIntro" xml:space="preserve">
-    <value>With these commands you can launch the app to specific pages using Cortana:</value>
+    <value>With these commands you can launch the app to specific pages or change the current page.</value>
   </data>
   <data name="OpenCommandsSectionTitle" xml:space="preserve">
     <value>Launching The App</value>

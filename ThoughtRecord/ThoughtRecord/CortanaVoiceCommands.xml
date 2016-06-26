@@ -45,6 +45,19 @@
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
     </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
 
   </CommandSet>
   

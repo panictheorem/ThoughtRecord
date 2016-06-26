@@ -42,12 +42,12 @@ namespace ThoughtRecordApp.Pages
             if (thoughtRecordId != 0)
             {
                 ViewModel = new ThoughtRecordEditModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
-                rootPage.NavigateWithMenuUpdate(null);
+                
             }
             else
             {
                 ViewModel = new ThoughtRecordEditModel(AppDataService.GetDatabase(Application.Current));
-                rootPage.NavigateWithMenuUpdate(this.GetType());
+                
             }
             rootPage.UpdateTitle(ViewModel.Title);
             ViewModel.OnThoughtRecordSaving += ShowProgressRing;

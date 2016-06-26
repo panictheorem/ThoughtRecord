@@ -23,7 +23,7 @@ namespace ThoughtRecordApp.Pages
     /// </summary>
     public sealed partial class ThoughtRecordDisplayPage : Page
     {
-        private ThoughtRecordDisplayModel ViewModel;
+        public ThoughtRecordDisplayModel ViewModel { get; private set; }
         private MainPage rootPage;
 
         public ThoughtRecordDisplayPage()
@@ -52,7 +52,6 @@ namespace ThoughtRecordApp.Pages
                     ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
                     ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
                     ViewModel.OnThoughtRecordChanged += ScrollToTop;
-                    rootPage.NavigateWithMenuUpdate(this.GetType());
                     rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
                 }
             }
@@ -89,10 +88,9 @@ namespace ThoughtRecordApp.Pages
 
         }
 
-        private void NavigateToEditPage(object sender, EventArgs args)
+        public void NavigateToEditPage(object sender, EventArgs args)
         {
-            Frame.Navigate(typeof(ThoughtRecordEditPage), ViewModel.ThoughtRecord.ThoughtRecordId);
-            rootPage.UpdateTitle("Edit Thought Record");
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage), ViewModel.ThoughtRecord.ThoughtRecordId);
         }
 
         private void NavigatetoListPageAfterDelete(object sender, EventArgs args)

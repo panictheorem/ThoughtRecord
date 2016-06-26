@@ -35,7 +35,7 @@ namespace ThoughtRecordApp.Pages
             //Set this page as the current main page which other pages can access through the 
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
-             ViewModel = new MainViewModel();
+            ViewModel = new MainViewModel();
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
                 if (MainFrame.CanGoBack)
@@ -117,7 +117,18 @@ namespace ThoughtRecordApp.Pages
         {
             if (pageType == typeof(ThoughtRecordEditPage))
             {
-                NewThoughtRecordListBoxItem.IsSelected = true;
+                if (MainFrame.CurrentSourcePageType != pageType)
+                {
+                    if (navigationParameter != null && (int)navigationParameter == 0)
+                    {
+                        NewThoughtRecordListBoxItem.IsSelected = true;
+                    }
+                    else
+                    {
+                        MainFrame.Navigate(pageType, navigationParameter);
+                        UpdateCurrentPage();
+                    }
+                }
             }
             else if (pageType == typeof(ThoughtRecordListPage))
             {
@@ -130,10 +141,10 @@ namespace ThoughtRecordApp.Pages
             else
             {
                 MainMenuListBox.SelectedItem = null;
-                if(pageType == typeof(ThoughtRecordDisplayPage) && MainFrame.CurrentSourcePageType != pageType)
+                if (pageType == typeof(ThoughtRecordDisplayPage) && MainFrame.CurrentSourcePageType != pageType)
                 {
                     MainFrame.Navigate(pageType, navigationParameter);
-                    CurrentPage = MainFrame.Content as Page;
+                    UpdateCurrentPage();
                 }
             }
         }
@@ -150,16 +161,10 @@ namespace ThoughtRecordApp.Pages
             MainSplitView.IsPaneOpen = false;
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
-                ThoughtRecordEditPage currentEditPage = MainFrame.Content as ThoughtRecordEditPage;
-
-                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage) ||
-                    //We want to allow the user to be able to navigate to the New Thought Record page
-                    //if they are currently on the edit page. Since they use the same page, we also allow 
-                    //navigation if the current thought record's id is not 0
-                    (currentEditPage != null && currentEditPage.ViewModel.ThoughtRecord.ThoughtRecordId != 0))
+                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordEditPage), 0);
-                    CurrentPage = MainFrame.Content as Page;
+                    UpdateCurrentPage();
                 }
             }
             else if (ListThoughtRecordsListBoxItem.IsSelected)
@@ -167,7 +172,7 @@ namespace ThoughtRecordApp.Pages
                 if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordListPage))
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordListPage));
-                    CurrentPage = MainFrame.Content as Page;
+                    UpdateCurrentPage();
                 }
             }
             else if (InformationListBoxItem.IsSelected)
@@ -176,9 +181,14 @@ namespace ThoughtRecordApp.Pages
                 if (MainFrame.CurrentSourcePageType != typeof(InformationPage))
                 {
                     MainFrame.Navigate(typeof(InformationPage));
-                    CurrentPage = MainFrame.Content as Page;
+                    UpdateCurrentPage();
                 }
             }
+        }
+
+        private void UpdateCurrentPage()
+        {
+            CurrentPage = MainFrame.Content as Page;
         }
     }
 }

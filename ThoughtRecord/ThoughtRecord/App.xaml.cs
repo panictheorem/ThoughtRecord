@@ -114,12 +114,12 @@ namespace ThoughtRecordApp
         protected override void OnActivated(IActivatedEventArgs args)
         {
             base.OnActivated(args);
-            object navigationParameter = null;
+            string commandNavigationParameter = null;
             if (args.Kind == ActivationKind.VoiceCommand)
             {
                 VoiceCommandActivatedEventArgs voiceCommandArgs = args as VoiceCommandActivatedEventArgs;
                 string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
-                navigationParameter = voiceCommandName;
+                commandNavigationParameter = voiceCommandName;
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
@@ -135,19 +135,49 @@ namespace ThoughtRecordApp
                 Window.Current.Content = rootFrame;
             }
 
-            if((string)navigationParameter == "SaveThoughtRecord")
+            if (commandNavigationParameter == "SaveThoughtRecord")
             {
-                if(CurrentMain != null)
+                if (CurrentMain != null)
                 {
                     var editPage = CurrentMain.CurrentPage as ThoughtRecordEditPage;
                     editPage?.ViewModel.SaveThoughtRecord();
                 }
             }
+            else if (commandNavigationParameter == "EditThoughtRecord")
+            {
+                if (CurrentMain != null)
+                {
+                    var displayPage = CurrentMain.CurrentPage as ThoughtRecordDisplayPage;
+                    if(displayPage != null)
+                    {
+                        if(displayPage.ViewModel.Edit.CanExecute(null))
+                        {
+                            displayPage.ViewModel.Edit.Execute(null);
+                        }
+                    }
+                }
+            }
+            else if (commandNavigationParameter == "DeleteThoughtRecord")
+            {
+                if (CurrentMain != null)
+                {
+                    var displayPage = CurrentMain.CurrentPage as ThoughtRecordDisplayPage;
+                    if (displayPage != null)
+                    {
+                        if (displayPage.ViewModel.RequestDelete.CanExecute(null))
+                        {
+                            displayPage.ViewModel.RequestDelete.Execute(null);
+                        }
+                    }
+
+
+                }
+            }
             else
             {
-                if (navigationParameter != null)
+                if (commandNavigationParameter != null)
                 {
-                    rootFrame.Navigate(typeof(MainPage), navigationParameter);
+                    rootFrame.Navigate(typeof(MainPage), commandNavigationParameter);
                 }
                 else
                 {

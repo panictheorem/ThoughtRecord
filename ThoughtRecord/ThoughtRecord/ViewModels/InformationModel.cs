@@ -33,6 +33,7 @@ namespace ThoughtRecordApp.ViewModels
 
         public string VoiceCommandsTitle { get; private set; }
         public string VoiceCommandsIntro { get; private set; }
+
         public string OpenCommandsSectionTitle { get; private set; }
         public string OpenCommandsSectionIntro { get; private set; }
 
@@ -45,6 +46,17 @@ namespace ThoughtRecordApp.ViewModels
         public string OpenCommand2 { get; private set; }
         public string OpenCommand3 { get; private set; }
         public string OpenCommand4 { get; private set; }
+
+        public string ManageCommandsSectionTitle { get; private set; }
+        public string ManageCommandsSectionIntro { get; private set; }
+
+        public string ManageCommandDescription1 { get; private set; }
+        public string ManageCommandDescription2 { get; private set; }
+        public string ManageCommandDescription3 { get; private set; }
+
+        public string ManageCommand1 { get; private set; }
+        public string ManageCommand2 { get; private set; }
+        public string ManageCommand3 { get; private set; }
 
 
         public string AboutTitle { get; private set; }
@@ -86,6 +98,7 @@ namespace ThoughtRecordApp.ViewModels
 
             VoiceCommandsTitle = stringLoader.GetString("VoiceCommandsTitle");
             VoiceCommandsIntro = stringLoader.GetString("VoiceCommandsIntro");
+
             OpenCommandsSectionTitle = stringLoader.GetString("OpenCommandsSectionTitle");
             OpenCommandsSectionIntro = stringLoader.GetString("OpenCommandsSectionIntro");
 
@@ -98,6 +111,17 @@ namespace ThoughtRecordApp.ViewModels
             OpenCommand2 = stringLoader.GetString("OpenCommand2");
             OpenCommand3 = stringLoader.GetString("OpenCommand3");
             OpenCommand4 = stringLoader.GetString("OpenCommand4");
+
+            ManageCommandsSectionTitle = stringLoader.GetString("ManageCommandsSectionTitle");
+            ManageCommandsSectionIntro = stringLoader.GetString("ManageCommandsSectionIntro");
+
+            ManageCommandDescription1 = stringLoader.GetString("ManageCommandDescription1");
+            ManageCommandDescription2 = stringLoader.GetString("ManageCommandDescription2");
+            ManageCommandDescription3 = stringLoader.GetString("ManageCommandDescription3");
+
+            ManageCommand1 = stringLoader.GetString("ManageCommand1");
+            ManageCommand2 = stringLoader.GetString("ManageCommand2");
+            ManageCommand3 = stringLoader.GetString("ManageCommand3");
 
             AboutTitle = stringLoader.GetString("AboutTitle");
             AboutContent = stringLoader.GetString("AboutContent");
