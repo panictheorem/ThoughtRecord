@@ -52,7 +52,8 @@
                    CompactPaneLength="0"
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
-                <ListBox x:Name="MainMenuListBox"
+                <Grid>
+                    <ListBox x:Name="MainMenuListBoxTop"
                          SelectedIndex="{x:Bind ViewModel.SelectedIndex, Mode=OneTime}"
                          SelectionChanged="MainMenuListBox_SelectionChanged">
                     <ListBoxItem x:Name="NewThoughtRecordListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
@@ -63,23 +64,37 @@
                                        VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem x:Name="ListThoughtRecordsListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                        <ListBoxItem x:Name="ListThoughtRecordsListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE8F1;" Margin="-2,0,12,0"/>
-                            <TextBlock Text="My Thought Records"
+                                <TextBlock Text="My Thought Records"
                                        VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:Name="InformationListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                    <ListBox x:Name="MainMenuListBoxBottom"
+                         SelectedIndex="{x:Bind ViewModel.SelectedIndex, Mode=OneTime}"
+                         SelectionChanged="MainMenuListBox_SelectionChanged"
+                             VerticalAlignment="Bottom">
+                        <ListBoxItem x:Name="HelpListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
+                                       FontSize="25" Text="&#xE897;" Margin="-2,0,12,0"/>
+                                <TextBlock Text="Help"
+                                       VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="InformationListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets"
                                        FontSize="25" Text="&#xE946;" Margin="-2,0,12,0"/>
-                            <TextBlock Text="Information"
+                                <TextBlock Text="Information"
                                        VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                </ListBox>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
             </SplitView.Pane>
             <Grid>
                 <Frame x:Name="MainFrame" />

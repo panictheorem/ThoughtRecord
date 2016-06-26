@@ -121,7 +121,7 @@
     <value>This</value>
   </data>
   <data name="AboutTitle" xml:space="preserve">
-    <value>About</value>
+    <value>About Thought Record</value>
   </data>
   <data name="BroughtToYouByText" xml:space="preserve">
     <value>Brought to you by </value>
@@ -143,110 +143,5 @@
   </data>
   <data name="ImageSourceText" xml:space="preserve">
     <value>The background image on the thought record list page was obtained from Pixabay user Unsplash.</value>
-  </data>
-  <data name="InstructionsTitle" xml:space="preserve">
-    <value>Instructions</value>
-  </data>
-  <data name="ManageCommand1" xml:space="preserve">
-    <value>"Save this thought record."</value>
-  </data>
-  <data name="ManageCommand2" xml:space="preserve">
-    <value>"Edit this thought record."</value>
-  </data>
-  <data name="ManageCommand3" xml:space="preserve">
-    <value>"Delete this thought record."</value>
-  </data>
-  <data name="ManageCommandDescription1" xml:space="preserve">
-    <value>Save the thought record you are currently editing:</value>
-  </data>
-  <data name="ManageCommandDescription2" xml:space="preserve">
-    <value>Open a displayed throught record for editing:</value>
-  </data>
-  <data name="ManageCommandDescription3" xml:space="preserve">
-    <value>Delete a thought record being displayed:</value>
-  </data>
-  <data name="ManageCommandsSectionIntro" xml:space="preserve">
-    <value>The following commands allow you to manage your thought records. Note: You must be on the appropriate page for these commands to work (e.g. You must be on the edit page in order to use the "save thought record" command).</value>
-  </data>
-  <data name="ManageCommandsSectionTitle" xml:space="preserve">
-    <value>Managing Your Thought Records</value>
-  </data>
-  <data name="OpenCommand1" xml:space="preserve">
-    <value>"Open latest though record."</value>
-  </data>
-  <data name="OpenCommand2" xml:space="preserve">
-    <value>"Open new thought record."</value>
-  </data>
-  <data name="OpenCommand3" xml:space="preserve">
-    <value>"Show me my thought records."</value>
-  </data>
-  <data name="OpenCommand4" xml:space="preserve">
-    <value>"How do I use a thought record?"</value>
-  </data>
-  <data name="OpenCommandDescription1" xml:space="preserve">
-    <value>Open your latest thought record:</value>
-  </data>
-  <data name="OpenCommandDescription2" xml:space="preserve">
-    <value>Open a blank thought record:</value>
-  </data>
-  <data name="OpenCommandDescription3" xml:space="preserve">
-    <value>Open your thought record list page:</value>
-  </data>
-  <data name="OpenCommandDescription4" xml:space="preserve">
-    <value>Open the information page:</value>
-  </data>
-  <data name="OpenCommandsSectionIntro" xml:space="preserve">
-    <value>With these commands you can launch the app to specific pages or change the current page.</value>
-  </data>
-  <data name="OpenCommandsSectionTitle" xml:space="preserve">
-    <value>Launching The App</value>
-  </data>
-  <data name="Step1" xml:space="preserve">
-    <value>1. Briefly describe the situation that brought on the dysfunctional thinking. What were you doing? What did you say? You want to give some context to the automatic thoughts.</value>
-  </data>
-  <data name="Step2" xml:space="preserve">
-    <value>2. Identify the emotions and feelings you felt during and/or soon after the situation and rate them in terms of intensity. Emotions and feelings are rated on a scale of 0 (no intensity) to 100 (the most intense).</value>
-  </data>
-  <data name="Step3" xml:space="preserve">
-    <value>3. Identify automatic thoughts that came to mind during and/or after the situation, specifically ones that may have contributed to your emotions identified in the previous step. These automatic thoughts often take the form dysfunctional thinking such as negative self-talk (e.g. "I'm not good enough.") or catastrophic thinking (e.g. "I've ruined the whole presentation.").</value>
-  </data>
-  <data name="Step4" xml:space="preserve">
-    <value>4. Identify the evidence both for and against your automatic thoughts. This evidence can be anything from things you have experienced before, advice from your doctor, things people have said, facts that you know to be true, etc. Most of the time, all you need is your common sense.</value>
-  </data>
-  <data name="Step5" xml:space="preserve">
-    <value>5. Re-evaluate your automatic thoughts based on this evidence for and against them and come to a rational assessment. Is the thought unrealistic? Highly improbable? Worth worrying about? Usually, it will become clear that the automatic dysfunctional thoughts have little or no basis in fact.</value>
-  </data>
-  <data name="Step6" xml:space="preserve">
-    <value>6. Re-evaluate the emotions and feelings you identfied in light of the rational assessment of your automatic thoughts. If you are still feeling them, has their intensity changed at all? If the situation happened again, how intense do you think these emotions would be?</value>
-  </data>
-  <data name="StepsSectionContent" xml:space="preserve">
-    <value>When a situation occurs that involves dysfunctional thinking, you should fill out a thought record. This is done by following these steps:</value>
-  </data>
-  <data name="StepsSectionTitle" xml:space="preserve">
-    <value>How To Use a Thought Record</value>
-  </data>
-  <data name="Tip1" xml:space="preserve">
-    <value>• Write a thought record as often as you can. You cannot change your thinking patterns by writing a single thought record. You should continue the practice until it becomes a habit.</value>
-  </data>
-  <data name="Tip2" xml:space="preserve">
-    <value>• Fill out a thought record as soon after a situation as you can. That way, the details will still be fresh in your mind and you may still be experiencing the emotions and thinking the automatic thoughts.</value>
-  </data>
-  <data name="Tip3" xml:space="preserve">
-    <value>• Thought records may seem like a simple tool, but they do take practice. The first time you write one, you may feel like you can't clearly identify your automatic thoughts or that you are unable to think of evidence for or against them. The good news is that with practice, you will become more aware of your thoughts and feelings and better able to evaluate them.</value>
-  </data>
-  <data name="TipsTitle" xml:space="preserve">
-    <value>Tips</value>
-  </data>
-  <data name="VoiceCommandsIntro" xml:space="preserve">
-    <value>This app supports Cortana voice commands and will be adding more over time. After getting Cortana's attention, you can make use of the following commands.  For the best experience, you should have "Hey Cortana" enabled.</value>
-  </data>
-  <data name="VoiceCommandsTitle" xml:space="preserve">
-    <value>Cortana Voice Commands</value>
-  </data>
-  <data name="WhatIsThoughtRecordSectionContent" xml:space="preserve">
-    <value>Thought records are a tool used in cognative behavioral therapy to manage dysfunctional thinking related to conditions such as depression, obsessive-compulsive disorder, and anxiety. Dysfunctional thinking includes things such as negative self-talk and catastrophic thinking. The ultimate goal of using thought records is to change your thinking patterns so as to minimize the impact of such dysfunctional thoughts.</value>
-  </data>
-  <data name="WhatIsThoughtRecordSectionTitle" xml:space="preserve">
-    <value>What is a Thought Record?</value>
   </data>
 </root>

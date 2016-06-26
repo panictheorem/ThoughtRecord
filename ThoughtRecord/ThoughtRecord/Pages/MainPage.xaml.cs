@@ -105,7 +105,8 @@ namespace ThoughtRecordApp.Pages
         }
         public void ClearMenuSelection()
         {
-            MainMenuListBox.SelectedItem = null;
+            MainMenuListBoxTop.SelectedItem = null;
+            MainMenuListBoxBottom.SelectedItem = null;
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -140,7 +141,7 @@ namespace ThoughtRecordApp.Pages
             }
             else
             {
-                MainMenuListBox.SelectedItem = null;
+                ClearMenuSelection();
                 if (pageType == typeof(ThoughtRecordDisplayPage) && MainFrame.CurrentSourcePageType != pageType)
                 {
                     MainFrame.Navigate(pageType, navigationParameter);
@@ -158,6 +159,8 @@ namespace ThoughtRecordApp.Pages
         //You can't navigate to a page you are already on, with the exception of the Edit Page
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ListBox menuListBox = sender as ListBox;
+            SyncronizeMenus(menuListBox);
             MainSplitView.IsPaneOpen = false;
             if (NewThoughtRecordListBoxItem.IsSelected)
             {
@@ -175,6 +178,15 @@ namespace ThoughtRecordApp.Pages
                     UpdateCurrentPage();
                 }
             }
+            else if (HelpListBoxItem.IsSelected)
+            {
+
+                if (MainFrame.CurrentSourcePageType != typeof(HelpPage))
+                {
+                    MainFrame.Navigate(typeof(HelpPage));
+                    UpdateCurrentPage();
+                }
+            }
             else if (InformationListBoxItem.IsSelected)
             {
 
@@ -186,6 +198,20 @@ namespace ThoughtRecordApp.Pages
             }
         }
 
+        private void SyncronizeMenus(ListBox selectedMenuListBox)
+        {
+            if (selectedMenuListBox != null)
+            {
+                if (selectedMenuListBox == MainMenuListBoxTop)
+                {
+                    MainMenuListBoxBottom.SelectedItem = null;
+                }
+                else
+                {
+                    MainMenuListBoxTop.SelectedItem = null;
+                }
+            }
+        }
         private void UpdateCurrentPage()
         {
             CurrentPage = MainFrame.Content as Page;

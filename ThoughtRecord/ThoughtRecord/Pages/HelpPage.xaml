@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="ThoughtRecordApp.Pages.HelpPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ThoughtRecordApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/AppThemeStyles.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/InformationPageStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <ScrollViewer>
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    Orientation="Vertical"
+                    Margin="20, 0, 20, 40" MaxWidth="600" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel Style="{StaticResource SectionStyle}">
+                <TextBlock Text="{x:Bind ViewModel.InstructionsTitle}" 
+                   Style="{StaticResource SectionTitle}" Margin="0,10,0,0"/>
+                <TextBlock Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionTitle}" 
+                   Style="{StaticResource InformationSubheader}"/>
+                <TextBlock Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionContent}" Style="{StaticResource BodyTextBlock}" />
+                <TextBlock Text="{x:Bind ViewModel.StepsSectionTitle}" Style="{StaticResource InformationSubheader}" />
+                <TextBlock  Text="{x:Bind ViewModel.StepsSectionContent}" 
+                   Style="{StaticResource BodyTextBlock}" />
+                <TextBlock Text="{x:Bind ViewModel.Step1}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.Step2}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.Step3}" Style="{StaticResource ParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.Step4}" Style="{StaticResource ParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.Step5}" Style="{StaticResource ParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.Step6}" Style="{StaticResource ParagraphStyle}"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource SectionStyle}">
+                <TextBlock Text="{x:Bind ViewModel.TipsTitle}" 
+                   Style="{StaticResource SectionTitle}"/>
+                <TextBlock Text="{x:Bind ViewModel.Tip1}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.Tip2}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.Tip3}" Style="{StaticResource ParagraphStyle}" />
+            </StackPanel>
+            <StackPanel Style="{StaticResource SectionStyle}">
+                <TextBlock Text="{x:Bind ViewModel.VoiceCommandsTitle}" 
+                   Style="{StaticResource SectionTitle}"/>
+                <TextBlock Text="{x:Bind ViewModel.VoiceCommandsIntro}" Style="{StaticResource BodyTextBlock}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionTitle}" 
+                   Style="{StaticResource InformationSubheader}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionIntro}" 
+                           Style="{StaticResource ParagraphStyle}" 
+                           Foreground="{StaticResource ForegroundDarkBrush}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription1}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand1}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription2}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand2}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription3}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand3}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription4}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.OpenCommand4}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.ManageCommandsSectionTitle}" 
+                   Style="{StaticResource InformationSubheader}"/>
+                <TextBlock Text="{x:Bind ViewModel.ManageCommandsSectionIntro}" 
+                           Style="{StaticResource ParagraphStyle}"
+                           Foreground="{StaticResource ForegroundDarkBrush}"/>
+                <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription1}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.ManageCommand1}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription2}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.ManageCommand2}" Style="{StaticResource CenteredParagraphStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription3}" Style="{StaticResource ParagraphStyle}" />
+                <TextBlock Text="{x:Bind ViewModel.ManageCommand3}" Style="{StaticResource CenteredParagraphStyle}"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

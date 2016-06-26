@@ -120,6 +120,9 @@
   <data name="EditThoughtRecordPageTitle" xml:space="preserve">
     <value>EditThought Record</value>
   </data>
+  <data name="HelpPageTitle" xml:space="preserve">
+    <value>Help</value>
+  </data>
   <data name="InformationPageTitle" xml:space="preserve">
     <value>Information</value>
   </data>

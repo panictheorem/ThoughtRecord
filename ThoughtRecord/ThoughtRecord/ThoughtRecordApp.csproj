@@ -102,6 +102,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InformationPage.xaml.cs">
       <DependentUpon>InformationPage.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,7 @@
     <Compile Include="Templates\ThoughtRecordListTemplate.xaml.cs">
       <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\HelpModel.cs" />
     <Compile Include="ViewModels\Infrastructure\RelayCommand.cs" />
     <Compile Include="ViewModels\InformationModel.cs" />
     <Compile Include="ViewModels\Infrastructure\BindableBase.cs" />
@@ -175,6 +179,7 @@
     <PRIResource Include="Resources\Strings\PageTitles.resw">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </PRIResource>
+    <PRIResource Include="Resources\Strings\HelpText.resw" />
     <None Include="ThoughtRecordApp_StoreKey.pfx" />
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>
@@ -197,11 +202,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\DeviceFamily-Mobile\InformationPage.xaml">
+    <Page Include="Pages\DeviceFamily-Mobile\HelpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DeviceFamily-Mobile\ThoughtRecordListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HelpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
