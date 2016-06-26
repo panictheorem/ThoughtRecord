@@ -53,11 +53,28 @@
                     <TextBlock Text="{x:Bind ViewModel.VoiceCommandsIntro}" Style="{StaticResource BodyTextBlock}" />
                     <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionTitle}" 
                    Style="{StaticResource InformationSubheader}"/>
-                    <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionIntro}" Style="{StaticResource BodyTextBlock}" />
-                    <TextBlock Text="{x:Bind ViewModel.OpenCommand1}" Style="{StaticResource ParagraphStyle}" />
-                    <TextBlock Text="{x:Bind ViewModel.OpenCommand2}" Style="{StaticResource ParagraphStyle}" />
-                    <TextBlock Text="{x:Bind ViewModel.OpenCommand3}" Style="{StaticResource ParagraphStyle}" />
-                    <TextBlock Text="{x:Bind ViewModel.OpenCommand4}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionIntro}" 
+                           Style="{StaticResource ParagraphStyle}" 
+                           Foreground="{StaticResource ForegroundDarkBrush}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription1}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand1}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription2}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand2}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription3}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand3}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription4}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand4}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandsSectionTitle}" 
+                   Style="{StaticResource InformationSubheader}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandsSectionIntro}" 
+                           Style="{StaticResource ParagraphStyle}"
+                           Foreground="{StaticResource ForegroundDarkBrush}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription1}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommand1}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription2}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommand2}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription3}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommand3}" Style="{StaticResource CenteredParagraphStyle}"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>

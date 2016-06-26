@@ -53,47 +53,53 @@
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
                 <Grid>
-                    <ListBox x:Name="MainMenuListBoxTop"
-                         SelectedIndex="{x:Bind ViewModel.SelectedIndex, Mode=OneTime}"
-                         SelectionChanged="MainMenuListBox_SelectionChanged">
-                    <ListBoxItem x:Name="NewThoughtRecordListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE82E;" Margin="-2,0,12,0"/>
-                            <TextBlock Text="New Thought Record" 
-                                       VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                        <ListBoxItem x:Name="ListThoughtRecordsListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE8F1;" Margin="-2,0,12,0"/>
-                                <TextBlock Text="My Thought Records"
-                                       VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                    </ListBox>
-                    <ListBox x:Name="MainMenuListBoxBottom"
-                         SelectedIndex="{x:Bind ViewModel.SelectedIndex, Mode=OneTime}"
-                         SelectionChanged="MainMenuListBox_SelectionChanged"
-                             VerticalAlignment="Bottom">
-                        <ListBoxItem x:Name="HelpListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE897;" Margin="-2,0,12,0"/>
-                                <TextBlock Text="Help"
-                                       VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem x:Name="InformationListBoxItem" Style="{StaticResource ThoughtRecordMenuItem}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets"
-                                       FontSize="25" Text="&#xE946;" Margin="-2,0,12,0"/>
-                                <TextBlock Text="Information"
-                                       VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                    </ListBox>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                        <RadioButton x:Name="NewThoughtRecordMenuButton"
+                                     Content="New Thought Record" 
+                                     GroupName="Nav" 
+                                     Style="{StaticResource SplitViewRadioButtonStyle}"
+                                     Checked="MainMenuButton_Checked">
+                            <RadioButton.Tag>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" 
+                                       FontSize="25" Text="&#xE82E;" Margin="10,11,0,0"/>
+                            </RadioButton.Tag>
+                        </RadioButton>
+                        <RadioButton x:Name="ListThoughtRecordsMenuButton"
+                                     Content="My Thought Records" 
+                                     GroupName="Nav" 
+                                     Style="{StaticResource SplitViewRadioButtonStyle}"
+                                     Checked="MainMenuButton_Checked">
+
+                            <RadioButton.Tag>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" 
+                                       FontSize="25" Text="&#xE8F1;" Margin="10,11,0,0"/>
+                            </RadioButton.Tag>
+                        </RadioButton>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+                        <RadioButton x:Name="HelpMenuButton"
+                                     Content="Help" 
+                                     GroupName="Nav" 
+                                     Style="{StaticResource SplitViewRadioButtonStyle}"
+                                     Checked="MainMenuButton_Checked">
+                            <RadioButton.Tag>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" 
+                                       FontSize="25" Text="&#xE897;" Margin="10,11,0,0"/>
+                            </RadioButton.Tag>
+                        </RadioButton>
+                        <RadioButton x:Name="InformationMenuButton"
+                                     Content="Information" 
+                                     GroupName="Nav" 
+                                     Style="{StaticResource SplitViewRadioButtonStyle}"
+                                     Checked="MainMenuButton_Checked">
+
+                            <RadioButton.Tag>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" 
+                                       FontSize="25" Text="&#xE8F1;" Margin="10,11,0,0"/>
+                            </RadioButton.Tag>
+                        </RadioButton>
+                    </StackPanel>
                 </Grid>
             </SplitView.Pane>
             <Grid>

@@ -56,7 +56,7 @@ namespace ThoughtRecordApp.Pages
             }
             else
             {
-                NewThoughtRecordListBoxItem.IsSelected = true;
+                NewThoughtRecordMenuButton.IsChecked = true;
             }
         }
 
@@ -74,8 +74,8 @@ namespace ThoughtRecordApp.Pages
                 case "OpenRecordList":
                     navigationPageType = typeof(ThoughtRecordListPage);
                     break;
-                case "OpenInformation":
-                    navigationPageType = typeof(InformationPage);
+                case "OpenHelp":
+                    navigationPageType = typeof(HelpPage);
                     break;
                 case "OpenNewRecord":
                     navigationPageType = typeof(ThoughtRecordEditPage);
@@ -105,8 +105,10 @@ namespace ThoughtRecordApp.Pages
         }
         public void ClearMenuSelection()
         {
-            MainMenuListBoxTop.SelectedItem = null;
-            MainMenuListBoxBottom.SelectedItem = null;
+            NewThoughtRecordMenuButton.IsChecked = false;
+            ListThoughtRecordsMenuButton.IsChecked = false;
+            HelpMenuButton.IsChecked = false;
+            InformationMenuButton.IsChecked = false;
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
@@ -118,26 +120,23 @@ namespace ThoughtRecordApp.Pages
         {
             if (pageType == typeof(ThoughtRecordEditPage))
             {
-                if (MainFrame.CurrentSourcePageType != pageType)
-                {
                     if (navigationParameter != null && (int)navigationParameter == 0)
                     {
-                        NewThoughtRecordListBoxItem.IsSelected = true;
+                        NewThoughtRecordMenuButton.IsChecked = true;
                     }
                     else
                     {
                         MainFrame.Navigate(pageType, navigationParameter);
                         UpdateCurrentPage();
                     }
-                }
             }
             else if (pageType == typeof(ThoughtRecordListPage))
             {
-                ListThoughtRecordsListBoxItem.IsSelected = true;
+                ListThoughtRecordsMenuButton.IsChecked = true;
             }
             else if (pageType == typeof(InformationPage))
             {
-                InformationListBoxItem.IsSelected = true;
+                InformationMenuButton.IsChecked = true;
             }
             else
             {
@@ -160,9 +159,22 @@ namespace ThoughtRecordApp.Pages
         private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox menuListBox = sender as ListBox;
-            SyncronizeMenus(menuListBox);
+            if(menuListBox.SelectedItem != null)
+            {
+                
+            }
+        }
+
+
+        private void UpdateCurrentPage()
+        {
+            CurrentPage = MainFrame.Content as Page;
+        }
+
+        private void MainMenuButton_Checked(object sender, RoutedEventArgs e)
+        {
             MainSplitView.IsPaneOpen = false;
-            if (NewThoughtRecordListBoxItem.IsSelected)
+            if ((bool)NewThoughtRecordMenuButton.IsChecked)
             {
                 if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
                 {
@@ -170,7 +182,7 @@ namespace ThoughtRecordApp.Pages
                     UpdateCurrentPage();
                 }
             }
-            else if (ListThoughtRecordsListBoxItem.IsSelected)
+            else if ((bool)ListThoughtRecordsMenuButton.IsChecked)
             {
                 if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordListPage))
                 {
@@ -178,7 +190,7 @@ namespace ThoughtRecordApp.Pages
                     UpdateCurrentPage();
                 }
             }
-            else if (HelpListBoxItem.IsSelected)
+            else if ((bool)HelpMenuButton.IsChecked)
             {
 
                 if (MainFrame.CurrentSourcePageType != typeof(HelpPage))
@@ -187,7 +199,7 @@ namespace ThoughtRecordApp.Pages
                     UpdateCurrentPage();
                 }
             }
-            else if (InformationListBoxItem.IsSelected)
+            else if ((bool)InformationMenuButton.IsChecked)
             {
 
                 if (MainFrame.CurrentSourcePageType != typeof(InformationPage))
@@ -196,25 +208,6 @@ namespace ThoughtRecordApp.Pages
                     UpdateCurrentPage();
                 }
             }
-        }
-
-        private void SyncronizeMenus(ListBox selectedMenuListBox)
-        {
-            if (selectedMenuListBox != null)
-            {
-                if (selectedMenuListBox == MainMenuListBoxTop)
-                {
-                    MainMenuListBoxBottom.SelectedItem = null;
-                }
-                else
-                {
-                    MainMenuListBoxTop.SelectedItem = null;
-                }
-            }
-        }
-        private void UpdateCurrentPage()
-        {
-            CurrentPage = MainFrame.Content as Page;
         }
     }
 }

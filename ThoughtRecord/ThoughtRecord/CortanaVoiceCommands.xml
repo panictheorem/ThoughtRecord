@@ -30,12 +30,12 @@
       <Navigate />
     </Command>
     
-    <Command Name="OpenInformation">
-      <Example> Open information </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} information [page] </ListenFor>
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
       <ListenFor> How do I use a {builtin:AppName}</ListenFor>
       <ListenFor> What is a {builtin:AppName} </ListenFor>
-      <Feedback> Opening Thought Record information... </Feedback>
+      <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
     </Command>
 

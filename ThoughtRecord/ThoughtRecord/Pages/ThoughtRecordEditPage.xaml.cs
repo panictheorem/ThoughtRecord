@@ -61,7 +61,7 @@ namespace ThoughtRecordApp.Pages
         private void UpdateMainMenu(object sender, EventArgs args)
         {
             rootPage.UpdateTitle(ViewModel.Title);
-            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage));
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage), 0);
             ThoughtRecordScrollViewer.ChangeView(null, 0, null, false);
         }
 
