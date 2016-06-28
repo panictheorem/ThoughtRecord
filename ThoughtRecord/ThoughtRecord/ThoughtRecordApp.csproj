@@ -17,9 +17,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>ThoughtRecordApp_StoreKey.pfx</PackageCertificateKeyFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundlePlatforms>arm</AppxBundlePlatforms>
     <PackageCertificateThumbprint>8786F38C9DDD8D749CD15C4BB28CAEC10D3D029F</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -93,15 +93,24 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="CortanaVoiceCommands.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InformationPage.xaml.cs">
       <DependentUpon>InformationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Implementations\NavigationParameterModel.cs" />
+    <Compile Include="Infrastructure\Interfaces\INavigationParameterModel.cs" />
+    <Compile Include="Infrastructure\Interfaces\IStringResourceService.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -117,6 +126,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppDataService.cs" />
     <Compile Include="Services\EmotionService.cs" />
+    <Compile Include="Services\StringResourceService.cs" />
     <Compile Include="Services\ThoughtRecordService.cs" />
     <Compile Include="Templates\InitialEmotionDisplayTemplate.xaml.cs">
       <DependentUpon>InitialEmotionDisplayTemplate.xaml</DependentUpon>
@@ -136,6 +146,7 @@
     <Compile Include="Templates\ThoughtRecordListTemplate.xaml.cs">
       <DependentUpon>ThoughtRecordListTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\HelpModel.cs" />
     <Compile Include="ViewModels\Infrastructure\RelayCommand.cs" />
     <Compile Include="ViewModels\InformationModel.cs" />
     <Compile Include="ViewModels\Infrastructure\BindableBase.cs" />
@@ -168,6 +179,7 @@
     <PRIResource Include="Resources\Strings\PageTitles.resw">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </PRIResource>
+    <PRIResource Include="Resources\Strings\HelpText.resw" />
     <None Include="ThoughtRecordApp_StoreKey.pfx" />
     <None Include="ThoughtRecord_TemporaryKey.pfx" />
   </ItemGroup>
@@ -184,20 +196,21 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="ThoughtRecordCommands.xml">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\DeviceFamily-Mobile\InformationPage.xaml">
+    <Page Include="Pages\DeviceFamily-Mobile\HelpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DeviceFamily-Mobile\ThoughtRecordListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HelpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -252,6 +265,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Resources\CustomControls\Pivot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\CustomControls\RadioButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -322,6 +340,7 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

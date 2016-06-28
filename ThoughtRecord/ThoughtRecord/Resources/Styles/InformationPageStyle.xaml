@@ -13,6 +13,10 @@
     <Style x:Key="ParagraphStyle" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlock}">
         <Setter Property="Margin" Value="0, 5, 0, 5" />
     </Style>
+    <Style x:Key="CenteredParagraphStyle" TargetType="TextBlock" BasedOn="{StaticResource ParagraphStyle}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
     <Style x:Key="SectionStyle" TargetType="StackPanel">
         <Setter Property="Margin" Value="0, 0, 0, 10" />
     </Style>

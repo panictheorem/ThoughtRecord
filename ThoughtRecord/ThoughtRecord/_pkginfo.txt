@@ -1,1 +1,1 @@
-C:\Users\Andrew\Source\Repos\ThoughtRecord\ThoughtRecord\ThoughtRecord\AppPackages\ThoughtRecordApp_1.0.4.0\ThoughtRecordApp_1.0.4.0_x86_x64_arm.appxbundle
+C:\Users\Andrew\Source\Repos\ThoughtRecord\ThoughtRecord\ThoughtRecord\AppPackages\ThoughtRecordApp_1.0.6.0\ThoughtRecordApp_1.0.6.0_arm.appxbundle

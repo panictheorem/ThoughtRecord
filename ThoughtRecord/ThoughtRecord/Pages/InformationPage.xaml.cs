@@ -29,7 +29,6 @@ namespace ThoughtRecordApp.Pages
         {
             this.InitializeComponent();
             rootPage = (Application.Current as App).CurrentMain;
-            rootPage.NavigateWithMenuUpdate(this.GetType());
             ViewModel = new InformationModel();
             rootPage.UpdateTitle(InformationModel.Title);
         }
@@ -43,7 +42,7 @@ namespace ThoughtRecordApp.Pages
 #if DEBUG
                 var result = await CurrentAppSimulator.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
 #else
-                   var result = await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", false);
+                var result = await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
 #endif
                 //Check the license state to determine if the in-app purchase was successful.
 

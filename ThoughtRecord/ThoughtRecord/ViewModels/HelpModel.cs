@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 using ThoughtRecordApp.Infrastructure.Interfaces;
 using ThoughtRecordApp.Services;
+
 namespace ThoughtRecordApp.ViewModels
 {
-    public class InformationModel
+    public class HelpModel
     {
         private IStringResourceService stringLoader;
 
@@ -69,16 +69,16 @@ namespace ThoughtRecordApp.ViewModels
         public string ImageSourceText { get; set; }
         public string ImageSourceLinkText { get; set; }
 
-        public InformationModel()
+        public HelpModel()
         {
             stringLoader = new StringResourceService("PageTitles");
-            Title = stringLoader.GetString("InformationPageTitle");
+            Title = stringLoader.GetString("HelpPageTitle");
             InitializeContent();
         }
 
         private void InitializeContent()
         {
-            stringLoader.SetFile("InformationText");
+            stringLoader.SetFile("HelpText");
             InstructionsTitle = stringLoader.GetString("InstructionsTitle");
             WhatIsThoughtRecordSectionTitle = stringLoader.GetString("WhatIsThoughtRecordSectionTitle");
             WhatIsThoughtRecordSectionContent = stringLoader.GetString("WhatIsThoughtRecordSectionContent");
@@ -93,7 +93,7 @@ namespace ThoughtRecordApp.ViewModels
 
             TipsTitle = stringLoader.GetString("TipsTitle");
             Tip1 = stringLoader.GetString("Tip1");
-            Tip2= stringLoader.GetString("Tip2");
+            Tip2 = stringLoader.GetString("Tip2");
             Tip3 = stringLoader.GetString("Tip3");
 
             VoiceCommandsTitle = stringLoader.GetString("VoiceCommandsTitle");
@@ -123,15 +123,6 @@ namespace ThoughtRecordApp.ViewModels
             ManageCommand2 = stringLoader.GetString("ManageCommand2");
             ManageCommand3 = stringLoader.GetString("ManageCommand3");
 
-            AboutTitle = stringLoader.GetString("AboutTitle");
-            AboutContent = stringLoader.GetString("AboutContent");
-            BroughtToYouByText = stringLoader.GetString("BroughtToYouByText");
-            ContactMeLinkText = stringLoader.GetString("ContactMeLinkText");
-            ContactMeContent = stringLoader.GetString("ContactMeContent");
-            DonateContent = stringLoader.GetString("DonateContent");
-            DonateButtonText = stringLoader.GetString("DonateButtonText");
-            ImageSourceText = stringLoader.GetString("ImageSourceText");
-            ImageSourceLinkText = stringLoader.GetString("ImageSourceLinkText");
         }
     }
 }

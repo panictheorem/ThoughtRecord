@@ -20,29 +20,6 @@
                     Orientation="Vertical"
                     Margin="20, 0, 20, 40" MaxWidth="600" HorizontalAlignment="Left" VerticalAlignment="Top">
             <StackPanel Style="{StaticResource SectionStyle}">
-                <TextBlock Text="{x:Bind ViewModel.InstructionsTitle}" 
-                   Style="{StaticResource SectionTitle}" Margin="0,10,0,0"/>
-                <TextBlock Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionTitle}" 
-                   Style="{StaticResource InformationSubheader}"/>
-                <TextBlock Text="{x:Bind ViewModel.WhatIsThoughtRecordSectionContent}" Style="{StaticResource BodyTextBlock}" />
-                <TextBlock Text="{x:Bind ViewModel.StepsSectionTitle}" Style="{StaticResource InformationSubheader}" />
-                <TextBlock  Text="{x:Bind ViewModel.StepsSectionContent}" 
-                   Style="{StaticResource BodyTextBlock}" />
-                <TextBlock Text="{x:Bind ViewModel.Step1}" Style="{StaticResource ParagraphStyle}" />
-                <TextBlock Text="{x:Bind ViewModel.Step2}" Style="{StaticResource ParagraphStyle}" />
-                <TextBlock Text="{x:Bind ViewModel.Step3}" Style="{StaticResource ParagraphStyle}"/>
-                <TextBlock Text="{x:Bind ViewModel.Step4}" Style="{StaticResource ParagraphStyle}"/>
-                <TextBlock Text="{x:Bind ViewModel.Step5}" Style="{StaticResource ParagraphStyle}"/>
-                <TextBlock Text="{x:Bind ViewModel.Step6}" Style="{StaticResource ParagraphStyle}"/>
-            </StackPanel>
-            <StackPanel Style="{StaticResource SectionStyle}">
-                <TextBlock Text="{x:Bind ViewModel.TipsTitle}" 
-                   Style="{StaticResource SectionTitle}"/>
-                <TextBlock Text="{x:Bind ViewModel.Tip1}" Style="{StaticResource ParagraphStyle}" />
-                <TextBlock Text="{x:Bind ViewModel.Tip2}" Style="{StaticResource ParagraphStyle}" />
-                <TextBlock Text="{x:Bind ViewModel.Tip3}" Style="{StaticResource ParagraphStyle}" />
-            </StackPanel>
-            <StackPanel Style="{StaticResource SectionStyle}">
                 <TextBlock Text="{x:Bind ViewModel.AboutTitle}" Style="{StaticResource SectionTitle}"/>
                 <StackPanel Orientation="Vertical" >
                     <TextBlock Text="{x:Bind ViewModel.BroughtToYouByText}" 

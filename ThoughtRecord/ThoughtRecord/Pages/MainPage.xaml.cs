@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using ThoughtRecordApp.ViewModels;
+using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
@@ -27,7 +28,7 @@ namespace ThoughtRecordApp.Pages
     public sealed partial class MainPage : Page
     {
         public MainViewModel ViewModel { get; }
-
+        public Page CurrentPage { get; private set; }
         public MainPage()
         {
             this.InitializeComponent();
@@ -35,7 +36,6 @@ namespace ThoughtRecordApp.Pages
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
-            NewThoughtRecordListBoxItem.IsSelected = true;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
                 if (MainFrame.CanGoBack)
@@ -46,6 +46,54 @@ namespace ThoughtRecordApp.Pages
             };
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            string command = e.Parameter as string;
+            if (!string.IsNullOrEmpty(command))
+            {
+                ExecuteVoiceCommand(e.Parameter as string);
+            }
+            else
+            {
+                NewThoughtRecordMenuButton.IsChecked = true;
+            }
+        }
+
+        private void ExecuteVoiceCommand(string voiceCommandName)
+        {
+            Type navigationPageType = null;
+            object navigationParameter = null;
+
+            switch (voiceCommandName)
+            {
+                case "OpenLatestRecord":
+                    navigationPageType = typeof(ThoughtRecordDisplayPage);
+                    navigationParameter = 0;
+                    break;
+                case "OpenRecordList":
+                    navigationPageType = typeof(ThoughtRecordListPage);
+                    break;
+                case "OpenHelp":
+                    navigationPageType = typeof(HelpPage);
+                    break;
+                case "OpenNewRecord":
+                    navigationPageType = typeof(ThoughtRecordEditPage);
+                    break;
+                default:
+                    navigationPageType = typeof(ThoughtRecordEditPage);
+                    break;
+            }
+
+            if (navigationParameter == null)
+            {
+                NavigateWithMenuUpdate(navigationPageType);
+            }
+            else
+            {
+                NavigateWithMenuUpdate(navigationPageType, navigationParameter);
+            }
+        }
         public void ShowProgressRing()
         {
             MainProgressRing.IsActive = true;
@@ -57,30 +105,47 @@ namespace ThoughtRecordApp.Pages
         }
         public void ClearMenuSelection()
         {
-            MainMenuListBox.SelectedItem = null;
+            NewThoughtRecordMenuButton.IsChecked = false;
+            ListThoughtRecordsMenuButton.IsChecked = false;
+            HelpMenuButton.IsChecked = false;
+            InformationMenuButton.IsChecked = false;
         }
         private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
+
         //Updates the main menu selection which will, in turn, trigger the navigation
-        public void NavigateWithMenuUpdate(Type type)
+        public void NavigateWithMenuUpdate(Type pageType, object navigationParameter = null)
         {
-            if (type == typeof(ThoughtRecordEditPage))
+            if (pageType == typeof(ThoughtRecordEditPage))
             {
-                NewThoughtRecordListBoxItem.IsSelected = true;
+                    if (navigationParameter != null && (int)navigationParameter == 0)
+                    {
+                        NewThoughtRecordMenuButton.IsChecked = true;
+                    }
+                    else
+                    {
+                        MainFrame.Navigate(pageType, navigationParameter);
+                        UpdateCurrentPage();
+                    }
             }
-            else if (type == typeof(ThoughtRecordListPage))
+            else if (pageType == typeof(ThoughtRecordListPage))
             {
-                ListThoughtRecordsListBoxItem.IsSelected = true;
+                ListThoughtRecordsMenuButton.IsChecked = true;
             }
-            else if (type == typeof(InformationPage))
+            else if (pageType == typeof(InformationPage))
             {
-                InformationListBoxItem.IsSelected = true;
+                InformationMenuButton.IsChecked = true;
             }
             else
             {
-                MainMenuListBox.SelectedItem = null;
+                ClearMenuSelection();
+                if (pageType == typeof(ThoughtRecordDisplayPage) && MainFrame.CurrentSourcePageType != pageType)
+                {
+                    MainFrame.Navigate(pageType, navigationParameter);
+                    UpdateCurrentPage();
+                }
             }
         }
 
@@ -89,37 +154,44 @@ namespace ThoughtRecordApp.Pages
             ViewModel.Title = title;
         }
 
-        //Updates navigates to the page based on the selection.
-        //You can't navigate to a page you are already on, with the exception of the Edit Page
-        private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void UpdateCurrentPage()
+        {
+            CurrentPage = MainFrame.Content as Page;
+        }
+
+        private void MainMenuButton_Checked(object sender, RoutedEventArgs e)
         {
             MainSplitView.IsPaneOpen = false;
-            if (NewThoughtRecordListBoxItem.IsSelected)
+            if ((bool)NewThoughtRecordMenuButton.IsChecked)
             {
-                ThoughtRecordEditPage currentEditPage = MainFrame.Content as ThoughtRecordEditPage;
-
-                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage) ||
-                    //We want to allow the user to be able to navigate to the New Thought Record page
-                    //if they are currently on the edit page. Since they use the same page, we also allow 
-                    //navigation if the current thought record's id is not 0
-                    (currentEditPage != null && currentEditPage.ViewModel.ThoughtRecord.ThoughtRecordId != 0))
+                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordEditPage), 0);
+                    UpdateCurrentPage();
                 }
             }
-            else if (ListThoughtRecordsListBoxItem.IsSelected)
+            else if ((bool)ListThoughtRecordsMenuButton.IsChecked)
             {
                 if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordListPage))
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordListPage));
+                    UpdateCurrentPage();
                 }
             }
-            else if (InformationListBoxItem.IsSelected)
+            else if ((bool)HelpMenuButton.IsChecked)
             {
-
+                if (MainFrame.CurrentSourcePageType != typeof(HelpPage))
+                {
+                    MainFrame.Navigate(typeof(HelpPage));
+                    UpdateCurrentPage();
+                }
+            }
+            else if ((bool)InformationMenuButton.IsChecked)
+            {
                 if (MainFrame.CurrentSourcePageType != typeof(InformationPage))
                 {
                     MainFrame.Navigate(typeof(InformationPage));
+                    UpdateCurrentPage();
                 }
             }
         }

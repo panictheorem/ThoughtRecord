@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="ThoughtRecordApp.Pages.InformationPage"
+    x:Class="ThoughtRecordApp.Pages.HelpPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ThoughtRecordApp.Pages"
@@ -45,39 +45,36 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem Header="{x:Bind ViewModel.AboutTitle}"
+
+        <PivotItem Header="{x:Bind ViewModel.VoiceCommandsTitle}"
                    Style="{StaticResource PivotItemStyle}">
             <ScrollViewer  HorizontalAlignment="Stretch">
                 <StackPanel Style="{StaticResource PivotSectionStyle}">
-                    <StackPanel Orientation="Vertical" >
-                        <TextBlock Text="{x:Bind ViewModel.BroughtToYouByText}" 
-                       Style="{StaticResource ParagraphStyle}"
-                       HorizontalAlignment="Center"/>
-                        <TextBlock Text=" PANIC THEOREM SOFTWARE" 
-                       Style="{StaticResource ParagraphStyle}"
-                       HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBlock Text="{x:Bind ViewModel.ContactMeContent}" Style="{StaticResource ParagraphStyle}"/>
-                    <HyperlinkButton Content="{x:Bind ViewModel.ContactMeLinkText}" 
-                                 Style="{StaticResource HyperlinkButtonStyle}"
-                                 NavigateUri="http://www.PanicTheorem.Net/Contact"
-                                 HorizontalAlignment="Center"/>
-                    <TextBlock Text="{x:Bind ViewModel.ImageSourceText}" Style="{StaticResource ParagraphStyle}"/>
-                    <HyperlinkButton Content="{x:Bind ViewModel.ImageSourceLinkText}" 
-                                 HorizontalAlignment="Center"
-                                 NavigateUri="https://pixabay.com/en/mountains-sky-landscape-nature-731149/"
-                                 Style="{StaticResource HyperlinkButtonStyle}"/>
-                    <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ParagraphStyle}"/>
-                    <Button x:Name="DonationButton" 
-                        Content="{x:Bind ViewModel.DonateButtonText}" 
-                        Click="DonationButton_Click" 
-                        Style="{StaticResource DefaultButtonStyle}"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="DonationSuccessMessage" 
+                    <TextBlock Text="{x:Bind ViewModel.VoiceCommandsIntro}" Style="{StaticResource BodyTextBlock}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionTitle}" 
+                   Style="{StaticResource InformationSubheader}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandsSectionIntro}" 
+                           Style="{StaticResource ParagraphStyle}" 
+                           Foreground="{StaticResource ForegroundDarkBrush}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription1}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand1}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription2}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand2}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription3}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand3}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommandDescription4}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.OpenCommand4}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandsSectionTitle}" 
+                   Style="{StaticResource InformationSubheader}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandsSectionIntro}" 
                            Style="{StaticResource ParagraphStyle}"
-                           Foreground="{StaticResource DarkAccentBrush}"/>
+                           Foreground="{StaticResource ForegroundDarkBrush}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription1}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommand1}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription2}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommand2}" Style="{StaticResource CenteredParagraphStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommandDescription3}" Style="{StaticResource ParagraphStyle}" />
+                    <TextBlock Text="{x:Bind ViewModel.ManageCommand3}" Style="{StaticResource CenteredParagraphStyle}"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>

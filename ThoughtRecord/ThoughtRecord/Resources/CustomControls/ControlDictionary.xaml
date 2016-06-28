@@ -10,5 +10,6 @@
         <ResourceDictionary Source="/Resources/CustomControls/ListBoxItems.xaml" />
         <ResourceDictionary Source="/Resources/CustomControls/Pivot.xaml" />
         <ResourceDictionary Source="/Resources/CustomControls/Hyperlink.xaml" />
+        <ResourceDictionary Source="/Resources/CustomControls/RadioButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

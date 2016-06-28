@@ -19,6 +19,7 @@ using System.Windows.Input;
 using ThoughtRecordApp.DAL.Abstract;
 using System.ComponentModel;
 using Windows.ApplicationModel.Resources;
+using ThoughtRecordApp.Infrastructure.Interfaces;
 
 namespace ThoughtRecordApp.ViewModels
 {
@@ -31,22 +32,25 @@ namespace ThoughtRecordApp.ViewModels
         public string Title { get; private set; }
         //The text displayed in textboxes when a new thought record is created
         public List<string> DefaultInputText { get; private set; }
+        private IDatabaseService database;
+        private ThoughtRecordService thoughtRecordService;
+        private IStringResourceService stringLoader;
         public ThoughtRecordSectionTitleModel SectionTitles { get; private set; }
         public delegate void ThoughtRecordEditEvent(object sender, EventArgs args);
         public event ThoughtRecordEditEvent OnThoughtRecordSaving;
         public event ThoughtRecordEditEvent OnThoughtRecordSaved;
         public event ThoughtRecordEditEvent OnNewThoughtRecordOverwriteRisk;
         public event ThoughtRecordEditEvent OnNewThoughtRecordCreated;
-        private IDatabaseService database;
         private bool isCurrentDataSaved = true;
         private bool commandsEnabled;
 
         public ThoughtRecordEditModel(IDatabaseService db)
         {
-            var loader = ResourceLoader.GetForCurrentView("PageTitles");
-            newThoughtRecordTitle = loader.GetString("NewThoughtRecordPageTitle");
-            editThoughtRecordTitle = loader.GetString("EditThoughtRecordPageTitle");
-            SectionTitles = ThoughtRecordService.GetTitleModel();
+            stringLoader = new StringResourceService("PageTitles");
+            newThoughtRecordTitle = stringLoader.GetString("NewThoughtRecordPageTitle");
+            editThoughtRecordTitle = stringLoader.GetString("EditThoughtRecordPageTitle");
+            thoughtRecordService = new ThoughtRecordService();
+            SectionTitles = thoughtRecordService.GetTitleModel();
             database = db;
             CreateNewThoughtRecord();
             commandsEnabled = true;
@@ -55,14 +59,15 @@ namespace ThoughtRecordApp.ViewModels
 
         public ThoughtRecordEditModel(int thoughtRecordId, IDatabaseService db)
         {
-            var loader = ResourceLoader.GetForCurrentView("PageTitles");
-            newThoughtRecordTitle = loader.GetString("NewThoughtRecordPageTitle");
-            editThoughtRecordTitle = loader.GetString("EditThoughtRecordPageTitle");
+            stringLoader = new StringResourceService("PageTitles");
+            newThoughtRecordTitle = stringLoader.GetString("NewThoughtRecordPageTitle");
+            editThoughtRecordTitle = stringLoader.GetString("EditThoughtRecordPageTitle");
             Title = editThoughtRecordTitle;
-            SectionTitles = ThoughtRecordService.GetTitleModel();
+            thoughtRecordService = new ThoughtRecordService();
+            SectionTitles = thoughtRecordService.GetTitleModel();
             database = db;
             InitializeThoughtRecord(thoughtRecordId);
-            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
+            DefaultInputText = thoughtRecordService.GetDefaultInputText();
             commandsEnabled = true;
         }
 
@@ -73,8 +78,8 @@ namespace ThoughtRecordApp.ViewModels
             thoughtRecord.Situation = new Situation();
             thoughtRecord.Situation.DateTime = DateTime.Now;
             thoughtRecord.Emotions = new List<Emotion>();
-            DefaultInputText = ThoughtRecordService.GetDefaultInputText();
-            ThoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
+            DefaultInputText = thoughtRecordService.GetDefaultInputText();
+            thoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
             observableEmotions = new ObservableCollection<Emotion>(thoughtRecord.Emotions);
             RegisterForEmotionChangeEvents(observableEmotions);
             observableEmotions.CollectionChanged += UpdateModelEmotionCollection;

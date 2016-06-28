@@ -9,8 +9,10 @@ using ThoughtRecordApp.Pages;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Store;
+using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.SpeechRecognition;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -33,7 +35,7 @@ namespace ThoughtRecordApp
         //Holds the root page of the application
         public MainPage CurrentMain { get; set; }
 
-        public LicenseInformation LicenseInformation { get; private set; } 
+        public LicenseInformation LicenseInformation { get; private set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -51,6 +53,26 @@ namespace ThoughtRecordApp
         /// <param name="e">Details about the launch request and process.</param>
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //Cortana Command & IAP Data Setup
+            try
+            {
+                StorageFile voiceCommandsFile = await Package.Current.InstalledLocation.GetFileAsync(@"CortanaVoiceCommands.xml");
+                await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(voiceCommandsFile);
+
+                //LicenseInfo for In-App Purchase
+#if DEBUG
+                LicenseInformation = CurrentAppSimulator.LicenseInformation;
+#else
+                LicenseInformation = CurrentApp.LicenseInformation;
+#endif
+            }
+            catch (Exception ex)
+            {
+
+            }
+            //Set up navigation parameter model
+            //INavigationParameterModel navigationParameterModel = new NavigationParameterModel(new DatabaseService(), LicenseInformation);
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -70,7 +92,6 @@ namespace ThoughtRecordApp
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
-
             if (e.PrelaunchActivated == false)
             {
                 if (rootFrame.Content == null)
@@ -84,25 +105,87 @@ namespace ThoughtRecordApp
                 Window.Current.Activate();
             }
 
-            if(Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
             }
+        }
 
-            //IAP Data
-            try
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+            string commandNavigationParameter = null;
+            if (args.Kind == ActivationKind.VoiceCommand)
             {
-                //LicenseInfo for In-App Purchase
-#if DEBUG
-                LicenseInformation = CurrentAppSimulator.LicenseInformation;
-#else
-                LicenseInformation = CurrentApp.LicenseInformation;
-#endif
+                VoiceCommandActivatedEventArgs voiceCommandArgs = args as VoiceCommandActivatedEventArgs;
+                string voiceCommandName = voiceCommandArgs.Result.RulePath.First();
+                commandNavigationParameter = voiceCommandName;
             }
-            catch (Exception ex)
-            {
 
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+                rootFrame.NavigationFailed += OnNavigationFailed;
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
             }
+
+            if (commandNavigationParameter == "SaveThoughtRecord")
+            {
+                if (CurrentMain != null)
+                {
+                    var editPage = CurrentMain.CurrentPage as ThoughtRecordEditPage;
+                    editPage?.ViewModel.SaveThoughtRecord();
+                }
+            }
+            else if (commandNavigationParameter == "EditThoughtRecord")
+            {
+                if (CurrentMain != null)
+                {
+                    var displayPage = CurrentMain.CurrentPage as ThoughtRecordDisplayPage;
+                    if(displayPage != null)
+                    {
+                        if(displayPage.ViewModel.Edit.CanExecute(null))
+                        {
+                            displayPage.ViewModel.Edit.Execute(null);
+                        }
+                    }
+                }
+            }
+            else if (commandNavigationParameter == "DeleteThoughtRecord")
+            {
+                if (CurrentMain != null)
+                {
+                    var displayPage = CurrentMain.CurrentPage as ThoughtRecordDisplayPage;
+                    if (displayPage != null)
+                    {
+                        if (displayPage.ViewModel.RequestDelete.CanExecute(null))
+                        {
+                            displayPage.ViewModel.RequestDelete.Execute(null);
+                        }
+                    }
+
+
+                }
+            }
+            else
+            {
+                if (commandNavigationParameter != null)
+                {
+                    rootFrame.Navigate(typeof(MainPage), commandNavigationParameter);
+                }
+                else
+                {
+                    rootFrame.Navigate(typeof(MainPage));
+                }
+            }
+            // Ensure the current window is active
+            Window.Current.Activate();
         }
 
         /// <summary>

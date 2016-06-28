@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+
+  <CommandSet xml:lang="en-us" Name="LaunchCommandSet_en-us">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate/>
+    </Command>
+    
+  <Command Name="OpenNewRecord">
+      <Example> Open new </Example>
+      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
+      <Feedback> Opening a new thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="OpenRecordList">
+      <Example> Show me all </Example>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate />
+    </Command>
+    
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
+      <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <Feedback> Opening Thought Record help page... </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
+
+  </CommandSet>
+  
+</VoiceCommands>

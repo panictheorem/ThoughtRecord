@@ -126,11 +126,14 @@
   <data name="EmotionExample" xml:space="preserve">
     <value>e.g. Anxious</value>
   </data>
+  <data name="EmotionSuggestions" xml:space="preserve">
+    <value>Happy,Sad,Scared,Frustrated,Angry,Anxious,Depressed,Stressed,Irritable,Detatched,Discouraged,Excited,Distressed,Hyper,Cynical,Pessimistic,Insecure,Worthless,Hateful,Embarassed,Intimidated,Jealous,Shame,Regretful,Ashamed,Nervous,Dejected,Humiliated,Annoyed,Hopeless,Paranoid,Obsessed,Emotionless,Overwhelmed,Panicked,Alone</value>
+  </data>
   <data name="RationalAssessment" xml:space="preserve">
     <value>Based on the evidence you gathered, do you think the thoughts are still true or valid? Or were your thoughts unrealistic, highly improbable or not even worth worrying about? Why or why not?</value>
   </data>
   <data name="SituationDescription" xml:space="preserve">
-    <value>Describe the situation that brought on the unpleasant thoughts or feelings. Where where you? Were you doing anything in particular?</value>
+    <value>Describe the situation that brought on the unpleasant thoughts or feelings. Where were you? Were you doing anything in particular?</value>
   </data>
   <data name="SupportingEvidence" xml:space="preserve">
     <value>List the evidence, if any, that supports your automatic thoughts.</value>

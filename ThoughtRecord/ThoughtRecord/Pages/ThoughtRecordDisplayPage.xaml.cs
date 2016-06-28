@@ -23,7 +23,7 @@ namespace ThoughtRecordApp.Pages
     /// </summary>
     public sealed partial class ThoughtRecordDisplayPage : Page
     {
-        private ThoughtRecordDisplayModel ViewModel;
+        public ThoughtRecordDisplayModel ViewModel { get; private set; }
         private MainPage rootPage;
 
         public ThoughtRecordDisplayPage()
@@ -31,32 +31,44 @@ namespace ThoughtRecordApp.Pages
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs obj)
+        protected override async void OnNavigatedTo(NavigationEventArgs obj)
         {
+            base.OnNavigatedTo(obj);
             rootPage = ((App)Application.Current).CurrentMain;
             if (obj.Parameter != null)
             {
+       
                 rootPage.UpdateTitle(ThoughtRecordListModel.Title);
                 int thoughtRecordId = Convert.ToInt32(obj.Parameter);
-                ViewModel = new ThoughtRecordDisplayModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
-                ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
-                ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
-                ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
-                ViewModel.OnThoughtRecordChanged += ScrollToTop;
-                rootPage.NavigateWithMenuUpdate(this.GetType());
-                rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
-                base.OnNavigatedTo(obj);
+                ViewModel = new ThoughtRecordDisplayModel(AppDataService.GetDatabase(Application.Current));
+                await ViewModel.InitializeModel(thoughtRecordId);
+                if(ViewModel.ThoughtRecord == null)
+                {
+                    NavigateWithBackStackRemoval(typeof(ThoughtRecordListPage));
+                }
+                else
+                {
+                    ViewModel.OnThoughtRecordDeleteRequested += ConfirmDeleteRequest;
+                    ViewModel.OnThoughtRecordDeleted += NavigatetoListPageAfterDelete;
+                    ViewModel.OnThoughtRecordEditRequested += NavigateToEditPage;
+                    ViewModel.OnThoughtRecordChanged += ScrollToTop;
+                    rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
+                }
             }
             else
             {
-                rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordListPage));
-                if(Frame.BackStack.Count > 0)
-                {
-                    Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
-                }
+                NavigateWithBackStackRemoval(typeof(ThoughtRecordListPage));
             }
         }
 
+        private void NavigateWithBackStackRemoval(Type pageType)
+        {
+            rootPage.NavigateWithMenuUpdate(pageType);
+            if (Frame.BackStack.Count > 0)
+            {
+                Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
+            }
+        }
         private void ScrollToTop(object sender, EventArgs args)
         {
             ThoughtRecordScrollViewer.ChangeView(null, 0, null, false);
@@ -76,10 +88,9 @@ namespace ThoughtRecordApp.Pages
 
         }
 
-        private void NavigateToEditPage(object sender, EventArgs args)
+        public void NavigateToEditPage(object sender, EventArgs args)
         {
-            Frame.Navigate(typeof(ThoughtRecordEditPage), ViewModel.ThoughtRecord.ThoughtRecordId);
-            rootPage.UpdateTitle("Edit Thought Record");
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage), ViewModel.ThoughtRecord.ThoughtRecordId);
         }
 
         private void NavigatetoListPageAfterDelete(object sender, EventArgs args)
