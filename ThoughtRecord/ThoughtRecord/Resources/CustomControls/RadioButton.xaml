@@ -7,7 +7,7 @@
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="RadioButton" x:Key="SplitViewRadioButtonStyle">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{ThemeResource ListBoxBackgroundThemeBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource UltraLightBrush}" />
         <Setter Property="Padding" Value="1,4,0,0" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -36,12 +36,6 @@
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="NixonGlyph">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
@@ -60,13 +54,6 @@
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="NixonGlyph">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UltraLightBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Disabled">
@@ -93,14 +80,6 @@
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unchecked" >
-                                    <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DarkAccentBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="NixonGlyph">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource DarkAccentBrush}"/>
-                                        </ObjectAnimationUsingKeyFrames>
-                                    </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
@@ -138,11 +117,11 @@
                             <!-- background -->
 
                             <Grid x:Name="NotCheckedBackground" Grid.ColumnSpan="4">
-                                <Rectangle x:Name="PressedBackground" Visibility="Collapsed" Fill="{StaticResource DarkAccentBrush}"/>
-                                <Rectangle x:Name="HoverBackground" Visibility="Collapsed" Fill="{StaticResource LightAccentBrush}"/>
+                                <Rectangle x:Name="PressedBackground" Visibility="Collapsed" Fill="{StaticResource LightAccentBrush}"/>
+                                <Rectangle x:Name="HoverBackground" Visibility="Collapsed" Fill="{StaticResource DarkAccentBrush}"/>
                             </Grid>
-                            <Grid x:Name="CheckedBackground" Grid.ColumnSpan="4" Visibility="Collapsed" Background="{StaticResource DarkAccentBrush}">
-                                <Rectangle x:Name="CheckedPressedBackground" Visibility="Collapsed" Fill="{StaticResource DarkAccentBrush}"/>
+                            <Grid x:Name="CheckedBackground" Grid.ColumnSpan="4" Visibility="Collapsed" Background="{StaticResource LightAccentBrush}">
+                                <Rectangle x:Name="CheckedPressedBackground" Visibility="Collapsed" Fill="{StaticResource LightAccentBrush}"/>
                                 <Rectangle x:Name="CheckedHoverBackground" Visibility="Collapsed" Fill="{StaticResource DarkAccentBrush}"/>
                             </Grid>
 

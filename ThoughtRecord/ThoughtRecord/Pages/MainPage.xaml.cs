@@ -52,7 +52,7 @@ namespace ThoughtRecordApp.Pages
             string command = e.Parameter as string;
             if (!string.IsNullOrEmpty(command))
             {
-                ParseCommand(e.Parameter as string);
+                ExecuteVoiceCommand(e.Parameter as string);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace ThoughtRecordApp.Pages
             }
         }
 
-        private void ParseCommand(string voiceCommandName)
+        private void ExecuteVoiceCommand(string voiceCommandName)
         {
             Type navigationPageType = null;
             object navigationParameter = null;
@@ -154,18 +154,6 @@ namespace ThoughtRecordApp.Pages
             ViewModel.Title = title;
         }
 
-        //Updates navigates to the page based on the selection.
-        //You can't navigate to a page you are already on, with the exception of the Edit Page
-        private void MainMenuListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListBox menuListBox = sender as ListBox;
-            if(menuListBox.SelectedItem != null)
-            {
-                
-            }
-        }
-
-
         private void UpdateCurrentPage()
         {
             CurrentPage = MainFrame.Content as Page;
@@ -192,7 +180,6 @@ namespace ThoughtRecordApp.Pages
             }
             else if ((bool)HelpMenuButton.IsChecked)
             {
-
                 if (MainFrame.CurrentSourcePageType != typeof(HelpPage))
                 {
                     MainFrame.Navigate(typeof(HelpPage));
@@ -201,7 +188,6 @@ namespace ThoughtRecordApp.Pages
             }
             else if ((bool)InformationMenuButton.IsChecked)
             {
-
                 if (MainFrame.CurrentSourcePageType != typeof(InformationPage))
                 {
                     MainFrame.Navigate(typeof(InformationPage));

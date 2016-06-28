@@ -3,9 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ThoughtRecordApp.Styles">
     <!-- Colors -->
+    <SolidColorBrush x:Key="UltraLightAccentBrush" Color="#AAD5C7" />
     <SolidColorBrush x:Key="LightAccentBrush" Color="MediumAquamarine" />
     <SolidColorBrush x:Key="DarkAccentBrush" Color="#F45AC1AA" />
-    <SolidColorBrush x:Key="HighlightBrush" Color="CornflowerBlue" />
+    <SolidColorBrush x:Key="MediumUltraDarkAccentBrush" Color="#274D40" />
+    <SolidColorBrush x:Key="UltraDarkAccentBrush" Color="#274D40" />
+
+    <SolidColorBrush x:Key="ForegroundDarkAccentBrush" Color="#3E4D48" />
     <SolidColorBrush x:Key="ForegroundLightBrush" Color="DarkGray" />
     <SolidColorBrush x:Key="ForegroundDarkBrush" Color="#666666" />
     <SolidColorBrush x:Key="UltraLightBrush" Color="White" />

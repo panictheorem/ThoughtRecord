@@ -42,7 +42,6 @@ namespace ThoughtRecordApp.Pages
             if (thoughtRecordId != 0)
             {
                 ViewModel = new ThoughtRecordEditModel(thoughtRecordId, AppDataService.GetDatabase(Application.Current));
-                
             }
             else
             {

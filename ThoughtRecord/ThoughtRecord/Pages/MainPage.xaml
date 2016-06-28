@@ -48,11 +48,11 @@
         </RelativePanel>
         <SplitView x:Name="MainSplitView"
                    Grid.Row="1"
-                   OpenPaneLength="200"
+                   OpenPaneLength="210"
                    CompactPaneLength="0"
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
-                <Grid>
+                <Grid Background="#AAAAAA">
                     <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
                         <RadioButton x:Name="NewThoughtRecordMenuButton"
                                      Content="New Thought Record" 
@@ -82,7 +82,9 @@
                                      Content="Help" 
                                      GroupName="Nav" 
                                      Style="{StaticResource SplitViewRadioButtonStyle}"
-                                     Checked="MainMenuButton_Checked">
+                                     Checked="MainMenuButton_Checked"
+                                     BorderThickness="0,1,0,0"
+                                     BorderBrush="{StaticResource UltraLightAccentBrush}">
                             <RadioButton.Tag>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" 
                                        FontSize="25" Text="&#xE897;" Margin="10,11,0,0"/>
@@ -96,7 +98,7 @@
 
                             <RadioButton.Tag>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" 
-                                       FontSize="25" Text="&#xE8F1;" Margin="10,11,0,0"/>
+                                       FontSize="25" Text="&#xE946;" Margin="10,11,0,0"/>
                             </RadioButton.Tag>
                         </RadioButton>
                     </StackPanel>

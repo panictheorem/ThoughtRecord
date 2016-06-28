@@ -31,7 +31,7 @@ namespace ThoughtRecordApp.Pages
             this.InitializeComponent();
             rootPage = (Application.Current as App).CurrentMain;
             ViewModel = new HelpModel();
-            rootPage.UpdateTitle(InformationModel.Title);
+            rootPage.UpdateTitle(HelpModel.Title);
         }
     }
 }
