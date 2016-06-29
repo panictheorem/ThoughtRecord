@@ -5,6 +5,7 @@
     xmlns:local="using:ThoughtRecordApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:ThoughtRecordApp.Controls"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -52,9 +53,9 @@
                    CompactPaneLength="0"
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
-                <Grid Background="#AAAAAA">
+                <Grid>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                        <RadioButton x:Name="NewThoughtRecordMenuButton"
+                        <controls:MenuRadioButton x:Name="NewThoughtRecordMenuButton"
                                      Content="New Thought Record" 
                                      GroupName="Nav" 
                                      Style="{StaticResource SplitViewRadioButtonStyle}"
@@ -63,8 +64,8 @@
                                 <TextBlock FontFamily="Segoe MDL2 Assets" 
                                        FontSize="25" Text="&#xE82E;" Margin="10,11,0,0"/>
                             </RadioButton.Tag>
-                        </RadioButton>
-                        <RadioButton x:Name="ListThoughtRecordsMenuButton"
+                        </controls:MenuRadioButton>
+                        <controls:MenuRadioButton x:Name="ListThoughtRecordsMenuButton"
                                      Content="My Thought Records" 
                                      GroupName="Nav" 
                                      Style="{StaticResource SplitViewRadioButtonStyle}"
@@ -74,23 +75,23 @@
                                 <TextBlock FontFamily="Segoe MDL2 Assets" 
                                        FontSize="25" Text="&#xE8F1;" Margin="10,11,0,0"/>
                             </RadioButton.Tag>
-                        </RadioButton>
+                        </controls:MenuRadioButton>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
-                        <RadioButton x:Name="HelpMenuButton"
+                        <controls:MenuRadioButton x:Name="HelpMenuButton"
                                      Content="Help" 
                                      GroupName="Nav" 
                                      Style="{StaticResource SplitViewRadioButtonStyle}"
                                      Checked="MainMenuButton_Checked"
                                      BorderThickness="0,1,0,0"
-                                     BorderBrush="{StaticResource UltraLightAccentBrush}">
+                                     BorderBrush="{StaticResource DarkAccentBrush}">
                             <RadioButton.Tag>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" 
                                        FontSize="25" Text="&#xE897;" Margin="10,11,0,0"/>
                             </RadioButton.Tag>
-                        </RadioButton>
-                        <RadioButton x:Name="InformationMenuButton"
+                        </controls:MenuRadioButton>
+                        <controls:MenuRadioButton x:Name="InformationMenuButton"
                                      Content="Information" 
                                      GroupName="Nav" 
                                      Style="{StaticResource SplitViewRadioButtonStyle}"
@@ -100,7 +101,7 @@
                                 <TextBlock FontFamily="Segoe MDL2 Assets" 
                                        FontSize="25" Text="&#xE946;" Margin="10,11,0,0"/>
                             </RadioButton.Tag>
-                        </RadioButton>
+                        </controls:MenuRadioButton>
                     </StackPanel>
                 </Grid>
             </SplitView.Pane>
