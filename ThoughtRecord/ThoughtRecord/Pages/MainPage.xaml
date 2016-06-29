@@ -78,14 +78,15 @@
                         </controls:MenuRadioButton>
                     </StackPanel>
 
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Stretch"
+                                BorderThickness="0,1,0,0"
+                                BorderBrush="{StaticResource DarkAccentBrush}">
                         <controls:MenuRadioButton x:Name="HelpMenuButton"
                                      Content="Help" 
                                      GroupName="Nav" 
                                      Style="{StaticResource SplitViewRadioButtonStyle}"
-                                     Checked="MainMenuButton_Checked"
-                                     BorderThickness="0,1,0,0"
-                                     BorderBrush="{StaticResource DarkAccentBrush}">
+                                     Checked="MainMenuButton_Checked">
                             <RadioButton.Tag>
                                 <TextBlock FontFamily="Segoe MDL2 Assets" 
                                        FontSize="25" Text="&#xE897;" Margin="10,11,0,0"/>

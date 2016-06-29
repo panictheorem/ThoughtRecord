@@ -10,6 +10,9 @@
       <Example> Open my latest entry </Example>
       <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
       <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate/>
     </Command>
@@ -26,6 +29,7 @@
       <Example> Show me all </Example>
       <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
       <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
       <Feedback> Opening your thought records... </Feedback>
       <Navigate />
     </Command>
@@ -35,6 +39,7 @@
       <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
       <ListenFor> How do I use a {builtin:AppName}</ListenFor>
       <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
     </Command>
@@ -42,6 +47,7 @@
     <Command Name="SaveThoughtRecord">
       <Example> Save thought record </Example>
       <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <ListenFor> Save this {builtin:AppName}</ListenFor>
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
     </Command>
