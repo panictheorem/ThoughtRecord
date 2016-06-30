@@ -10,10 +10,12 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Store;
 using Windows.ApplicationModel.VoiceCommands;
+using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.SpeechRecognition;
 using Windows.Storage;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -53,9 +55,12 @@ namespace ThoughtRecordApp
         /// <param name="e">Details about the launch request and process.</param>
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            //Cortana Command & IAP Data Setup
+            //Live Tile, Cortana Commands & IAP Data Setup
             try
             {
+                //Live Tile
+                UpdateTile();
+
                 StorageFile voiceCommandsFile = await Package.Current.InstalledLocation.GetFileAsync(@"CortanaVoiceCommands.xml");
                 await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(voiceCommandsFile);
 
@@ -148,9 +153,9 @@ namespace ThoughtRecordApp
                 if (CurrentMain != null)
                 {
                     var displayPage = CurrentMain.CurrentPage as ThoughtRecordDisplayPage;
-                    if(displayPage != null)
+                    if (displayPage != null)
                     {
-                        if(displayPage.ViewModel.Edit.CanExecute(null))
+                        if (displayPage.ViewModel.Edit.CanExecute(null))
                         {
                             displayPage.ViewModel.Edit.Execute(null);
                         }
@@ -188,6 +193,33 @@ namespace ThoughtRecordApp
             Window.Current.Activate();
         }
 
+        private void UpdateTile()
+        {
+            
+            // Construct the tile content as a string
+            string content = $@"
+                             <tile>
+                                    <visual>
+                                        <binding template='TileSquarePeekImageAndText04'>
+                                            <image id='1' src='Assets/LiveTile.png' alt='Thought Record'/>
+                                            <text id='1' hint-wrap='true'>Have you written a thought record today?</text>
+                                        </binding>
+                                    </visual>
+                             </tile>";
+
+            // Load the string into an XmlDocument
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(content);
+            /*
+            // Then create the tile notification
+            var notification = new TileNotification(doc);
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
+            */
+
+            var tileNotification = new TileNotification(doc);
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
+
+        }
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>

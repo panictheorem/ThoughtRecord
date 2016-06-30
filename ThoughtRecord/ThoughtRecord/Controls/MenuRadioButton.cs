@@ -29,5 +29,13 @@ namespace ThoughtRecordApp.Controls
                 VisualStateManager.GoToState(this, "PointerOver", false);
             }
         }
+        protected override void OnPointerReleased(PointerRoutedEventArgs e)
+        {
+            this.IsChecked = true;
+            if (!(bool)IsChecked)
+            {
+                VisualStateManager.GoToState(this, "Normal", false);
+            }
+        }
     }
 }

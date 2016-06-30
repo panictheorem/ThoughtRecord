@@ -164,7 +164,7 @@ namespace ThoughtRecordApp.Pages
             MainSplitView.IsPaneOpen = false;
             if ((bool)NewThoughtRecordMenuButton.IsChecked)
             {
-                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage))
+                if (MainFrame.CurrentSourcePageType != typeof(ThoughtRecordEditPage) || (CurrentPage as ThoughtRecordEditPage).ViewModel.ThoughtRecord.ThoughtRecordId != 0)
                 {
                     MainFrame.Navigate(typeof(ThoughtRecordEditPage), 0);
                     UpdateCurrentPage();
