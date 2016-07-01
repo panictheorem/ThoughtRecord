@@ -31,6 +31,7 @@ namespace ThoughtRecordApp.Pages
             rootPage = (Application.Current as App).CurrentMain;
             ViewModel = new InformationModel();
             rootPage.UpdateTitle(InformationModel.Title);
+            rootPage.NavigateWithMenuUpdate(this.GetType());
         }
 
         private async void DonationButton_Click(object sender, RoutedEventArgs e)

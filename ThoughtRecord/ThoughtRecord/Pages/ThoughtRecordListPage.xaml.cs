@@ -68,7 +68,7 @@ namespace ThoughtRecordApp.Pages
 
         private void NewThoughtRecordButton_Click(object sender, RoutedEventArgs e)
         {
-            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage));
+            rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordEditPage), 0);
         }
     }
 }

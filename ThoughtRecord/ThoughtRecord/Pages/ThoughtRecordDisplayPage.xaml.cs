@@ -54,6 +54,8 @@ namespace ThoughtRecordApp.Pages
                     ViewModel.OnThoughtRecordChanged += ScrollToTop;
                     rootPage.UpdateTitle(ThoughtRecordDisplayModel.Title);
                 }
+
+                rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordDisplayPage), thoughtRecordId);
             }
             else
             {

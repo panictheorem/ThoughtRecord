@@ -32,6 +32,7 @@ namespace ThoughtRecordApp.Pages
             rootPage = (Application.Current as App).CurrentMain;
             ViewModel = new HelpModel();
             rootPage.UpdateTitle(HelpModel.Title);
+            rootPage.NavigateWithMenuUpdate(typeof(HelpPage));
         }
     }
 }

@@ -9,6 +9,9 @@ using Windows.UI.Xaml.Input;
 
 namespace ThoughtRecordApp.Controls
 {
+    /// <summary>
+    /// A custom radio button class to give more control over visual states during button's lifecyle
+    /// </summary>
     public class MenuRadioButton : RadioButton
     {
         protected override void OnPointerCaptureLost(PointerRoutedEventArgs e)
@@ -35,6 +38,14 @@ namespace ThoughtRecordApp.Controls
             if (!(bool)IsChecked)
             {
                 VisualStateManager.GoToState(this, "Normal", false);
+            }
+        }
+
+        protected override void OnPointerPressed(PointerRoutedEventArgs e)
+        {
+            if (!(bool)IsChecked)
+            {
+                VisualStateManager.GoToState(this, "Pressed", false);
             }
         }
     }

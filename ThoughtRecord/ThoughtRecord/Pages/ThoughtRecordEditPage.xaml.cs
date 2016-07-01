@@ -54,6 +54,7 @@ namespace ThoughtRecordApp.Pages
             ViewModel.OnNewThoughtRecordOverwriteRisk += PromptToSave;
             ViewModel.OnNewThoughtRecordCreated += UpdateMainMenu;
             this.Unloaded += ThoughtRecordEditPage_Unloaded;
+            rootPage.NavigateWithMenuUpdate(this.GetType(), thoughtRecordId);
             base.OnNavigatedTo(obj);
         }
 

@@ -29,6 +29,7 @@ namespace ThoughtRecordApp.Pages
     {
         public MainViewModel ViewModel { get; }
         public Page CurrentPage { get; private set; }
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -36,6 +37,8 @@ namespace ThoughtRecordApp.Pages
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+            AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
                 if (MainFrame.CanGoBack)
@@ -120,15 +123,17 @@ namespace ThoughtRecordApp.Pages
         {
             if (pageType == typeof(ThoughtRecordEditPage))
             {
-                    if (navigationParameter != null && (int)navigationParameter == 0)
-                    {
-                        NewThoughtRecordMenuButton.IsChecked = true;
-                    }
-                    else
-                    {
-                        MainFrame.Navigate(pageType, navigationParameter);
-                        UpdateCurrentPage();
-                    }
+                if (navigationParameter != null && (int)navigationParameter == 0)
+                {
+                    UpdateCurrentPage();
+                    NewThoughtRecordMenuButton.IsChecked = true;
+                }
+                else
+                {
+                    //Dont check a menu button if not a new thought record
+                    MainFrame.Navigate(pageType, navigationParameter);
+                    UpdateCurrentPage();
+                }
             }
             else if (pageType == typeof(ThoughtRecordListPage))
             {
@@ -137,6 +142,10 @@ namespace ThoughtRecordApp.Pages
             else if (pageType == typeof(InformationPage))
             {
                 InformationMenuButton.IsChecked = true;
+            }
+            else if (pageType == typeof(HelpPage))
+            {
+                HelpMenuButton.IsChecked = true;
             }
             else
             {
@@ -147,16 +156,6 @@ namespace ThoughtRecordApp.Pages
                     UpdateCurrentPage();
                 }
             }
-        }
-
-        public void UpdateTitle(string title)
-        {
-            ViewModel.Title = title;
-        }
-
-        private void UpdateCurrentPage()
-        {
-            CurrentPage = MainFrame.Content as Page;
         }
 
         private void MainMenuButton_Checked(object sender, RoutedEventArgs e)
@@ -194,6 +193,16 @@ namespace ThoughtRecordApp.Pages
                     UpdateCurrentPage();
                 }
             }
+        }
+
+        public void UpdateTitle(string title)
+        {
+            ViewModel.Title = title;
+        }
+
+        private void UpdateCurrentPage()
+        {
+            CurrentPage = MainFrame.Content as Page;
         }
     }
 }
