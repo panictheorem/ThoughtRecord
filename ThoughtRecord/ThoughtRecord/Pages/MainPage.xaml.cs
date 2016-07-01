@@ -37,8 +37,6 @@ namespace ThoughtRecordApp.Pages
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-            AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
                 if (MainFrame.CanGoBack)

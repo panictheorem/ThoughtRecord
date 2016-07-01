@@ -16,13 +16,9 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
         {
                 DateTime dateTime = (DateTime)value;
                 //Ensure datetime not outside of range
-                if(dateTime < DateTimeOffset.MinValue)
+                if(dateTime < DateTimeOffset.MinValue || dateTime > DateTime.MaxValue)
                 {
-                    dateTime = DateTime.MinValue;
-                }
-                else if( dateTime > DateTime.MaxValue)
-                {
-                    dateTime = DateTime.MaxValue;
+                    dateTime = DateTime.Now;
                 }
 
                 return new Nullable<DateTimeOffset>(dateTime);

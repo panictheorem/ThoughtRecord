@@ -121,13 +121,13 @@
     <value>Instructions</value>
   </data>
   <data name="ManageCommand1" xml:space="preserve">
-    <value>"Save this thought record."</value>
+    <value>"Save thought record."</value>
   </data>
   <data name="ManageCommand2" xml:space="preserve">
-    <value>"Edit this thought record."</value>
+    <value>"Edit thought record."</value>
   </data>
   <data name="ManageCommand3" xml:space="preserve">
-    <value>"Delete this thought record."</value>
+    <value>"Delete thought record."</value>
   </data>
   <data name="ManageCommandDescription1" xml:space="preserve">
     <value>Save the thought record you are currently editing:</value>
@@ -145,7 +145,7 @@
     <value>Managing Your Thought Records</value>
   </data>
   <data name="OpenCommand1" xml:space="preserve">
-    <value>"Open latest though record."</value>
+    <value>"Open latest thought record."</value>
   </data>
   <data name="OpenCommand2" xml:space="preserve">
     <value>"Open new thought record."</value>
@@ -211,7 +211,7 @@
     <value>Tips</value>
   </data>
   <data name="VoiceCommandsIntro" xml:space="preserve">
-    <value>This app supports Cortana voice commands and will be adding more over time. After getting Cortana's attention, you can make use of the following commands.  For the best experience, you should have "Hey Cortana" enabled.</value>
+    <value>This app supports Cortana voice commands and will be adding more over time. After getting Cortana's attention, you can make use of the following commands and slight variations on these commands can also work.  For the best experience, you should have "Hey Cortana" enabled.</value>
   </data>
   <data name="VoiceCommandsTitle" xml:space="preserve">
     <value>Cortana Voice Commands</value>

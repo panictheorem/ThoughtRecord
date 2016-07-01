@@ -2,25 +2,25 @@
 
 <VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
 
-  <CommandSet xml:lang="en-us" Name="LaunchCommandSet_en-us">
+  <CommandSet xml:lang="en-ca" Name="LaunchCommandSet_en-ca">
     <AppName>Thought Record</AppName>
     <Example> Open my latest entry </Example>
 
     <Command Name="OpenLatestRecord">
       <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate/>
     </Command>
     
   <Command Name="OpenNewRecord">
       <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
       <Navigate />
     </Command>
@@ -36,9 +36,10 @@
     
     <Command Name="OpenHelp">
       <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
       <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
@@ -46,7 +47,7 @@
 
     <Command Name="SaveThoughtRecord">
       <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
       <ListenFor> Save this {builtin:AppName}</ListenFor>
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
@@ -54,38 +55,38 @@
     
   <Command Name="DeleteThoughtRecord">
       <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Deleting your current thought record... </Feedback>
       <Navigate />
     </Command>
     <Command Name="EditThoughtRecord">
       <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Preparing your current thought record for editing... </Feedback>
       <Navigate />
     </Command>
 
   </CommandSet>
   
-<CommandSet xml:lang="en-ca" Name="LaunchCommandSet_en-ca">
+<CommandSet xml:lang="en-us" Name="LaunchCommandSet_en-us">
     <AppName>Thought Record</AppName>
     <Example> Open my latest entry </Example>
 
     <Command Name="OpenLatestRecord">
       <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate/>
     </Command>
     
   <Command Name="OpenNewRecord">
       <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
       <Navigate />
     </Command>
@@ -101,9 +102,10 @@
     
     <Command Name="OpenHelp">
       <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
       <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
@@ -111,7 +113,7 @@
 
     <Command Name="SaveThoughtRecord">
       <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
       <ListenFor> Save this {builtin:AppName}</ListenFor>
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
@@ -119,143 +121,13 @@
     
   <Command Name="DeleteThoughtRecord">
       <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Deleting your current thought record... </Feedback>
       <Navigate />
     </Command>
     <Command Name="EditThoughtRecord">
       <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
-      <Feedback> Preparing your current thought record for editing... </Feedback>
-      <Navigate />
-    </Command>
-
-  </CommandSet>
-  
-<CommandSet xml:lang="en-au" Name="LaunchCommandSet_en-au">
-    <AppName>Thought Record</AppName>
-    <Example> Open my latest entry </Example>
-
-    <Command Name="OpenLatestRecord">
-      <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
-      <Feedback> Opening your latest thought record... </Feedback>
-      <Navigate/>
-    </Command>
-    
-  <Command Name="OpenNewRecord">
-      <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
-      <Feedback> Opening a new thought record... </Feedback>
-      <Navigate />
-    </Command>
-    
-  <Command Name="OpenRecordList">
-      <Example> Show me all </Example>
-      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
-      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
-      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
-      <Feedback> Opening your thought records... </Feedback>
-      <Navigate />
-    </Command>
-    
-    <Command Name="OpenHelp">
-      <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
-      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
-      <Feedback> Opening Thought Record help page... </Feedback>
-      <Navigate/>
-    </Command>
-
-    <Command Name="SaveThoughtRecord">
-      <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
-      <ListenFor> Save this {builtin:AppName}</ListenFor>
-      <Feedback> Saving your thought record... </Feedback>
-      <Navigate />
-    </Command>
-    
-  <Command Name="DeleteThoughtRecord">
-      <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
-      <Feedback> Deleting your current thought record... </Feedback>
-      <Navigate />
-    </Command>
-    <Command Name="EditThoughtRecord">
-      <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
-      <Feedback> Preparing your current thought record for editing... </Feedback>
-      <Navigate />
-    </Command>
-
-  </CommandSet>
-
-<CommandSet xml:lang="en-in" Name="LaunchCommandSet_en-in">
-    <AppName>Thought Record</AppName>
-    <Example> Open my latest entry </Example>
-
-    <Command Name="OpenLatestRecord">
-      <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
-      <Feedback> Opening your latest thought record... </Feedback>
-      <Navigate/>
-    </Command>
-    
-  <Command Name="OpenNewRecord">
-      <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
-      <Feedback> Opening a new thought record... </Feedback>
-      <Navigate />
-    </Command>
-    
-  <Command Name="OpenRecordList">
-      <Example> Show me all </Example>
-      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
-      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
-      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
-      <Feedback> Opening your thought records... </Feedback>
-      <Navigate />
-    </Command>
-    
-    <Command Name="OpenHelp">
-      <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
-      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
-      <Feedback> Opening Thought Record help page... </Feedback>
-      <Navigate/>
-    </Command>
-
-    <Command Name="SaveThoughtRecord">
-      <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
-      <ListenFor> Save this {builtin:AppName}</ListenFor>
-      <Feedback> Saving your thought record... </Feedback>
-      <Navigate />
-    </Command>
-    
-  <Command Name="DeleteThoughtRecord">
-      <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
-      <Feedback> Deleting your current thought record... </Feedback>
-      <Navigate />
-    </Command>
-    <Command Name="EditThoughtRecord">
-      <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Preparing your current thought record for editing... </Feedback>
       <Navigate />
     </Command>
@@ -268,19 +140,19 @@
 
     <Command Name="OpenLatestRecord">
       <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate/>
     </Command>
     
   <Command Name="OpenNewRecord">
       <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
       <Navigate />
     </Command>
@@ -296,9 +168,10 @@
     
     <Command Name="OpenHelp">
       <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
       <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
@@ -306,7 +179,7 @@
 
     <Command Name="SaveThoughtRecord">
       <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
       <ListenFor> Save this {builtin:AppName}</ListenFor>
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
@@ -314,13 +187,145 @@
     
   <Command Name="DeleteThoughtRecord">
       <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Deleting your current thought record... </Feedback>
       <Navigate />
     </Command>
     <Command Name="EditThoughtRecord">
       <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
+
+  </CommandSet>
+
+<CommandSet xml:lang="en-in" Name="LaunchCommandSet_en-in">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate/>
+    </Command>
+    
+  <Command Name="OpenNewRecord">
+      <Example> Open new </Example>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
+      <Feedback> Opening a new thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="OpenRecordList">
+      <Example> Show me all </Example>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate />
+    </Command>
+    
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
+      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
+      <Feedback> Opening Thought Record help page... </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
+      <ListenFor> Save this {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
+
+  </CommandSet>
+
+<CommandSet xml:lang="en-au" Name="LaunchCommandSet_en-ca">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate/>
+    </Command>
+    
+  <Command Name="OpenNewRecord">
+      <Example> Open new </Example>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
+      <Feedback> Opening a new thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="OpenRecordList">
+      <Example> Show me all </Example>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate />
+    </Command>
+    
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
+      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
+      <Feedback> Opening Thought Record help page... </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
+      <ListenFor> Save this {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Preparing your current thought record for editing... </Feedback>
       <Navigate />
     </Command>
@@ -333,19 +338,19 @@
 
     <Command Name="OpenLatestRecord">
       <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate/>
     </Command>
     
   <Command Name="OpenNewRecord">
       <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
       <Navigate />
     </Command>
@@ -361,9 +366,10 @@
     
     <Command Name="OpenHelp">
       <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
       <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
@@ -371,7 +377,7 @@
 
     <Command Name="SaveThoughtRecord">
       <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
       <ListenFor> Save this {builtin:AppName}</ListenFor>
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
@@ -379,13 +385,79 @@
     
   <Command Name="DeleteThoughtRecord">
       <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Deleting your current thought record... </Feedback>
       <Navigate />
     </Command>
     <Command Name="EditThoughtRecord">
       <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
+
+  </CommandSet>
+
+<CommandSet xml:lang="en-my" Name="LaunchCommandSet_en-my">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate/>
+    </Command>
+    
+  <Command Name="OpenNewRecord">
+      <Example> Open new </Example>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
+      <Feedback> Opening a new thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="OpenRecordList">
+      <Example> Show me all </Example>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate />
+    </Command>
+    
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
+      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
+      <Feedback> Opening Thought Record help page... </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
+      <ListenFor> Save this {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Preparing your current thought record for editing... </Feedback>
       <Navigate />
     </Command>
@@ -398,19 +470,19 @@
 
     <Command Name="OpenLatestRecord">
       <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate/>
     </Command>
     
   <Command Name="OpenNewRecord">
       <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
       <Navigate />
     </Command>
@@ -426,9 +498,10 @@
     
     <Command Name="OpenHelp">
       <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
       <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
@@ -436,7 +509,7 @@
 
     <Command Name="SaveThoughtRecord">
       <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
       <ListenFor> Save this {builtin:AppName}</ListenFor>
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
@@ -444,13 +517,13 @@
     
   <Command Name="DeleteThoughtRecord">
       <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Deleting your current thought record... </Feedback>
       <Navigate />
     </Command>
     <Command Name="EditThoughtRecord">
       <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Preparing your current thought record for editing... </Feedback>
       <Navigate />
     </Command>
@@ -463,19 +536,19 @@
 
     <Command Name="OpenLatestRecord">
       <Example> Open my latest entry </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] latest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] last  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] newest  </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Show [me] [my] latest  </ListenFor>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
       <Feedback> Opening your latest thought record... </Feedback>
       <Navigate/>
     </Command>
     
   <Command Name="OpenNewRecord">
       <Example> Open new </Example>
-      <ListenFor RequireAppName="AfterPhrase"> Open new </ListenFor>
-      <ListenFor RequireAppName="AfterPhrase"> Open blank </ListenFor>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
       <Feedback> Opening a new thought record... </Feedback>
       <Navigate />
     </Command>
@@ -491,9 +564,10 @@
     
     <Command Name="OpenHelp">
       <Example> Open help </Example>
-      <ListenFor RequireAppName="ExplicitlySpecified"> Open [the] {builtin:AppName} help [page] </ListenFor>
-      <ListenFor> How do I use a {builtin:AppName}</ListenFor>
-      <ListenFor> What is a {builtin:AppName} </ListenFor>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
       <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
       <Feedback> Opening Thought Record help page... </Feedback>
       <Navigate/>
@@ -501,7 +575,7 @@
 
     <Command Name="SaveThoughtRecord">
       <Example> Save thought record </Example>
-      <ListenFor> Save [my] {builtin:AppName}</ListenFor>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
       <ListenFor> Save this {builtin:AppName}</ListenFor>
       <Feedback> Saving your thought record... </Feedback>
       <Navigate />
@@ -509,13 +583,211 @@
     
   <Command Name="DeleteThoughtRecord">
       <Example> Delete thought record </Example>
-      <ListenFor> Delete [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Deleting your current thought record... </Feedback>
       <Navigate />
     </Command>
     <Command Name="EditThoughtRecord">
       <Example> Edit thought record </Example>
-      <ListenFor> Edit [this] {builtin:AppName}</ListenFor>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
+
+  </CommandSet>
+
+<CommandSet xml:lang="en-ie" Name="LaunchCommandSet_en-ie">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate/>
+    </Command>
+    
+  <Command Name="OpenNewRecord">
+      <Example> Open new </Example>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
+      <Feedback> Opening a new thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="OpenRecordList">
+      <Example> Show me all </Example>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate />
+    </Command>
+    
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
+      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
+      <Feedback> Opening Thought Record help page... </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
+      <ListenFor> Save this {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
+
+  </CommandSet>
+
+<CommandSet xml:lang="en-pk" Name="LaunchCommandSet_en-pk">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate/>
+    </Command>
+    
+  <Command Name="OpenNewRecord">
+      <Example> Open new </Example>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
+      <Feedback> Opening a new thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="OpenRecordList">
+      <Example> Show me all </Example>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate />
+    </Command>
+    
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
+      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
+      <Feedback> Opening Thought Record help page... </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
+      <ListenFor> Save this {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Preparing your current thought record for editing... </Feedback>
+      <Navigate />
+    </Command>
+
+  </CommandSet>
+
+<CommandSet xml:lang="en-id" Name="LaunchCommandSet_en-id">
+    <AppName>Thought Record</AppName>
+    <Example> Open my latest entry </Example>
+
+    <Command Name="OpenLatestRecord">
+      <Example> Open my latest entry </Example>
+      <ListenFor> Open [my] latest {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] last {builtin:AppName} </ListenFor>
+      <ListenFor> Open [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] newest {builtin:AppName} </ListenFor>
+      <ListenFor> Show [me] [my] latest {builtin:AppName} </ListenFor>
+      <Feedback> Opening your latest thought record... </Feedback>
+      <Navigate/>
+    </Command>
+    
+  <Command Name="OpenNewRecord">
+      <Example> Open new </Example>
+      <ListenFor> Open [a] new {builtin:AppName} </ListenFor>
+      <ListenFor> Open [a] blank {builtin:AppName} </ListenFor>
+      <Feedback> Opening a new thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="OpenRecordList">
+      <Example> Show me all </Example>
+      <ListenFor> Show [me] all {builtin:AppName}s </ListenFor>
+      <ListenFor> Show [me] [my] {builtin:AppName}s </ListenFor>
+      <ListenFor> List [me] [my] {builtin:AppName}s </ListenFor>
+      <Feedback> Opening your thought records... </Feedback>
+      <Navigate />
+    </Command>
+    
+    <Command Name="OpenHelp">
+      <Example> Open help </Example>
+      <ListenFor> Open [the] {builtin:AppName} help [page] </ListenFor>
+      <ListenFor> How do I use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> How do you use [a] {builtin:AppName}</ListenFor>
+      <ListenFor> What is [a] {builtin:AppName} </ListenFor>
+      <ListenFor> What Cortana commands work with {builtin:AppName} </ListenFor>
+      <Feedback> Opening Thought Record help page... </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="SaveThoughtRecord">
+      <Example> Save thought record </Example>
+      <ListenFor> Save [my] [current] {builtin:AppName}</ListenFor>
+      <ListenFor> Save this {builtin:AppName}</ListenFor>
+      <Feedback> Saving your thought record... </Feedback>
+      <Navigate />
+    </Command>
+    
+  <Command Name="DeleteThoughtRecord">
+      <Example> Delete thought record </Example>
+      <ListenFor> Delete [this] [current] {builtin:AppName}</ListenFor>
+      <Feedback> Deleting your current thought record... </Feedback>
+      <Navigate />
+    </Command>
+    <Command Name="EditThoughtRecord">
+      <Example> Edit thought record </Example>
+      <ListenFor> Edit [this] [current] {builtin:AppName}</ListenFor>
       <Feedback> Preparing your current thought record for editing... </Feedback>
       <Navigate />
     </Command>

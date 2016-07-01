@@ -53,7 +53,10 @@ namespace ThoughtRecordApp.ViewModels
             }
             currentIndex = thoughtRecords.IndexOf(ThoughtRecord);
             commandsEnabled = true;
-            this.thoughtRecordId = ThoughtRecord.ThoughtRecordId;
+            if(this.ThoughtRecord != null)
+            {
+                this.thoughtRecordId = ThoughtRecord.ThoughtRecordId;
+            }
             RaiseCanExecuteChangedForAll();
         }
         private ThoughtRecord thoughtRecord;

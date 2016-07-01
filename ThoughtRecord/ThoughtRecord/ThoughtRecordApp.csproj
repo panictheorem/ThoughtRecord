@@ -96,6 +96,7 @@
     <Content Include="Assets\LiveTile.png" />
     <Content Include="CortanaVoiceCommands.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="project.json" />
   </ItemGroup>
