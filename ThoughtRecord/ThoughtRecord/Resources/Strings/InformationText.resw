@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutContent" xml:space="preserve">
-    <value>This</value>
-  </data>
   <data name="AboutTitle" xml:space="preserve">
     <value>About Thought Record</value>
   </data>
@@ -127,21 +124,39 @@
     <value>Brought to you by </value>
   </data>
   <data name="ContactMeContent" xml:space="preserve">
-    <value>Do you want to be able to save your thought records in a printable format? Would you like to be able to track your progress over time with charts and graphs? If you have any suggestion or ideas on how this app could be improved, let me know.</value>
+    <value>Do you want to be able to save your thought records in a printable format? Would you like to be able to track your progress over time with charts and graphs? If you have any suggestion or ideas on how this app could be improved, feel free to let me know.</value>
   </data>
   <data name="ContactMeLinkText" xml:space="preserve">
-    <value>Contact Me</value>
+    <value>Email the Developer</value>
+  </data>
+  <data name="CreditsTitle" xml:space="preserve">
+    <value>Credits</value>
   </data>
   <data name="DonateButtonText" xml:space="preserve">
     <value>Donate $1.99 USD</value>
   </data>
   <data name="DonateContent" xml:space="preserve">
-    <value>If you found this app helpful, the best thing you can do is spread the word about it. If you would like, you can also make a small donation.</value>
+    <value>If you would like, you can also make a small donation.</value>
+  </data>
+  <data name="FeedbackButtonText" xml:space="preserve">
+    <value>Give Feedback</value>
+  </data>
+  <data name="FeedbackTitle" xml:space="preserve">
+    <value>Feedback</value>
   </data>
   <data name="ImageSourceLinkText" xml:space="preserve">
     <value>View Image Source</value>
   </data>
   <data name="ImageSourceText" xml:space="preserve">
     <value>The background image on the thought record list page was obtained from Pixabay user Unsplash.</value>
+  </data>
+  <data name="RatingButtonText" xml:space="preserve">
+    <value>Rate This App</value>
+  </data>
+  <data name="RatingContent" xml:space="preserve">
+    <value>If you found this app helpful, the best thing you can do is spread the word about it and rate/review it in the app store.</value>
+  </data>
+  <data name="SupportAppTitle" xml:space="preserve">
+    <value>Support Thought Record</value>
   </data>
 </root>

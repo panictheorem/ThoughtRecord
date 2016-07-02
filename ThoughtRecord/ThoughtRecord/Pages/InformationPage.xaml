@@ -30,16 +30,39 @@
                        HorizontalAlignment="Center"/>
                 </StackPanel>
                 <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBlock Text="{x:Bind ViewModel.FeedbackTitle}" Style="{StaticResource SectionTitle}"/>
                 <TextBlock Text="{x:Bind ViewModel.ContactMeContent}" Style="{StaticResource ParagraphStyle}"/>
+                <StackPanel x:Name="FeedbackHubArea">
+                    <Button x:Name="FeedbackButton" 
+                        Click="FeedbackButton_Click" 
+                        Style="{StaticResource DefaultButtonStyle}"
+                        Margin="0,10,0,10"
+                        HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE939;" Margin="0,2,2,0"/>
+                            <TextBlock Text="{x:Bind ViewModel.FeedbackButtonText}" />
+                        </StackPanel>
+                    </Button>
+                    <TextBlock Text="Or" Style="{StaticResource CenteredParagraphStyle}" />
+                </StackPanel>
                 <HyperlinkButton Content="{x:Bind ViewModel.ContactMeLinkText}" 
-                                 Style="{StaticResource HyperlinkButtonStyle}"
+                                 Style="{StaticResource DiscreteHyperlinkButtonStyle}"
                                  NavigateUri="http://www.PanicTheorem.Net/Contact"
                                  HorizontalAlignment="Center"/>
+                <TextBlock Text="{x:Bind ViewModel.CreditsTitle}" Style="{StaticResource SectionTitle}"/>
                 <TextBlock Text="{x:Bind ViewModel.ImageSourceText}" Style="{StaticResource ParagraphStyle}"/>
                 <HyperlinkButton Content="{x:Bind ViewModel.ImageSourceLinkText}" 
                                  HorizontalAlignment="Center"
                                  NavigateUri="https://pixabay.com/en/mountains-sky-landscape-nature-731149/"
-                                 Style="{StaticResource HyperlinkButtonStyle}"/>
+                                 Style="{StaticResource DiscreteHyperlinkButtonStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.SupportAppTitle}" Style="{StaticResource SectionTitle}"/>
+                <TextBlock Text="{x:Bind ViewModel.RatingContent}" Style="{StaticResource ParagraphStyle}"/>
+                <HyperlinkButton x:Name="RatingButton" 
+                        Content="{x:Bind ViewModel.RatingButtonText}" 
+                        Style="{StaticResource DiscreteHyperlinkButtonStyle}"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Center"
+                        NavigateUri=" https://www.microsoft.com/store/apps/9nblggh4nlzx"/>
                 <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ParagraphStyle}"/>
                 <Button x:Name="DonationButton" 
                         Content="{x:Bind ViewModel.DonateButtonText}" 

@@ -195,6 +195,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="RepeatButtonStyle" TargetType="RepeatButton">
         <Setter Property="Background" Value="{StaticResource LightAccentBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource UltraLightBrush}"/>

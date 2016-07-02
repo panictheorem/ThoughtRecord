@@ -5,7 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Resources/Styles/AppThemeStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="HyperlinkButtonStyle" TargetType="HyperlinkButton">
+    <Style x:Key="DiscreteHyperlinkButtonStyle" TargetType="HyperlinkButton">
         <Setter Property="Foreground" Value="{StaticResource DarkAccentBrush}"/>
         <Setter Property="BorderThickness" Value="{ThemeResource HyperlinkButtonBorderThemeThickness}"/>
         <Setter Property="Padding" Value="0,6,0,6"/>

@@ -32,6 +32,10 @@ namespace ThoughtRecordApp.Pages
             ViewModel = new InformationModel();
             rootPage.UpdateTitle(InformationModel.Title);
             rootPage.NavigateWithMenuUpdate(this.GetType());
+            if (Microsoft.Services.Store.Engagement.Feedback.IsSupported)
+            {
+                this.FeedbackHubArea.Visibility = Visibility.Visible;
+            }
         }
 
         private async void DonationButton_Click(object sender, RoutedEventArgs e)
@@ -74,5 +78,10 @@ namespace ThoughtRecordApp.Pages
     {
         rootPage.HideProgressRing();
     }
-}
+
+        private async void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Microsoft.Services.Store.Engagement.Feedback.LaunchFeedbackAsync();
+        }
+    }
 }

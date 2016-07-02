@@ -166,7 +166,7 @@
     <value>Open your thought record list page:</value>
   </data>
   <data name="OpenCommandDescription4" xml:space="preserve">
-    <value>Open the information page:</value>
+    <value>Open the help page:</value>
   </data>
   <data name="OpenCommandsSectionIntro" xml:space="preserve">
     <value>With these commands you can launch the app to specific pages or change the current page.</value>
