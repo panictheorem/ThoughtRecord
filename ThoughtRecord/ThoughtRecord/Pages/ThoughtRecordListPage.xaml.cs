@@ -47,7 +47,7 @@ namespace ThoughtRecordApp.Pages
         {
             rootPage.ShowProgressRing();
             await ViewModel.Initialize();
-            if (ViewModel == null || ViewModel.ThoughtRecords == null || ViewModel.ThoughtRecords.Count == 0)
+            if (ViewModel == null || ViewModel.Situations == null || ViewModel.Situations.Count == 0)
             {
                 NoThoughtRecordMessage.Visibility = Visibility.Visible;
             }
@@ -61,7 +61,7 @@ namespace ThoughtRecordApp.Pages
         //Navigates to the display page for the selected item.
         private void ThoughtRecordItemsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ThoughtRecord selectedThoughtRecord = e.ClickedItem as ThoughtRecord;
+            Situation selectedThoughtRecord = e.ClickedItem as Situation;
             rootPage.ClearMenuSelection();
             rootPage.NavigateWithMenuUpdate(typeof(ThoughtRecordDisplayPage), selectedThoughtRecord.ThoughtRecordId);
         }

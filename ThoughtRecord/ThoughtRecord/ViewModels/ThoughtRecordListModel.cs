@@ -20,7 +20,7 @@ namespace ThoughtRecordApp.ViewModels
     public class ThoughtRecordListModel : BindableBase
     {
         public static string Title { get; private set; }
-        public ObservableCollection<ThoughtRecord> ThoughtRecords { get; set; }
+        public ObservableCollection<Situation> Situations { get; set; }
         private IDatabaseService database;
         private IStringResourceService stringLoader;
 
@@ -29,7 +29,7 @@ namespace ThoughtRecordApp.ViewModels
             stringLoader = new StringResourceService("PageTitles");
             Title = Title = ResourceLoader.GetForCurrentView("PageTitles").GetString("MyThoughtRecordsTitle");
             database = db;
-            ThoughtRecords = new ObservableCollection<ThoughtRecord>();
+            Situations = new ObservableCollection<Situation>();
         }
         /// <summary>
         /// Initialize method must be called after instantiating to populate the ThoughtRecord list
@@ -37,13 +37,13 @@ namespace ThoughtRecordApp.ViewModels
         public async Task Initialize()
         {
             //Records retrieved and ordered by datetime from newest to oldest.
-            var thoughtRecords = (await database.ThoughtRecords.GetAllAsync())
-                          .OrderByDescending(tr => tr.Situation.DateTime)
+            var situations = (await database.Situations.GetAllAsync())
+                          .OrderByDescending(s => s.DateTime)
                           .ToList();
             //Add the records to the observable collection.
-            foreach (var s in thoughtRecords)
+            foreach (var s in situations)
             {
-                ThoughtRecords.Add(s);
+                Situations.Add(s);
             }
         }
     }

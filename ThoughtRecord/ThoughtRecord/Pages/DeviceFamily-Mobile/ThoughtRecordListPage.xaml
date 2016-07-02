@@ -21,13 +21,13 @@
         <Image Source="/Assets/ListBackground.jpg" Stretch="UniformToFill"/>
         <ListView x:Name="ThoughtRecordItemsList"
                   SelectionMode="Single"
-                  ItemsSource ="{x:Bind ViewModel.ThoughtRecords}"
+                  ItemsSource ="{x:Bind ViewModel.Situations}"
                   IsItemClickEnabled="True"
                   ItemClick="ThoughtRecordItemsList_ItemClick"
                   Padding="10"
                   ItemContainerStyle="{StaticResource ThoughtRecordListViewItem}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:ThoughtRecord">
+                <DataTemplate x:DataType="models:Situation">
                     <template:MobileThoughtRecordListTemplate />
                 </DataTemplate>
             </ListView.ItemTemplate>

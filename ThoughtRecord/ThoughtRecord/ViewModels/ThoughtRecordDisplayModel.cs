@@ -156,7 +156,12 @@ namespace ThoughtRecordApp.ViewModels
         private async void DeleteThoughtRecord()
         {
             commandsEnabled = false;
+
+            //SQLite is not performing cascade deletes so we are deleting manually for now
+            await database.Situations.DeleteAsync(ThoughtRecord.Situation.SituationId);
+            ThoughtRecord.Emotions.ForEach(async e => await database.Emotions.DeleteAsync(e.EmotionId));
             await database.ThoughtRecords.DeleteAsync(ThoughtRecord.ThoughtRecordId);
+
             OnThoughtRecordDeleted?.Invoke(this, new EventArgs());
             commandsEnabled = false;
         }
