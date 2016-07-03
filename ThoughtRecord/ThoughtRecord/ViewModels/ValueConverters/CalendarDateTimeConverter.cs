@@ -14,14 +14,16 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-                DateTime dateTime = (DateTime)value;
+                DateTime? dateTime = (DateTime?)value;
                 //Ensure datetime not outside of range
-                if(dateTime < DateTimeOffset.MinValue || dateTime > DateTime.MaxValue)
+                if(dateTime == null ||
+                   dateTime > DateTime.MaxValue.AddYears(-1) ||
+                   dateTime < DateTimeOffset.MinValue)
                 {
                     dateTime = DateTime.Now;
                 }
 
-                return new Nullable<DateTimeOffset>(dateTime);
+                return new Nullable<DateTimeOffset>((DateTime)dateTime);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
