@@ -13,7 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/AppThemeStyles.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/ThoughtRecordListStyle.xaml" />
-                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Controls/ControlDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>

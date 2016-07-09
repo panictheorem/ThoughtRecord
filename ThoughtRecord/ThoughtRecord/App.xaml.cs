@@ -112,10 +112,6 @@ namespace ThoughtRecordApp
                 Window.Current.Activate();
             }
 
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
-            }
         }
 
         protected override void OnActivated(IActivatedEventArgs args)

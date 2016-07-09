@@ -10,7 +10,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/CustomControls/ControlDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Controls/ControlDictionary.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/AppThemeStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

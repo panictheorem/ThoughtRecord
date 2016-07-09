@@ -139,7 +139,7 @@
     <value>If you would like, you can also make a small donation.</value>
   </data>
   <data name="FeedbackButtonText" xml:space="preserve">
-    <value>Give Feedback</value>
+    <value>Use Feedback Hub</value>
   </data>
   <data name="FeedbackTitle" xml:space="preserve">
     <value>Feedback</value>

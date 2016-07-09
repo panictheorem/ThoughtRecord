@@ -37,6 +37,7 @@ namespace ThoughtRecordApp.Pages
             //application object.
             ((App)(Application.Current)).CurrentMain = this;
             ViewModel = new MainViewModel();
+
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
             {
                 if (MainFrame.CanGoBack)
@@ -47,7 +48,7 @@ namespace ThoughtRecordApp.Pages
             };
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             string command = e.Parameter as string;
@@ -58,6 +59,10 @@ namespace ThoughtRecordApp.Pages
             else
             {
                 NewThoughtRecordMenuButton.IsChecked = true;
+            }
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                await Windows.UI.ViewManagement.StatusBar.GetForCurrentView().HideAsync();
             }
         }
 
