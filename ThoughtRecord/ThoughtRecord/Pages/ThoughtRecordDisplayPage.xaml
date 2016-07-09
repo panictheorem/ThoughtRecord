@@ -92,7 +92,7 @@
 
                 <VisualState x:Name="WideWindow">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1000" />
+                        <AdaptiveTrigger MinWindowWidth="1050" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="SituationTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />

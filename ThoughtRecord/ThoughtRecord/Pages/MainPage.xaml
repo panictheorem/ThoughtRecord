@@ -124,6 +124,7 @@
                            Foreground="{StaticResource LightAccentBrush}"
                            FontSize="40"
                            Text="Saved"
+                           FontWeight="Light"
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
                            Opacity="0.0"/>
