@@ -120,36 +120,7 @@ namespace ThoughtRecordApp.Pages
 
         private void DisplaySaveConfirmationMessage()
         {
-            string title = "Saved";
-            string content = "Your thought record has been saved.";
-
-            ToastVisual visual = new ToastVisual()
-            {
-                BindingGeneric = new ToastBindingGeneric()
-                {
-                    Children =
-                    {
-                        new AdaptiveText
-                        {
-                                Text = title
-                        },
-                        new AdaptiveText
-                        {
-                                Text = content
-                        }
-                    }
-                }
-            };
-
-            ToastContent toastContent = new ToastContent()
-            {
-                Visual = visual,
-                Audio = new ToastAudio()
-            };
-            toastContent.Audio.Silent = true;
-            var toast = new ToastNotification(toastContent.GetXml());
-
-            ToastNotificationManager.CreateToastNotifier().Show(toast);
+            rootPage.DisplaySaveConfirmationAlert();
 
         }
 

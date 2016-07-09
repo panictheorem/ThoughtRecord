@@ -109,6 +109,11 @@ namespace ThoughtRecordApp.Pages
         {
             MainProgressRing.IsActive = false;
         }
+
+        public void DisplaySaveConfirmationAlert()
+        {
+            SavedAlertFadeOut.Begin();
+        }
         public void ClearMenuSelection()
         {
             NewThoughtRecordMenuButton.IsChecked = false;

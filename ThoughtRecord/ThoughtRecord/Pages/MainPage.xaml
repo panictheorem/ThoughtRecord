@@ -13,6 +13,12 @@
                 <ResourceDictionary Source="/Resources/Styles/Controls/ControlDictionary.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/AppThemeStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Name="SavedAlertFadeOut">
+                <DoubleAnimation
+              Storyboard.TargetName="SavedAlertTextBlock"
+              Storyboard.TargetProperty="Opacity"
+              From="1.0" To="0.0" Duration="0:0:1"/>
+            </Storyboard>
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -114,6 +120,13 @@
                               Foreground="{StaticResource LightAccentBrush}"
                               Width="60"
                               Height="60"/>
+                <TextBlock x:Name="SavedAlertTextBlock"
+                           Foreground="{StaticResource LightAccentBrush}"
+                           FontSize="40"
+                           Text="Saved"
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                           Opacity="0.0"/>
             </Grid>
         </SplitView>
     </Grid>
