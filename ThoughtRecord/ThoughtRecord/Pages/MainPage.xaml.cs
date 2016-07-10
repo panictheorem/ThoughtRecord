@@ -114,7 +114,6 @@ namespace ThoughtRecordApp.Pages
         {
             SavedAlertTextBlock.Visibility = Visibility.Visible;
             SavedAlertFadeOut.Begin();
-            SavedAlertTextBlock.Visibility = Visibility.Collapsed;
         }
         public void ClearMenuSelection()
         {
