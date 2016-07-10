@@ -17,7 +17,12 @@
                 <DoubleAnimation
               Storyboard.TargetName="SavedAlertTextBlock"
               Storyboard.TargetProperty="Opacity"
-              From="1.0" To="0.0" Duration="0:0:1"/>
+              From="1.0" To="0.0" Duration="0:0:1" />
+                <ObjectAnimationUsingKeyFrames
+                    Storyboard.TargetName="SavedAlertTextBlock"
+                    Storyboard.TargetProperty="Visibility">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="Collapsed" />
+                </ObjectAnimationUsingKeyFrames>
             </Storyboard>
         </ResourceDictionary>
     </Page.Resources>
@@ -127,7 +132,8 @@
                            FontWeight="Light"
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
-                           Opacity="0.0"/>
+                           Opacity="0.0"
+                           Visibility="Collapsed"/>
             </Grid>
         </SplitView>
     </Grid>
