@@ -28,7 +28,17 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return ((DateTimeOffset?)value).GetValueOrDefault().DateTime;
+            var selectedDateTime = ((DateTimeOffset?)value).GetValueOrDefault().DateTime;
+            //There are issues with how SQLite stores the datetime as ticks
+            //Date is stored 4 hours ahead which can make the date the day after the user intended
+            //This solution to the problem creates a new date with a midday time to work around this
+            return new DateTime(year: selectedDateTime.Year, 
+                                month: selectedDateTime.Month, 
+                                day: selectedDateTime.Day,
+                                hour: 12,
+                                minute: 59,
+                                second: 59,
+                                millisecond: 1);
         }
     }
 }
