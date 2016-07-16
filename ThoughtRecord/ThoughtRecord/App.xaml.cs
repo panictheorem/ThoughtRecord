@@ -64,7 +64,7 @@ namespace ThoughtRecordApp
 
                 //Cortana VCD file install
                 StorageFile voiceCommandsFile = await Package.Current.InstalledLocation.GetFileAsync(@"CortanaVoiceCommands.xml");
-                await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(voiceCommandsFile);
+                //await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(voiceCommandsFile);
 
                 //LicenseInfo for In-App Purchase
 #if DEBUG

@@ -93,7 +93,7 @@
                         <Setter Target="DateOfSituationPicker.Style" Value="{StaticResource SituationCalendarDatePickerMobile}" />
 
                         <Setter Target="DesktopInputRow.Height" Value="Auto" />
-                        
+
                         <Setter Target="ThoughRecordGrid.Opacity" Value="1" />
                     </VisualState.Setters>
                 </VisualState>
@@ -104,7 +104,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="AddEmotionButton.FontSize" Value="14" />
-                        
+
                         <Setter Target="SituationTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
                         <Setter Target="InitialEmotionRatingsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
                         <Setter Target="AutomaticThoughtsTitleTextBlock.Style" Value="{StaticResource RecordFieldTitleDesktop}" />
@@ -214,6 +214,7 @@
                         <TextBox x:Name="SituationDescriptionTextBox" Text="{x:Bind ViewModel.SituationDescription,Mode=TwoWay}"
                              GotFocus="TextBox_GotFocus"
                              TextChanging="TextBox_TextChanging"
+                             LostFocus="TextBox_LostFocus"
                              Grid.Row="2" Template="{StaticResource ThoughtRecordTextBox}"/>
                     </Grid>
                 </Border>
@@ -242,24 +243,28 @@
                     <TextBox x:Name="AutomaticThoughtsTextBox"
                          Text="{x:Bind ViewModel.AutomaticThoughts,Mode=TwoWay}"
                          GotFocus="TextBox_GotFocus"
+                         LostFocus="TextBox_LostFocus"
                          TextChanging="TextBox_TextChanging"/>
                 </Border>
                 <Border x:Name="SupportingEvidenceContentCell" Grid.Column="3" Grid.Row="1">
                     <TextBox x:Name="SupportingEvidenceTextBox"
                          Text="{x:Bind ViewModel.SupportingEvidence,Mode=TwoWay}"
                          TextChanging="TextBox_TextChanging"
+                         LostFocus="TextBox_LostFocus"
                          GotFocus="TextBox_GotFocus"/>
                 </Border>
                 <Border x:Name="ContradictingEvidenceContentCell" Grid.Column="4" Grid.Row="1">
                     <TextBox x:Name="ContradictingEvidenceTextBox" 
                          Text="{x:Bind ViewModel.ContradictingEvidence,Mode=TwoWay}"
                          GotFocus="TextBox_GotFocus"
+                         LostFocus="TextBox_LostFocus"
                          TextChanging="TextBox_TextChanging"/>
                 </Border>
                 <Border x:Name="RationalAssessmentContentCell" Grid.Column="5" Grid.Row="1">
                     <TextBox x:Name="RationalAssessmentTextBox"
                          Text="{x:Bind ViewModel.RationalAssessment,Mode=TwoWay}"
                          GotFocus="TextBox_GotFocus"
+                         LostFocus="TextBox_LostFocus"
                          TextChanging="TextBox_TextChanging"/>
                 </Border>
                 <Border x:Name="SubsequentEmotionRatingsContentCell" Grid.Column="6" Grid.Row="1">

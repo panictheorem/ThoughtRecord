@@ -76,7 +76,16 @@ namespace ThoughtRecordApp.ViewModels
             Title = newThoughtRecordTitle;
             thoughtRecord = new ThoughtRecord();
             thoughtRecord.Situation = new Situation();
-            thoughtRecord.Situation.DateTime = DateTime.Now;
+            DateTime now = DateTime.Now;
+            thoughtRecord.Situation.DateTime = new DateTime(
+                year: now.Year,  
+                month: now.Month,
+                day: now.Day,
+                hour: 12,
+                minute: 1,
+                second: 1,
+                millisecond: 1,
+                kind: DateTimeKind.Utc);
             thoughtRecord.Emotions = new List<Emotion>();
             DefaultInputText = thoughtRecordService.GetDefaultInputText();
             thoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
@@ -119,7 +128,9 @@ namespace ThoughtRecordApp.ViewModels
         public bool IsCurrentDataSaved
         {
             get { return isCurrentDataSaved; }
-            set { isCurrentDataSaved = value;
+            set
+            {
+                isCurrentDataSaved = value;
                 ((RelayCommand)Save).RaiseCanExecuteChanged();
             }
         }
@@ -139,7 +150,7 @@ namespace ThoughtRecordApp.ViewModels
             }
         }
 
-        public DateTime SituationDateTime
+        public DateTime? SituationDateTime
         {
             get
             {
@@ -155,7 +166,10 @@ namespace ThoughtRecordApp.ViewModels
                 {
                     if (thoughtRecord.Situation.DateTime != value)
                     {
-                        thoughtRecord.Situation.DateTime = value;
+                        if (value != null)
+                        {
+                            thoughtRecord.Situation.DateTime = (DateTime)value;
+                        }
                         OnPropertyChanged();
                         IsCurrentDataSaved = false;
                     }

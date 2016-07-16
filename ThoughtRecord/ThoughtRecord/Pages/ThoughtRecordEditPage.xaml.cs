@@ -46,7 +46,7 @@ namespace ThoughtRecordApp.Pages
             else
             {
                 ViewModel = new ThoughtRecordEditModel(AppDataService.GetDatabase(Application.Current));
-                
+
             }
             rootPage.UpdateTitle(ViewModel.Title);
             ViewModel.OnThoughtRecordSaving += ShowProgressRing;
@@ -163,7 +163,7 @@ namespace ThoughtRecordApp.Pages
 
         private void TextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
-            if(ViewModel.IsCurrentDataSaved)
+            if (ViewModel.IsCurrentDataSaved)
             {
                 ViewModel.IsCurrentDataSaved = false;
             }
@@ -172,6 +172,34 @@ namespace ThoughtRecordApp.Pages
         private void ThoughtRecordEditPage_Unloaded(object sender, RoutedEventArgs e)
         {
             ViewModel.Dispose();
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox.Text == "")
+            {
+                if (textBox == SituationDescriptionTextBox)
+                {
+                    textBox.Text = ViewModel.DefaultInputText.ElementAt(0);
+                }
+                else if (textBox == AutomaticThoughtsTextBox)
+                {
+                    textBox.Text = ViewModel.DefaultInputText.ElementAt(1);
+                }
+                else if (textBox == SupportingEvidenceTextBox)
+                {
+                    textBox.Text = ViewModel.DefaultInputText.ElementAt(2);
+                }
+                else if (textBox == ContradictingEvidenceTextBox)
+                {
+                    textBox.Text = ViewModel.DefaultInputText.ElementAt(4);
+                }
+                else if (textBox == RationalAssessmentTextBox)
+                {
+                    textBox.Text = ViewModel.DefaultInputText.ElementAt(5);
+                }
+            }
         }
     }
 }
