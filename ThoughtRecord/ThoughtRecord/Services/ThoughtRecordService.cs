@@ -31,7 +31,7 @@ namespace ThoughtRecordApp.Services
         public void PopulateWithDefaultValues(ThoughtRecord thoughtRecord)
         {
             InitializeOrUpdateStringLoader("DefaultInputText");
-            thoughtRecord.Situation.DateTime = DateTime.Now;
+            thoughtRecord.Situation.DateTime = DateTime.UtcNow;
             thoughtRecord.Emotions.Add(new Emotion { Name = stringLoader.GetString("EmotionExample"), InitialRating = 50,  SubsequentRating = 50});
             thoughtRecord.Situation.Description = stringLoader.GetString("SituationDescription");
             thoughtRecord.AutomaticThoughts = stringLoader.GetString("AutomaticThoughts");

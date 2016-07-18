@@ -76,16 +76,6 @@ namespace ThoughtRecordApp.ViewModels
             Title = newThoughtRecordTitle;
             thoughtRecord = new ThoughtRecord();
             thoughtRecord.Situation = new Situation();
-            DateTime now = DateTime.Now;
-            thoughtRecord.Situation.DateTime = new DateTime(
-                year: now.Year,  
-                month: now.Month,
-                day: now.Day,
-                hour: 12,
-                minute: 1,
-                second: 1,
-                millisecond: 1,
-                kind: DateTimeKind.Utc);
             thoughtRecord.Emotions = new List<Emotion>();
             DefaultInputText = thoughtRecordService.GetDefaultInputText();
             thoughtRecordService.PopulateWithDefaultValues(thoughtRecord);
