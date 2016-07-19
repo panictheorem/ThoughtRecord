@@ -14,12 +14,17 @@ namespace ThoughtRecordApp.ViewModels.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return ((DateTime)value).ToString("MMMM dd, yyyy");
+            DateTime dateTime = (DateTime)value;
+            if (dateTime.Kind != DateTimeKind.Local)
+            {
+                dateTime = dateTime.ToLocalTime();
+            }
+            return dateTime.ToString("MMMM dd, yyyy");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return DateTime.Parse(value as string);
+            return DateTime.Parse(value as string).ToUniversalTime();
         }
     }
 }

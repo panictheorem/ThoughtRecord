@@ -154,15 +154,18 @@ namespace ThoughtRecordApp.ViewModels
             {
                 if (thoughtRecord != null)
                 {
-                    if (thoughtRecord.Situation.DateTime != value)
+                    if(value == null)
                     {
-                        if (value != null)
-                        {
-                            thoughtRecord.Situation.DateTime = (DateTime)value;
-                        }
+                        //ensure date is still picked and not deselected
+                        OnPropertyChanged();
+                    }
+                    else if (thoughtRecord.Situation.DateTime.Date != ((DateTime)value).Date)
+                    {
+                        thoughtRecord.Situation.DateTime = (DateTime)value;
                         OnPropertyChanged();
                         IsCurrentDataSaved = false;
                     }
+                    
                 }
             }
         }
