@@ -45,29 +45,34 @@
                                  Style="{StaticResource DiscreteHyperlinkButtonStyle}"
                                  NavigateUri="http://www.PanicTheorem.Net/Contact"
                                  HorizontalAlignment="Center"/>
-                <TextBlock Text="{x:Bind ViewModel.SupportAppTitle}" Style="{StaticResource SectionTitle}"/>
-                <TextBlock Text="{x:Bind ViewModel.RatingContent}" Style="{StaticResource ParagraphStyle}"/>
-                <HyperlinkButton x:Name="RatingButton" 
+            </StackPanel>
+            <StackPanel Style="{StaticResource SectionStyle}">
+                    <TextBlock Text="{x:Bind ViewModel.SupportAppTitle}" Style="{StaticResource SectionTitle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.RatingContent}" Style="{StaticResource ParagraphStyle}"/>
+                    <HyperlinkButton x:Name="RatingButton" 
                         Content="{x:Bind ViewModel.RatingButtonText}" 
                         Style="{StaticResource DiscreteHyperlinkButtonStyle}"
                         HorizontalAlignment="Center"
                         NavigateUri=" https://www.microsoft.com/store/apps/9nblggh4nlzx"/>
-                <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ParagraphStyle}"/>
-                <Button x:Name="DonationButton" 
+                    <TextBlock Text="{x:Bind ViewModel.DonateContent}" Style="{StaticResource ParagraphStyle}"/>
+                    <Button x:Name="DonationButton" 
                         Content="{x:Bind ViewModel.DonateButtonText}" 
                         Click="DonationButton_Click" 
                         Style="{StaticResource DefaultButtonStyle}"
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"/>
-                <TextBlock x:Name="DonationSuccessMessage" 
+                    <TextBlock x:Name="DonationSuccessMessage" 
                            Style="{StaticResource ParagraphStyle}"
+                           Visibility="Collapsed"
                            Foreground="{StaticResource DarkAccentBrush}"/>
+                </StackPanel>
+            <StackPanel Style="{StaticResource SectionStyle}">
                 <TextBlock Text="{x:Bind ViewModel.CreditsTitle}" Style="{StaticResource SectionTitle}"/>
                 <StackPanel Orientation="Vertical" >
-                    <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBlock Text="{x:Bind ViewModel.BroughtToYouByText}" 
                        Style="{StaticResource ParagraphStyle}"
                        HorizontalAlignment="Center"/>
+                    <Image Source="/Assets/PanicCubePurple.png"  Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBlock Text=" PANIC THEOREM SOFTWARE" 
                        Style="{StaticResource ParagraphStyle}"
                        HorizontalAlignment="Center"/>

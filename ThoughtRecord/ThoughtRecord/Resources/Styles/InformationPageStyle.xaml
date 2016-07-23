@@ -18,7 +18,7 @@
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
     <Style x:Key="SectionStyle" TargetType="StackPanel">
-        <Setter Property="Margin" Value="0, 0, 0, 10" />
+        <Setter Property="Margin" Value="0, 0, 0, 20" />
     </Style>
     <Style x:Key="PivotItemStyle" TargetType="PivotItem">
         <Setter Property="Margin" Value="0" />

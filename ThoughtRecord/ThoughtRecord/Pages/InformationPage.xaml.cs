@@ -41,6 +41,7 @@ namespace ThoughtRecordApp.Pages
         private async void DonationButton_Click(object sender, RoutedEventArgs e)
         {
             DonationButton.Visibility = Visibility.Collapsed;
+            DonationSuccessMessage.Visibility = Visibility.Visible;
             try
             {
                 rootPage.ShowProgressRing();
@@ -50,7 +51,6 @@ namespace ThoughtRecordApp.Pages
                 var result = await CurrentApp.RequestProductPurchaseAsync("ThoughtRecordDonation", true);
 #endif
                 //Check the license state to determine if the in-app purchase was successful.
-
                 if ((Application.Current as App).LicenseInformation.ProductLicenses["ThoughtRecordDonation"].IsActive)
                 {
                     DonationSuccessMessage.Text = "Thanks! :)";
